@@ -10,6 +10,7 @@
     padding-left: 8%;
     padding-right: 8%;
     box-sizing: border-box;
+    background-color: white;
 }
 
 .navbar {
@@ -27,4 +28,52 @@ nav ul li{
     list-style: none;
     display: inline-block;
     margin-left: 60px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+}
+
+.row {
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+
+.card {
+    width: 200px;
+    height: 230px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    margin: 10px 40px;
+    background-color: #f8f5f1;
+}
+
+.card img{
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.card .desc{
+    text-align: center;
+    line-height: 1.5;
+}
+
+.card .sm{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.card .sm a{
+    text-decoration: none;
+    color: black;
 }
