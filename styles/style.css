@@ -36,3 +36,16 @@ footer {
     color: #000000;
     transition: 500ms ease;
 }
+
+.about-us {
+    background: #f3f3f3;
+    padding: 20px 0px;
+}
+
+.about-us h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    color: #000000;
+}
