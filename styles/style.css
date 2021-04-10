@@ -1,3 +1,12 @@
+body {
+    background: #f1f1f1;
+}
+
+main {
+    background: #ffffff;
+    padding: 2em;
+}
+
 footer {
     margin-top: 3em;    
 }
