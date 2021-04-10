@@ -36,7 +36,12 @@ nav ul li a{
     color: black;
 }
 
+.filter{
+    display: flex;
+}
+
 .select-box {
+    margin: 20px;
     display: flex;
     width: 250px;
     flex-direction: column;
@@ -51,6 +56,8 @@ nav ul li a{
     transition: all 0.4s;
     border-radius: 8px;
     overflow: hidden;
+
+    order: 1;
 }
 
 .selected {
@@ -91,6 +98,7 @@ what happen we clicked the arrow start. sadly this doesnt work
 */
 .select-box .options-container.active + .selected::after {
     transform: rotateX(180deg);
+    top: -6px;
 }
 
 /* styling scrollbar start */
