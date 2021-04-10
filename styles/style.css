@@ -37,6 +37,12 @@ footer {
     transition: 500ms ease;
 }
 
+.footer-logo {
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
 .about-us {
     background: #f3f3f3;
     padding: 20px 0px;
