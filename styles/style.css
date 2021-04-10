@@ -22,3 +22,17 @@ footer {
     padding: 30px 0px;
     background-color: red;
 }
+
+.footer-link-section li {
+    list-style: none;
+}
+
+.footer-link-section li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-link-section li a:hover {
+    color: #000000;
+    transition: 500ms ease;
+}
