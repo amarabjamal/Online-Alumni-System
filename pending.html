@@ -34,7 +34,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Accounts</a>
                             <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Pending</a>
+                            <a class="dropdown-item" href="pending.html">Pending</a>
                             <a class="dropdown-item" href="#">Approved</a>
                             <a class="dropdown-item" href="#">Denied</a>                          
                     </li>
@@ -51,7 +51,20 @@
     </nav>
 
     <main >
-
+        <table class="table table-striped container">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+                <script type="text/javascript"src="arrforapprovals.js">
+                </script>
+            </tbody>
+          </table>
     </main>
 
 
