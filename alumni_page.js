@@ -1,4 +1,3 @@
-// when user click
 const selectedAll = document.querySelectorAll(".selected");
 
 selectedAll.forEach((selected) => {
@@ -28,14 +27,26 @@ selectedAll.forEach((selected) => {
     }
   });
 
-  //to put the option at selected
   optionsList.forEach((o) => {
     o.addEventListener("click", () => {
       selected.innerHTML = o.querySelector("label").innerHTML;
-      //line that selects the radio button when the div is clicked
-      o.querySelector("input").checked = true;
       optionsContainer.classList.remove("active");
     });
   });
 
+  searchBox.addEventListener("keyup", function (e) {
+    filterList(e.target.value);
+  });
+
+  const filterList = (searchTerm) => {
+    searchTerm = searchTerm.toLowerCase();
+    optionsList.forEach((option) => {
+      let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
+      if (label.indexOf(searchTerm) != -1) {
+        option.style.display = "block";
+      } else {
+        option.style.display = "none";
+      }
+    });
+  };
 });
