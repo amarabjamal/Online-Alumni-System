@@ -18,6 +18,19 @@ footer {
     margin-top: 3em;    
 }
 
+.logo {
+    
+}
+
+.navbar-light {
+    background-color: #fce77d !important;
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
 .login-button {
     margin: 0px 5px;
     padding: 5px 20px;
@@ -31,9 +44,13 @@ footer {
     background-color: aqua;
 }
 
+.navbar-toggler {
+    border: 0px;
+}
+
 .footer-link-section {
     padding: 30px 0px;
-    background-color: #dfdfdf;
+    background-color: #fce77d;
 }
 
 .footer-link-section ul {
@@ -53,7 +70,7 @@ footer {
 }
 
 .footer-link-section li a {
-    color: #ffffff;
+    color: #dbbb19;
     text-decoration: none;
 }
 
@@ -78,4 +95,9 @@ footer {
     font-size: 30px;
     text-align: center;
     color: #000000;
+}
+
+.about-us p {
+    font-family: arial;
+    font-size: 20;
 }
