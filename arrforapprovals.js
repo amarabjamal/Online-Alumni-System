@@ -14,7 +14,12 @@ function buildtable(data){
                         <td>${data[i].age}</td>
                         <td>${data[i].batch}</td>
                         <td>${data[i].status}</td>
-
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-success">Approve</button>
+                            <button type="button" class="btn btn-danger">Deny</button>
+                        </div>
+                        </td>
                     </tr>`
         table.innerHTML += row
     }
