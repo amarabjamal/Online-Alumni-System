@@ -18,7 +18,86 @@ footer {
     margin-top: 3em;    
 }
 
+.logo {
+    
+}
+
+.navbar-light {
+    background-color: #fce77d !important;
+}
+
+.nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.login-button {
+    margin: 0px 5px;
+    padding: 5px 20px;
+    background-color: aqua;
+    
+}
+
+.register-button {
+    margin: 0px 5px;
+    padding: 5px 20px;
+    background-color: aqua;
+}
+
+.navbar-toggler {
+    border: 0px;
+}
+
 .footer-link-section {
     padding: 30px 0px;
-    background-color: red;
+    background-color: #fce77d;
+}
+
+.footer-link-section ul {
+    -webkit-padding-start: 0;/*remove indent*/
+    padding-left: 5px;
+}
+
+.footer-link-section h3 {
+    color: #000000;
+    border-bottom: #000000 solid 3px;
+    padding-bottom: 2.5px;
+    margin-bottom: 15px;
+}
+
+.footer-link-section li {
+    list-style: none;
+}
+
+.footer-link-section li a {
+    color: #dbbb19;
+    text-decoration: none;
+}
+
+.footer-link-section li a:hover {
+    color: #000000;
+    transition: 500ms ease;
+}
+
+.footer-logo {
+    padding: 10px 20px 20px 20px;
+    background-color: none;
+}
+
+.about-us {
+    background: #f3f3f3;
+    padding: 20px 0px;
+}
+
+.about-us h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+.about-us p {
+    font-family: arial;
+    font-size: 20;
 }
