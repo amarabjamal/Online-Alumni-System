@@ -18,10 +18,6 @@ footer {
     margin-top: 3em;    
 }
 
-.logo {
-    
-}
-
 .navbar-light {
     background-color: #fce77d !important;
 }
@@ -87,6 +83,7 @@ footer {
 .about-us {
     background: #f3f3f3;
     padding: 20px 0px;
+    margin-bottom: 20px;
 }
 
 .about-us h2 {
@@ -101,3 +98,18 @@ footer {
     font-family: arial;
     font-size: 20;
 }
+
+.upcoming-events {
+    background: #f3f3f3;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+}
+
+.upcoming-events h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    color: #000000;
+}
+
