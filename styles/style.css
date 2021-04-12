@@ -27,6 +27,11 @@ footer {
     font-weight: bold;
 }
 
+.register-login {
+    flex-direction: column;
+    padding-left: auto;
+}
+
 .login-button {
     margin: 0px 5px;
     padding: 5px 20px;
@@ -84,6 +89,7 @@ footer {
     background: #f3f3f3;
     padding: 20px 0px;
     margin-bottom: 20px;
+    border-top-right-radius: 50px;
 }
 
 .about-us h2 {
@@ -103,6 +109,7 @@ footer {
     background: #f3f3f3;
     padding: 20px 0px;
     margin-bottom: 20px;
+    border-bottom-left-radius: 50px;
 }
 
 .upcoming-events h2 {
