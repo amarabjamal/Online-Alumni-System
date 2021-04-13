@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e2d1d1;
+}
+
+.row {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.login-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.btn1 {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    transition:ease .5s;
+} 
+
+.btn1:hover {
+    background-color: #ffffff;
+    color: #000000;
+    outline: 1px;
+    border: #000000 1px solid;
+}
