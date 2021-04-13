@@ -10,7 +10,14 @@ body {
 
 .row {
     background-color: #ffffff;
-    border-radius: 30px;
+    border-radius: 10px;
+}
+
+.login-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
 }
 
 .btn1 {
