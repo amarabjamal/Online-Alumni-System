@@ -23,7 +23,6 @@ function buildtable(data){
                         <td>
                             <div class="btn-group" role="group" aria-label="statuschanger">
                             <button type="button" class="btn btn-success" id="approvebtn">Approve</button>
-                            <button type="button" class="btn btn-danger" id="denybtn">Deny</button>
                         </div>
                         </td>
                     </tr>`
