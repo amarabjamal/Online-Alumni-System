@@ -14,7 +14,7 @@ function buildtable(data){
     var table = document.getElementById("myTable")
 
     for(var i = 0; i< data.length; i++){
-        if(data[i].status == "Pending"){
+        if(data[i].status == "Denied"){
             var row =   `<tr>
                         <td>${data[i].name}</td>
                         <td>${data[i].age}</td>
