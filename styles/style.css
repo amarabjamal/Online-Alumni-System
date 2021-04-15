@@ -31,17 +31,26 @@ footer {
     font-weight: bold;
 }
 
-.login-button {
-    margin: 0px 5px;
-    padding: 5px 20px;
-    background-color: aqua;
-    
+@media (min-width: 992px) {
+    .login-btn {
+        color: #ffffff !important;
+        background-color: #a18e2b;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        border-radius: 20px;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+        transition: ease-in-out .25s;
+    }
+
+    .login-btn:hover {
+        background-color: #c9b139;
+    }
 }
 
-.register-button {
-    margin: 0px 5px;
-    padding: 5px 20px;
-    background-color: aqua;
+
+
+.register-btn {
+
 }
 
 .navbar-toggler {
