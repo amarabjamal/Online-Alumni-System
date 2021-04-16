@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="./images/favicon.svg">
         
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -13,34 +14,59 @@
         
         <link href="styles/style.css" rel="stylesheet">
 
-        <title>UM Alumni System</title>
+        <title>UM Alumni</title>
     </head>
-<body class="d-flex flex-column h-100">
+<body>
     <!--Bootstrap js-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#"><img class="logo" src="images/um-logo.png" width="175" alt="logo"></a>
+            <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="#about-us">About Us</a>
                 <a class="nav-item nav-link" href="#">News & Events</a>
                 <a class="nav-item nav-link" href="#footer">Contact Us</a>
-                
-                <a class="nav-item nav-link register" href="#">Register</a>
-                <a class="nav-item nav-link login" href="login.html">Login</a>
 
+                <a class="nav-item nav-link register-btn" href="#">Register</a>
+                <a class="nav-item nav-link login-btn" href="login.html">Login</a>
+                
             </div>
+
             </div>
         </div>
     </nav>
 
     <main class="flex-shrink-0">
+        <section class="landing-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                    <h2>Welcome, UM alumni!</h2>
+
+                    <p class="landing-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dignissimos adipisci nobis minima eveniet ipsam ratione eius impedit obcaecati veniam pariatur ut deserunt, cumque, a totam expedita nisi harum esse?</p>
+
+                    <hr>
+
+                    <p class="landing-desc">What are you waiting for?</p>
+
+                    <a href="#" class="landing-btn">Get Connected</a>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <img class="landing-img" src="./images/landing-page.svg" alt="people connecting">
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </section>
+
         <section id="about-us" class="about-us">
             <div class="container">
                 <h2>About Us</h2>
@@ -48,11 +74,42 @@
             </div>
         </section>
 
-        <section class="upcoming-events">
+        <section id="upcoming-events" class="upcoming-events">
             <div class="container">
                 <h2>Upcoming Events</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id molestiae ex incidunt dolores porro placeat amet modi nisi molestias officia nulla vero repellendus neque iure blanditiis obcaecati, ducimus et debitis?</p>
-            </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card event-card">
+                            <img src="..." class="event-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="event-title">Card title</h5>
+                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card event-card">
+                            <img src="..." class="event-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="event-title">Card title</h5>
+                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card event-card">
+                            <img src="..." class="event-img" alt="...">
+                            <div class="card-body">
+                                <h5 class="event-title">Card title</h5>
+                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
         </section>
 
         <section class="jobs-listing">
@@ -123,11 +180,8 @@
     <footer id="footer" class="mt-auto">
         <div class="footer-link-section">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-4 col-md-3">
-                        <img alt="logo" class="footer-logo" width="100%" src="images/um-logo.png">
-                    </div>
-                    <div class="col-sm-4 col-md-3 item">
+                <div class="row justify-content-left">
+                    <div class="col-sm-6 col-md-4 item">
                         <h3>Contact</h3>
                         <ul>
                             <li><a href="#">Contact 1</a></li>
@@ -135,7 +189,7 @@
                             <li><a href="#">Contact 3</a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-md-3 item">
+                    <div class="col-sm-6 col-md-4 item">
                         <h3>Links</h3>
                         <ul>
                             <li><a href="#">Link 1</a></li>
@@ -143,7 +197,7 @@
                             <li><a href="#">Link 3</a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4 col-md-3 item">
+                    <div class="col-sm-6 col-md-4 item">
                         <h3>Follow Us</h3>
                         <ul>
                             <li><a href="#">Facebook</a></li>
@@ -158,7 +212,7 @@
         <!-- Copyrights -->
         <div class="bg-light py-4">
             <div class="container text-center">
-                <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni System All rights reserved.</p>
+                <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
             </div>
         </div>
     </footer>
