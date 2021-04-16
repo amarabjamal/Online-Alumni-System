@@ -15,7 +15,7 @@ body {
 
 main {
     background: #ffffff;
-    padding: 2em;
+    padding: 2em 0em;
 }
 
 footer {
@@ -94,10 +94,13 @@ footer {
 }
 
 .about-us {
-    background: #f3f3f3;
+    background: #ffffff;
+    height: calc(100vh - 82.73px);
+    overflow: scroll;
+    background-image: url(../images/login-page.jpeg);
+    background-position: center;
     padding: 20px 0px;
-    margin-bottom: 20px;
-    border-top-right-radius: 50px;
+    margin-top: -32px;
 }
 
 .about-us h2 {
@@ -114,10 +117,10 @@ footer {
 }
 
 .upcoming-events {
+    height: 100vh;
     background: #f3f3f3;
     padding: 20px 0px;
     margin-bottom: 20px;
-    border-bottom-left-radius: 50px;
 }
 
 .upcoming-events h2 {
@@ -126,5 +129,10 @@ footer {
     font-size: 30px;
     text-align: center;
     color: #000000;
+}
+
+.jobs-listing {
+    background-color: #dbbb19;
+    padding: 20px 0px;
 }
 
