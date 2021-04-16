@@ -1,0 +1,67 @@
+body{
+    background-color: #ffffff;
+}
+
+.title {
+    font-size: 40px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.firstname{
+text-align: center;
+padding: 4px;
+}
+
+.lastname{
+text-align: center;
+padding: 4px;
+}
+
+.emailz{
+text-align: center;
+padding: 4px;  
+}
+
+.checkboxes{
+    text-align: center;
+    position: relative;
+    right: 60px;
+    padding: 4px;
+}
+.button{
+    position: relative;
+    left: 15px;
+    padding: 2px;
+    text-align: center;
+}
+.switch{
+    position: relative;
+    text-align: center;
+    padding-top: 8px;
+    right: 10px;
+}
+.confirm{
+    position: relative;
+    text-align: center;
+    right: 45px;
+    padding: 10px;
+    font-family: sans-serif;
+    text-decoration: none;
+    border-radius: 3px;
+    
+}
+.credit{
+    font-family: sans-serif;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    right: 10px;
+}
+
+footer{
+padding-top: 40px;
+}
+
