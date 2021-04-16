@@ -53,6 +53,40 @@ width: 400px;
 flex-direction: column;
 }
 
+.batch {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: #f5f6fa;
+    position: relative;
+
+    order: 0;
+}
+
+#search-batch {
+    background: white;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 12px 24px;
+    color: black;
+    font-size: 16px;
+    
+}
+
+.search-btn{
+    color: #2f3640;
+    width: 10px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-btn a{
+    text-decoration: none;
+}
+
 .select-box .options-container {
 background: #2f3640;
 color: #f5f6fa;

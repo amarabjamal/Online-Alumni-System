@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Alumni Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="alumni_page.css" />
-  </head>
-  <body>
-    
+</head>
+
+<body>
+
     <div class="container">
 
         <div class="navbar">
             <a href="index.html"><img src="img/um logo.png" alt="home" width="150" height="100"></a>
             <nav>
                 <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News & Events</a></li>
+                    <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Login</a></li>
                     <li><a href="#">Register</a></li>
                 </ul>
@@ -23,105 +29,100 @@
         </div>
 
         <div class="filter">
+            <!-- batch -->
+            <div class="select-box">
+                <div class="batch">
+                    <input type="text" id="search-batch" name="batch" placeholder="Batch">
+                </div>
+            </div>
+
+            <!-- faculty -->
             <div class="select-box">
                 <div class="options-container">
-                    
-                </div>
-                
-                <div class="selected">
-                    Batch
-                </div>
-        
-                <div class="search-box">
-                    <input type="text" placeholder="Start Typing..." />
-                </div>
-                </div>
-        
-                <div class="select-box">
-                <div class="options-container">
                     <div class="option">
-                        <input type="radio" class="radio" id="education" name="fac-category"/>
+                        <input type="radio" class="radio" id="education" name="fac-category" />
                         <label for="education">Faculty of Education</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="dentistry" name="fac-category"/>
+                        <input type="radio" class="radio" id="dentistry" name="fac-category" />
                         <label for="dentistry">Faculty of Dentistry</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="engineering" name="fac-category"/>
+                        <input type="radio" class="radio" id="engineering" name="fac-category" />
                         <label for="engineering">Faculty of Engineering</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="science" name="fac-category"/>
+                        <input type="radio" class="radio" id="science" name="fac-category" />
                         <label for="science">Faculty of Science</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="law" name="fac-category"/>
+                        <input type="radio" class="radio" id="law" name="fac-category" />
                         <label for="law">Faculty of Law</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="medicine" name="fac-category"/>
+                        <input type="radio" class="radio" id="medicine" name="fac-category" />
                         <label for="medicine">Faculty of Medicine</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="artsocial" name="fac-category"/>
+                        <input type="radio" class="radio" id="artsocial" name="fac-category" />
                         <label for="artsocial">Faculty of Art and Social Sciences</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="business" name="fac-category"/>
+                        <input type="radio" class="radio" id="business" name="fac-category" />
                         <label for="business">Faculty of Business and Accountancy</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="economics" name="fac-category"/>
+                        <input type="radio" class="radio" id="economics" name="fac-category" />
                         <label for="economics">Faculty of Economics and Administration</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="languages" name="fac-category"/>
+                        <input type="radio" class="radio" id="languages" name="fac-category" />
                         <label for="languages">Faculty of Languages and Linguistics</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="environment" name="fac-category"/>
+                        <input type="radio" class="radio" id="environment" name="fac-category" />
                         <label for="environment">Faculty of Built Environment</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="compsc" name="fac-category"/>
+                        <input type="radio" class="radio" id="compsc" name="fac-category" />
                         <label for="compsc">Faculty of Computer Science and Information Technology</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="pharmacy" name="fac-category"/>
+                        <input type="radio" class="radio" id="pharmacy" name="fac-category" />
                         <label for="pharmacy">Faculty of Pharmacy</label>
                     </div>
 
                     <div class="option">
-                        <input type="radio" class="radio" id="creative" name="fac-category"/>
+                        <input type="radio" class="radio" id="creative" name="fac-category" />
                         <label for="creative">Faculty of Creative and Arts</label>
                     </div>
                 </div>
-                
+
                 <div class="selected">
                     Faculty
                 </div>
-        
+
                 <div class="search-box">
                     <input type="text" placeholder="Start Typing..." />
                 </div>
-                </div>
-        
-                <div class="select-box">
+            </div>
+
+            <!-- major -->
+            <div class="select-box">
                 <div class="options-container">
-                    
+
                     <div class="option">
                         <input type="radio" class="radio" id="csn" name="category" />
                         <label for="csn">Computer System & Network</label>
@@ -147,29 +148,26 @@
                         <label for="se">Software Engineering</label>
                     </div>
                 </div>
-        
+
                 <div class="selected">
                     Major
                 </div>
-        
+
                 <div class="search-box">
                     <input type="text" placeholder="Start Typing..." />
                 </div>
+            </div>
+
+            <!-- alumni name -->
+            <div class="select-box">
+                <div class="batch">
+                    <input type="text" id="search-batch" name="search-name" placeholder="Alumni Name">
                 </div>
-        
-                <div class="select-box">
-                <div class="options-container">
-                    
-                </div>
-        
-                <div class="selected">
-                    Search Box
-                </div>
-        
-                <div class="search-box">
-                    <input type="text" placeholder="Start Typing..." />
-                </div>
-                </div>
+            </div>
+
+            <a href="alumni_page.html" class="search-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
         </div>
 
         <div class="row">
@@ -186,63 +184,7 @@
                     <a href="#" class="fab fa-youtube"></a>
                 </div>
             </div>
-            
-            <div class="card">
-                <img src="img/avatar.jpg" alt="man">
-                <div class="desc">
-                    <h3 class="name">Name</h3>
-                    <p class="abtMe">About Me</p>
-                </div>
-                <div class="sm">
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-github"></a>
-                    <a href="#" class="fab fa-youtube"></a>
-                </div>
-            </div>
 
-            <div class="card">
-                <img src="img/avatar.jpg" alt="man">
-                <div class="desc">
-                    <h3 class="name">Name</h3>
-                    <p class="abtMe">About Me</p>
-                </div>
-                <div class="sm">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-github"></a>
-                    <a href="#" class="fab fa-youtube"></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="img/avatar.jpg" alt="man">
-                <div class="desc">
-                    <h3 class="name">Name</h3>
-                    <p class="abtMe">About Me</p>
-                </div>
-                <div class="sm">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-github"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="card">
-                <img src="img/avatar.jpg" alt="man">
-                <div class="desc">
-                    <h3 class="name">Name</h3>
-                    <p class="abtMe">About Me</p>
-                </div>
-                <div class="sm">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-github"></a>
-                    <a href="#" class="fab fa-youtube"></a>
-                </div>
-            </div>
-            
             <div class="card">
                 <img src="img/avatar.jpg" alt="man">
                 <div class="desc">
@@ -298,7 +240,63 @@
                     <a href="#" class="fab fa-youtube"></a>
                 </div>
             </div>
-            
+
+            <div class="card">
+                <img src="img/avatar.jpg" alt="man">
+                <div class="desc">
+                    <h3 class="name">Name</h3>
+                    <p class="abtMe">About Me</p>
+                </div>
+                <div class="sm">
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-github"></a>
+                    <a href="#" class="fab fa-youtube"></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/avatar.jpg" alt="man">
+                <div class="desc">
+                    <h3 class="name">Name</h3>
+                    <p class="abtMe">About Me</p>
+                </div>
+                <div class="sm">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-github"></a>
+                    <a href="#" class="fab fa-youtube"></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/avatar.jpg" alt="man">
+                <div class="desc">
+                    <h3 class="name">Name</h3>
+                    <p class="abtMe">About Me</p>
+                </div>
+                <div class="sm">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-github"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card">
+                <img src="img/avatar.jpg" alt="man">
+                <div class="desc">
+                    <h3 class="name">Name</h3>
+                    <p class="abtMe">About Me</p>
+                </div>
+                <div class="sm">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-github"></a>
+                    <a href="#" class="fab fa-youtube"></a>
+                </div>
+            </div>
+
             <div class="card">
                 <img src="img/avatar.jpg" alt="man">
                 <div class="desc">
@@ -343,5 +341,6 @@
     </div>
 
     <script src="alumni_page.js"></script>
-  </body>
+</body>
+
 </html>
