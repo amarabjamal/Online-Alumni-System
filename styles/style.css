@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
+
+:root {
+    --mainColor : #dbbb19;
+    --secColor  : #fce77d;
+}
+
 html,
 body {
     height: 100%;
@@ -26,7 +32,7 @@ a:hover {
 /* Navigation Section */
 
 .navbar-light {
-    background-color: #fce77d !important;
+    background-color: var(--secColor) !important;
 }
 
 .nav-link {
@@ -126,7 +132,7 @@ a:hover {
 }
 
 .about-us {
-    background: #dbbb19;
+    background-color: var(--mainColor);
     padding: 50px 0px;
 }
 
@@ -140,7 +146,7 @@ a:hover {
 }
 
 .upcoming-events {
-    background: #f3f3f3;
+    background-color: var(--mainColor);
     padding: 50px 0px;
 }
 
@@ -208,7 +214,7 @@ a:hover {
 }
 
 .jobs-listing {
-    background-color: #dbbb19;
+    background-color: var(--mainColor);
     padding: 50px 0px;
 }
 
@@ -218,7 +224,7 @@ a:hover {
 
 .footer-link-section {
     padding: 30px 0px;
-    background-color: #fce77d;
+    background-color: var(--secColor);
 }
 
 .footer-link-section ul {
