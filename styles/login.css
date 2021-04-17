@@ -5,12 +5,13 @@
 }
 
 body {
-    background-color: #e2d1d1;
+    background-color: #dbbb19;
 }
 
 .row {
     background-color: #ffffff;
-    border-radius: 10px;
+    min-height: calc(100vh - 64px);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .login-image {
@@ -18,6 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     padding-top: 50px;
+    background-color: #f5f7fa;
 }
 
 .btn1 {
