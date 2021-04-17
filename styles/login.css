@@ -22,6 +22,44 @@ body {
     background-color: #f5f7fa;
 }
 
+.input-box {
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #212529;
+    width: 90%;
+}
+
+.input-box input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.input-box .bi {
+    padding-right: 10px;
+    color: #212529;
+}
+
+.eye {
+    position: absolute;
+    padding: 0px 3px;
+}
+
+#show {
+    display: none;
+}
+
 .btn1 {
     border: none;
     outline: none;
