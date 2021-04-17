@@ -1,0 +1,32 @@
+.bkground{
+    background: #6395a8;
+    color: white;
+}
+
+.navbar-light{
+    background-color: #7a7a7a;
+}
+
+.other{
+    font-weight: bold;
+}
+
+.sidenav{
+    background-color: #126e82;
+    color: white;
+}
+
+a { color: #ffffff; }
+
+a:hover{
+    color: #132c33;
+}
+
+.activea{
+    background-color: #132c33;
+    
+}
+
+table{
+    margin: 50px;
+}
