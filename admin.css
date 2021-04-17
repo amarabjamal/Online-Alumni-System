@@ -30,3 +30,7 @@ a:hover{
 table{
     margin: 50px;
 }
+
+form div{
+    margin-bottom: 30px;
+}
