@@ -25,10 +25,6 @@ main {
     background: #ffffff;
 }
 
-a:hover {
-    text-decoration: none;
-}
-
 /* Navigation Section */
 
 .navbar-light {
@@ -122,10 +118,15 @@ a:hover {
     color: #ffffff;
     padding: 15px 40px;
     border-radius: 30px;
+    transition: .2s ease;
+    border: 2px solid #dbbb19;
 }
 
 .landing-btn:hover {
-    color: #000000;
+    text-decoration: none;
+    color: #dbbb19;
+    background-color: transparent;
+    border: 2px solid #dbbb19;
 }
 
 .about-us {
