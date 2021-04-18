@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -6,6 +8,35 @@
 
 body {
     background-color: #dbbb19;
+}
+
+a {
+    transition: .2s;
+    color: #f9a826;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ffa617;
+}
+
+h1, h4, label {
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .my-4 {
+        margin: 0 !important;
+    }
+
+    .mx-5 {
+        margin: 0 !important;
+    }
 }
 
 .row {
@@ -22,16 +53,59 @@ body {
     background-color: #f5f7fa;
 }
 
+.form-group {
+    max-width: 350px;
+}
+
+.input-box {
+    height: 50px;
+    width: 100%;
+    max-width: 350px;
+    background-color: #ffffff;
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #212529;
+    width: 85%;
+}
+
+.input-box input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.input-box .bi {
+    padding-right: 10px;
+    color: #212529;
+}
+
+.eye {
+    cursor: pointer;
+}
+
+#show {
+    display: none;
+}
+
 .btn1 {
     border: none;
     outline: none;
     height: 50px;
     width: 100%;
+    max-width: 350px;
     background-color: #000000;
     color: #ffffff;
     border-radius: 4px;
     font-weight: bold;
-    transition:ease .5s;
+    transition:ease .2s;
 } 
 
 .btn1:hover {
