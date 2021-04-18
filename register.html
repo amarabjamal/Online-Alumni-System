@@ -74,8 +74,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
                                         </div>
-                                        <input id="password" type="password" class="form-control" placeholder="" aria-label="password" required>
+                                        <input id="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
                                     </div>
+                                    <small id="passwordHelpBlock" class="form-text text-muted"></small>
                                 </div>
                             </div>
                         </div>
@@ -88,8 +89,9 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
                                         </div>
-                                        <input id="cpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" required>
+                                        <input id="cpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
                                     </div>
+                                    <small id="passwordCheckBlock" class="form-text text-muted"></small>
                                 </div>
                             </div>
                         </div>

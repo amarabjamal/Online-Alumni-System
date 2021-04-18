@@ -42,22 +42,44 @@ function loadFacultySelector()
 }
 
 function verifyPassword() {  
-    var pw = document.getElementById('password').value; 
-    var check = document.getElementById('cpassword').value; 
-
-    if(pw == "") {  
-        document.getElementById("passwordHelpBlock").innerHTML = "**Fill the password please!";  
-        return false;  
-    }  
+    var password = document.getElementById('password').value; 
+    var cpassword = document.getElementById('cpassword').value; 
 
    //minimum password length validation  
-    if(pw.length < 8) {  
-        document.getElementById("passwordHelpBlock").innerHTML = "Must be atleast 8 characters";  
-        return false;  
+    if(password.length < 8) {  
+        document.getElementById('passwordHelpBlock').classList.remove('green-alert');
+        document.getElementById('passwordHelpBlock').classList.add('red-alert')
+        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password";   
     }  
-    
-  //maximum length of password validation  
-    if(pw.length > 20) {  
-        document.getElementById("passwordHelpBlock").innerHTML = "Must not exceed 20 characters";  
-        return false;  
+
+    //Reset message when password is emptied or has at least 8 characters
+    if(password.length == 0 || password.length >= 8) {
+        document.getElementById('passwordHelpBlock').innerText = "";  
+    }
+
+    if(password == cpassword && cpassword != '') {
+        document.getElementById('passwordCheckBlock').classList.remove('red-alert');
+        document.getElementById('passwordCheckBlock').classList.add('green-alert');
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText= "";
+    }
+    else if (password != cpassword && cpassword != '') {
+        document.getElementById('passwordCheckBlock').classList.remove('green-alert');
+        document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('cpassword').classList.add('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Those passwords didn’t match. Try again.";
+    }
+
+    if (password != cpassword & password == '') {
+        document.getElementById('passwordCheckBlock').classList.remove('green-alert');
+        document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Enter the password first.";
+    }
+
+    if (cpassword == '') {
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "";
+    }
+
 }  
