@@ -8,6 +8,31 @@ body {
     background-color: #dbbb19;
 }
 
+a {
+    transition: .2s;
+    color: #f9a826;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ffa617;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .my-4 {
+        margin: 0 !important;
+    }
+
+    .mx-5 {
+        margin: 0 !important;
+    }
+}
+
 .row {
     background-color: #ffffff;
     min-height: calc(100vh - 64px);
@@ -25,6 +50,7 @@ body {
 .input-box {
     height: 50px;
     width: 100%;
+    max-width: 350px;
     background-color: #ffffff;
     margin: 10px 0px;
     padding: 10px;
@@ -38,7 +64,7 @@ body {
     outline: none;
     background-color: transparent;
     color: #212529;
-    width: 90%;
+    width: 85%;
 }
 
 .input-box input::placeholder {
@@ -53,7 +79,7 @@ body {
 
 .eye {
     position: absolute;
-    padding: 0px 3px;
+    cursor: pointer;
 }
 
 #show {
@@ -65,11 +91,12 @@ body {
     outline: none;
     height: 50px;
     width: 100%;
+    max-width: 350px;
     background-color: #000000;
     color: #ffffff;
     border-radius: 4px;
     font-weight: bold;
-    transition:ease .5s;
+    transition:ease .2s;
 } 
 
 .btn1:hover {
