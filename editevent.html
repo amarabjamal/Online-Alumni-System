@@ -49,37 +49,27 @@
     
 
     <main >
-        
-        
-        
+        <h2 class="text-center pt-5 pb-3">Edit Event</h2>
 
-        <h2 class="text-center pt-5 pb-3">Create a new event</h2>
-
-        
-
-        <div class="container">
-            <div class="formthing">
-                <form action="newevent.html" method="post">
-                    <div>
-                        <label >Event Title</label><br>
-                        <input type="text" name="title" id="neweventname" class="text-input">
-                    </div>
-                    
-                    <div>
-                        <label >Body</label>
-                        <textarea name="body" id="body"></textarea>
-                    </div>
-                    
-                    
-
-                    <div class="py-3">
-                        <button type="button" class="btn btn-success btn-block">Submit</button>
-                    </div>
-
-                </form>
-    
-            </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered container" id="mainTable">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No.</th>
+                        <th style="width:20%">Event Name</th>
+                        <th style="width:50%">Brief</th>
+                        <th style="width:15%">Date</th>
+                        <th style="width:10%">Control</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    <script type="text/javascript"src="eventarr.js">
+                    </script>
+                </tbody>
+                </table>
         </div>
+
+        
 
     </main>
 
