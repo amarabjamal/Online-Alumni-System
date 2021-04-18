@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
+    <!--Style css-->
     <link href="styles/login.css" rel="stylesheet">
+
+    <!--Bootsrap icons-->
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <title>Login | UM Alumni</title>
@@ -22,6 +25,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
+    <!--Login js-->
     <script src="./scripts/login.js"></script>
 
     <section class="Form my-4 mx-5">
@@ -31,28 +35,37 @@
                     <img src="./images/signin.svg" alt="" width="100%">
                 </div>
                 <div class="col-md-7 px-5 pt-5">
-                    <h1 class="font-weight-bold pb-3">Hello, alumni!</h1>
+                    <h1 class="font-weight-bold pb-3">LOGIN</h1>
+                    <hr>
                     <h4>Sign into your account</h4>
                     <form action="">
                         <div class="form-row">
                             <div class="col">
-                                <div class="input-box">
-                                    <i class="bi bi-envelope-fill"></i>
-                                    <input type="email" name="email" placeholder="Email Address">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div class="input-group mb-3">
+                                        <input id="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                    </div>
                                 </div>
-                                
+                                    
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <div class="input-box">
-                                    <i class="bi bi-key-fill"></i>
-                                    <input id="password" type="password" name="password" placeholder="Password">
-                                    <span class="eye" onclick="togglePasswordDisplay()">
-                                        <i id="show" class="bi bi-eye-fill"></i>
-                                        <i id="hide" class="bi bi-eye-slash-fill"></i>
-                                    </span>
+                                <div class="form-group">
+                                    <label for="email">Password</label>
+                                    <div class="input-group mb-3">
+                                        <input id="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <span class="eye" onclick="togglePasswordDisplay()">
+                                                    <i id="show" class="bi bi-eye-fill"></i>
+                                                    <i id="hide" class="bi bi-eye-slash-fill"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,8 +75,8 @@
                                 <button type="button" class="btn1 mt-3 mb-5">Login</button>
                             </div>
                         </div>
-                        <a href="#">Forgot Password?</a>
-                        <p>Don't have an account? <a href="#">Register here</a></p>
+                        <a href="#" onclick="alert('Function not supported yet.')">Forgot Password?</a>
+                        <p>Don't have an account? <a href="./register.html">Register here</a></p>
                     </form>
                 </div>
             </div>

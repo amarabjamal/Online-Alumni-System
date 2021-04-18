@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -16,6 +18,10 @@ a {
 a:hover {
     text-decoration: none;
     color: #ffa617;
+}
+
+h1, h4, label {
+    font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 576px) {
@@ -45,6 +51,10 @@ a:hover {
     align-items: center;
     padding-top: 50px;
     background-color: #f5f7fa;
+}
+
+.form-group {
+    max-width: 350px;
 }
 
 .input-box {
@@ -78,7 +88,6 @@ a:hover {
 }
 
 .eye {
-    position: absolute;
     cursor: pointer;
 }
 

@@ -12,14 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
+    <!--Style css-->
     <link href="styles/login.css" rel="stylesheet">
 
-    <title>Login | UM Alumni</title>
+    <!--Bootsrap icons-->
+    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <title>Register | UM Alumni</title>
 </head>
 <body>
     <!--Bootstrap js-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!--Register js-->
+    <script src="./scripts/register.js"></script>
 
     <section class="Form my-4 mx-5">
         <div class="container">
@@ -28,76 +35,118 @@
                     <img src="./images/signin.svg" alt="" width="100%">
                 </div>
                 <div class="col-md-7 px-5 pt-5">
-                    <h1 class="font-weight-bold pb-3">Welcome, alumni!</h1>
+                    <h1 class="font-weight-bold pb-3">REGISTER</h1>
+                    <hr>
                     <h4>Create your account</h4>
                     <form action="">
                         <div class="form-row">
                             <div class="col">
-                                <label for="fullname">Full Name</label>
-                                <input 
-                                    type="text" 
-                                    id="fullname" 
-                                    name="fullname" 
-                                    placeholder="Email Address" 
-                                    class="form-control">
+                                <div class="form-group">
+                                    <label for="fullname">Full Name</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                        </div>
+                                        <input id="fullname" type="text" class="form-control" placeholder="" aria-label="fullname" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                        </div>
+                                        <input id="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="">Email</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    placeholder="Email Address" 
-                                    class="form-control">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                        </div>
+                                        <input id="password" type="password" class="form-control" placeholder="" aria-label="password" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="">Password</label>
-                                <input 
-                                    type="password" 
-                                    name="password" 
-                                    placeholder="••••••••" 
-                                    class="form-control">
+                                <div class="form-group">
+                                    <label for="cpassword">Confirm Password</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                        </div>
+                                        <input id="cpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="">Confirm Password</label>
-                                <input 
-                                    type="password" 
-                                    name="password" 
-                                    placeholder="••••••••" 
-                                    class="form-control">
+                                <div class="form-group">
+                                    <label for="classOf">Class of</label>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text"><i class="bi bi-calendar-fill"></i></label>
+                                        </div>
+                                        <select class="custom-select" id="classOf" required>
+                                            <option selected>Choose...</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="">Year of graduate</label>
-                                <input type="password" name="password" placeholder="••••••••" class="form-control">
+                                <div class="form-group">
+                                    <label for="faculty">Faculty</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text"><i class="bi bi-bar-chart-fill"></i></label>
+                                        </div>
+                                        <select class="custom-select" id="faculty">
+                                            <option selected>Choose...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            loadAgeSelector();
+                            loadFacultySelector();
+                        </script>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="consent" required>
+                                    <label class="form-check-label" for="exampleCheck1">I agree to the <a href="#">Terms &amp; Conditions</a></label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="col">
-                                <label for="">Faculty</label>
-                                <input type="password" name="password" placeholder="••••••••" class="form-control">
+                                <button type="button" class="btn1 mt-3 mb-5">Create Account</button>
                             </div>
                         </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="">Programme</label>
-                                <button type="button" class="btn1 mt-3 mb-5">Login</button>
-                            </div>
-                        </div>
-                        <p>Already have an account? <a href="#">Login here</a></p>
+                        <p>Already have an account? <a href="./login.html">Login here</a></p>
                     </form>
                 </div>
             </div>
