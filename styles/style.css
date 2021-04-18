@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    background: #f1f1f1;
+    background: var(--mainColor);
 }
 
 main {
@@ -81,16 +81,16 @@ main {
     background-position: center;
     padding: 50px 0px;
     background-color: #fff6ca;
-    background-image: url(../images/wave.svg);
+    background-image: url(../images/wave.png);
     background-position: bottom center;
     background-repeat: no-repeat;
 }
-
+/* 
 @media (min-width: 992px) {
     .landing-page {
         padding-top: 100px;
     }
-}
+} */
 
 .landing-page h2 {
     font-family: 'Montserrat', sans-serif;
