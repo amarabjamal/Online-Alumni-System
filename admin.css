@@ -34,3 +34,15 @@ table{
 form div{
     margin-bottom: 30px;
 }
+
+body{
+    margin-bottom: 100px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+}
+
