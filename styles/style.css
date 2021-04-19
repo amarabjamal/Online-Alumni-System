@@ -122,6 +122,13 @@ main {
     width: 100%;
 }
 
+/* button and image don't overlap */
+@media (max-width: 992px) {
+    .landing-img {
+        margin-top: 50px;
+    }
+}
+
 .landing-btn {
     top: 0;
     left: 0;
