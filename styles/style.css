@@ -22,14 +22,6 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    background: var(--primary-color);
-}
-
-main {
-    background: #ffffff;
-}
-
 /* Start Header */
 
 .navbar-light {
