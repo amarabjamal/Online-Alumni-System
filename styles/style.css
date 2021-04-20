@@ -26,7 +26,7 @@ main {
     background: #ffffff;
 }
 
-/* Navigation Section */
+/* Start Header */
 
 .navbar-light {
     background-color: var(--secColor) !important;
@@ -75,7 +75,9 @@ main {
     border: 0px;
 }
 
-/* Main Section */
+/* End Header */
+
+/* Start Main */
 
 .landing-page {
     min-height: calc(100vh - 64.91px);
@@ -290,9 +292,9 @@ a.landing-btn {
     padding: 50px 0px;
 }
 
+/* End Header */
 
-
-/* Footer Section */
+/* Start Footer */
 
 .footer-link-section {
     padding: 30px 0px;
@@ -329,3 +331,5 @@ a.landing-btn {
     padding: 10px 20px 20px 20px;
     background-color: none;
 }
+
+/* End Footer */
