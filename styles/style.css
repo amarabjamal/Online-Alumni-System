@@ -8,6 +8,9 @@
     --primary-color : #dbbb19;
     --secondary-color  : #fce77d;
     --light-color : #fff6ca;
+
+    /* Font Family Variables */
+    --montserrat : 'Montserrat', sans-serif;
 }
 
 html,
@@ -34,7 +37,7 @@ main {
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: bold;
 }
 
@@ -107,7 +110,7 @@ main {
 }
 
 .landing-page h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
     text-align: left;
@@ -206,7 +209,7 @@ a.landing-btn {
 }
 
 .about-us h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
     text-align: center;
@@ -220,7 +223,7 @@ a.landing-btn {
 }
 
 .upcoming-events h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
     text-align: center;
