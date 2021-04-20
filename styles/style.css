@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
+/* CSS Variables */
 
 :root {
-    --mainColor : #dbbb19;
-    --secColor  : #fce77d;
-    --lightColor : #fff6ca;
+    --primary-color : #dbbb19;
+    --secondary-color  : #fce77d;
+    --light-color : #fff6ca;
 }
 
 html,
@@ -19,7 +20,7 @@ html {
 }
 
 body {
-    background: var(--mainColor);
+    background: var(--primary-color);
 }
 
 main {
@@ -29,7 +30,7 @@ main {
 /* Start Header */
 
 .navbar-light {
-    background-color: var(--secColor) !important;
+    background-color: var(--secondary-color) !important;
 }
 
 .nav-link {
@@ -101,7 +102,7 @@ main {
 @media (min-width: 993px) and (max-height: 683px){
     .landing-page {
         background-image: none;
-        background-image: linear-gradient(to bottom, var(--lightColor), var(--secColor), var(--mainColor));
+        background-image: linear-gradient(to bottom, var(--light-color), var(--secondary-color), var(--primary-color));
     }
 }
 
@@ -200,7 +201,7 @@ a.landing-btn {
 }
 
 .about-us {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
@@ -214,7 +215,7 @@ a.landing-btn {
 }
 
 .upcoming-events {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
@@ -288,7 +289,7 @@ a.landing-btn {
 }
 
 .jobs-listing {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
@@ -298,7 +299,7 @@ a.landing-btn {
 
 .footer-link-section {
     padding: 30px 0px;
-    background-color: var(--secColor);
+    background-color: var(--secondary-color);
 }
 
 .footer-link-section ul {
