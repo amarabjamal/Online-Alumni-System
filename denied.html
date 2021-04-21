@@ -26,7 +26,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
                         <a class="nav-link other" href="index.html">Home</a>
@@ -37,13 +37,16 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle other" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
                             <div class="dropdown-menu">
-                            <a class="dropdown-item" href="newevent.html">New Event</a>
-                            <a class="dropdown-item" href="editevent.html">Edit Event</a>                        
+                                <a class="dropdown-item" href="newevent.html">New Event</a>
+                                <a class="dropdown-item" href="editevent.html">Edit Event</a>                         
+                    </li>
+                    <li class="nav-item last other">
+                        <a class="nav-link logout-btn" href="#">Log Out</a>
                     </li>
                 </ul>
-                
             </div>
         </div>
+        
     </nav>
 
     <main >
@@ -58,7 +61,8 @@
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
                 <thead>
                     <tr>
-                        <th style="width:60%">Name</th>
+                        <th style="width:30%">Name</th>
+                        <th style="width:30%">Email</th>
                         <th style="width:5%" class="text-center">Age</th>
                         <th style="width:5%" class="text-center">Batch</th>
                         <th style="width:15%" class="text-center">Status</th>

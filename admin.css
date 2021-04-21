@@ -18,6 +18,30 @@ main{
     font-weight: bold;
 }
 
+.logout-btn{
+    
+    background-color: #d3d3d3;
+    border-radius: 20px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.last{
+    
+    padding-left: 450px;
+}
+
+.login-btn {
+    color: #ffffff !important;
+    background-color: #a18e2b;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 20px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    transition: ease-in-out .25s;
+}
+
+
 .sidenav{
     background-color: #126e82;
     color: white;
@@ -54,3 +78,12 @@ footer{
     
 }
 
+.banner-back{
+    padding: 30px;
+    background-color: #51c4d3;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
+    letter-spacing: 5px;
+
+}
