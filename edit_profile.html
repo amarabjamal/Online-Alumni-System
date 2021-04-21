@@ -34,7 +34,7 @@
                         
                             <a class="nav-item nav-link" href="#">Contact Us</a>
   
-                            <a class="nav-item nav-link btn " href="index.html"  >Logout</a>
+                            <a class="nav-item nav-link btn " href="index.html" id="logout"  >Logout</a>
                         
                       </div>
   
@@ -50,23 +50,29 @@
                         <div class="col-sm-12 ">
                             <form class="horizontal">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading text-center">
+                                    <div class="panel-heading">
                                         <h3>Edit User Profile</h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label class="col-md-3">Profile picture</label>
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-12">
                                                 <input type="file" class="form-control">
                                             </div>
 
                                         </div>
                                          <div class="form-group">
-                                            <label class="col-md-3" class="form-control">Name</label>
+                                            <label class="col-md-3" >Name</label>
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" placeholder="Enter your name">
                                             </div>
 
+                                         </div>
+                                         <div class="form-group">
+                                             <label class="col-md-3" >Email address</label>
+                                             <div class="col-sm-12">
+                                                 <input type="email" class="form-control" placeholder="Enter your email address">
+                                             </div>
                                          </div>
                                          <div class="form-group">
                                             <label class="col-md-3 control-label">Country</label>
@@ -151,9 +157,10 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-3">
-                                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                                                <button type="submit" class="btn btn-secondary">Cancel</button>
+                                                <button type="submit" class="modal-btn" id="submit">Submit</button>
+                                                <button class="cancel-btn">Cancel</button>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -161,6 +168,21 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="modal-bg">
+                    <div class="modal">
+                        <h2>Your form has been submitted!</h2><br>
+                        <p>You can view your updated user profile now.</p>
+                        <button id="submit">OK</button>
+                        
+                        
+                    </div>
+                </div>
+                <script src="edit_profile.js"></script>
+
+               
+
+                
  
             </main>
             
