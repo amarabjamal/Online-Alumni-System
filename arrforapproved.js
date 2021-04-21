@@ -22,7 +22,7 @@ function buildtable(data){
                         <td  class="text-center">${data[i].status}</td>
                         <td  class="text-center">
                             <div class="btn-group" role="group" aria-label="statuschanger">
-                            <button type="button" class="btn btn-danger" id="denybtn">Deny</button>
+                            <button type="button" class="btn btn-danger" id="denybtn">Revoke</button>
                         </div>
                         </td>
                     </tr>`
