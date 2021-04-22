@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <title> UM Alumni </title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles/manage_user_profile.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=width-device, inital-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -15,154 +15,201 @@
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         
-            
-            
-            <nav class="navbar navbar-expand-lg navbar-light ">
-              <div class="container">
-                  <div class="container-fluid">
-                  <a class="navbar-brand" href="#"> <img class="logo" src="logo um.png" width="120" alt="logo"></a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                      <div class="navbar-nav align-right" style="align-items:flex-start;">
-                      
-                          <a class="nav-item nav-link active" aria-current="page" href="#">About Us</a>
-                      
-                      
-                          <a class="nav-item nav-link" href="#">Events</a>
-                      
-                      
-                          <a class="nav-item nav-link" href="#">Contact Us</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img class="logo" src="logo um.png" width="120" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav align-right" style="align-items:flex-start;">
+                
+                    <a class="nav-item nav-link active" aria-current="page" href="#">About Us</a>
+                
+                
+                    <a class="nav-item nav-link" href="#">Events</a>
+                
+                
+                    <a class="nav-item nav-link" href="#">Contact Us</a>
 
-                          <a class="nav-item nav-link logout-btn " href="index.html"  >Logout</a>
-                      
-                    </div>
-
-                  </div>
-
-                  </div>
+                    <a class="nav-item nav-link btn " href="index.html" id="logout"  >Logout</a>
+                
               </div>
-          </nav>
+
+            </div>
+
+            </div>
+        </div>
+      </nav>
             
             <main class="flex-shrink-0">
               <div class="container">
                   <div class="row gutters">
-                      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                          <div class="card-100">
-                              <div class="card-body">
-                                  <div class="center">
+                      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                          <div class="card-box text-center ">
+                              
+                                  
                                     <img src="icon2.png" width="30%" alt="icon">
 
-                                  </div>
-                                  <h4 class="center">Amira Anuar</h4>
-                                  <div class="center">
-                                    <a href=# >aaabbb@gmail.com</a>
-
-                                  </div>
+                                  
+                                   <h4 class="center">Amira Anuar</h4>
+                                
                                   
                                   <div class="bio">
                                       <h4 class="center">ABOUT ME</h4>
                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                   </div>
+                                  <h6> aaabbb@gmail.com</h6>
+                                  <h6>Country: Malaysia</h6>
+                                  
+                              
+                          </div>
+                          <div class="card-box">
+                              <h4>Skills</h4>
+                              <div class="pt-1">
+                                  <h6>HTML5<span class="float-right">Intermediate</span></h6>
+                                  <div class="progress progress-sm m-0">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                        <span class="sr-only">90% Complete</span>
+                                    
+                                     </div>
+                                  </div>
+                              </div>
+                              <div class="mt-2 pt-1">
+                                  <h6>PHP<span class="float-right">Intermediate</span></h6>
+                                  <div class="progress progress-sm m-0">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
+                                      <span class="sr-only">67% Complete</span>
+                                  
+                                   </div>
+                                </div>
+                              </div>
+                              <div class="mt-2 pt-1">
+                                  <h6>Javascript<span class="float-right">Intermediate</span></h6>
+                                  <div class="progress progress-sm m-0">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 67%">
+                                      <span class="sr-only">67% Complete</span>
+                                  
+                                   </div>
+                                </div>
                               </div>
                           </div>
                       </div>
-                      <div class=" col-sm-12 ">
-                          <div class="card h-100">
+                      <div class=" col-xl-8 col-lg-8  ">
+                          <div class="card-box">
                               <div class="card-body">
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <h5 class="center">Country</h5>
-                                     </div>
-                                     
-                                 </div>
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <h6 class="center">Malaysia</h6><br>
-                                     </div>
-                                 </div>
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                       
-                                            <h5 class="center">Company Name</h5> 
-                                        
-                                        
-                                     </div>
-                                 </div>
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <h6 class="center">Grab</h6><br>
-                                     </div>
-                                 </div> 
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <h5 class="center">Position</h5>
-                                     </div>
-                                 </div>
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <h6 class="center">Programmer</h6>
-                                     </div>
-                                 </div>
-                                 <div class="row gutters">
-                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                         <div class="text-right">
-                                             <button type="button" id="edit" name="edit" class="btn btn-secondary" ><a href="edit_profile.html">Edit</a></button>
-                                             <button type="button" id="delete" name="delete" class="btn btn-primary">Delete</button>
-                                             
-                                         </div>
-                                     </div>
-                                 </div>
+                                  <h5><i class="mdi mdi-briefcase mr-1">EXPERIENCE</i></h5>
+                                  <ul class="list-unstyled timeline-sm">
+                                      <li class="timeline-sm-item">
+                                          <span class="timeline-sm-date">2020-21</span>
+                                          <h5>Designer</h5>
+                                          <a href="#">abc.com</a>
+                                          <p>My first time working as a designer </p>
+                                          
+                                      </li>
+                                      <li class="timeline-sm-item">
+                                          <span class="timeline-sm-date">2019-20</span>
+                                          <h5>Intern</h5>
+                                          <a href=#>def.com</a>
+                                          <p>I did my internship at <strong> def </strong> in the software development department. It was fun!</p>
+                                      </li>
+                                  </ul>
 
-                              </div>
-                          </div>
+                                  <h5><i class="mdi mdi-cards-variant mr-1">PROJECTS</i></h5>
+                                  <div class="table-responsive">
+                                      <table class="table table-borderless mb-0">
+                                          <thead class="thead-light">
+                                              <tr>
+                                                  <th>#</th>
+                                                  <th>Project Name</th>
+                                                  <th>Date</th>
+                                                  <th>Status</th>
+                                                  <th>Client</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td>1</td>
+                                                  <td>Online Alumni System</td>
+                                                  <td>5.06.2020</td>
+                                                  <td><span class="badge badge-success">Completed</span></td>
+                                                  <td>FCSIT, UM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Online Shopping System</td>
+                                                    <td>7.11.2020</td>
+                                                    <td><span class="badge badge-info">Pending</span></td>
+                                                    <td>Lazada</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Search Engine</td>
+                                                    <td>4.03.2021</td>
+                                                    <td><span class="badge badge-danger">Work in Progress</span></td>
+                                                    <td>duckduckgo</td>
+                                                </tr>
+
+                                          </tbody>
+                                      </table>
+                                  </div>
+                                  <div class="align-right">
+                                      <a href="edit_profile.html"><button class="edit">Edit</button></a>
+                                      <button id="submit">Delete</button>
+                                  </div>
+                                 
+                                     
+                                </div>
+
+                            </div>
+                        </div>
                       </div>
                   </div>
               </div>
             </main>
             
 
-            <footer class="mt-auto">
-              <div class="footer-link-section">
-                  <div class="container">
-                      <div class="row justify-content-left">
-                          <div class="col-sm-4 col-md-3">
-                              
-                          </div>
-                          <div class="col-sm-4 col-md-3 item">
-                              <h3>Contact</h3>
-                              <ul>
-                                  <li><a href="#">Contact 1</a></li>
-                                  <li><a href="#">Contact 2</a></li>
-                                  <li><a href="#">Contact 3</a></li>
-                              </ul>
-                          </div>
-                          <div class="col-sm-4 col-md-3 item">
-                              <h3>Links</h3>
-                              <ul>
-                                  <li><a href="#">Link 1</a></li>
-                                  <li><a href="#">Link 2</a></li>
-                                  <li><a href="#">Link 3</a></li>
-                              </ul>
-                          </div>
-                          <div class="col-sm-4 col-md-3 item">
-                              <h3>Follow Us</h3>
-                              <ul>
-                                  <li><a href="#">Facebook</a></li>
-                                  <li><a href="#">Instagram</a></li>
-                                  <li><a href="#">Twitter</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-               <div class="bg-light py-4">
-                <div class="container text-center">
-                    <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> Alumni System All rights reserved.</p>
+            <footer id="footer" class="mt-auto">
+                <div class="footer-link-section">
+                    <div class="container">
+                        <div class="row justify-content-left">
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Contact</h3>
+                                <ul>
+                                    <li><a href="#">Contact 1</a></li>
+                                    <li><a href="#">Contact 2</a></li>
+                                    <li><a href="#">Contact 3</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Links</h3>
+                                <ul>
+                                    <li><a href="#">Link 1</a></li>
+                                    <li><a href="#">Link 2</a></li>
+                                    <li><a href="#">Link 3</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Follow Us</h3>
+                                <ul>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">Instagram</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </footer>
+        
+                <!-- Copyrights -->
+                <div class="bg-light py-4">
+                    <div class="container text-center">
+                        <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
     
 </body>
 </html>
