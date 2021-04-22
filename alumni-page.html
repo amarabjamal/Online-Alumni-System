@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Alumni List</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- font awesome icons -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
+    <link rel="stylesheet" href="alumni-page.css">
+</head>
+
+<body>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html"><img class="logo" src="img/um-logo.png" width="120"
+                    alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#about-us">About Us</a>
+                    <a class="nav-item nav-link" href="#">News & Events</a>
+                    <a class="nav-item nav-link" href="#footer">Contact Us</a>
+
+                    <a class="nav-item nav-link register-btn" href="./register.html">Register</a>
+                    <a class="nav-item nav-link login-btn" href="./login.html">Login</a>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="row graduate-text">
+        <!-- header -->
+        <div class="col-6 alumni-text">
+            <h1>Alumni</h1>
+            <p>(n.) former student or pupil of a school, college, or university. </p>
+        </div>
+        <!-- graduate image -->
+        <div class="col-6 graduate">
+
+            <img src="img/graduate2.png" alt="graduate">
+
+        </div>
+    </div>
+
+    <!-- wave -->
+
+    <!-- ini row untuk indicator dan search -->
+    <div class="row indi-box">
+        <!-- column untuk indicator -->
+        <div class="col-3 indicator">
+            <p><a href="index.html">home</a> > <span><a href="alumni_page.html">Alumni</a></span></p>
+        </div>
+
+        <!-- column untuk search for alumni -->
+        <div class="col-9 search-box">
+            <input type="text" placeholder="Search..">
+
+            <div class="autocom-box"></div>
+
+            <div class="search-icon" onclick="displayPage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search bg-transparent text-white" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ini row untuk filter dan cards -->
+    <div class="row filter-cards">
+        <!-- column untuk filter -->
+        <!-- add more breakpoints -->
+        <div class="col-lg-3 filter">
+            <!-- row for Batch -->
+            <div class="row select-box">
+                <div class="batch">
+                    <input type="text" id="search-batch" name="batch" placeholder="Batch">
+                    <div class="autocom-box"></div>
+                </div>
+            </div>
+
+            <!-- row for faculty -->
+            <div class="row select-box">
+                <select name="faculty" id="main-menu" class="custom-select">
+                    <option value="selectF">Please Select Faculty</option>
+                    <option value="education">Faculty of Education</option>
+                    <option value="dentistry">Faculty of Dentistry</option>
+                    <option value="engineering">Faculty of Engineering</option>
+                    <option value="science">Faculty of Science</option>
+                    <option value="law">Faculty of Law</option>
+                    <option value="medicine">Faculty of Medicine</option>
+                    <option value="artsocial">Faculty of Art and Social Sciences</option>
+                    <option value="business">Faculty of Business and Accountancy</option>
+                    <option value="economics">Faculty of Economics and Administration</option>
+                    <option value="languages">Faculty of Languages and Linguistics</option>
+                    <option value="environment">Faculty of Faculty of Built Environment</option>
+                    <option value="compsc">Faculty of Computer Science and Information Technology</option>
+                    <option value="pharmacy">Faculty of Pharmacy</option>
+                    <option value="creative">Faculty of Creative and Arts</option>
+                    <option value="business">Faculty of Business and Accountancy</option>
+                </select>
+            </div>
+
+            <!-- row for major -->
+            <div class="row select-box">
+                <select name="major" id="sub-menu" class="custom-select"></select>
+            </div>
+            <!-- row for faculty -->
+            <!-- <div class="row select-box">
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" class="radio" id="creative" name="fac-category" />
+                        <label for="creative">Faculty of Creative and Arts</label>
+                    </div>
+                </div>
+
+                <div class="selected">
+                    Faculty
+                </div>
+
+                <div class="fsearch-box">
+                    <input type="text" placeholder="Start Typing..." />
+                </div> -->
+
+        </div>
+
+        <!-- <div class="option">
+                        <input type="radio" class="radio" id="csn" name="category" />
+                        <label for="csn">Computer System & Network</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="is" name="category" />
+                        <label for="is">Information System</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="multimedia" name="category" />
+                        <label for="multimedia">Multimedia</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="ai" name="category" />
+                        <label for="ai">Artificial Intelligence</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" class="radio" id="se" name="category" />
+                        <label for="se">Software Engineering</label>
+                    </div> -->
+
+
+        <!-- <div class="selected">
+                    Major
+                </div>
+
+                <div class="fsearch-box">
+                    <input type="text" placeholder="Start Typing..." />
+                </div> -->
+        <!-- column untuk cards -->
+        <!-- add hover -->
+        <div class="col-lg-9">
+            <div class="row cards">
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cards">
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row cards">
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="row cards">
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row cards">
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+
+                <div class="col-sm card">
+                    <img src="img/avatar.jpg" alt="man">
+                    <div class="desc">
+                        <p class="name" style="font-weight: 800;">Name</p>
+                        <p class="abtMe">About Me</p>
+                    </div>
+                    <div class="socmed">
+                        <a href="https://www.facebook.com/login/web/"><i
+                                class="fa fa-facebook-official bg-transparent"></i></a>
+                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
+                        <a href="https://www.linkedin.com/uas/login"><i
+                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    </div>
+                    <div class="button">
+                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    </div>
+
+    <!-- footer -->
+    <footer id="footer" class="mt-auto">
+        <div class="footer-link-section">
+            <div class="container">
+                <div class="row justify-content-left">
+                    <div class="col-sm-6 col-md-4 item">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><a href="#">Contact 1</a></li>
+                            <li><a href="#">Contact 2</a></li>
+                            <li><a href="#">Contact 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item">
+                        <h3>Links</h3>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-4 item">
+                        <h3>Follow Us</h3>
+                        <ul>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyrights -->
+        <div class="py-4">
+            <div class="container text-center">
+                <p class="text-muted mb-0 py-2">&copy;
+                    <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dynamic.js"></script>
+    <script src="script.js"></script>
+    <script src="suggestion.js"></script>
+    <script src="batch.js"></script>
+    <script src="alumni_page.js"></script>
+</body>
+
+</html>
