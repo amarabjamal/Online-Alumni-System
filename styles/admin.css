@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.bkground{
+    background: #6395a8;
+    color: white;
+}
+
+main{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-light{
+    background-color: #51c4d3;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.other{
+    font-weight: bold;
+}
+
+.logout-btn{
+    
+    background-color: #d3d3d3;
+    border-radius: 20px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.last{
+    
+    padding-left: 550px;
+}
+
+
+
+
+.sidenav{
+    background-color: #126e82;
+    color: white;
+}
+
+a { color: #ffffff; }
+
+a:hover{
+    color: #132c33;
+}
+
+.activea{
+    background-color: #132c33;
+    
+}
+
+table{
+    
+    margin: 20px;
+}
+
+form div{
+    margin-bottom: 30px;
+}
+
+body{
+    margin-bottom: 100px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+.banner-back{
+    padding: 30px;
+    background-color: #126e82;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
+    letter-spacing: 5px;
+
+}
+
+.banner-sm-btn{
+    margin: 5px;
+    padding: 5px;
+    background-color: #126e82;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
+
+}
+
+.banner-sm-btn:hover{
+    margin: 5px;
+    padding: 5px;
+    background-color: #132c33;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
+}
