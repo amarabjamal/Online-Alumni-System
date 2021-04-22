@@ -25,12 +25,17 @@ html {
 /* Start Header */
 
 .navbar-light {
-    background-color: var(--secondary-color) !important;
+    background-color: var(--light-color) !important;
 }
 
 .nav-link {
-    font-family: var(--montserrat);;
-    font-weight: bold;
+    font-family: var(--montserrat);
+    color: #a18e2b !important;
+    transition: .25s ease;
+}
+
+.nav-link:hover {
+    color: #534811 !important;
 }
 
 @media (min-width: 992px) {
@@ -90,7 +95,7 @@ html {
 @media (min-width: 993px) and (max-height: 683px){
     .landing-page {
         background-image: none;
-        background-image: linear-gradient(to bottom, var(--light-color), var(--secondary-color), var(--primary-color));
+        background-image: linear-gradient(to bottom, var(--light-color), var(--light-color), var(--primary-color));
     }
 }
 
@@ -193,7 +198,9 @@ a.landing-btn {
     font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
-    text-align: center;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 10px;
     color: #000000;
     margin-bottom: 50px;
 }
@@ -272,18 +279,27 @@ a.landing-btn {
     margin-left: 12px;
 }
 
+/* Start Job Section */
+
 .jobs-listing {
     background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
-/* End Header */
+.job-card {
+    min-width: 290px;
+    margin-bottom: 20px !important;
+}
+
+/* End Job Section */
+
+/* End Main */
 
 /* Start Footer */
 
 .footer-link-section {
     padding: 30px 0px;
-    background-color: var(--secondary-color);
+    background-color: var(--light-color);
 }
 
 .footer-link-section ul {
