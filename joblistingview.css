@@ -1,0 +1,70 @@
+  *{
+      margin: 0;
+      padding: 0;
+  }
+  html, body{
+      height: 100%s;
+      
+  }
+  
+  #myInput {
+    background-image: url('images/search.png');
+    background-size: 40px ;
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    width: 70%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 3px solid #ddd;
+    margin-left: 230px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+  }
+  
+  #myTable {
+    margin: auto;
+    border-collapse: collapse;
+    width: 70%;
+    border: 3px solid #ddd;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+  
+  #myTable th, #myTable td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  #myTable tr {
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    background-color: #FFF36D;
+    border-radius: 10px 10px 0 0;
+  }
+  .headtitle{
+      background-color: #dfbd16;
+      text-align: center;
+      padding: 10px;
+      width: 70%;
+      margin-top: 25px;
+      margin-left:230px;
+      border-radius: 10px 10px 0 0;
+      color: white;
+      letter-spacing: 3px;
+  }
+  #container{
+      min-height: 100vh;
+      
+  }
+  #main{
+      overflow: auto;
+  }
+  #footer{
+      background-color: teal;
+      position: fixed;
+      height: 100px;
+      clear: both;
+  }
