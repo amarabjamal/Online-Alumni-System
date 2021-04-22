@@ -28,18 +28,10 @@ main{
 
 .last{
     
-    padding-left: 450px;
+    padding-left: 550px;
 }
 
-.login-btn {
-    color: #ffffff !important;
-    background-color: #a18e2b;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    border-radius: 20px;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    transition: ease-in-out .25s;
-}
+
 
 
 .sidenav{
@@ -60,7 +52,7 @@ a:hover{
 
 table{
     
-    margin: 50px;
+    margin: 20px;
 }
 
 form div{
@@ -80,10 +72,29 @@ footer{
 
 .banner-back{
     padding: 30px;
-    background-color: #51c4d3;
+    background-color: #126e82;
 	text-align: center;
     color: white;
     border-radius: 15px;
     letter-spacing: 5px;
 
+}
+
+.banner-sm-btn{
+    margin: 5px;
+    padding: 5px;
+    background-color: #126e82;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
+
+}
+
+.banner-sm-btn:hover{
+    margin: 5px;
+    padding: 5px;
+    background-color: #132c33;
+	text-align: center;
+    color: white;
+    border-radius: 15px;
 }
