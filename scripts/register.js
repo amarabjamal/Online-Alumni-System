@@ -40,3 +40,41 @@ function loadFacultySelector()
         document.getElementById("faculty").add(option);
     })
 }
+
+function verifyPassword() {  
+    var password = document.getElementById('password').value; 
+    var cpassword = document.getElementById('cpassword').value; 
+
+   //minimum password length validation  
+    if(password.length < 8) {  
+        document.getElementById('passwordHelpBlock').classList.add('red-alert')
+        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password";   
+    }  
+
+    //Reset message when password is emptied or has at least 8 characters
+    if(password.length == 0 || password.length >= 8) {
+        document.getElementById('passwordHelpBlock').innerText = "";  
+    }
+
+    if(password == cpassword && cpassword != '') {
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText= "";
+    }
+    else if (password != cpassword && cpassword != '') {
+        document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('cpassword').classList.add('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Those passwords didn’t match. Try again.";
+    }
+
+    if (password != cpassword & password == '') {
+        document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Enter the password first.";
+    }
+
+    if (cpassword == '') {
+        document.getElementById('cpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "";
+    }
+
+}  

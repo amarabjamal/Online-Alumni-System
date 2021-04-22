@@ -114,3 +114,18 @@ h1, h4, label {
     outline: 1px;
     border: #000000 1px solid;
 }
+
+.red-alert {
+    color: red !important;
+}
+
+.red-border {
+    border: 1px solid rgb(255, 89, 89);
+    transition: .3s ease;
+}
+
+.red-border:focus {
+    box-shadow: 0 0 0 0;
+    border: 2px solid rgb(255, 89, 89);
+    transition: .3s ease;
+}
