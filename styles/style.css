@@ -2,10 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
+/* CSS Variables */
 
 :root {
-    --mainColor : #dbbb19;
-    --secColor  : #fce77d;
+    --primary-color : #dbbb19;
+    --secondary-color  : #fce77d;
+    --light-color : #fff6ca;
+
+    /* Font Family Variables */
+    --montserrat : 'Montserrat', sans-serif;
 }
 
 html,
@@ -17,23 +22,20 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    background: #f1f1f1;
-}
-
-main {
-    background: #ffffff;
-}
-
-/* Navigation Section */
+/* Start Header */
 
 .navbar-light {
-    background-color: var(--secColor) !important;
+    background-color: var(--light-color) !important;
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: var(--montserrat);
+    color: #a18e2b !important;
+    transition: .25s ease;
+}
+
+.nav-link:hover {
+    color: #534811 !important;
 }
 
 @media (min-width: 992px) {
@@ -74,26 +76,31 @@ main {
     border: 0px;
 }
 
-/* Main Section */
+/* End Header */
+
+/* Start Main */
 
 .landing-page {
     min-height: calc(100vh - 64.91px);
     background-position: center;
     padding: 50px 0px;
     background-color: #fff6ca;
-    background-image: url(../images/wave.svg);
+    background-image: url(../images/wave.png);
     background-position: bottom center;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
-@media (min-width: 992px) {
+/* background image doesn;t overlap with button */
+@media (min-width: 993px) and (max-height: 683px){
     .landing-page {
-        padding-top: 100px;
+        background-image: none;
+        background-image: linear-gradient(to bottom, var(--light-color), var(--light-color), var(--primary-color));
     }
 }
 
 .landing-page h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
     text-align: left;
@@ -107,8 +114,11 @@ main {
     color: #998108;
 }
 
-.landing-img {
-    width: 100%;
+/* button and image don't overlap */
+@media (max-width: 992px) {
+    .landing-img {
+        margin-top: 50px;
+    }
 }
 
 .landing-btn {
@@ -180,26 +190,28 @@ a.landing-btn {
 }
 
 .about-us {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
 .about-us h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
-    text-align: center;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 10px;
     color: #000000;
     margin-bottom: 50px;
 }
 
 .upcoming-events {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
 .upcoming-events h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--montserrat);;
     font-weight: 500;
     font-size: 30px;
     text-align: center;
@@ -267,18 +279,27 @@ a.landing-btn {
     margin-left: 12px;
 }
 
+/* Start Job Section */
+
 .jobs-listing {
-    background-color: var(--mainColor);
+    background-color: var(--primary-color);
     padding: 50px 0px;
 }
 
+.job-card {
+    min-width: 290px;
+    margin-bottom: 20px !important;
+}
 
+/* End Job Section */
 
-/* Footer Section */
+/* End Main */
+
+/* Start Footer */
 
 .footer-link-section {
     padding: 30px 0px;
-    background-color: var(--secColor);
+    background-color: var(--light-color);
 }
 
 .footer-link-section ul {
@@ -311,3 +332,5 @@ a.landing-btn {
     padding: 10px 20px 20px 20px;
     background-color: none;
 }
+
+/* End Footer */
