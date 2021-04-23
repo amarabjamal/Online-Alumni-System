@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+<title> UM Alumni </title>
+<link rel="stylesheet" href= "styles/edit_profile.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=width-device, inital-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+ 
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        
+            
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <div class="container-fluid">
+                    <a class="navbar-brand" href="#"> <img class="logo" src="logo um.png" width="120" alt="logo"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="navbar-nav align-right" style="align-items:flex-start;">
+                        
+                            <a class="nav-item nav-link active" aria-current="page" href="#">About Us</a>
+                        
+                        
+                            <a class="nav-item nav-link" href="#">Events</a>
+                        
+                        
+                            <a class="nav-item nav-link" href="#">Contact Us</a>
+  
+                            <a class="nav-item nav-link btn " href="index.html" id="logout"  >Logout</a>
+                        
+                      </div>
+  
+                    </div>
+  
+                    </div>
+                </div>
+          </nav>
+            
+            <main class="flex-shrink-0">
+                <div class="container ">
+                    <div class="row gutters">
+                        <div class="col-sm-12 d-flex justify-content-center ">
+                            <form class="horizontal">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3>Edit User Profile</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-md-3">Profile picture</label>
+                                            <div class="col-sm-12">
+                                                <input type="file" class="form-control">
+                                            </div>
+
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="col-md-3" >Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Enter your name">
+                                            </div>
+
+                                         </div>
+                                         <div class="form-group">
+                                             <label class="col-md-3" >Email address</label>
+                                             <div class="col-sm-12">
+                                                 <input type="email" class="form-control" placeholder="Enter your email address">
+                                             </div>
+                                         </div>
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label">Country</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control">
+                                                    <option selected="">Select country</option>
+                                                    <option>Bangladesh</option>
+                                                    <option>Brunei</option>
+                                                    <option>China</option>
+                                                    <option>Egypt</option>
+                                                    <option>India</option>
+                                                    <option>Indonesia</option>
+                                                    <option>Japan</option>
+                                                    <option>Malaysia</option>
+                                                    <option>Nigeria</option>
+                                                    <option>Pakistan</option>
+                                                    <option>Philipines</option>
+                                                    <option>Qatar</option>
+                                                    <option>Saudi Arabia</option>
+                                                    <option>Singapore</option>
+                                                    <option>Thailand</option>
+                                                    <option>United Arab Emirates</option>
+                                                    <option>United States</option>
+
+
+                                                </select>
+                                            </div>
+
+                                         </div> 
+                                         <div class="form-group">
+                                            <label class="col-md-3">Company Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Enter your company name">
+                                            
+                                            </div>
+
+                                         </div> 
+                                         <div class="form-group">
+                                            <label class="col-md-3">Position</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Enter your position at the company">
+                                            </div>
+                                         </div>        
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                           <label class="col-md-3">Faculty</label>
+                                           <div class="col-sm-12">
+                                               <select class="form-control">
+                                                   <option selected="">Select faculty</option>
+                                                   <option>Faculty of Education</option>
+                                                   <option>Faculty of Dentistry</option>
+                                                   <option>Faculty of Engineering</option>
+                                                   <option>Faculty of Science</option>
+                                                   <option>Faculty of Law</option>
+                                                   <option>Faculty of Medicine</option>
+                                                   <option>Faculty of Arts and Social Sciences</option>
+                                                   <option>Faculty of Business and Accountancy</option>
+                                                   <option>Faculty of Economics and Administration</option>
+                                                   <option>Faculty of Languages and Linguistics</option>
+                                                   <option>Faculty of Built Environment</option>
+                                                   <option>Faculty of Computer Science and Information Technology</option>
+                                                   <option>Faculty of Pharmacy</option>
+                                                   <option>Faculty of Creative Arts</option>
+                                               </select>
+                                           </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3">Major</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Enter your major">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3">Year of study</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Enter your year of study">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                
+                                                <button type="submit" class="modal-btn">Submit</button>
+                                                
+                                                <button class="cancel-btn">Cancel</button>
+
+                                                
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-bg">
+                    <div class="modal">
+                        <h2>Your form has been submitted!</h2><br>
+                        <p>You can view your updated user profile now.</p>
+                        <button id="submit">OK</button>
+                        
+                        
+                    </div>
+                </div>
+                <script src="edit_profile.js"></script>
+
+               
+
+                
+ 
+            </main>
+            
+            <footer id="footer" class="mt-auto">
+                <div class="footer-link-section">
+                    <div class="container">
+                        <div class="row justify-content-left">
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Contact</h3>
+                                <ul>
+                                    <li><a href="#">Contact 1</a></li>
+                                    <li><a href="#">Contact 2</a></li>
+                                    <li><a href="#">Contact 3</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Links</h3>
+                                <ul>
+                                    <li><a href="#">Link 1</a></li>
+                                    <li><a href="#">Link 2</a></li>
+                                    <li><a href="#">Link 3</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6 col-md-4 item">
+                                <h3>Follow Us</h3>
+                                <ul>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">Instagram</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Copyrights -->
+                <div class="bg-light py-4">
+                    <div class="container text-center">
+                        <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+    
+</body>
+</html>
