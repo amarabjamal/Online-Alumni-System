@@ -122,11 +122,20 @@ selectedAll.forEach((selected) => {
 //DYNAMIC DROPDOWN
 var faculty = {
     selectF: ['Please Select Major'],
-    education: ['Curriculum and Instructional Technology', ' Educational Psychology and Counselling', 'Educational Management, Planning and Policy'],
+    education: ['Curriculum and Instructional Technology', ' Educational Psychology and Counselling', 'Educational Management, Planning and Policy', 'Educational Foundations and Humanities', 'Mathematics and Science Education', 'Language and Literacy Education'],
     dentistry: ['Dentistry'],
-    engineering: ['Biomedic', 'Chemical', 'Civil', 'Electrical'],
-    science: ['Environment', 'Genetic', 'Chemistry', 'Physics'],
-    law: ['law']
+    engineering: ['Biomedical Engineering', 'Chemical Engineering', 'Civil Engineering', 'Electrical Engineering', 'Mechanical Engineering'],
+    science: ['Geology', 'Science & Technology Studies', 'Biological Sciences', 'Chemistry', 'Physics', 'Mathematical Sciences'],
+    law: ['Laws', 'Jurisprudence'],
+    medicine: ['Medicine', 'Biomedical Science', 'Nursing'],
+    artsocial: ['Anthropology & Sociology', 'Chinese Studies', 'East Asian Studies', 'English', 'Geography', 'History', 'Indian Studies', 'International & Strategic Studies', 'Media and Communication Studies', 'South East Asian Studies', 'Social Administration & Justice', 'Gender Studies Programme'],
+    business: ['Accounting', 'Business Administration', 'Finance'],
+    economics: ['Economics'],
+    languages: ['English Language', 'Asian European Languages', 'Malaysian Languages and Applied Linguistics', 'Arabic and Middle Eastern Languages'],
+    environment: ['Science Architecture', 'Building Surveying', 'Quantity Surveying', 'Real Estate', 'Urban & Regional Planning'],
+    compsc: ['Artificial Intelligence', 'Computer System and Network', 'Information System', 'Software Engineering', 'Multimedia', 'Data Science'],
+    pharmacy: ['Chemistry', 'Life Sciences', 'Technology', 'Clinical Pharmacy & Pharmacy Practice'],
+    creative: ['Music', 'Drama', 'Dance']
 }
 
 //getting the main and sub menus

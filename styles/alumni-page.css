@@ -343,7 +343,26 @@ body {
     position: relative;
 
     order: 0;
+
+    padding: 8px 12px;
+    cursor: pointer;
+
+    /* replace the default styling(arrow) */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/arrow-down.svg');
+    background-position: right 10px top 50%;
+    background-repeat: no-repeat;
+    background-size: 25px;
 }
+
+.custom-select:focus,
+.custom-select:hover {
+    outline: none;
+    border: 1px solid grey;
+}
+
 
 .select-box .options-container {
     background: #2f3640;
