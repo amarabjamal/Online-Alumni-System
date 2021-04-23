@@ -1,13 +1,9 @@
-  *{
-      margin: 0;
-      padding: 0;
-  }
   html, body{
       height: 100%s;
       
   }
   #myInput {
-    background-image: url('images/search.png');
+    background-image: url("../images/search.png");
     background-size: 40px ;
     background-position: 5px 5px;
     background-repeat: no-repeat;
@@ -69,7 +65,7 @@
   }
   .banner{
     height: 500px;
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(img/job2.jpg);
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../images/job2.jpg");
     background-size: cover;
     background-position: center;
     color: white;
