@@ -99,36 +99,13 @@ body {
     padding: 0;
 }
 
-.indi-box{
-    padding: .5rem 2rem;
-}
-
-.indicator {
-    padding-top: 15px;
-    text-align:start; 
-    font-size: 1.0rem;
-    display: inline;
-}
-
-.indicator p{
-    color: #b2b2b2;
-    padding-left: 10px;
-}
-
-.indicator p a {
-    text-decoration: none;
-    color: #b2b2b2;
-}
-
-.indicator span a {
-    color: black;
-}
-
+/* for search box */
 /* to have search container width 100% */
 .search-box {
     width: 100%;
     position: relative;
-    color: #f5f6fa;
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
 }
 
 /* customizing search input*/
@@ -211,16 +188,39 @@ body {
     color: grey;
 }
 
-.search-box input:hover{
-    background-color: white;
-    border-radius: 50px 50px 50px 50px;
-}
-
 .search-icon:hover{
     background-color: #c0392b;
     color: whitesmoke;
     transition: all 0.2s;
 }
+
+/* FOR INDICATOR */
+
+.indi-box{
+    padding: .5rem 2rem;
+}
+
+.indicator {
+    padding-top: 15px;
+    text-align:start; 
+    font-size: 1.0rem;
+    display: inline;
+}
+
+.indicator p{
+    color: #b2b2b2;
+    padding-left: 10px;
+}
+
+.indicator p a {
+    text-decoration: none;
+    color: #b2b2b2;
+}
+
+.indicator span a {
+    color: black;
+}
+
 
 /* FILTER FUNCTION */
 
