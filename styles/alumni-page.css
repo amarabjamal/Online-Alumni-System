@@ -101,7 +101,6 @@ body {
 }
 
 .indicator {
-    /* background: purple; */
     padding-top: 15px;
     text-align:start; 
     font-size: 1.0rem;
@@ -127,7 +126,6 @@ body {
     width: 100%;
     position: relative;
     color: #f5f6fa;
-    /* right: 20px; */
 }
 
 /* customizing search input*/
@@ -187,7 +185,6 @@ body {
     box-sizing: border-box;
     background: #ffffff;
     /* width: 100%; */
-    /* how to add padding without printing the $li==0 */
     line-height: 60px;
     padding: 0px 20px;
     cursor: pointer;
@@ -205,6 +202,7 @@ body {
 .autocom-box li:hover{
     background: #ffeaa7;
 }
+
 /* colour word Search.. */
 .search-box input::placeholder{
     color: grey;
@@ -221,7 +219,7 @@ body {
     transition: all 0.2s;
 }
 
-/* FILTER */
+/* FILTER FUNCTION */
 
 .filter {
     position: relative;
@@ -229,6 +227,7 @@ body {
     left: 10px;
 } 
 
+/* FOR BATCH */
 .batch {
     background: white;
     border-radius: 8px;
@@ -254,7 +253,7 @@ body {
     border: 2px solid grey;
 }
 
-/* faculty and major */
+/* FOR FACULTY AND MAJOR */
 
 .custom-select {
     height: 100%;
@@ -284,6 +283,8 @@ body {
     outline: none;
     border: 2px solid grey;
 }
+
+/* FOR ALUMNI PROFILE CARDS */
 
 .cards {
     padding: .5rem 2rem;
@@ -356,7 +357,23 @@ body {
     border: transparent;
 }
 
-/* Footer Section */
+/* MEDIA QUERIES FOR CARD SECTION */
+
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+    .card {
+      width: 50%;
+    }
+}
+  
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* FOOTER SECTION */
 
 #footer {
     margin-top: 20px;
@@ -365,13 +382,11 @@ body {
 
 .footer-link-section {
     padding: 30px 0px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section ul {
-    -webkit-padding-start: 0;/*remove indent*/
+    -webkit-padding-start: 0;
     padding-left: 5px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section h3 {
@@ -379,12 +394,10 @@ body {
     border-bottom: #000000 solid 3px;
     padding-bottom: 2.5px;
     margin-bottom: 15px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section li {
     list-style: none;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section li a {
@@ -400,30 +413,4 @@ body {
 .footer-logo {
     padding: 10px 20px 20px 20px;
     background-color: none;
-}
-
-/* .py-4{
-    background-color: var(--secColor);
-}
-
-.py-4 .container{
-    background-color: var(--secColor);
-}
-
-.py-4 p{
-    background-color: var(--secColor);
-} */
-
-/* On screens that are 992px wide or less, go from four columns to two columns */
-@media screen and (max-width: 992px) {
-    .card {
-      width: 50%;
-    }
-}
-  
-/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .card {
-        width: 100%;
-    }
 }
