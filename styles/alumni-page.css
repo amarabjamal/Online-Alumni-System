@@ -3,6 +3,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Quattrocento:wght@700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap');
+
 :root {
     --mainColor : #dbbb19;
     --secColor  : #fce77d;
@@ -15,7 +17,8 @@ html,body {
 }
 
 body {
-    background-color: #fff6ca;
+    /* background-color: #fff6ca; */
+    background-color: #F9EFBA;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -78,8 +81,8 @@ body {
 /* put h1 in the middle and make it bold */
 .alumni-text h1{
     font-size: 80px;
-    font-weight: bold;
-    font-family: 'Gaegu', cursive;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* put p in the middle, and change colour */
@@ -87,7 +90,7 @@ body {
     font-weight: lighter;
     color: grey;
     margin-bottom: 50px;
-    font-family: 'Quattrocento', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .graduate-text .graduate img{
@@ -346,9 +349,15 @@ body {
 
 .btn {
     border-radius: 50px;
+    border: none;
     font-size: inherit;
-    color: white;
-    background: #2f3640;
+    color: black;
+    background: #FBCB3B;
+}
+
+.button a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
 
 .btn:hover {
