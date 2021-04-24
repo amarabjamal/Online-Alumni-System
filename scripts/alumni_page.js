@@ -86,7 +86,7 @@ inputBatch.onkeyup = (e) => {
         let allList = suggBatch.querySelectorAll("li");
         for (let i = 0; i < allList.length; i++) {
             //adding onclick attribute in all li tag
-            allList[i].setAttribute("onclick", "select(this)");
+            allList[i].setAttribute("onclick", "selectY(this)");
         }
     } else {
         searchBatch.classList.remove("active");
@@ -94,7 +94,7 @@ inputBatch.onkeyup = (e) => {
 }
 
 //to pass the clicked value to input box
-function select(element) {
+function selectY(element) {
     let selectUserData = element.textContent;
     inputBatch.value = selectUserData;
     searchBatch.classList.remove("active");

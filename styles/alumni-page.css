@@ -226,6 +226,7 @@ body {
 
 .filter {
     padding: .5rem 2rem;
+    margin-bottom: 10px;
 } 
 
 /* FOR BATCH */
@@ -237,8 +238,6 @@ body {
 }
 
 /* ADDING AUTOCOMPLETE FEATURE TO BATCH */
-/* customizing search input*/
-/* colour of our input */
 .search-input input{
     height: 100%;
     width: 100%;
@@ -247,7 +246,7 @@ body {
     font-weight: bold;
     color: black;
     background: white;
-    border-radius: 10px;
+    border-radius: 50px;
     outline: none;
     border: none;
     transition: 0.5s;
@@ -307,11 +306,14 @@ body {
 
 .custom-select {
     height: 100%;
+    max-width: 400px;
+    min-width: 180px;
     background: #2f3640;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 8px;
     color: #f5f6fa;
     position: relative;
+    word-wrap: break-word;
 
     order: 0;
 
@@ -328,6 +330,19 @@ body {
     background-size: 25px;
 }
 
+/* .custom-select select{
+    width: 100%;
+    font-size: 1.2rem;
+} */
+.custom-select{
+    /* wrapper style */
+    position: relative;
+    display:block;
+    max-width: 400px;
+    min-width: 180px;
+    margin:0 auto;
+}
+
 .custom-select:focus,
 .custom-select:hover {
     outline: none;
@@ -335,7 +350,6 @@ body {
 }
 
 /* FOR ALUMNI PROFILE CARDS */
-
 .cards {
     padding: .5rem 2rem;
 }
