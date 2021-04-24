@@ -15,33 +15,9 @@ html,body {
 }
 
 body {
-    background: var(--secColor);
+    background-color: #fff6ca;
     font-family: 'Montserrat', sans-serif;
 }
-/* *{
-    text-decoration: none;
-    list-style: none;
-    font-family: 'Montserrat', sans-serif;
-    background: #fff6ca;
-} */
-
-/* Navigation Section */
-
-/* .container{
-    background-color: #fce77d;
-}
-
-.navbar-brand img{
-    background-color: #fce77d;
-}
-
-.navbar-collapse{
-    background-color: #fce77d;
-}
-
-#navbarNavAltMarkup > .navbar-nav{
-    background-color: #fce77d;
-} */
 
 .navbar-light {
     background-color: var(--secColor) !important;
@@ -121,8 +97,9 @@ body {
 }
 
 .indi-box{
-    padding: .5rem 1rem;
+    padding: .5rem 2rem;
 }
+
 .indicator {
     /* background: purple; */
     padding-top: 15px;
@@ -147,13 +124,12 @@ body {
 
 /* to have search container width 100% */
 .search-box {
-    /* background: indianred; */
     width: 100%;
-    padding: 0px;
     position: relative;
     color: #f5f6fa;
-    right: 20px;
+    /* right: 20px; */
 }
+
 /* customizing search input*/
 /* colour of our input */
 .search-box input{
@@ -247,96 +223,41 @@ body {
 
 /* FILTER */
 
-.filter-cards{
-    padding: .5rem 1rem;
-}
-
 .filter {
-    display: flex;
-    padding: 10px;
-    flex-direction: column;
-}
-    
-.select-box {
-    margin: 10px;
     position: relative;
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-    justify-content: center;
-}
+    padding: .5rem 2rem;
+    left: 10px;
+} 
 
 .batch {
-    width: 100%;
     background: white;
     border-radius: 8px;
-    margin-bottom: 8px;
     color: #f5f6fa;
-    position: relative;
-
-    order: 0;
 }
 
 #search-batch {
+    height: 100%;
+    width: 100%;
     background: white;
     border: none;
     background: none;
     outline: none;
-    margin-top: 0;
+
     padding: 12px 24px;
     color: black;
     font-size: 16px;
 }
 
-.batch .autocom-box{
-    max-height: 280px;
-    overflow-y: auto; /* this will add scrollbars only when necessary */
-    opacity: 0;
-    pointer-events: none;
+.batch:focus,
+.batch:hover {
+    outline: none;
+    border: 2px solid grey;
 }
-
-.batch.active .autocom-box{
-    /* padding-top: 10px; */
-    opacity: 1;
-    pointer-events: auto;
-    width: 100%;
-    border-radius: 10px;
-
-    /* if tinggalkan, akan expand */
-    position: absolute;
-    z-index: 100;
-    right: 0;
-   
-}
-
-.autocom-box li{
-    list-style: none;
-    box-sizing: border-box;
-    background: #ffffff;
-    font-size: 1.5rem;
-    /* width: 100%; */
-    /* how to add padding without printing the $li==0 */
-    line-height: 60px;
-    padding: 0px 20px;
-    cursor: pointer;
-    display: none;
-    transition: all 0.4s;
-    /* border-radius: 8px;*/
-
-}
-
-.batch.active .autocom-box li{
-    display: block;
-    color: black;
-}
-
-.autocom-box li:hover{
-    background: #ffeaa7;
-}
-
 
 /* faculty and major */
+
 .custom-select {
+    height: 100%;
     background: #2f3640;
     border-radius: 8px;
     margin-bottom: 8px;
@@ -345,7 +266,7 @@ body {
 
     order: 0;
 
-    padding: 8px 12px;
+    padding: 12px 24px;
     cursor: pointer;
 
     /* replace the default styling(arrow) */
@@ -361,129 +282,15 @@ body {
 .custom-select:focus,
 .custom-select:hover {
     outline: none;
-    border: 1px solid grey;
+    border: 2px solid grey;
 }
 
-
-.select-box .options-container {
-    background: #2f3640;
-    color: #f5f6fa;
-    /* If the content is larger than the maximum height, it will overflow. */
-    max-height: 0;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.4s;
-    border-radius: 8px;
-    overflow: hidden;
-
-    order: 1;
-    /* with the code below, it will not add space to fit options display */
-    /* position: absolute;
-    z-index: 100; */
-}
-
-/* .selected {
-    background: #2f3640;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    color: #f5f6fa;
-    position: relative;
-
-    order: 0;
-} */
-
-/* add arrow */
-.selected::after {
-    content: "";
-    background: url("img/arrow-down.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    position: absolute;
-    height: 100%;
-    width: 32px;
-    right: 10px;
-    top: 5px;
-
-    transition: all 0.4s;
-}
-
-.select-box .options-container.active {
-    max-height: 240px;
-    opacity: 1;
-    overflow-y: scroll;
-}
-
-.select-box .options-container.active + .selected::after {
-    transform: rotateX(180deg);
-    top: -6px;
-}
-
-.select-box .options-container::-webkit-scrollbar {
-    width: 8px;
-    background: #0d141f;
-    border-radius: 0 8px 8px 0;
-}
-
-.select-box .options-container::-webkit-scrollbar-thumb {
-    background: #525861;
-    border-radius: 0 8px 8px 0;
-}
-
-.select-box .option,
-.selected {
-    padding: 12px 24px;
-    cursor: pointer;
-    background: #2f3640;
-}
-
-.select-box .option:hover {
-    background: #414b57;
-}
-
-.select-box label {
-    background: transparent;
-    color: #f5f6fa;
-    cursor: pointer;
-    font-size: 2vw;
-}
-
-.select-box .option .radio {
-    display: none;
-}
-
-/* Searchbox */
-
-.fsearch-box input {
-    background: white;
-    width: 100%;
-    padding: 12px 16px;
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    position: absolute;
-    border-radius: 8px 8px 0 0;
-    z-index: 100;
-    border: 8px solid #2f3640;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s;
-}
-
-.fsearch-box input:focus {
-    outline: none;
-}
-
-.select-box .options-container.active ~ .fsearch-box input {
-    opacity: 1;
-    pointer-events: auto;
+.cards {
+    padding: .5rem 2rem;
 }
 
 .card {
-    margin: 15px;
     border-radius: 10px;
-    width: 30%;
-    height: 100%;
     background: white;
 }
 
@@ -551,9 +358,10 @@ body {
 
 /* Footer Section */
 
-/* .item{
+#footer {
+    margin-top: 20px;
     background-color: var(--secColor);
-} */
+} 
 
 .footer-link-section {
     padding: 30px 0px;
