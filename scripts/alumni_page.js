@@ -1,6 +1,6 @@
 
 
-//AUTOCOMPLETE FEATURE
+//AUTOCOMPLETE FEATURE - SEARCH FOR ALUMNI
 
 //getting all required elements
 const searchSB = document.querySelector(".search-box");
@@ -54,72 +54,65 @@ function showSuggestions(list) {
     suggBox.innerHTML = listData;
 }
 
-//FILTER
-const selectedAll = document.querySelectorAll(".selected");
-
-//for searching alumni
+//SEARCH FOR ALUMNI BUTTON
 function displayPage() {
     location.replace("profile.html")
 }
 
-//for faculty and major filtering
-selectedAll.forEach((selected) => {
-    //based on their position in html
-    const optionsContainer = selected.previousElementSibling;
-    const searchBox = selected.nextElementSibling;
+//FILTER SECTION
 
-    //select option from current option container
-    const optionsList = optionsContainer.querySelectorAll(".option");
+//AUTOCOMPLETE FEATURE FOR BATCH
+const searchBatch = document.querySelector(".search-input");
+const inputBatch = searchBatch.querySelector("input");
+const suggBatch = document.querySelector(".autocom-batch");
 
-    //when we click one option container, other option container should closed
-    selected.addEventListener("click", () => {
-        //if one option container (other than current one) is active, close it
-        if (optionsContainer.classList.contains("active")) {
-            optionsContainer.classList.remove("active");
-        } else {
-            let currentActive = document.querySelector(".options-container.active");
-
-            if (currentActive) {
-                currentActive.classList.remove("active");
-            }
-
-            optionsContainer.classList.add("active");
-        }
-
-        searchBox.value = "";
-        filterList("");
-
-        if (optionsContainer.classList.contains("active")) {
-            searchBox.focus();
-        }
-    });
-
-    optionsList.forEach((o) => {
-        o.addEventListener("click", () => {
-            selected.innerHTML = o.querySelector("label").innerHTML;
-            optionsContainer.classList.remove("active");
+//if user press any key and release
+inputBatch.onkeyup = (e) => {
+    //user enter batch number
+    let userData = e.target.value;
+    let emptyArray = [];
+    //accessing the yearSuggestion array
+    if (userData) {
+        //return words from yearSuggestion that start with userData character
+        emptyArray = yearSuggestion.filter((data) => {
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
         });
-    });
-
-    searchBox.addEventListener("keyup", function (e) {
-        filterList(e.target.value);
-    });
-
-    const filterList = (searchTerm) => {
-        searchTerm = searchTerm.toLowerCase();
-        optionsList.forEach((option) => {
-            let label = option.firstElementChild.nextElementSibling.innerText.toLowerCase();
-            if (label.indexOf(searchTerm) != -1) {
-                option.style.display = "block";
-            } else {
-                option.style.display = "none";
-            }
+        emptyArray = emptyArray.map((data) => {
+            return data = '<li>' + data + '</li>';
         });
-    };
-});
+        console.log(emptyArray);
+        searchBatch.classList.add("active");
+        showYSuggestions(emptyArray);
+        let allList = suggBatch.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute in all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+        }
+    } else {
+        searchBatch.classList.remove("active");
+    }
+}
 
-//for faculty and major new
-//DYNAMIC DROPDOWN
+//to pass the clicked value to input box
+function select(element) {
+    let selectUserData = element.textContent;
+    inputBatch.value = selectUserData;
+    searchBatch.classList.remove("active");
+}
+
+//to show suggestion 
+function showYSuggestions(list) {
+    let listData;
+    if (!list.length) {
+        userValue = inputBatch.value;
+        listData = '<li>' + userValue + '</li>'
+    } else {
+        listData = list.join('');
+    }
+    suggBatch.innerHTML = listData;
+}
+
+//DYNAMIC DROPDOWN FOR FACULTY AND MAJOR
 var faculty = {
     selectF: ['Please Select Major'],
     education: ['Please Select Major', 'Curriculum and Instructional Technology', ' Educational Psychology and Counselling', 'Educational Management, Planning and Policy', 'Educational Foundations and Humanities', 'Mathematics and Science Education', 'Language and Literacy Education'],

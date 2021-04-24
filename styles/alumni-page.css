@@ -225,35 +225,82 @@ body {
 /* FILTER FUNCTION */
 
 .filter {
-    position: relative;
     padding: .5rem 2rem;
-    left: 10px;
 } 
 
 /* FOR BATCH */
-.batch {
-    background: white;
-    border-radius: 8px;
-    color: #f5f6fa;
-}
-
-#search-batch {
-    height: 100%;
-    width: 100%;
-    background: white;
-    border: none;
-    background: none;
-    outline: none;
-
-    padding: 12px 24px;
-    color: black;
-    font-size: 16px;
-}
 
 .batch:focus,
 .batch:hover {
     outline: none;
     border: 2px solid grey;
+}
+
+/* ADDING AUTOCOMPLETE FEATURE TO BATCH */
+/* customizing search input*/
+/* colour of our input */
+.search-input input{
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    background: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);  */
+}
+
+.search-input .autocom-batch{
+    /* padding: 10px 8px; */
+    padding: 0px;
+    max-height: 280px;
+    overflow-y: auto; /* this will add scrollbars only when necessary */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-input.active .autocom-batch{
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    border-radius: 10px;
+
+    /* to put autocom box on to instead of expanding the area */
+    position: absolute;
+    z-index: 100;
+    right: 0;
+   
+}
+
+.autocom-batch li{
+    list-style: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    width: 100%;
+    line-height: 60px;
+    padding: 0px 20px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.4s;
+    border-radius: 3px;
+
+}
+
+.search-input.active .autocom-batch li{
+    display: block;
+    color: black;
+}
+
+.autocom-batch li:hover{
+    background: #ffeaa7;
+}
+
+.search-input input::placeholder{
+    color: grey;
 }
 
 /* FOR FACULTY AND MAJOR */
