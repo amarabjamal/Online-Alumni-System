@@ -122,11 +122,20 @@ selectedAll.forEach((selected) => {
 //DYNAMIC DROPDOWN
 var faculty = {
     selectF: ['Please Select Major'],
-    education: ['Curriculum and Instructional Technology', ' Educational Psychology and Counselling', 'Educational Management, Planning and Policy'],
+    education: ['Please Select Major', 'Curriculum and Instructional Technology', ' Educational Psychology and Counselling', 'Educational Management, Planning and Policy', 'Educational Foundations and Humanities', 'Mathematics and Science Education', 'Language and Literacy Education'],
     dentistry: ['Dentistry'],
-    engineering: ['Biomedic', 'Chemical', 'Civil', 'Electrical'],
-    science: ['Environment', 'Genetic', 'Chemistry', 'Physics'],
-    law: ['law']
+    engineering: ['Please Select Major', 'Biomedical Engineering', 'Chemical Engineering', 'Civil Engineering', 'Electrical Engineering', 'Mechanical Engineering'],
+    science: ['Please Select Major', 'Geology', 'Science & Technology Studies', 'Biological Sciences', 'Chemistry', 'Physics', 'Mathematical Sciences'],
+    law: ['Please Select Major', 'Laws', 'Jurisprudence'],
+    medicine: ['Please Select Major', 'Medicine', 'Biomedical Science', 'Nursing'],
+    artsocial: ['Please Select Major', 'Anthropology & Sociology', 'Chinese Studies', 'East Asian Studies', 'English', 'Geography', 'History', 'Indian Studies', 'International & Strategic Studies', 'Media and Communication Studies', 'South East Asian Studies', 'Social Administration & Justice', 'Gender Studies Programme'],
+    business: ['Please Select Major', 'Accounting', 'Business Administration', 'Finance'],
+    economics: ['Economics'],
+    languages: ['Please Select Major', 'English Language', 'Asian European Languages', 'Malaysian Languages and Applied Linguistics', 'Arabic and Middle Eastern Languages'],
+    environment: ['Please Select Major', 'Science Architecture', 'Building Surveying', 'Quantity Surveying', 'Real Estate', 'Urban & Regional Planning'],
+    compsc: ['Please Select Major', 'Artificial Intelligence', 'Computer System and Network', 'Information System', 'Software Engineering', 'Multimedia', 'Data Science'],
+    pharmacy: ['Please Select Major', 'Chemistry', 'Life Sciences', 'Technology', 'Clinical Pharmacy & Pharmacy Practice'],
+    creative: ['Please Select Major', 'Music', 'Drama', 'Dance']
 }
 
 //getting the main and sub menus
