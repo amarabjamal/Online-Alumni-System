@@ -135,6 +135,7 @@ body {
     min-height: 50px;
     max-width: 70%;
     height: auto;
+    margin-bottom: 10px;
 }
 
 .details {
@@ -143,7 +144,7 @@ body {
 }
 
 .details h2{
-    margin: 10px 0px;
+    
     font-size: 2vw;
     font-weight: bold;
 }
@@ -151,6 +152,10 @@ body {
 .details p{
     padding: 10px 0px;
     font-size: 1.5vw;
+}
+
+.socmed {
+    margin: 20px;
 }
 
 .socmed a{
@@ -236,7 +241,23 @@ body {
 
 .card {
     margin: 10px 0px;
+    border: none;
 }
+
+/* .card:hover {
+    transform: scale(1,1);
+    animation: float 2s ease-in-out infinite alternate-reverse both;
+    
+}
+
+@keyframes float{
+    0% {
+        transform: translate(10px);
+    }
+    100% {
+        transform: translate(-10px);
+    }
+} */
 
 .skill-list {
     padding: 0;
