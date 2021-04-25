@@ -300,6 +300,7 @@ body {
 
 .search-input input::placeholder{
     color: grey;
+    padding: 10px;
 }
 
 /* FOR FACULTY AND MAJOR */
@@ -371,7 +372,7 @@ body {
 }
 
 .card .desc{
-    background: white;
+    background: none;
     text-align: center;
     line-height: 1.0;
 }
@@ -402,7 +403,7 @@ body {
 }
 
 .button{
-    background-color: white;
+    background-color: none;
     margin: auto;
     margin-bottom: 10px;
     padding: 14px 0px;
@@ -425,8 +426,27 @@ body {
 
 .btn:hover {
     color: black;
-    background: #f8c291;
+    background: #d35400;
     border: transparent;
+}
+
+.card:hover {
+    transform: scale(1,1);
+    animation: float 2s ease-in-out infinite alternate-reverse both;
+    /* border: 5px solid blue; */
+    background-color: #2F3640;
+    color: whitesmoke;
+    border: none;
+    
+}
+
+@keyframes float{
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
 }
 
 /* MEDIA QUERIES FOR CARD SECTION */
