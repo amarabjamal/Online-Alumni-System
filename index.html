@@ -14,12 +14,24 @@
         
         <link href="styles/style.css" rel="stylesheet">
 
+        <!--Owl Carousel-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
         <title>UM Alumni</title>
     </head>
 <body>
     <!--Bootstrap js-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!--Bootsrap icons-->
+    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <!--OwlCarousel-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <!-- ===================================== Start Header Area ===================================== -->
     <header>
@@ -31,14 +43,13 @@
                 </button>
                 <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#about-us">About Us</a>
-                    <a class="nav-item nav-link" href="#">News & Events</a>
-                    <a class="nav-item nav-link" href="./joblistingview.html">Job</a>
-                    <a class="nav-item nav-link" href="./alumni-page.html">Alumni List</a>
-                    <a class="nav-item nav-link" href="#footer">Contact Us</a>
-    
-                    <a class="nav-item nav-link register-btn" href="./register.html">Register</a>
-                    <a class="nav-item nav-link login-btn" href="./login.html">Login</a>
+                    <a class="nav-item nav-link normal-link" href="#about-us">About Us</a>
+                    <a class="nav-item nav-link normal-link" href="#">News & Events</a>
+                    <a class="nav-item nav-link normal-link" href="./joblistingview.html">Job</a>
+                    <a class="nav-item nav-link normal-link" href="./alumni-page.html">Alumni List</a>
+                    <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
+                    <a class="nav-item nav-link normal-link" href="./login.html">Sign In</a>
+                    <a class="nav-item nav-link register-btn" href="./register.html">Sign Up</a>
                     
                 </div>
     
@@ -48,6 +59,29 @@
     </header>
     <!-- ===================================== End Header Area ===================================== -->
     
+    <i onclick="topFunction()" id="myBtn" class="bi bi-arrow-up-circle-fill"></i>
+    <script>
+        //Get the button:
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
     <!-- ===================================== Start Main Area ===================================== -->
 
     <main class="flex-shrink-0">
@@ -55,26 +89,21 @@
         
         <section class="landing-page">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                    <h2>Welcome, UM alumni!</h2>
 
-                    <p class="landing-desc">UM Alumni is a platform to gather UM graduates across the globe. Here, you can interact with other alumni, find a job oppurtunity and get the latest news &amp; events!</p>
+                <div class="landing-content">
+            
+                    <h1>Welcome, UM Alumni!</h1>
 
-                    <hr>
-
-                    <p class="landing-desc">What are you waiting for? <strong>Register Now!</strong></p>
+                    <p class="landing-desc">
+                        Interact with other alumni, find a job oppurtunity and get the latest news &amp; events!
+                        <br><br>
+                        <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
+                    </p>
 
                     <a href="./register.html">
-                        <button type="button" class="landing-btn">Get Connected</button>
+                        <button type="button" class="landing-btn-2">Join Now</button>
                     </a>
-                    
-                    </div>
 
-                    <div class="col-lg-6 col-md-12">
-                        <img class="img-fluid landing-img" src="./images/landing-page.svg" alt="people connecting">
-                    </div>
-                    
                 </div>
                 
             </div>
@@ -87,123 +116,183 @@
         <section id="about-us" class="about-us">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <img src="./images/about-us.svg" alt="team spirit" class="img-fluid">
+                    <div class="col-lg-6">
+                        <img src="./images/about-us.svg" alt="connected" class="img-fluid mt-3 about-us-img">
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <h2 class="pt-5">About Us</h2>
-                        <p>This platform is materilized by a group of students from FSKTM, UM. </p>
+                    <div class="col-lg-6">
+                        <h2 class="pt-3">About Us</h2>
+                        <p>
+                            UM Alumni is platform to gather UM graduates from across the globe. This platform is materialized by a group of students from FSKTM, UM.
+                            <div class="row">
+                                <div class="col function-col">
+                                    <h3>Register &amp; login</h3>
+                                    <span class="tooltiptext">Let's explore</span>
+                                </div>
+                                <div class="col function-col">
+                                    <h3>Manage profile </h3>
+                                    <span class="tooltiptext">Show your best work</span>
+                                </div>
+                                <div class="col function-col">
+                                    <h3>Job advertisement</h3>
+                                    <span class="tooltiptext">New oppurtunity</span>
+                                </div>
+                                <div class="col function-col">
+                                    <h3>Alumni list</h3>
+                                    <span class="tooltiptext">Know new people</span>
+                                </div>
+                            </div>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ================================= End About US Area ================================= -->
-        
+
         <!-- ================================= Start Upcoming Events Area ================================= -->
 
         <section id="upcoming-events" class="upcoming-events">
             <div class="container">
                 <h2>Upcoming Events</h2>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="card event-card">
-                            <img src="..." class="event-img" alt="...">
+                            <img src="./images/event1.jpeg" class="event-img" alt="">
                             <div class="card-body">
-                                <h5 class="event-title">Card title</h5>
-                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="event-title">WEBINAR : FUTURE OF BLOCKCHAIN TECHNOLOGY</h5>
+                                
                                 <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="card event-card">
-                            <img src="..." class="event-img" alt="...">
+                            <img src="./images/event2.jpeg" class="event-img" alt="">
                             <div class="card-body">
-                                <h5 class="event-title">Card title</h5>
-                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="event-title">PROJECT MANAGEMENT PROFESSIONAL COURSE</h5>
+                                
                                 <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="card event-card">
-                            <img src="..." class="event-img" alt="...">
+                            <img src="./images/event3.jpeg" class="event-img" alt="">
                             <div class="card-body">
-                                <h5 class="event-title">Card title</h5>
-                                <p class="event-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="event-title">RESPONSIBLE CONDUCT OF RESEARCH WORKSHOP</h5>
+                                
                                 <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="more-container">
+                    <button class="view-more"><span>View All Events </span></button>
+                </div>
+            </div>
         </section>
 
         <!-- ================================= End Upcoming Events Area ================================= -->
-        
+
         <!-- ================================= Start Job Listings Area ================================= -->
 
         <section class="jobs-listing">
             <div class="container">
-                <h2>Jobs Listing</h2>
-                
-                <!--Card decks-->
-                <div class="card-deck">
-                    <!--First card-->
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Berjaya Sdn Bhd</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <!--calender icon-->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg>
-                                Published on 10/4/2021
-                            </small>
-                        </div>
+                <div class="row">
+                    <div class="col-7">
+                        <h2>Jobs Listing</h2>
                     </div>
-
-                    <!--Second card-->
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Epal Company</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <!--calender icon-->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg>
-                                Published on 1/4/2021
-                            </small>
-                        </div>
-                    </div>
-
-                    <!--Third card-->
-                    <div class="card job-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Company 3</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <!--calender icon-->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
-                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg>
-                                Published on 30/3/2021
-                            </small>
-                        </div>
+                    <div class="col-5">
+                        <div class="side-view-more"><a href="./joblistingview.html">View More</a></div>
                     </div>
                 </div>
+                
+                
+                <!-- Carousel Start -->
+
+                <div class="job-wrapper">
+                    <div class="job-carousel owl-carousel">
+                        <div class="job-card card-1">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+
+                        <div class="job-card card-2">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+                        
+                        <div class="job-card card-3">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+
+                        <div class="job-card card-4">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+
+                        <div class="job-card card-5">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+
+                        <div class="job-card card-4">
+                            <div class="company">Berjaya Sdn Bhd</div>
+                            <div class="position">Junior Software Engineer</div>
+                            <div class="details">
+                                Experience: 2 - 7 Years<br>
+                                Venue: Kuala Lumpur
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                        $(".job-carousel").owlCarousel({
+                        margin: 20,
+                        loop: true,
+                        autoplay: true,
+                        autoplayTimeout: 2000,
+                        autoplayHoverPause: true,
+                        responsive: {
+                            0:{
+                            items:1,
+                            nav: false
+                            },
+                            600:{
+                            items:2,
+                            nav: false
+                            },
+                            1000:{
+                            items:3,
+                            nav: false
+                            }
+                        }
+                        });
+                </script>
+
+                <!-- Carousel End -->
 
             </div>
         </section>
@@ -223,17 +312,17 @@
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Contact</h3>
                         <ul>
-                            <li><a href="#">Contact 1</a></li>
-                            <li><a href="#">Contact 2</a></li>
-                            <li><a href="#">Contact 3</a></li>
+                            <li><a href="#">Find Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Links</h3>
                         <ul>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                            <li><a href="#">Link 3</a></li>
+                            <li><a href="#">About UM</a></li>
+                            <li><a href="#">Study @ UM</a></li>
+                            <li><a href="#">General Enquiry</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-4 item">
@@ -249,9 +338,9 @@
         </div>
 
         <!-- Copyrights -->
-        <div class="bg-light py-4">
+        <div class="copyright py-4">
             <div class="container text-center">
-                <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
+                <p class="mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
             </div>
         </div>
     </footer>
