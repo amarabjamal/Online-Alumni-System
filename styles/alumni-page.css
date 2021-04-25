@@ -3,6 +3,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Quattrocento:wght@700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap');
+
 :root {
     --mainColor : #dbbb19;
     --secColor  : #fce77d;
@@ -15,7 +17,8 @@ html,body {
 }
 
 body {
-    background-color: #fff6ca;
+    /* background-color: #fff6ca; */
+    background-color: #F9EFBA;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -78,8 +81,8 @@ body {
 /* put h1 in the middle and make it bold */
 .alumni-text h1{
     font-size: 80px;
-    font-weight: bold;
-    font-family: 'Gaegu', cursive;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* put p in the middle, and change colour */
@@ -87,7 +90,7 @@ body {
     font-weight: lighter;
     color: grey;
     margin-bottom: 50px;
-    font-family: 'Quattrocento', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .graduate-text .graduate img{
@@ -96,36 +99,13 @@ body {
     padding: 0;
 }
 
-.indi-box{
-    padding: .5rem 2rem;
-}
-
-.indicator {
-    padding-top: 15px;
-    text-align:start; 
-    font-size: 1.0rem;
-    display: inline;
-}
-
-.indicator p{
-    color: #b2b2b2;
-    padding-left: 10px;
-}
-
-.indicator p a {
-    text-decoration: none;
-    color: #b2b2b2;
-}
-
-.indicator span a {
-    color: black;
-}
-
+/* for search box */
 /* to have search container width 100% */
 .search-box {
     width: 100%;
     position: relative;
-    color: #f5f6fa;
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
 }
 
 /* customizing search input*/
@@ -208,44 +188,48 @@ body {
     color: grey;
 }
 
-.search-box input:hover{
-    background-color: white;
-    border-radius: 50px 50px 50px 50px;
-}
-
 .search-icon:hover{
     background-color: #c0392b;
     color: whitesmoke;
     transition: all 0.2s;
 }
 
+/* FOR INDICATOR */
+
+.indi-box{
+    padding: .5rem 2rem;
+}
+
+.indicator {
+    padding-top: 15px;
+    text-align:start; 
+    font-size: 1.0rem;
+    display: inline;
+}
+
+.indicator p{
+    color: #b2b2b2;
+    padding-left: 10px;
+}
+
+.indicator p a {
+    text-decoration: none;
+    color: #b2b2b2;
+}
+
+.indicator span a {
+    color: black;
+}
+
+
 /* FILTER FUNCTION */
 
 .filter {
-    position: relative;
     padding: .5rem 2rem;
-    left: 10px;
+    margin-bottom: 10px;
 } 
 
 /* FOR BATCH */
-.batch {
-    background: white;
-    border-radius: 8px;
-    color: #f5f6fa;
-}
-
-#search-batch {
-    height: 100%;
-    width: 100%;
-    background: white;
-    border: none;
-    background: none;
-    outline: none;
-
-    padding: 12px 24px;
-    color: black;
-    font-size: 16px;
-}
 
 .batch:focus,
 .batch:hover {
@@ -253,15 +237,84 @@ body {
     border: 2px solid grey;
 }
 
+/* ADDING AUTOCOMPLETE FEATURE TO BATCH */
+.search-input input{
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    background: white;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);  */
+}
+
+.search-input .autocom-batch{
+    /* padding: 10px 8px; */
+    padding: 0px;
+    max-height: 280px;
+    overflow-y: auto; /* this will add scrollbars only when necessary */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-input.active .autocom-batch{
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    border-radius: 10px;
+
+    /* to put autocom box on to instead of expanding the area */
+    position: absolute;
+    z-index: 100;
+    right: 0;
+   
+}
+
+.autocom-batch li{
+    list-style: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    width: 100%;
+    line-height: 60px;
+    padding: 0px 20px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.4s;
+    border-radius: 3px;
+
+}
+
+.search-input.active .autocom-batch li{
+    display: block;
+    color: black;
+}
+
+.autocom-batch li:hover{
+    background: #ffeaa7;
+}
+
+.search-input input::placeholder{
+    color: grey;
+    padding: 10px;
+}
+
 /* FOR FACULTY AND MAJOR */
 
 .custom-select {
     height: 100%;
+    max-width: 400px;
+    min-width: 180px;
     background: #2f3640;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 8px;
     color: #f5f6fa;
     position: relative;
+    word-wrap: break-word;
 
     order: 0;
 
@@ -278,6 +331,19 @@ body {
     background-size: 25px;
 }
 
+/* .custom-select select{
+    width: 100%;
+    font-size: 1.2rem;
+} */
+.custom-select{
+    /* wrapper style */
+    position: relative;
+    display:block;
+    max-width: 400px;
+    min-width: 180px;
+    margin:0 auto;
+}
+
 .custom-select:focus,
 .custom-select:hover {
     outline: none;
@@ -285,7 +351,6 @@ body {
 }
 
 /* FOR ALUMNI PROFILE CARDS */
-
 .cards {
     padding: .5rem 2rem;
 }
@@ -293,6 +358,8 @@ body {
 .card {
     border-radius: 10px;
     background: white;
+    margin: 10px;
+    width: 100%;
 }
 
 .card img{
@@ -305,7 +372,7 @@ body {
 }
 
 .card .desc{
-    background: white;
+    background: none;
     text-align: center;
     line-height: 1.0;
 }
@@ -336,7 +403,7 @@ body {
 }
 
 .button{
-    background-color: white;
+    background-color: none;
     margin: auto;
     margin-bottom: 10px;
     padding: 14px 0px;
@@ -346,15 +413,40 @@ body {
 
 .btn {
     border-radius: 50px;
+    border: none;
     font-size: inherit;
-    color: white;
-    background: #2f3640;
+    color: black;
+    background: #FBCB3B;
+}
+
+.button a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
 }
 
 .btn:hover {
     color: black;
-    background: #f8c291;
+    background: #d35400;
     border: transparent;
+}
+
+.card:hover {
+    transform: scale(1,1);
+    animation: float 2s ease-in-out infinite alternate-reverse both;
+    /* border: 5px solid blue; */
+    background-color: #2F3640;
+    color: whitesmoke;
+    border: none;
+    
+}
+
+@keyframes float{
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
 }
 
 /* MEDIA QUERIES FOR CARD SECTION */
