@@ -10,9 +10,33 @@ var initlist = [
 
 ]
 
+buildtable(initlist)
+
+
+$('#search-bar').on('keyup', function(){
+    var value = $(this).val()
+    console.log('Value: ', value)
+    var newdata = searchTable(value, initlist)
+    buildtable(newdata)
+})
+
+function searchTable(value ,data){
+    var filtered = []
+
+    for(var i=0; i<data.length; i++){
+        value=value.toLowerCase()
+        var name = data[i].name.toLowerCase()
+        if(name.includes(value)){
+            filtered.push(data[i])
+        }
+    }
+
+    return filtered
+}
+
 function buildtable(data){
     var table = document.getElementById("myTable")
-
+    table.innerHTML=''
     for(var i = 0; i< data.length; i++){
         if(data[i].status == "Denied"){
             var row =   `<tr>
@@ -32,5 +56,3 @@ function buildtable(data){
         }
     }
 }
-
-buildtable(initlist)
