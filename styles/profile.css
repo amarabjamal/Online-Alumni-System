@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Quicksand:wght@600&display=swap');
 
 :root {
     --mainColor : #dbbb19;
@@ -17,27 +16,11 @@ html {
 }
 
 body {
-    background: var(--secColor);
+    background-color: #F9EFBA;
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
-/* Navigation Section */
-
-/* .container{
-    background-color: #fce77d;
-}
-
-.navbar-brand img{
-    background-color: #fce77d;
-}
-
-.navbar-collapse{
-    background-color: #fce77d;
-}
-
-#navbarNavAltMarkup > .navbar-nav{
-    background-color: #fce77d;
-} */
 
 .navbar-light {
     background-color: var(--secColor) !important;
@@ -86,23 +69,35 @@ body {
     border: 0px;
 }
 
-.content {
+.profile-card {
     width: 90%;
     background: white;
     border-radius: 15px;
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
-    padding: .5rem 1rem;
 }
 
+
 .back {
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 }
 
 .back a{
     color: black;
-    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.back a:hover{
+    text-decoration: none;
 }
 
 .right-pane {
@@ -111,7 +106,23 @@ body {
     justify-content: flex-start;
     align-items: center;
 
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     padding: 30px;
+}
+
+@media (max-width: 768px){
+    .right-pane {
+        background-color: pink;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .avatar img{
+        width: 200px;
+        height: 200px;
+    }
+
 }
 
 .avatar{
@@ -124,6 +135,7 @@ body {
     min-height: 50px;
     max-width: 70%;
     height: auto;
+    margin-bottom: 10px;
 }
 
 .details {
@@ -132,7 +144,7 @@ body {
 }
 
 .details h2{
-    margin: 10px 0px;
+    
     font-size: 2vw;
     font-weight: bold;
 }
@@ -140,6 +152,10 @@ body {
 .details p{
     padding: 10px 0px;
     font-size: 1.5vw;
+}
+
+.socmed {
+    margin: 20px;
 }
 
 .socmed a{
@@ -155,16 +171,20 @@ body {
 .fa-linkedin-square{
     color: #0e76a8;
 }
+
 .left-pane {
-    font-family: 'Quicksand', sans-serif;
     font-size: 15px;
+    background-color: #F5F5F5;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 1rem 2rem;
 }
 
 /* experience card */
 
 .left-pane .title{
+    font-weight: 700;
     font-size: 2.5vw;
-    text-align: center;
 }
 
 .timeline-items{
@@ -180,7 +200,8 @@ body {
     position: absolute;
     width: 2px;
     height: 100%;
-    background-color: #ffbe76;
+    background-color: #dfe6e9;
+
 }
 
 .timeline-item {
@@ -196,11 +217,13 @@ body {
 .timeline-dot{
     height: 17px;
     width: 17px;
-    background-color: #d35400;
+    background-color: #fdcb6e;
     position: absolute;
     left: -7px;
-    top: 2px;
+    top: 1px;
     border-radius: 50%;
+    border-style: dotted;
+    border-width: 2px;
 }
 
 .timeline-date{
@@ -209,7 +232,7 @@ body {
 
 .timeline-content {
     background-color: #f6e58d;
-    margin: 10px 0px;
+    margin-top: 10px;
     padding: 20px;
     border-radius: 8px;
 }
@@ -218,7 +241,23 @@ body {
 
 .card {
     margin: 10px 0px;
+    border: none;
 }
+
+/* .card:hover {
+    transform: scale(1,1);
+    animation: float 2s ease-in-out infinite alternate-reverse both;
+    
+}
+
+@keyframes float{
+    0% {
+        transform: translate(10px);
+    }
+    100% {
+        transform: translate(-10px);
+    }
+} */
 
 .skill-list {
     padding: 0;
@@ -234,25 +273,16 @@ body {
 }
 
 
-/* .d-cards .p-desc{
-
-} */
-
 /* Footer Section */
 
-/* .item{
-    background-color: var(--secColor);
-} */
 
 .footer-link-section {
     padding: 30px 0px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section ul {
-    -webkit-padding-start: 0;/*remove indent*/
+    -webkit-padding-start: 0;
     padding-left: 5px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section h3 {
@@ -260,12 +290,10 @@ body {
     border-bottom: #000000 solid 3px;
     padding-bottom: 2.5px;
     margin-bottom: 15px;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section li {
     list-style: none;
-    /* background-color: var(--secColor); */
 }
 
 .footer-link-section li a {
@@ -283,14 +311,7 @@ body {
     background-color: none;
 }
 
-/* .py-4{
+#footer {
+    margin-top: 20px;
     background-color: var(--secColor);
-}
-
-.py-4 .container{
-    background-color: var(--secColor);
-}
-
-.py-4 p{
-    background-color: var(--secColor);
-} */
+} 
