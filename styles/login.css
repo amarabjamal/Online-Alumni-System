@@ -7,7 +7,9 @@
 }
 
 body {
-    background-color: #dbbb19;
+    background-color: #eadec7;
+    background-image: url(../images/school.png);
+    background-position: center center;
 }
 
 a {
@@ -39,7 +41,7 @@ h1, h4, label {
     }
 }
 
-.row {
+.form-body {
     background-color: #ffffff;
     min-height: calc(100vh - 64px);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -128,4 +130,16 @@ h1, h4, label {
     box-shadow: 0 0 0 0;
     border: 2px solid rgb(255, 89, 89);
     transition: .3s ease;
+}
+
+#passwordHelpBlock {
+    position: absolute;
+    margin-top: -15px;
+    padding-left: 5px;
+}
+
+#passwordCheckBlock {
+    position: absolute;
+    margin-top: -15px;
+    padding-left: 5px;
 }

@@ -30,15 +30,24 @@
 
     <section class="Form my-4 mx-5">
         <div class="container">
-            <div class="row">
+            <div class="row form-body">
+                
+                <!-- Side Image Area Start -->
                 <div class="col-md-5 login-image">
                     <img src="./images/signin.svg" alt="" width="100%">
                 </div>
+
+                <!-- Side Image Area End -->
+
+                <!-- Form Area Start -->
+
                 <div class="col-md-7 px-5 pt-5">
                     <h1 class="font-weight-bold pb-3">LOGIN</h1>
                     <hr>
                     <h4>Sign into your account</h4>
                     <form action="">
+
+                        <!--  Email Input Start -->
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -47,14 +56,15 @@
                                         <input id="email" type="email" class="form-control" placeholder="" aria-label="email" required>
                                     </div>
                                 </div>
-                                    
                             </div>
                         </div>
+                        <!--  Email Input End -->
 
+                        <!--  Password Input Start -->
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="email">Password</label>
+                                    <label for="password">Password</label>
                                     <div class="input-group mb-3">
                                         <input id="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
                                         <div class="input-group-append">
@@ -69,16 +79,35 @@
                                 </div>
                             </div>
                         </div>
+                        <!--  Password Input End -->
+
+                        <!--  Status Input Start -->
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="status" required>
+                                            <option value="alumni">Alumni</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  Status Input End -->
 
                         <div class="form-row">
                             <div class="col">
-                                <button type="button" class="btn1 mt-3 mb-5">Login</button>
+                                <button type="submit" class="btn1 mt-3 mb-5">Login</button>
                             </div>
                         </div>
                         <a href="#" onclick="alert('Function not supported yet.')">Forgot Password?</a>
                         <p>Don't have an account? <a href="./register.html">Register here</a></p>
                     </form>
                 </div>
+
+                <!-- Form Area End -->
             </div>
         </div>
     </section>
