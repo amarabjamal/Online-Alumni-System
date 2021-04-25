@@ -117,6 +117,12 @@ html {
     border: 0px;
 }
 
+.profile-picture {
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+}
+
 /* End Header */
 
 /* Start Main */
