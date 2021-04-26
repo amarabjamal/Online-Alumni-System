@@ -117,6 +117,26 @@ html {
     border: 0px;
 }
 
+.profile-picture {
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+}
+
+#control-lg {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    #control-lg {
+        display: flex;
+    }
+
+    #control {
+        display: none;
+    }
+}
+
 /* End Header */
 
 /* Start Main */
