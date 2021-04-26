@@ -39,10 +39,20 @@ main{
     color: white;
 }
 
+.sidenav-bg{
+    background-color: #126e82;
+}
+
 a { color: #ffffff; }
 
 a:hover{
     color: #132c33;
+}
+
+
+.sidenav a:hover{
+    color: #ffffff;
+    background-color: #132c33;
 }
 
 .activea{
@@ -81,20 +91,18 @@ footer{
 }
 
 .banner-sm-btn{
-    margin: 5px;
-    padding: 5px;
+    padding: 20px;
     background-color: #126e82;
-	text-align: center;
     color: white;
     border-radius: 15px;
 
 }
 
 .banner-sm-btn:hover{
-    margin: 5px;
-    padding: 5px;
     background-color: #132c33;
-	text-align: center;
+    border-radius: 15px;
+    padding: 20px;
     color: white;
     border-radius: 15px;
+    text-decoration: none;
 }

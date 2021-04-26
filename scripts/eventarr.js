@@ -14,7 +14,7 @@ function buildtable(data){
                         <td>${data[i].ename}</td>
                         <td>${data[i].venue}</td>
                         <td>${data[i].brief}</td>
-                        <td>${data[i].date}</td>
+                        <td class="text-center">${data[i].date}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="statuschanger">
                             <button type="button" class="btn btn-info" id="editbtn">Edit</button>
