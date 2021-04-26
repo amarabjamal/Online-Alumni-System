@@ -246,8 +246,16 @@ body {
 
 
 /* ADDING AUTOCOMPLETE FEATURE TO BATCH */
+
+.search-input {
+    margin: 10px 0px;
+}
+
+.break {
+    margin: 10px 0px;
+}
+
 .search-input input{
-    
     height: 100%;
     width: 100%;
     padding: 15px;
@@ -359,16 +367,18 @@ body {
 /* FOR ALUMNI PROFILE CARDS */
 .cards {
     padding: .5rem 2rem;
+    width: 100%;
 }
 
 .card {
     border-radius: 10px;
     background: white;
     /* margin: 10px; */
-    gap: .5rem;
-    margin: 5px 0px;
-    min-width: 200px;
-    width: 100%;
+    
+    vertical-align: middle;
+    margin: 5px 5px;
+    min-width: 250px;
+    width: 18rem;
 
 }
 
