@@ -2,10 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
+:root {
+    --primary-color : #dbbb19;
+    --primary-color-pair : #E9CD3E;
+    --secondary-color  : #eadec7;
+    --heading-text-color :#a18247;
+    /* --primary-color : #854fee;
+    --secondary-color  : #4458dc; */
+    --light-color : #fff6ca;
+    --section-bg-color : #eadec7;
+    --bg-color:#f5f5f5;
+    --section-bg-img : url(../images/school.png);
+
+    /* Font Family Variables */
+    --montserrat : 'Montserrat', sans-serif;
+    --poppins : 'Poppins', sans-serif;
+    --inter : "Inter", sans-serif;
+}
+
 html,
 body {
     height: 100%;
-    margin-top: 20px;
+    
     margin-bottom: 20px;
 }
 
@@ -19,6 +37,7 @@ body {
     margin-top: 30px;
 }
 
+
 main {
 
     background-color: #dbbb19;
@@ -29,69 +48,90 @@ main {
 }
 
 .navbar-light {
-    background-color:#f1f1f1;
+    background-color: #ffffff !important;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .nav-link {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    background: color #f1f1f1;;
+    font-family: var(--montserrat);
+    margin-right: 10px;
+    transition: .5s;
 }
 
-#logout {
-    color: #ffffff !important;
-    background-color: #a18e2b;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    border-radius: 20px;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    transition: ease-in-out .25s;
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+@media (min-width: 992px) {
+
+    .normal-link {
+        font-family: var(--montserrat);
+        margin-right: 10px;
+        transition: .5s;
+    }
+
+    .normal-link::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        display: block;
+        margin: auto;
+        background: var(--primary-color);
+        transition: .5s;
+    }
+
+    .normal-link:hover::after {
+        width: 100%;
+    }
     
+    .nav-link:hover {
+        color: var(--primary-color) !important;
+    }
+
+    .register-btn {
+        color: #ffffff !important;
+        background-color: var(--primary-color);
+        border-radius: 25px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .register-btn:hover {
+        color: #000000 !important;    
+    }
 }
 
-img {
-    padding-bottom: 10px;
-    padding-top: 10px;
+.navbar-toggler {
+    border: 0px;
 }
 
-
-
-.footer-link-section {
-    padding: 30px 0px;
-    background-color: #fce77d;
-    font-family: 'Montserrat', sans-serif;
+.profile-picture {
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
 }
 
-.footer-link-section ul {
-    -webkit-padding-start: 0;/*remove indent*/
-    padding-left: 5px;
+#control-lg {
+    display: none;
 }
 
-.footer-link-section h3 {
-    color: #000000;
-    border-bottom: #000000 solid 3px;
-    padding-bottom: 2.5px;
-    margin-bottom: 15px;
+@media screen and (max-width: 992px) {
+    #control-lg {
+        display: flex;
+    }
+
+    #control {
+        display: none;
+    }
 }
 
-.footer-link-section li {
-    list-style: none;
-}
+/* End Header */
 
-.footer-link-section li a {
-    color: #6b5b0d;
-    text-decoration: none;
-    transition: 500ms ease;
-}
 
-.footer-link-section li a:hover {
-    padding-left: 5px;
-}
 
-.footer-logo {
-    padding: 10px 20px 20px 20px;
-    background-color: none;
-}
+
+
 
 .center {
     text-align:center;
@@ -126,3 +166,43 @@ img {
     margin-top: 10px;
 
 }
+
+/* Start Footer */
+
+.footer-link-section {
+    padding: 30px 0px;
+    background-color: var(--primary-color-pair);
+}
+
+.footer-link-section ul {
+    -webkit-padding-start: 0;/*remove indent*/
+    padding-left: 5px;
+}
+
+.footer-link-section h3 {
+    color: var(--light-color);
+    border-bottom: var(--light-color) solid 3px;
+    padding-bottom: 2.5px;
+    margin-bottom: 15px;
+}
+
+.footer-link-section li {
+    list-style: none;
+}
+
+.footer-link-section li a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: 500ms ease;
+}
+
+.footer-link-section li a:hover {
+    padding-left: 5px;
+}
+
+.copyright {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* End Footer */

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title> UM Alumni </title>
+    <title>Edit User Profile | UM Alumni</title>
     <link rel="stylesheet" href="styles/edit_profile.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=width-device, inital-scale=1">
@@ -22,35 +22,41 @@
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"> <img class="logo" src="images/um-logo.png" width="120"
-                        alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="navbar-nav align-right" style="align-items:flex-start;">
-
-                        <a class="nav-item nav-link active" aria-current="page" href="#">About Us</a>
-
-
-                        <a class="nav-item nav-link" href="#">Events</a>
-
-
-                        <a class="nav-item nav-link" href="#">Contact Us</a>
-
-                        <a class="nav-item nav-link btn " href="index.html" id="logout">Logout</a>
-
+                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link normal-link" href="#about-us">About Us</a>
+                    <a class="nav-item nav-link normal-link" href="#">Events</a>
+                    <a class="nav-item nav-link normal-link" href="./joblistingview.html">Job</a>
+                    <a class="nav-item nav-link normal-link" href="./alumni-page.html">Alumni List</a>
+                    <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
+                    
+                    <div id="control" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="profile-picture" src="./images/icon2.png" alt="profile picture">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Your profile</a>
+                            <a class="dropdown-item" href="#">Edit profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div>
                     </div>
 
+                    <a id="control-lg" class="nav-item nav-link normal-link" href="#">Your profile</a>
+                    <a id="control-lg" class="nav-item nav-link normal-link" href="#">Edit profile</a>
+                    <a id="control-lg" class="nav-item nav-link normal-link" href="#">Log out</a>
+                    
                 </div>
-
+    
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <main class="flex-shrink-0">
         <div class="container ">
@@ -125,10 +131,7 @@
                                             placeholder="Enter your position at the company">
                                     </div>
                                 </div>
-                            
-                        </div>
-                        
-                            
+
                                 <div class="form-group">
                                     <label class="col-md-3">Faculty</label>
                                     <div class="col-sm-12">
@@ -166,7 +169,7 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-3">
+                                    <div class="col-sm-12">
 
                                         <button type="submit" class="modal-btn">Submit</button>
 
@@ -177,12 +180,21 @@
                                     </div>
 
                                 </div>
+
+                                <button type="submit" class="del">Delete</button>
+
+                            
+                        </div>
+                        
+                            
+                                
                            
                        
                     </form>
                 </div>
             </div>
         </div>
+        <script src="scripts/edit_profile.js"></script>
 
         <div class="modal-bg">
             <div class="modal">
@@ -193,7 +205,7 @@
 
             </div>
         </div>
-        <script src="scripts/edit_profile.js"></script>
+        
 
 
 
