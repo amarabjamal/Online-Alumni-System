@@ -55,7 +55,8 @@
       color: white;
       letter-spacing: 3px;
   }
-  #container{
+  
+  .container{
       min-height: 100vh;
       
   }
