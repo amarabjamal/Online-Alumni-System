@@ -123,6 +123,20 @@ html {
     border-radius: 50%;
 }
 
+#control-lg {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    #control-lg {
+        display: flex;
+    }
+
+    #control {
+        display: none;
+    }
+}
+
 /* End Header */
 
 /* Start Main */
