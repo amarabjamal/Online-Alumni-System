@@ -111,6 +111,7 @@ body {
     padding: 30px;
 }
 
+/* sm */
 @media (max-width: 768px){
     .right-pane {
         background-color: pink;

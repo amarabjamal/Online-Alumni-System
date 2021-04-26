@@ -114,8 +114,8 @@ body {
     height: 55px;
     width: 100%;
     padding: 15px;
-    font-size: 1.8rem;
     font-weight: bold;
+    font-size: 1.8rem;
     color: black;
     background-color: transparent;
     outline: none;
@@ -147,6 +147,18 @@ body {
     pointer-events: none;
 }
 
+.search-box .autocom-box::-webkit-scrollbar {
+    width: 10px;
+    height: 2px;
+    background-color: #ecf0f1;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-box .autocom-box::-webkit-scrollbar-thumb {
+    background: #f1c40f;
+    border-radius: 5px;
+}
+
 .search-box.active .autocom-box{
     /* padding-top: 10px; */
     opacity: 1;
@@ -160,17 +172,18 @@ body {
     right: 0;
    
 }
+
 .autocom-box li{
     list-style: none;
     box-sizing: border-box;
     background: #ffffff;
     /* width: 100%; */
+    text-align: start;
     line-height: 60px;
     padding: 0px 20px;
     cursor: pointer;
     display: none;
     transition: all 0.4s;
-    /* border-radius: 8px;*/
 
 }
 
@@ -231,18 +244,22 @@ body {
 
 /* FOR BATCH */
 
-.batch:focus,
-.batch:hover {
-    outline: none;
-    border: 2px solid grey;
-}
 
 /* ADDING AUTOCOMPLETE FEATURE TO BATCH */
+
+.search-input {
+    margin: 10px 0px;
+}
+
+.break {
+    margin: 10px 0px;
+}
+
 .search-input input{
     height: 100%;
     width: 100%;
     padding: 15px;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     font-weight: bold;
     color: black;
     background: white;
@@ -260,6 +277,18 @@ body {
     overflow-y: auto; /* this will add scrollbars only when necessary */
     opacity: 0;
     pointer-events: none;
+}
+
+.search-input .autocom-batch::-webkit-scrollbar {
+    width: 10px;
+    height: 2px;
+    background-color: #ecf0f1;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-input .autocom-batch::-webkit-scrollbar-thumb {
+    background: #f1c40f;
+    border-radius: 5px;
 }
 
 .search-input.active .autocom-batch{
@@ -285,8 +314,6 @@ body {
     cursor: pointer;
     display: none;
     transition: all 0.4s;
-    border-radius: 3px;
-
 }
 
 .search-input.active .autocom-batch li{
@@ -303,20 +330,19 @@ body {
     padding: 10px;
 }
 
+
 /* FOR FACULTY AND MAJOR */
 
 .custom-select {
     height: 100%;
-    max-width: 400px;
-    min-width: 180px;
+    font-size: 1rem;
+    
+    width: 100%;
+
     background: #2f3640;
     border-radius: 10px;
-    margin-bottom: 8px;
+    
     color: #f5f6fa;
-    position: relative;
-    word-wrap: break-word;
-
-    order: 0;
 
     padding: 12px 24px;
     cursor: pointer;
@@ -326,22 +352,10 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url('/images/arrow-down.svg');
+    font-size: 1rem;
     background-position: right 10px top 50%;
     background-repeat: no-repeat;
     background-size: 25px;
-}
-
-/* .custom-select select{
-    width: 100%;
-    font-size: 1.2rem;
-} */
-.custom-select{
-    /* wrapper style */
-    position: relative;
-    display:block;
-    max-width: 400px;
-    min-width: 180px;
-    margin:0 auto;
 }
 
 .custom-select:focus,
@@ -353,14 +367,44 @@ body {
 /* FOR ALUMNI PROFILE CARDS */
 .cards {
     padding: .5rem 2rem;
+    width: 100%;
 }
 
 .card {
     border-radius: 10px;
     background: white;
-    margin: 10px;
-    width: 100%;
+    /* margin: 10px; */
+    
+    vertical-align: middle;
+    margin: 5px 5px;
+    min-width: 250px;
+    width: 18rem;
+
 }
+
+/* sm */
+/* @media (max-width: 576px){
+    .card {
+        background-color: tomato;
+    }
+
+} */
+
+/* md */
+/* @media (max-width: 768px){
+    .card {
+        background-color: pink;
+    }
+
+} */
+
+/* lg */
+/* @media (max-width: 992px){
+    .card {
+        background-color: greenyellow;
+    }
+
+} */
 
 .card img{
     width: 100px;
@@ -434,8 +478,8 @@ body {
     transform: scale(1,1);
     animation: float 2s ease-in-out infinite alternate-reverse both;
     /* border: 5px solid blue; */
-    background-color: #2F3640;
-    color: whitesmoke;
+    background-color: #f5f6fa;
+    color: #192a56;
     border: none;
     
 }
