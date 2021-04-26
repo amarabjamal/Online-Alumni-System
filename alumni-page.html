@@ -14,6 +14,9 @@
     <!-- font awesome icons -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
+
+    <link rel="icon" href="./images/favicon.svg">
+    <link href="styles/style.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/alumni-page.css">
 </head>
 
@@ -29,29 +32,49 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120"
-                    alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="index.html#about-us">About Us</a>
-                    <a class="nav-item nav-link" href="#">News & Events</a>
-                    <a class="nav-item nav-link" href="#footer">Contact Us</a>
 
-                    <a class="nav-item nav-link register-btn" href="./register.html">Register</a>
-                    <a class="nav-item nav-link login-btn" href="./login.html">Login</a>
+    <!-- ===================================== Start Header Area ===================================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120"
+                        alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link normal-link" href="#about-us">About Us</a>
+                        <a class="nav-item nav-link normal-link" href="#">Events</a>
+                        <a class="nav-item nav-link normal-link" href="./joblistingview.html">Job</a>
+                        <a class="nav-item nav-link normal-link" href="./alumni-page.html">Alumni List</a>
+                        <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
+
+                        <div id="control" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="profile-picture" src="./images/icon2.png" alt="profile picture">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Your profile</a>
+                                <a class="dropdown-item" href="#">Edit profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Log out</a>
+                            </div>
+                        </div>
+
+                        <a id="control-lg" class="nav-item nav-link normal-link" href="#">Your profile</a>
+                        <a id="control-lg" class="nav-item nav-link normal-link" href="#">Edit profile</a>
+                        <a id="control-lg" class="nav-item nav-link normal-link" href="#">Log out</a>
+
+                    </div>
 
                 </div>
-
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    <!-- ===================================== End Header Area ===================================== -->
 
     <!-- ROW FOR HEADER -->
     <div class="row graduate-text">
@@ -76,7 +99,6 @@
         <!-- graduate image -->
         <div class="col d-none d-lg-block graduate">
             <img src="images/try.png" alt="graduate">
-
         </div>
     </div>
 
@@ -379,25 +401,26 @@
         </div>
     </div>
 
-    <!-- footer -->
-    <footer id="footer">
+    <!-- ===================================== Start Footer Area ===================================== -->
+
+    <footer id="footer" class="mt-auto">
         <div class="footer-link-section">
             <div class="container">
                 <div class="row justify-content-left">
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Contact</h3>
                         <ul>
-                            <li><a href="#">Contact 1</a></li>
-                            <li><a href="#">Contact 2</a></li>
-                            <li><a href="#">Contact 3</a></li>
+                            <li><a href="#">Find Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Help</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-4 item">
                         <h3>Links</h3>
                         <ul>
-                            <li><a href="#">Link 1</a></li>
-                            <li><a href="#">Link 2</a></li>
-                            <li><a href="#">Link 3</a></li>
+                            <li><a href="#">About UM</a></li>
+                            <li><a href="#">Study @ UM</a></li>
+                            <li><a href="#">General Enquiry</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-4 item">
@@ -413,14 +436,16 @@
         </div>
 
         <!-- Copyrights -->
-        <div class="py-4">
+        <div class="copyright py-4">
             <div class="container text-center">
-                <p class="text-muted mb-0 py-2">&copy;
+                <p class="mb-0 py-2">&copy;
                     <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
                 </p>
             </div>
         </div>
     </footer>
+
+    <!-- ===================================== End Footer Area ===================================== -->
 
     <script src="scripts/alumni_page.js"></script>
     <script src="scripts/suggestion.js"></script>
