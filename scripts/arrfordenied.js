@@ -1,14 +1,27 @@
 var initlist = [
     {name: "Farhan Sadiq", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
-    {name: "Anomaly", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
-    {name: "Get Right", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
-    {name: "Natus Vincere", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
+    {name: "Xavier Emiliano", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
+    {name: "Roderick", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
+    {name: "Kyson", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
+    {name: "Chris Martin", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
+    {name: "Bryan", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
+    {name: "Michael Jordan", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
+    {name: "Yurem", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
     {name: "Sayed", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
-    {name: "Boi", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
-    {name: "Simple", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
-    {name: "Hobbit", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Arjun Rajesh", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Sayed Farhan", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
+    {name: "Hasanul Alam", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Jaden Smith", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
+    {name: "Sebastian Vettel", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Tony Xavier", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Damien Jones", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Lewis hamilton", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Max Verstappen", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Luka Ghiotto", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Stoffel Vandorne", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
 
 ]
+
 
 buildtable(initlist)
 
