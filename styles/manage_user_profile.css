@@ -32,7 +32,6 @@ html {
 }
 
 body {
-    background-color: #fce77d;
     font-family: 'Poppins', 'Montserrat', sans-serif;
     margin-top: 30px;
 }
@@ -40,7 +39,7 @@ body {
 
 main {
 
-    background-color: #dbbb19;
+    background-color: var(--bg-color);
     padding-bottom: 100px;
     padding-top: 70px;
     
@@ -142,12 +141,16 @@ main {
 .card-box {
     
     font-family:'Montserrat', sans-serif;
-    background-color: #f1f1f1;
+    background-color: var(--section-bg-color);
     border: 0px;
     padding: 1.5rem;
     margin-top: 25px;
     margin-bottom: 10px;
     
+}
+
+.table-head{
+    background-color: var(--heading-text-color);
 }
 
 
@@ -160,9 +163,9 @@ main {
 }
 
 .edit {
-    border-color: #000000;
-    color:#f1f1f1;
-    background: #000000;
+    border-color: var(--primary-color);
+    color: whitesmoke;
+    background: var(--primary-color);
     margin-top: 10px;
 
 }
