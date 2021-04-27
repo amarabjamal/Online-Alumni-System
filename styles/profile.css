@@ -21,6 +21,7 @@ html {
 
 .profile-card {
     width: 90%;
+    position: relative;
     background: white;
     border-radius: 15px;
     margin: auto;
@@ -28,16 +29,18 @@ html {
     margin-bottom: 50px;
 }
 
-
 .back {
     display: flex;
     justify-content: center;
     align-items: center;
+    
     position: absolute;
-    top: 30px;
-    margin: auto;
+    top: 0px;
+    cursor:pointer;
+    z-index: 100;
+    /* margin: auto;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 50px; */
 
 }
 
