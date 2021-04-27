@@ -1,6 +1,6 @@
 var initlist = [
     {ename: "Alumi Meet up 2021", venue: "Microsoft Teams", brief:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies sem quis nisl auctor ornare. Morbi et porttitor nulla, lacinia bibendum felis. Aenean quam velit, ultrices nec placerat nec, fringilla ac leo. Praesent euismod non turpis eget posuere. Fusce elementum.", date:"12-02-2021"},
-    {ename: "Networking event 2021", venue: "FSKTM", brief:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies sem quis nisl auctor ornare. Morbi et porttitor nulla, lacinia bibendum felis. Aenean quam velit, ultrices nec placerat nec, fringilla ac leo. Praesent euismod non turpis eget posuere. Fusce elementum.", date:"30-03-2021"}
+    {ename: "Networking event 2021", venue: "Faculty of Computer Science and Information Technology", brief:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies sem quis nisl auctor ornare. Morbi et porttitor nulla, lacinia bibendum felis. Aenean quam velit, ultrices nec placerat nec, fringilla ac leo. Praesent euismod non turpis eget posuere. Fusce elementum.", date:"30-03-2021"}
     
 ]
 
