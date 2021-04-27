@@ -1,36 +1,31 @@
-.recent-jobs{
+@import url(../styles/variables.css);
+
+.title-heading { 
     padding: 30px 0;
     margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 25px;
-    background-color: #dbbb19;
+    background-color: var(--primary-color);
 	text-align: center;
     color: white;
     border-radius: 10px 10px 0 0;
-    letter-spacing: 5px;
-    width: 73%;
+    letter-spacing: 2px;
+    font-family: var(--montserrat);
 }
-.view-job{
-    padding: 30px;
-    margin: 50spx;
-    background-color: #dbbb19;
-	text-align: center;
-    color: white;
-    border-radius: 10px 10px 0 0;
-    letter-spacing: 3px;
-}
-main{
+
+main {
     background-color: white ;
 }
-.table{
+
+.table {
     padding: 10px;
 }
-.add-job{
+
+.add-job {
     text-align: center;
     border-radius: 5px 5px 0 0;
 }
-.data-table{
+
+.data-table {
     background-color:white;
     text-align: center;
     color:black;
