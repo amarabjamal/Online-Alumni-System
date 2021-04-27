@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="./images/favicon.svg">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -76,62 +77,100 @@
   <main>
 
     <div class="container">
-      <!--------------Add jobs--------------->
-      <div class="title-heading">
-        <h2>
-          ADD NEW JOB ADS
-        </h2>
+      <section id="jobs-edit">
 
-      </div>
+        <!--------------Add jobs--------------->
+          <h2 class="title-heading">
+            ADD NEW JOB ADS
+          </h2>
 
-      <form id="formTest">
+        <form id="formTest">
 
-        <div class="form-group">
-          <label><b>Job Title:</b></label>
-          <input type="text" name="name" class="form-control" placeholder="Enter job title" required>
-        </div>
-
-        <div class="form-group">
-          <label><b>Salary:</b></label>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">RM</span>
-            </div>
-            <input type="number" name="email" class="form-control" placeholder="Enter salary amount" required>
+          <div class="form-group">
+            <label><b>Job Title:</b></label>
+            <input type="text" name="name" class="form-control" placeholder="Enter job title" required>
           </div>
+
+          <div class="form-group">
+            <label><b>Salary:</b></label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">RM</span>
+              </div>
+              <input type="number" min="0" step="any" name="email" class="form-control" placeholder="Enter salary amount" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><b>Location/Company:</b></label>
+            <input type="text" name="location" class="form-control" placeholder="Enter location/company name" required>
+          </div>
+
+          <div class="form-group">
+            <label><b>Contact Info:</b></label>
+            <input type="text" name="contact" class="form-control" placeholder="Enter your contact info." required>
+          </div>
+
+          <button type="submit" class="btn btn-success save-btn">Post</button>
+
+        </form>
+
+        <!--------------Your Listings--------------->
+
+        <h2 class="title-heading"> YOUR ADVERTISED JOBS </h2>
+
+        <div class="jobs-table">
+          <table id="job-ads">
+            <thead>
+              <th>Job Title</th>
+              <th>Salary (RM)</th>
+              <th>Location/Company</th>
+              <th>Contact Info. </th>
+              <th width="200px">Action</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lab Assistant</td>
+                <td>1500</td>
+                <td>Faculty of Science</td>
+                <td>fosbiotechno@um.edu.my</td>
+                <td>
+                  <button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Sales Executive</td>
+                <td>4000</td>
+                <td>Micheal Scott Paper Company</td>
+                <td>michealparkour@hotmail.com</td>
+                <td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td>
+              </tr>
+              <tr>
+                <td>Regional Manager</td>
+                <td>8000</td>
+                <td>Dunder Mifflin</td>
+                <td>dundermifflininfinity@gmail.com</td>
+                <td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="form-group">
-          <label><b>Location/Company:</b></label>
-          <input type="text" name="location" class="form-control" placeholder="Enter location/company name" required>
-        </div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
 
-        <div class="form-group">
-          <label><b>Contact Info:</b></label>
-          <input type="text" name="contact" class="form-control" placeholder="Enter your contact info." required>
-        </div>
-
-        <button type="submit" class="btn btn-success save-btn">Post</button>
-
-      </form>
-      <br />
-
-      <!--------------Your Listings--------------->
-
-      <h2 class="title-heading"> YOUR ADVERTISED JOBS </h2>
-
-      <table class="table table-bordered data-table">
-        <thead>
-          <th>Job Title</th>
-          <th>Salary</th>
-          <th>Location/Company</th>
-          <th>Contact Info. </th>
-          <th width="200px">Action</th>
-        </thead>
-        <tbody>
-
-        </tbody>
-      </table>
+      </section>
 
     </div>
 
