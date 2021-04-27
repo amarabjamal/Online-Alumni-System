@@ -1,0 +1,86 @@
+@import url(../styles/variables.css);
+
+main {
+    background-color: white ;
+}
+
+#jobs-edit {
+    background-color: var(--section-bg-color);
+    margin: 30px 0;
+    padding: 30px;
+}
+
+.title-heading { 
+    margin-top: 30px;
+    margin-bottom: 25px;
+	text-align: left;
+    color: var(--heading-text-color);
+    font-family: var(--montserrat);
+    font-size: 30px;
+    padding: 20px 50px;
+    border-bottom: 2px solid var(--heading-text-color);
+    background-image: url('../images/job-seeker.png');
+    background-repeat: no-repeat;
+    background-position: 20px 10px;
+    background-size: 50px;
+    padding-left: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .title-heading {
+        font-size: 20px;
+        background-size: 40px;
+    }
+}
+
+#formTest {
+    background-color: #f5f5f5;
+    padding: 20px 50px;
+}
+
+#formTest label {
+    font-family: var(--poppins);
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.jobs-table {
+    overflow-x:auto;
+    margin-bottom: 50px;
+}
+
+#job-ads {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#job-ads th, #job-ads td {
+    font-family: var(--poppins);
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#job-ads thead th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--heading-text-color);
+    color: white;
+    font-weight: 600;
+}
+
+#job-ads td:nth-child(2) {
+    text-align: right;
+}
+
+#job-ads tr {
+    background-color: #ffffff;
+}
+
+#job-ads tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#job-ads tr:hover {
+    background-color: #ddd;
+}

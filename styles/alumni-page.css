@@ -1,0 +1,439 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Quattrocento:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap');
+
+:root {
+    --mainColor : #dbbb19;
+    --secColor  : #fce77d;
+}
+
+html,body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--secColor);
+    /* background-image: url(/images/alumni-bg.jpg); */
+    /* background-size: 100%; */
+    /* background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/images/oriental-tiles.png); */
+    /* background-color: #f5f5f5; */
+    /* background-image: url(/images/oriental-tiles.png); */
+    
+}
+
+/* .navbar {
+    background-color: #E9CD3E !important;
+    border: none;
+} */
+
+.nav-link {
+    font-weight: bold;
+}
+
+.graduate-text{
+    position: relative;
+    padding: .5rem 1rem;
+    background-color: transparent;
+    
+}
+
+.alumni-text{
+    margin: auto;
+    text-align: center;
+}
+
+/* put h1 in the middle and make it bold */
+.alumni-text h1{
+    font-size: 80px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* put p in the middle, and change colour */
+.alumni-text p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: grey;
+    margin-bottom: 50px;
+    
+}
+
+.graduate-text .graduate img{
+    width: 100%;
+    height: auto;
+    padding: 0;
+}
+
+/* for search box */
+/* to have search container width 100% */
+.search-box {
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-radius: 50px 50px 50px 50px;
+}
+
+/* customizing search input*/
+/* colour of our input */
+.search-box input{
+    height: 55px;
+    width: 100%;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: black;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); nanti tukar macam mana nak bawah je ada shadow */
+}
+
+/* customizing search icon */
+.search-box .search-icon{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    line-height: 55px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    background: #2c3e50;
+    color: white;
+    cursor: pointer;
+}
+
+.search-box .autocom-box{
+    max-height: 280px;
+    overflow-y: auto; /* this will add scrollbars only when necessary */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-box .autocom-box::-webkit-scrollbar {
+    width: 10px;
+    height: 2px;
+    background-color: #ecf0f1;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-box .autocom-box::-webkit-scrollbar-thumb {
+    background: #f1c40f;
+    border-radius: 5px;
+}
+
+.search-box.active .autocom-box{
+    /* padding-top: 10px; */
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    border-radius: 10px;
+
+    /* if tinggalkan, akan expand */
+    position: absolute;
+    z-index: 100;
+    right: 0;
+   
+}
+
+.autocom-box li{
+    list-style: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    /* width: 100%; */
+    text-align: start;
+    line-height: 60px;
+    padding: 0px 20px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.4s;
+
+}
+
+.search-box.active .autocom-box li{
+    display: block;
+    color: black;
+}
+
+.autocom-box li:hover{
+    background: #ffeaa7;
+}
+
+/* colour word Search.. */
+.search-box input::placeholder{
+    color: grey;
+}
+
+.search-icon:hover{
+    background-color: #c0392b;
+    color: whitesmoke;
+    transition: all 0.2s;
+}
+
+/* FOR INDICATOR */
+
+.indi-box{
+    padding: .5rem 2rem;
+}
+
+.indicator {
+    padding-top: 15px;
+    text-align:start; 
+    font-size: 1.0rem;
+    display: inline;
+}
+
+.indicator p{
+    color: #b2b2b2;
+    padding-left: 10px;
+}
+
+.indicator p a {
+    text-decoration: none;
+    color: #b2b2b2;
+}
+
+.indicator span a {
+    color: black;
+}
+
+
+/* FILTER FUNCTION */
+
+.filter {
+    padding: .5rem 2rem;
+    margin-bottom: 10px;
+} 
+
+/* FOR BATCH */
+/* ADDING AUTOCOMPLETE FEATURE TO BATCH */
+
+.search-input {
+    margin: 10px 0px;
+}
+
+.break {
+    margin: 10px 0px;
+}
+
+.search-input input{
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: black;
+    background: white;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);  */
+}
+
+.search-input .autocom-batch{
+    /* padding: 10px 8px; */
+    padding: 0px;
+    max-height: 280px;
+    overflow-y: auto; /* this will add scrollbars only when necessary */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-input .autocom-batch::-webkit-scrollbar {
+    width: 10px;
+    height: 2px;
+    background-color: #ecf0f1;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-input .autocom-batch::-webkit-scrollbar-thumb {
+    background: #f1c40f;
+    border-radius: 5px;
+}
+
+.search-input.active .autocom-batch{
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    border-radius: 10px;
+
+    /* to put autocom box on to instead of expanding the area */
+    position: absolute;
+    z-index: 100;
+    right: 0;
+   
+}
+
+.autocom-batch li{
+    list-style: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    width: 100%;
+    line-height: 60px;
+    padding: 0px 20px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.4s;
+}
+
+.search-input.active .autocom-batch li{
+    display: block;
+    color: black;
+}
+
+.autocom-batch li:hover{
+    background: #ffeaa7;
+}
+
+.search-input input::placeholder{
+    color: grey;
+    padding: 10px;
+}
+
+
+/* FOR FACULTY AND MAJOR */
+
+.custom-select {
+    height: 100%;
+    font-size: 1rem;
+    
+    width: 100%;
+
+    background: #2f3640;
+    border-radius: 10px;
+    
+    color: #f5f6fa;
+
+    padding: 12px 24px;
+    cursor: pointer;
+
+    /* replace the default styling(arrow) */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/images/arrow-down.svg');
+    font-size: 1rem;
+    background-position: right 10px top 50%;
+    background-repeat: no-repeat;
+    background-size: 25px;
+}
+
+.custom-select:focus,
+.custom-select:hover {
+    outline: none;
+    border: 2px solid grey;
+}
+
+/* FOR ALUMNI PROFILE CARDS */
+.cards {
+    padding: .5rem 2rem;
+    width: 100%;
+}
+
+.card {
+    border-radius: 10px;
+    background: white;
+    /* margin: 10px; */
+    vertical-align: middle;
+    margin-bottom: 10px;
+    /* min-width: 200px; */
+
+}
+
+
+.card img{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.card .desc{
+    background: none;
+    text-align: center;
+    line-height: 1.0;
+}
+
+.card .desc p{
+    background: transparent;
+}
+
+.card .socmed{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 10px;
+    background: transparent;
+}
+
+.card .socmed a{
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+}
+
+.fa-facebook-official {
+    color: #3b5998;
+}
+
+.fa-linkedin-square{
+    color: #0e76a8;
+}
+
+.button{
+    background-color: none;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 14px 0px;
+    align-items: center;
+    justify-items: center;
+}
+
+.btn {
+    border-radius: 50px;
+    border: none;
+    font-size: inherit;
+    color: black;
+    background: #FBCB3B;
+}
+
+.button a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+}
+
+.btn:hover {
+    color: black;
+    background: #d35400;
+    border: transparent;
+}
+
+.card:hover {
+    transform: scale(1,1);
+    animation: float 2s ease-in-out infinite alternate-reverse both;
+    /* border: 5px solid blue; */
+    background-color: #f5f6fa;
+    color: #192a56;
+    border: none;
+    
+}
+
+@keyframes float{
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+

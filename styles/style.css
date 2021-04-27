@@ -1,74 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 /* CSS Variables */
 
 :root {
     --primary-color : #dbbb19;
-    --secondary-color  : #fce77d;
+    --primary-color-pair : #E9CD3E;
+    --secondary-color  : #eadec7;
+    --heading-text-color :#a18247;
     --light-color : #fff6ca;
+    --section-bg-color : #eadec7;
+    --bg-color:#f5f5f5;
+    --section-bg-img : url(../images/school.png);
 
     /* Font Family Variables */
     --montserrat : 'Montserrat', sans-serif;
+    --poppins : 'Poppins', sans-serif;
+    --inter : "Inter", sans-serif;
 }
 
 html,
 body {
     height: 100%;
+    background: var(--bg-color);
 }
 
 html {
     scroll-behavior: smooth;
 }
 
+/* Scroll To Top Button Start */
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 0px; /* Place the button at the bottom of the page */
+    right: 0px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    font-size: 18px; /* Increase font size */
+    text-align: center;
+    font-size: 2.5rem; 
+    color: cornflowerblue;
+}
+
+#myBtn:hover {
+    color: rgb(55, 100, 182);
+}
+
+/* Scroll To Top Button End */
+
 /* Start Header */
 
 .navbar-light {
-    background-color: var(--light-color) !important;
+    background-color: #ffffff !important;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    border-bottom: 1px solid #f5f5f5;
 }
 
 .nav-link {
     font-family: var(--montserrat);
-    color: #a18e2b !important;
-    transition: .25s ease;
+    margin-right: 10px;
+    transition: .5s;
 }
 
 .nav-link:hover {
-    color: #534811 !important;
+    color: var(--primary-color) !important;
 }
 
 @media (min-width: 992px) {
-    .login-btn {
-        color: #ffffff !important;
-        background-color: #a18e2b;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        border-radius: 20px;
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-        transition: ease-in-out .25s;
+
+    .normal-link {
+        font-family: var(--montserrat);
+        margin-right: 10px;
+        transition: .5s;
     }
 
-    .login-btn:hover {
-        background-color: #c9b139;
+    .normal-link::after {
+        content: '';
+        width: 0%;
+        height: 2px;
+        display: block;
+        margin: auto;
+        background: var(--primary-color);
+        transition: .5s;
+    }
+
+    .normal-link:hover::after {
+        width: 100%;
+    }
+    
+    .nav-link:hover {
+        color: var(--primary-color) !important;
     }
 
     .register-btn {
-        color: #a18e2b !important;
-        background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        border: 2px solid #a18e2b;
-        border-radius: 20px;
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-        margin-right: 10px;
-        transition: ease-in-out .25s;
+        color: #ffffff !important;
+        background-color: var(--primary-color);
+        border-radius: 25px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
 
     .register-btn:hover {
-        background-color: #a18e2b;
-        color: #ffffff !important;
-
+        color: #000000 !important;    
     }
 }
 
@@ -76,137 +115,193 @@ html {
     border: 0px;
 }
 
+.profile-picture {
+    height: 30px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+}
+
+#control-lg {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    #control-lg {
+        display: flex;
+    }
+
+    #control {
+        display: none;
+    }
+}
+
 /* End Header */
 
 /* Start Main */
 
+
 .landing-page {
     min-height: calc(100vh - 64.91px);
-    background-position: center;
     padding: 50px 0px;
     background-color: #fff6ca;
-    background-image: url(../images/wave.png);
-    background-position: bottom center;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/graduation.jpeg);
+    background-position: top center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 /* background image doesn;t overlap with button */
 @media (min-width: 993px) and (max-height: 683px){
-    .landing-page {
-        background-image: none;
-        background-image: linear-gradient(to bottom, var(--light-color), var(--light-color), var(--primary-color));
-    }
+
 }
 
-.landing-page h2 {
-    font-family: var(--montserrat);;
-    font-weight: 500;
-    font-size: 30px;
-    text-align: left;
-    color: #666666;
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15%;
+}
+
+.landing-page h1 {
+    font-family: var(--poppins);
+    font-weight: bold;
+    font-size: 62px;
+    text-align: center;
+    color: #f5f5f5;
 }
 
 .landing-desc {
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    margin: 30px 0px;
-    color: #998108;
+    font-size: 17px;
+    margin: 10px 0 40px;
+    color: #ffffff;
+    text-align: center;
 }
 
-/* button and image don't overlap */
-@media (max-width: 992px) {
-    .landing-img {
-        margin-top: 50px;
+.landing-desc strong {
+    word-spacing: 7px;
+}
+
+@media screen and (max-width: 576px) {
+    .landing-page h1 {
+        font-size: 30px;
+    }
+    
+
+    .landing-desc {
+        font-size: 12px;
+    }
+
+    .landing-desc strong {
+        word-spacing: 3px;
     }
 }
 
-.landing-btn {
-    top: 0;
-    left: 0;
-    transition: all .15s linear 0s;
-    position: relative;
-    display: inline-block;
-    background-color: #dbbb19;
-    font-size: 20px;
+.landing-desc .highlight {
+    color: var(--primary-color);
+}
+
+.landing-btn-2 {
+    background-color: transparent;
     color: #ffffff;
-    padding: 15px 40px;
-    border-radius: 30px;
-    border: 2px solid #dbbb19;
-    box-shadow: 6px 6px 0 #c4a409;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    padding: .8rem 5rem;
+    font: normal 500 16px/20px var(--montserrat);
+    border-radius: 4px;
+    transition: 0.2s;
+    border: none;
+    border: 2px solid #ffffff;
 }
 
-.landing-btn:hover {
-    text-decoration: none;
-    color: #ffffff;
-    border: 2px solid #dbbb19;
-    top: 3px;
-    left: 3px;
-    box-shadow: 3px 3px 0 #c4a409;
-}
-
-.landing-btn:hover::after {
-    top: -1px;
-    left: 2px;
-    width: 4px;
-    height: 4px;
-}
-
-.landing-btn:hover:before {
-    bottom: -2px;
-    right: 1px;
-    width: 4px;
-    height: 4px;
-}
-
-.landing-btn::after {
-    transition: all .15s linear 0s;
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: -4px;
-    width: 8px;
-    height: 8px;
-    background-color: #404040;
-    transform: rotate(45deg);
-    z-index: -1;   
-}
-
-.landing-btn::before {
-    transition: all .15s linear 0s;
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    right: 2px;
-    width: 8px;
-    height: 8px;
-    background-color: #404040;
-    transform: rotate(45deg);
-    z-index: -1;
-}
-
-a.landing-btn {
-    position: relative;
-}
-
-.about-us {
+.landing-btn-2:hover {
     background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/* About Us Section Start */
+.about-us {
     padding: 50px 0px;
+}
+
+.about-us .about-us-img {
+    background-color: var(--section-bg-color);
+    padding: 10%;
+    margin: auto;
+    max-width: 80%;
+}
+
+@media screen and (max-width: 992px) {
+    .about-us .about-us-img {
+        max-width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }
 
 .about-us h2 {
     font-family: var(--montserrat);;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 30px;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 10px;
     color: #000000;
-    margin-bottom: 50px;
+    text-align: center;
 }
 
+.about-us p {
+    font-family: var(--poppins);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 2;
+    padding: 10px;
+    color: #777777;
+}
+
+.about-us .function-col {
+    flex-basis: 31%;
+    background: var(--section-bg-color);
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 5px 12px;
+    box-sizing: border-box;
+    margin: 3%;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+}
+
+.about-us .function-col h3 {
+    color: var(--heading-text-color);
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* tooltips */
+
+.function-col .tooltiptext {
+    visibility: hidden;
+    width: 45%;
+    background-color: var(--heading-text-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    transition: .2s;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.function-col:hover .tooltiptext {
+    visibility: visible;
+    width: 90%;
+}
+
+/* About Us Section End */
+
+
+/* Upcoming Events Section Start */
 .upcoming-events {
-    background-color: var(--primary-color);
+    background-color: var(--section-bg-color);
+    background-image: var(--section-bg-img);
+    box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC; 
     padding: 50px 0px;
 }
 
@@ -215,7 +310,7 @@ a.landing-btn {
     font-weight: 500;
     font-size: 30px;
     text-align: center;
-    color: #000000;
+    color: var(--heading-text-color);
     margin-bottom: 50px;
 }
 
@@ -237,13 +332,13 @@ a.landing-btn {
 .event-img {
     display: block;
     width: 100%;
-    height: 18rem;
+    height: auto;
     object-fit: cover;
 }
 
 .event-title {
-    font-family: "Inter", sans-serif;
-    font-size: 25px;
+    font-family: var(--inter);
+    font-size: 20px;
     font-weight: 500;
     color: #0d0d0d;
     margin-bottom: 1.5rem;
@@ -272,23 +367,158 @@ a.landing-btn {
 }
 
 .event-btn:hover {
-    background-color: darken( #e6ecff, 2%)
+    background-color: darken( #e6ecff, 2%);
+    text-decoration: none;
 }
 
 .event-btn span {
     margin-left: 12px;
 }
 
+.more-container {
+    padding: 2.5em;
+    display: flex;
+    justify-content: center;
+}
+
+.view-more {
+    border-radius: 4px;
+    background-color:var(--primary-color);
+    background-image: linear-gradient(90deg, var(--primary-color), #dba719);
+    border: none;
+    box-shadow: 0px 10px 30px rgba(57, 56, 61, 0.205);
+    color: #FFFFFF;
+    text-align: center;
+    font: normal 500 16px/20px var(--montserrat);
+    padding: .8rem 2.2rem;
+    width: 300px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.view-more span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.view-more span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.view-more:hover span {
+    padding-right: 25px;
+}
+
+.view-more:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* Upcoming Events Section Start */
+
 /* Start Job Section */
 
 .jobs-listing {
-    background-color: var(--primary-color);
     padding: 50px 0px;
 }
+
+/* ==Owl Carousel Start */
+
+.job-wrapper{
+    width: 100%;
+/*     background-color: #e7e7e7; */
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+.job-carousel{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px;
+}
+
+.job-carousel .job-card{
+    font-family: var(--poppins);
+    color: var(--heading-text-color);
+    min-height: 200px;
+    margin: 20px 0;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: var(--section-bg-color);
+}
+
+.job-carousel .job-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.job-carousel .job-card .company {
+    margin-bottom: 0.5rem;
+    font-weight: 1000;
+}
+
+.job-carousel .job-card .position {
+    font-family: var(--poppins);
+    color: #777;
+    font-size: 20px;
+}
+
+.job-carousel .job-card .details {
+    font-family: var(--poppins);
+    font-size: 17px;
+}
+
+.owl-dots{
+    text-align: center;
+    margin-top: 0px;
+}
+
+.owl-dot{
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    outline: none;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    background-color: #ffffff !important;
+}
+
+.owl-dot.active,
+.owl-dot:hover{
+    background: var(--primary-color)!important;
+}
+/* ==Owl Carousel End */
+
+
 
 .job-card {
     min-width: 290px;
     margin-bottom: 20px !important;
+}
+
+.side-view-more {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+}
+
+.side-view-more a:hover {
+    text-decoration: none;
+}
+
+.job-title {
+    font-size: 15px;
+    font-family: var(--poppins);
+    color: #969696;
 }
 
 /* End Job Section */
@@ -299,7 +529,7 @@ a.landing-btn {
 
 .footer-link-section {
     padding: 30px 0px;
-    background-color: var(--light-color);
+    background-color: var(--primary-color-pair);
 }
 
 .footer-link-section ul {
@@ -308,8 +538,8 @@ a.landing-btn {
 }
 
 .footer-link-section h3 {
-    color: #000000;
-    border-bottom: #000000 solid 3px;
+    color: var(--light-color);
+    border-bottom: var(--light-color) solid 3px;
     padding-bottom: 2.5px;
     margin-bottom: 15px;
 }
@@ -319,7 +549,7 @@ a.landing-btn {
 }
 
 .footer-link-section li a {
-    color: #6b5b0d;
+    color: var(--light-color);
     text-decoration: none;
     transition: 500ms ease;
 }
@@ -328,9 +558,9 @@ a.landing-btn {
     padding-left: 5px;
 }
 
-.footer-logo {
-    padding: 10px 20px 20px 20px;
-    background-color: none;
+.copyright {
+    background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
 /* End Footer */

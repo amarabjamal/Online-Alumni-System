@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+:root {
+    --primary-color : #dbbb19;
+    --primary-color-pair : #E9CD3E;
+    --secondary-color  : #eadec7;
+    --heading-text-color :#a18247;
+    /* --primary-color : #854fee;
+    --secondary-color  : #4458dc; */
+    --light-color : #fff6ca;
+    --section-bg-color : #eadec7;
+    --bg-color:#f5f5f5;
+    --section-bg-img : url(../images/school.png);
+
+    /* Font Family Variables */
+    --montserrat : 'Montserrat', sans-serif;
+    --poppins : 'Poppins', sans-serif;
+    --inter : "Inter", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    background-color: var(--section-bg-color);
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.panel {
+    border-radius: 4px;
+    
+
+}
+ 
+.panel-heading {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.panel-body {
+    
+    font-family:'Montserrat', sans-serif;
+    background: #f1f1f1;
+    border: 0px;
+    padding: 1.5rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+    border-radius: 0px;
+    width: 100%;
+   
+    
+    
+}
+
+.center {
+    text-align:center;
+}
+
+
+
+.cancel-btn {
+    border-color:black;
+    color:black;
+    border-radius: 2px;
+    margin-left: 20px;
+    
+}
+
+
+

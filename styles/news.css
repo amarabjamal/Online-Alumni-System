@@ -1,0 +1,207 @@
+.container {
+
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* End Framework */
+
+/* Start main features*/
+
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 5px auto 0 auto;
+    color: #363062;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+}
+
+h2 {
+    color: #889eab;
+    font-family: 'Montserrat', sans-serif;
+
+
+}
+
+h3 {
+    color: #889eab;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+p {
+    line-height: 2;
+    color: #4c5e68;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a :hover{
+    color: #5f76db;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+
+/* End main features*/
+
+
+
+
+/* Start Header */
+
+header {
+    overflow: hidden;
+    width: 100%;
+    height: 80vh;
+    background: url(/Images/News.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.header .overlay {
+    overflow: hidden;
+    background: rgba(155, 155, 155, 0.5);
+    height: 100vh;
+
+}
+
+.header .navbar {
+    transition: 0.4s;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    background-color: #fff;
+    opacity: 0.8;
+    overflow: hidden;
+    padding-bottom: 20px;
+
+}
+
+.header .navbar .logo {
+    width: 150px;
+    height: 50px;
+    transition: 0.4s;
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.navbar-nav {
+    font-size: large;
+}
+
+/* End Header */
+
+/* Year */
+
+#h2 {
+    margin-bottom: 70px;
+}
+
+.Year {
+    margin-bottom: 70px;
+    font-family: "Poppins", sans-serif;
+    border-color: #e6e6e6;
+    vertical-align: middle;
+}
+
+
+
+
+/* Start News */
+.News {
+    margin-bottom: 70px;
+}
+
+.News .n {
+    padding: 10px;
+}
+
+.News .card {
+    background-color: white;
+}
+
+.News .card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.News .card .info {
+    padding: 20px;
+}
+
+.News .card .info h3 {
+    margin: 0;
+
+}
+
+.News .card .info p {
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* End News */
+
+/* Start Footer */
+ footer {
+    padding: 30px 0px;
+ }
+
+
+.footer-link-section ul {
+    -webkit-padding-start: 0;
+    padding-left: 5px;
+}
+
+.footer-link-section h3 {
+    color: #000000;
+    border-bottom: #000000 solid 3px;
+    padding-bottom: 2.5px;
+    margin-bottom: 15px;
+}
+
+.footer-link-section li {
+    list-style: none;
+}
+
+.footer-link-section li a {
+    color: #6b5b0d;
+    text-decoration: none;
+    transition: 500ms ease;
+}
+
+.footer-link-section li a:hover {
+    padding-left: 5px;
+}
+
+
+
+
+
+
+/* End Footer */

@@ -1,0 +1,119 @@
+@import url(../styles/variables.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%s;
+    
+}
+
+main {
+  margin-bottom: 40px;
+}
+
+.banner{
+  height: 500px;
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../images/job2.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.banner h1{
+  font-family: var(--montserrat);
+  padding-top: 170px;
+  font-size: 70px;
+  letter-spacing: 6px;
+  font-weight: 600;
+  text-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.banner p {
+  font-family: var(--poppins);
+  font-size: 17px;
+}
+
+.btn-check{  
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  color: white;
+  margin: 20px;
+  border-color: white;
+  border: 2px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.headtitle{
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 10px;
+  margin-top: 25px;
+  margin: auto;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  letter-spacing: 3px;
+}
+
+#main{
+    overflow: auto;
+}
+
+#myInput {
+  background-image: url("../images/search.png");
+  background-size: 30px ;
+  background-position: 15px 9px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 70px;
+  border: 3px solid var(--primary-color);
+  margin:0px auto; 
+  display:block;
+  margin-bottom: 25px;
+  border-radius: 0 0 10px 10px;
+}
+
+#myInput:focus {
+  outline: none;
+  background-color: var(--section-bg-color);
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#myTable th, #myTable td {
+  font-family: var(--poppins);
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#myTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  font-family: var(--poppins);
+  font-size: 17px;
+}
+
+#myTable tr {
+  background-color: #ffffff;
+}
+
+#myTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#myTable tr:hover {
+  background-color: #ddd;
+}
