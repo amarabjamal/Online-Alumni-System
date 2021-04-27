@@ -17,10 +17,9 @@ html,body {
 }
 
 body {
-    /* background-color: var(--secColor); */
+    background-color: var(--secColor);
     /* background-image: url(/images/alumni-bg.jpg); */
-    background-image: url(/images/alumni-bg.jpg);
-    background-size: 100%;
+    /* background-size: 100%; */
     /* background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/images/oriental-tiles.png); */
     /* background-color: #f5f5f5; */
     /* background-image: url(/images/oriental-tiles.png); */
@@ -39,8 +38,6 @@ body {
 .graduate-text{
     position: relative;
     padding: .5rem 1rem;
-    /* min-height: calc(100vh - 64.91px); */
-    
     background-color: transparent;
     
 }
