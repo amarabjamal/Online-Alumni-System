@@ -22,8 +22,8 @@ main{
     
     background-color: #d3d3d3;
     border-radius: 20px;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
 
 .last{
@@ -106,3 +106,4 @@ footer{
     border-radius: 15px;
     text-decoration: none;
 }
+
