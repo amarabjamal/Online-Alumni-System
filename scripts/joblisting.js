@@ -5,8 +5,7 @@ $("#formTest").submit(function(e){
     var location = $("input[name='location']").val();
     var contact = $("input[name='contact']").val();
 
- 
-    $(".data-table tbody").append("<tr data-name='"+name+"' data-email='"+email+"'data-location='"+location+"'data-contact='"+contact+"'><td>"+name+"</td><td>"+email+"</td><td>"+location+"</td><td>"+contact+"</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
+    $("#job-ads tbody").append("<tr data-name='"+name+"' data-email='"+email+"'data-location='"+location+"'data-contact='"+contact+"'><td>"+name+"</td><td>"+email+"</td><td>"+location+"</td><td>"+contact+"</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
 
     $("input[name='name']").val('');
     $("input[name='email']").val('');
@@ -61,7 +60,6 @@ $("body").on("click", ".btn-update", function(){
     $(this).parents("tr").find("td:eq(2)").text(location);
     $(this).parents("tr").find("td:eq(3)").text(contact);
 
- 
     $(this).parents("tr").attr('data-name', name);
     $(this).parents("tr").attr('data-email', email);
     $(this).parents("tr").attr('data-location', location);
