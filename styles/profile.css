@@ -10,7 +10,9 @@ html,
 body {
     height: 100%;
     overflow-x: hidden;
-    background-color: #ffeaa7;
+    /* background-color: #353b48; */
+    background-color: #f6e58d;
+    color: #2d3436;
     
 }
 
@@ -35,7 +37,8 @@ html {
     align-items: center;
     
     position: absolute;
-    top: 0px;
+    top: 2px;
+    left: 2px;
     cursor:pointer;
     z-index: 100;
     /* margin: auto;
@@ -45,11 +48,11 @@ html {
 }
 
 .back a{
-    color: black;
     font-weight: 700;
+    color: #2d3436;
 }
 
-.back a:hover{
+.back a:hover {
     text-decoration: none;
 }
 
@@ -64,19 +67,31 @@ html {
     padding: 30px;
 }
 
-/* sm */
-@media (max-width: 768px){
+@media screen and (max-width: 768px) {
+
+    .right-pane > div {
+        flex: 1;
+    }
+
     .right-pane {
-        background-color: pink;
         flex-direction: row;
-        padding: 0;
     }
 
-    .avatar img{
-        width: 200px;
-        height: 200px;
+    .avatar img {
+        width: 40%;
+        height: 40%;
+        text-align: start;
     }
 
+    .p2 {
+        margin-top: 5px;
+        justify-content: center;
+        text-align: justify;
+    }
+
+    .about-me {
+        width: 50%;
+    }
 }
 
 .avatar{
@@ -93,23 +108,25 @@ html {
 }
 
 .details {
-    margin: 10px 0px;
+    margin-top: 10px;
     text-align: center;
+    line-height: 2.5;
 }
 
 .details h2{
-    
-    font-size: 2vw;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.details p{
-    padding: 10px 0px;
-    font-size: 1.5vw;
+.about-me {
+    line-height: 1.5;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    white-space: wrap;
 }
 
 .socmed {
-    margin: 20px;
+    margin: 20px auto;
 }
 
 .socmed a{
@@ -185,33 +202,43 @@ html {
 }
 
 .timeline-content {
-    background-color: #f6e58d;
+    border-radius: 10px;
+    background-color: #dcdde1;
     margin-top: 10px;
     padding: 20px;
-    border-radius: 8px;
 }
 
 /* Project Card */
 
 .card {
-    margin: 10px 0px;
+    margin: 20px 0px;
     border: none;
 }
 
-/* .card:hover {
+.shadow {
+    background: transparent;
+    box-shadow:  7px 7px 9px #c6c7cb,
+                -7px -7px 9px #ffffff;
+}
+
+.project-float:hover {
     transform: scale(1,1);
     animation: float 2s ease-in-out infinite alternate-reverse both;
+    /* border: 5px solid blue; */
+    background-color: #f6e58d;
+    color: black;
+    border: none;
     
 }
 
 @keyframes float{
     0% {
-        transform: translate(10px);
+        transform: translateY(10px);
     }
     100% {
-        transform: translate(-10px);
+        transform: translateY(-10px);
     }
-} */
+}
 
 .skill-list {
     padding: 0;
