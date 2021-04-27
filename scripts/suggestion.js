@@ -1,16 +1,25 @@
 
 let suggestion = [
     "Siti Aisyah Atirah",
-    "Amirah",
-    "Amar",
-    "Imtihan",
-    "Farhan",
-    "Zeyad",
-    "Aisyah",
-    "Atirah",
-    "Amin",
-    "Amir",
-    "Anisah"
+    "Nur Amira binti Anuar",
+    "Imtihan Rahman",
+    "Farhan Sadiq",
+    "Zeyad Alaa Saad Adelmeguid Khalil",
+    "Amar Aiman bin Ab Jamal",
+    "Nur Afifah bini Azmi",
+    "Marsya Amelia binti Mohammad Noor Azman",
+    "Siti Sarah Aqilah binti Hishammuddin",
+    "Nadiatul Husna binti Khairul Anuar",
+    "Afiq Ammar bin Ali Azhar",
+    "Akmal Fareez",
+    "Alya Athirah binti Mohammad Bakri",
+    "Ng Yong Ming",
+    "Chooi He Lin",
+    "Chong Wei Hao",
+    "Chiam Yin Kia",
+    "Nicole Lai Yiyin",
+    "Tan Yan Wen",
+    "Lim Xin Joe"
 ];
 
 let yearSuggestion = [

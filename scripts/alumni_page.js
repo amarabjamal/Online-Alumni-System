@@ -41,6 +41,7 @@ function select(element) {
     //console.log(selectUserData); //untuk test if kita dapat select element tu
     inputBox.value = selectUserData; //passing the user selected list item data in textfield (apa yang user pilih written in textfield)
     searchSB.classList.remove("active"); //hide autocomplete box lepas tekan select
+    location.href = "profile.html";
 }
 
 function showSuggestions(list) {
