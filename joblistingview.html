@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="./images/favicon.svg">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -15,12 +16,11 @@
 
   <link href="styles/style.css" rel="stylesheet">
 
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet'
-    type='text/css'>
-
   <link href="styles/joblistingview.css" rel="stylesheet" type="text/css">
   <title>Job Listing | UM Alumni </title>
+
+  <!--Bootsrap icons-->
+  <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -77,81 +77,97 @@
   <!-- ===================================== End Header Area ===================================== -->
 
   <main>
+      <div class="banner text-center">
+        <h1>JOB LISTING</h1>
+        <p>Check out all the available job listings currently around you.</p>
+        <p>Cick the button below to advertise jobs.</p>
+  
+        <a href="joblisting.html">
+          <button class="btn-check"><i class="bi bi-plus-square-fill"></i> ADD A JOB LISTING</button>
+        </a>
+  
+      </div>
 
-    <div class="banner text-center">
-      <h1>WELCOME TO UM JOB LISTING</h1>
-      <p>Check out all the available job listings currently around you.</p>
-      <p>Find the job that suits you and make your dream come true. Click the button below to add your listing.</p>
-
-      <a href="joblisting.html">
-        <button class="btn-check"> ADD A JOB LISTING</button>
-      </a>
-
-    </div>
-
-    <div id="main">
-
-      <h2 class="headtitle">SEARCH JOBS</h2>
-
-      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="   Search for job titles..."
-        title="Type in a name">
-
-      <table id="myTable">
-        <tr class="header">
-          <th>JOB TITLE</th>
-          <th>SALARY</th>
-          <th>LOCATION/COMPANY</th>
-          <th>CONTACT INFO.</th>
-        </tr>
-        <tr>
-          <td>Lab Assistant</td>
-          <td>1500 RM</td>
-          <td>Faculty of Science</td>
-          <td>fosbiotechno@um.edu.my</td>
-        </tr>
-        <tr>
-          <td>Sales Executive</td>
-          <td>4000 RM</td>
-          <td>Micheal Scott Paper Company</td>
-          <td>michealparkour@hotmail.com</td>
-        </tr>
-        <tr>
-          <td>Regional Manager</td>
-          <td>8000 RM</td>
-          <td>Dunder Mifflin</td>
-          <td>dundermifflininfinity@gmail.com</td>
-        </tr>
-        <tr>
-          <td>Assistant Regional Manager</td>
-          <td>6000 RM</td>
-          <td>Dunder Mifflin</td>
-          <td>dundermifflininfinity@gmail.com</td>
-        </tr>
-        <tr>
-          <td>Receptionist</td>
-          <td>3000 RM</td>
-          <td>Bluth Company Ltd.</td>
-          <td>bluthcompany@hotmail.com</td>
-        </tr>
-        <tr>
-          <td>Lab Technician</td>
-          <td>2500 RM</td>
-          <td>Star Labs</td>
-          <td>barryallenistheflash@yahoo.com</td>
-        </tr>
-        <tr>
-          <td>Senior Chemist</td>
-          <td>4000 RM</td>
-          <td>Queens Consolidate</td>
-          <td>oliverqueenisarrow@gomail.com</td>
-        </tr>
-        <tr>
-          <td>HR Intern</td>
-          <td>1500 RM</td>
-          <td>Shelby Coroporation</td>
-          <td>thomasshelby@mailme.com</td>
-        </tr>
-      </table>
+      <div class="container">
+      <div id="main">
+  
+        <h2 class="headtitle">SEARCH JOBS</h2>
+  
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="   Search for job titles..."
+          title="Type in a name">
+  
+        <table id="myTable">
+          <tr class="header">
+            <th>JOB TITLE</th>
+            <th>SALARY</th>
+            <th>LOCATION/COMPANY</th>
+            <th>CONTACT INFO.</th>
+          </tr>
+          <tr>
+            <td>Lab Assistant</td>
+            <td>1500 RM</td>
+            <td>Faculty of Science</td>
+            <td>fosbiotechno@um.edu.my</td>
+          </tr>
+          <tr>
+            <td>Sales Executive</td>
+            <td>4000 RM</td>
+            <td>Micheal Scott Paper Company</td>
+            <td>michealparkour@hotmail.com</td>
+          </tr>
+          <tr>
+            <td>Regional Manager</td>
+            <td>8000 RM</td>
+            <td>Dunder Mifflin</td>
+            <td>dundermifflininfinity@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Assistant Regional Manager</td>
+            <td>6000 RM</td>
+            <td>Dunder Mifflin</td>
+            <td>dundermifflininfinity@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Receptionist</td>
+            <td>3000 RM</td>
+            <td>Bluth Company Ltd.</td>
+            <td>bluthcompany@hotmail.com</td>
+          </tr>
+          <tr>
+            <td>Lab Technician</td>
+            <td>2500 RM</td>
+            <td>Star Labs</td>
+            <td>barryallenistheflash@yahoo.com</td>
+          </tr>
+          <tr>
+            <td>Senior Chemist</td>
+            <td>4000 RM</td>
+            <td>Queens Consolidate</td>
+            <td>oliverqueenisarrow@gomail.com</td>
+          </tr>
+          <tr>
+            <td>HR Intern</td>
+            <td>1500 RM</td>
+            <td>Shelby Coroporation</td>
+            <td>thomasshelby@mailme.com</td>
+          </tr>
+        </table>
+      </div>
+  
+  
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center mt-5">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
     </div>
 
   </main>
