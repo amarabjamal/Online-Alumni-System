@@ -27,24 +27,29 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <ul class="navbar-nav last">
-                    <li class="nav-item">
-                        <a class="nav-link other" href="pending.html">Account Control</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle other" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="newevent.html">New Event</a>
-                                <a class="dropdown-item" href="editevent.html">Edit Event</a>                         
-                    </li>
-                    <li class="nav-item other">
-                        <a class="nav-link logout-btn" href="#">Log Out</a>
-                    </li>
-                </ul>
-            </div>
+      
+        <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link other" href="pending.html">Account Control</a>
+                </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle other" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Events
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="newevent.html">New Event</a>
+                <a class="dropdown-item" href="editevent.html">Edit Event</a>
+            </li>
+            <li class="nav-item" id="control">
+                <a class="nav-link logout-btn other" href="#">Log Out</a>
+            </li>
+            <li class="nav-item" id="control-lg">
+                <a class="nav-link other" href="#">Log Out</a>
+            </li>
+        </ul>
         </div>
-        
+    </div>
     </nav>
     
 
@@ -74,9 +79,27 @@
                         <input type="date" id="neweventdate"  class="form-control" name="date">
                     </div>
 
-                    <div class="form-group">
-                        <label >Venue</label><br>
-                        <input type="text" name="title" id="neweventvenue" class="form-control" placeholder="Venue">
+                    <div>
+                        <label for="VenueSelect">Venue</label><br>
+                            <select class="form-control" id="newvenue">
+                                <option>...</option>
+                                <option>Microsoft Teams</option>
+                                <option>Faculty of Arts and Social Sciences</option>
+                                <option>Faculty of Built Environment</option>
+                                <option>Faculty of Business and Accountancy</option>
+                                <option>Faculty of Computer Science and Information Technology</option>
+                                <option>Faculty of Creative Arts</option>
+                                <option>Faculty of Dentistry</option>
+                                <option>Faculty of Economics and Adminstration</option>
+                                <option>Faculty of Education</option>
+                                <option>Faculty of Engineering</option>
+                                <option>Faculty of Law</option>
+                                <option>Faculty of Language and Linguistics</option>
+                                <option>Faculty of Medicine</option>
+                                <option>Faculty of Pharmacy</option>
+                                <option>Faculty of Science</option>
+                                
+                            </select>
                     </div>
 
                     <div>
@@ -99,7 +122,7 @@
     </main>
 
 
-    <footer>
+    <footer id="control">
         <div class="bg-dark py-4">
             <div class="container text-center">
                 <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>

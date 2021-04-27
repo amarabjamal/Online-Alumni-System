@@ -22,8 +22,8 @@ main{
     
     background-color: #d3d3d3;
     border-radius: 20px;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
 
 .last{
@@ -94,6 +94,7 @@ footer{
     padding: 20px;
     background-color: #126e82;
     color: white;
+    text-align: center;
     border-radius: 15px;
 
 }
@@ -106,3 +107,23 @@ footer{
     border-radius: 15px;
     text-decoration: none;
 }
+
+.end-btn{
+    
+    align-content: flex-end;
+}
+
+#control-lg {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    #control-lg {
+        display: flex;
+    }
+
+    #control {
+        display: none;
+    }
+}
+

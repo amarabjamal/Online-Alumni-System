@@ -1,24 +1,24 @@
 var initlist = [
-    {name: "Farhan Sadiq", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
-    {name: "Xavier Emiliano", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
-    {name: "Roderick", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
-    {name: "Kyson", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
-    {name: "Chris Martin", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
-    {name: "Bryan", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
-    {name: "Michael Jordan", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
-    {name: "Yurem", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
-    {name: "Sayed", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
-    {name: "Arjun Rajesh", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
-    {name: "Sayed Farhan", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
-    {name: "Hasanul Alam", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
-    {name: "Jaden Smith", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
-    {name: "Sebastian Vettel", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
-    {name: "Tony Xavier", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
-    {name: "Damien Jones", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
-    {name: "Lewis hamilton", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
-    {name: "Max Verstappen", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
-    {name: "Luka Ghiotto", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
-    {name: "Stoffel Vandorne", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Farhan Sadiq", faculty: "Computer Science and Information Technology", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
+    {name: "Xavier Emiliano", faculty: "Science",email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
+    {name: "Roderick", faculty: "Education", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
+    {name: "Kyson", faculty: "Science", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
+    {name: "Chris Martin", faculty: "Education", email:"thisisanemail@gmail.com", age:19, batch:2023, status:"Pending"},
+    {name: "Bryan", faculty: "Business and Accountancy", email:"thisisanemail@yahoo.com", age:27, batch:2012, status:"Pending"},
+    {name: "Michael Jordan", faculty: "Business and Accountancy", email:"thisisanemail@hotmail.com", age:32, batch:2002, status:"Pending"},
+    {name: "Yurem", faculty: "Business and Accountancy", email:"thisisanemail@outlook.com", age:50, batch:2000, status:"Pending"},
+    {name: "Sayed", faculty: "Science", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
+    {name: "Arjun Rajesh", faculty: "Education", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Sayed Farhan", faculty: "Business and Accountancy", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
+    {name: "Hasanul Alam", faculty: "Education", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Jaden Smith", faculty: "Science", email:"thisisanemail@live.com", age:19, batch:2024, status:"Approved"},
+    {name: "Sebastian Vettel", faculty: "Computer Science and Information Technology", email:"thisisanemail@yahoo.com", age:19, batch:2025, status:"Approved"},
+    {name: "Tony Xavier", faculty: "Education", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Damien Jones", faculty: "Dentistry", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Lewis hamilton", faculty: "Education", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Max Verstappen", faculty: "Business and Accountancy", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
+    {name: "Luka Ghiotto", faculty: "Science", email:"thisisanemail@gmail.com", age:24, batch:2015, status:"Denied"},
+    {name: "Stoffel Vandorne", faculty: "Science", email:"thisisanemail@hotmail.com", age:20, batch:2019, status:"Denied"},
 
 ]
 
@@ -55,6 +55,7 @@ function buildtable(data){
         if(data[i].status == "Approved"){
             var row =   `<tr>
                         <td>${data[i].name}</td>
+                        <td>${data[i].faculty}</td>
                         <td>${data[i].email}</td>
                         <td  class="text-center">${data[i].age}</td>
                         <td  class="text-center">${data[i].batch}</td>
