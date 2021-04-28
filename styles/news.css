@@ -1,12 +1,10 @@
+@import url(../styles/variables.css);
+
 .container {
 
     width: 80%;
     margin: auto;
     overflow: hidden;
-}
-
-.clearfix {
-    clear: both;
 }
 
 /* End Framework */
@@ -16,32 +14,15 @@
 body {
     padding: 0;
     margin: 0;
-    text-align: center;
-    font-family: 'Merriweather', serif;
 }
 
-h1 {
-    font-size: 3rem;
-    margin: 5px auto 0 auto;
-    color: #363062;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 900;
-}
-
-h2 {
-    color: #889eab;
-    font-family: 'Montserrat', sans-serif;
-
-
-}
-
-h3 {
+.card h3 {
     color: #889eab;
     font-family: 'Montserrat', sans-serif;
 }
 
 
-p {
+.card p {
     line-height: 2;
     color: #4c5e68;
     font-family: 'Montserrat', sans-serif;
@@ -62,64 +43,19 @@ a:link{
 
 /* End main features*/
 
-
-
-
-/* Start Header */
-
-header {
-    overflow: hidden;
-    width: 100%;
-    height: 80vh;
-    background: url(/Images/News.jpg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    margin-bottom: 100px;
-}
-
-.header .overlay {
-    overflow: hidden;
-    background: rgba(155, 155, 155, 0.5);
-    height: 100vh;
-
-}
-
-.header .navbar {
-    transition: 0.4s;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 99;
-    background-color: #fff;
-    opacity: 0.8;
-    overflow: hidden;
-    padding-bottom: 20px;
-
-}
-
-.header .navbar .logo {
-    width: 150px;
-    height: 50px;
-    transition: 0.4s;
-    float: left;
-    margin-left: 20px;
-    margin-top: 10px;
-}
-
-.navbar-nav {
-    font-size: large;
-}
-
-/* End Header */
-
 /* Year */
 
-#h2 {
-    margin-bottom: 70px;
+#heading {
+    margin-bottom: 50px;
+    background-color: var(--primary-color);
+    background-image: url('../images/News.jpg');
+    background-position: center bottom;
+    text-align: center;
+    padding: 100px 100px;
+    width: 100%;
+    font-family: var(--montserrat);
+    font-size: 50px;
+    color: #ffffff;
 }
 
 .Year {
@@ -166,42 +102,3 @@ header {
 }
 
 /* End News */
-
-/* Start Footer */
- footer {
-    padding: 30px 0px;
- }
-
-
-.footer-link-section ul {
-    -webkit-padding-start: 0;
-    padding-left: 5px;
-}
-
-.footer-link-section h3 {
-    color: #000000;
-    border-bottom: #000000 solid 3px;
-    padding-bottom: 2.5px;
-    margin-bottom: 15px;
-}
-
-.footer-link-section li {
-    list-style: none;
-}
-
-.footer-link-section li a {
-    color: #6b5b0d;
-    text-decoration: none;
-    transition: 500ms ease;
-}
-
-.footer-link-section li a:hover {
-    padding-left: 5px;
-}
-
-
-
-
-
-
-/* End Footer */
