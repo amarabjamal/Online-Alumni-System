@@ -336,6 +336,7 @@ body {
 .cards {
     padding: .5rem 2rem;
     width: 100%;
+    margin: auto;
 }
 
 .card {
