@@ -74,6 +74,15 @@ main {
 
 }
 
+.delete-section {
+    padding: 15px 0;
+}
+
+.delete-section h3 {
+    color: red;
+    border-bottom: 1px solid #000;
+}
+
 
 
 
