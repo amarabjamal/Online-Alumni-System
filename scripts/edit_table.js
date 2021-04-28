@@ -73,9 +73,9 @@ function add_row(no){
     var new_year = document.getElementById("new_year").value = "";
     
 
-    var table = document.getElementById("data_table");
+    var table = document.getElementById("data_table1");
     var table_len = (table.rows.length)-1;
-    var row = table.insertR(table_len).outerHTML="<tr id='row"+table_len+"'><td id='desc"+table_len+"'>"+new_desc+"</td><td id='year"+table_len+"'>"+new_year+"</td><td><input type='button' id='edit_btn"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_btn"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
+    var row = table.insertRow(table_len).outerHTML="<tr id='row"+table_len+"'><td id='desc"+table_len+"'>"+new_desc+"</td><td id='year"+table_len+"'>"+new_year+"</td><td><input type='button' id='edit_btn"+table_len+"' value='Edit' class='edit' onclick='edit_row("+table_len+")'> <input type='button' id='save_btn"+table_len+"' value='Save' class='save' onclick='save_row("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_row("+table_len+")'></td></tr>";
    
 
     document.getElementById("new_desc").value="";
@@ -92,6 +92,7 @@ function add_r(no){
     var table = document.getElementById("data_table");
     var table_len = (table.rows.length)-1;
     var row = table.insertRow(table_len).outerHTML="<tr id='r"+table_len+"'><td id='project_name"+table_len+"'>"+new_pro+"</td><td id='date"+table_len+"'>"+new_date+"</td><td><input type='button' id='edit_btn"+table_len+"' value='Edit' class='edit' onclick='edit_r("+table_len+")'> <input type='button' id='save_btn"+table_len+"' value='Save' class='save' onclick='save_r("+table_len+")'> <input type='button' value='Delete' class='delete' onclick='delete_r("+table_len+")'></td></tr>";
+    
     document.getElementById("new_pro").value="";
     document.getElementById("new_date").value="";
 
