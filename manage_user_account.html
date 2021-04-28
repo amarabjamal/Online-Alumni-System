@@ -176,12 +176,13 @@
                             <h5>EXPERIENCE</h5><br>
                             <script type="text/javascript" src="scripts/edit_table.js"></script>
                             <div class="table-responsive">
-                                <table id="editable" class="table table-borderless mb-0">
+                                <table id="data_table1" class="table table-borderless mb-0">
                                     <thead class="table-head">
-                                        <tr>
+                                        <tr class="center">
 
                                             <th>Description</th>
                                             <th>Year</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -189,7 +190,7 @@
 
                                             <td id="desc1">Internship at ...</td>
                                             <td id="year1">2020-2021</td>
-                                            <td>
+                                            <td class="center">
                                                 <input type="button" id="edit_btn1" value="Edit" class="edit"
                                                     onclick="edit_row('1')">
                                                 <input type="button" id="save_btn1" value="Save" class="save"
@@ -202,7 +203,7 @@
                                         <tr>
                                             <td><input type="text" id="new_desc"></td>
                                             <td><input type="text" id="new_year"></td>
-                                            <td><input type="button" class="add" onclick="add_row();" value="Add"></td>
+                                            <td class="center"><input type="button" class="add" onclick="add_row();" value="Add"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -211,12 +212,13 @@
 
                             <h5>PROJECTS</h5><br>
                             <div class="table-responsive">
-                                <table class="table table-borderless mb-0">
+                                <table id="data_table"class="table table-borderless mb-0">
                                     <thead class="table-head">
-                                        <tr>
+                                        <tr class="center" >
 
                                             <th>Project Name</th>
                                             <th>Date</th>
+                                            <th>Edit</th>
 
                                         </tr>
                                     </thead>
@@ -225,7 +227,7 @@
 
                                             <td id="project_name1">Online Alumni System</td>
                                             <td id="date1">5.06.2020</td>
-                                            <td>
+                                            <td class="center">
                                                 <input type="button" id="edit_btn1" value="Edit" class="edit"
                                                     onclick="edit_r('1')">
                                                 <input type="button" id="save_btn1" value="Save" class="save"
@@ -239,7 +241,7 @@
 
                                             <td id="project_name2">Feseni UM</td>
                                             <td id="date2">7.11.2020</td>
-                                            <td>
+                                            <td class="center">
                                                 <input type="button" id="edit_btn1" value="Edit" class="edit"
                                                     onclick="edit_r('2')">
                                                 <input type="button" id="save_btn1" value="Save" class="save"
@@ -252,7 +254,7 @@
                                         <tr>
                                             <td><input type="text" id="new_project"></td>
                                             <td><input type="text" id="new_date"></td>
-                                            <td><input type="button" class="add" onclick="add_r();" value="Add"></td>
+                                            <td class="center"><input type="button" class="add" onclick="add_r();" value="Add"></td>
                                         </tr>
 
 

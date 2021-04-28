@@ -146,6 +146,7 @@ main {
     padding: 1.5rem;
     margin-top: 25px;
     margin-bottom: 10px;
+    border-radius: 15px;
     
 }
 
@@ -168,6 +169,12 @@ main {
     background: var(--primary-color);
     margin-top: 10px;
 
+}
+
+.delete {
+    color: whitesmoke;
+    background-color:orangered;
+    border-color: orangered;
 }
 
 /* Start Footer */
