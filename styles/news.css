@@ -51,11 +51,11 @@ a {
     text-decoration: none;
 }
 
-a :hover{
+a :hover {
     color: #5f76db;
 }
 
-a:link{
+a:link {
     text-decoration: none;
 }
 
@@ -165,12 +165,37 @@ header {
     margin-bottom: 0;
 }
 
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+
+
 /* End News */
 
 /* Start Footer */
- footer {
+footer {
     padding: 30px 0px;
- }
+}
 
 
 .footer-link-section ul {
