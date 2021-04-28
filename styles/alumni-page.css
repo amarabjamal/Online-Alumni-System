@@ -309,7 +309,7 @@ body {
 
     background: #2f3640;
     border-radius: 10px;
-    
+    border: 2px solid #2f3640;
     color: #f5f6fa;
 
     padding: 12px 24px;
@@ -329,7 +329,7 @@ body {
 .custom-select:focus,
 .custom-select:hover {
     outline: none;
-    border: 2px solid grey;
+    border: 2px solid #95afc0;
 }
 
 /* FOR ALUMNI PROFILE CARDS */
@@ -437,4 +437,19 @@ body {
     }
 }
 
+.pagination > li > a
+{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
 
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: black;
+    background-color: #FBCB3B;;
+    border-color: #ddd;
+}
