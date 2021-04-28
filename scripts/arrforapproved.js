@@ -73,3 +73,10 @@ function buildtable(data){
 }
 
 
+$("body").on("click", ".btn-danger", function(){
+    $(this).parents("tr").remove();
+});
+
+$("body").on("click", ".btn-success", function(){
+    $(this).parents("tr").remove();
+});
