@@ -1,5 +1,3 @@
-
-
 //AUTOCOMPLETE FEATURE - SEARCH FOR ALUMNI
 
 //getting all required elements
