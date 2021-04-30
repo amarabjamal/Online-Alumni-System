@@ -19,7 +19,7 @@ main {
     font-size: 30px;
     padding: 20px 50px;
     border-bottom: 2px solid var(--heading-text-color);
-    background-image: url('../images/job-seeker.png');
+    background-image: url('../images/job-icon.png');
     background-repeat: no-repeat;
     background-position: 20px 10px;
     background-size: 50px;
