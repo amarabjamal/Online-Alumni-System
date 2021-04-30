@@ -41,16 +41,40 @@ a:link{
 /* Year */
 
 #heading {
-    margin-bottom: 50px;
+    height: 500px;
     background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../images/job-bg.jpg");
     background-size: cover;
-    background-position: center -150px;
-    text-align: center;
-    padding: 100px 100px;
-    width: 100%;
+    background-position: center;
+    color: white;
+    margin-bottom: 40px;
+}
+
+#heading h1{
     font-family: var(--montserrat);
-    font-size: 50px;
-    color: #ffffff;
+    padding-top: 170px;
+    font-size: 70px;
+    letter-spacing: 6px;
+    font-weight: 600;
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.search-box {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--primary-color);
+    border: var(--primary-color);
+    color: #fff;
+}
+
+.search-button:hover {
+    color: #000;
+    background-color: var(--primary-color);
 }
 
 .Year {
