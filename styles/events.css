@@ -1,12 +1,9 @@
 @import url(../styles/variables.css);
 
 .container {
-
     width: 80%;
     margin: auto;
 }
-
-/* End Framework */
 
 /* Start main features*/
 
@@ -38,7 +35,6 @@ a :hover{
 a:link{
     text-decoration: none;
 }
-
 
 /* End main features*/
 
