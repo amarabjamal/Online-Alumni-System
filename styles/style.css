@@ -144,7 +144,7 @@ html {
     min-height: calc(100vh - 64.91px);
     padding: 50px 0px;
     background-color: #fff6ca;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/graduation.jpeg);
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/landing.jpeg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
