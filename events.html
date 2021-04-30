@@ -87,12 +87,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <form name="frmtahun" method="post" action="indextest.php">
-                    Select Year&nbsp;&nbsp;
+
                     <select name="txtyear"
-                        onChange="location.href='indexnews.php?year='+document.frmtahun.txtyear.value;" style="font-size: 15px;
-                                padding: 5px 10px;
-                                width: 15%;">
-                        <option selected value="2021">2021</option>
+                        onChange="location.href='indexnews.php?year='+document.frmtahun.txtyear.value;" class="form-control">
+                        <option>Select Year</option>
+                        <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
@@ -104,12 +103,9 @@
             </div>
             <div class="col-sm-6">
                 <form name="frmtahun" method="post" action="indextest.php">
-                    Select Month&nbsp;&nbsp;
                     <select name="txtmonth"
-                        onChange="location.href='indexnews.php?month='+document.frmtahun.txtmonth.value;" style="font-size: 15px;
-                                padding: 5px 10px;
-                                width: 15%;">
-                        <option selected value="All">All</option>
+                        onChange="location.href='indexnews.php?month='+document.frmtahun.txtmonth.value;" class="form-control">
+                        <option>Select month</option>
                         <option value="JEN">JEN</option>
                         <option value="FEB">FEB</option>
                         <option value="MAR">MAR</option>

@@ -42,9 +42,9 @@ a:link{
 
 #heading {
     margin-bottom: 50px;
-    background-color: var(--primary-color);
-    background-image: url('../images/News.jpg');
-    background-position: center bottom;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../images/job-bg.jpg");
+    background-size: cover;
+    background-position: center -150px;
     text-align: center;
     padding: 100px 100px;
     width: 100%;
