@@ -10,16 +10,13 @@ html,
 body {
     height: 100%;
     overflow-x: hidden;
-    /* background-color: #353b48; */
     background-color: #f6e58d;
     color: #2d3436;
-    
 }
 
 html {
     scroll-behavior: smooth;
 }
-
 
 .profile-card {
     width: 90%;
@@ -41,10 +38,6 @@ html {
     left: 2px;
     cursor:pointer;
     z-index: 100;
-    /* margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px; */
-
 }
 
 .back a{
@@ -172,7 +165,6 @@ html {
     width: 2px;
     height: 100%;
     background-color: #dfe6e9;
-
 }
 
 .timeline-item {
@@ -224,11 +216,9 @@ html {
 .project-float:hover {
     transform: scale(1,1);
     animation: float 2s ease-in-out infinite alternate-reverse both;
-    /* border: 5px solid blue; */
     background-color: #f6e58d;
     color: black;
     border: none;
-    
 }
 
 @keyframes float{
