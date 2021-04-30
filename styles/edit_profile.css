@@ -1,24 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-
-:root {
-    --primary-color : #dbbb19;
-    --primary-color-pair : #E9CD3E;
-    --secondary-color  : #eadec7;
-    --heading-text-color :#a18247;
-    /* --primary-color : #854fee;
-    --secondary-color  : #4458dc; */
-    --light-color : #fff6ca;
-    --section-bg-color : #eadec7;
-    --bg-color:#f5f5f5;
-    --section-bg-img : url(../images/school-pattern-bg.png);
-
-    /* Font Family Variables */
-    --montserrat : 'Montserrat', sans-serif;
-    --poppins : 'Poppins', sans-serif;
-    --inter : "Inter", sans-serif;
-}
+@import url('./variables.css');
 
 html,
 body {
@@ -41,7 +21,7 @@ main {
     
 
 }
- 
+
 .panel-heading {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
@@ -56,12 +36,8 @@ main {
     padding: 1.5rem;
     margin-top: 50px;
     margin-bottom: 50px;
-    
     border-radius: 15px;
     width: 100%;
-   
-    
-    
 }
 
 .center {

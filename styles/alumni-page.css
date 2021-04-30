@@ -18,18 +18,7 @@ html,body {
 
 body {
     background-color: var(--secColor);
-    /* background-image: url(/images/alumni-bg.jpg); */
-    /* background-size: 100%; */
-    /* background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/images/oriental-tiles.png); */
-    /* background-color: #f5f5f5; */
-    /* background-image: url(/images/oriental-tiles.png); */
-    
 }
-
-/* .navbar {
-    background-color: #E9CD3E !important;
-    border: none;
-} */
 
 .nav-link {
     font-weight: bold;
@@ -140,7 +129,6 @@ body {
     position: absolute;
     z-index: 100;
     right: 0;
-   
 }
 
 .autocom-box li{
@@ -154,7 +142,6 @@ body {
     cursor: pointer;
     display: none;
     transition: all 0.4s;
-
 }
 
 .search-box.active .autocom-box li{
@@ -269,7 +256,6 @@ body {
     position: absolute;
     z-index: 100;
     right: 0;
-   
 }
 
 .autocom-batch li{
@@ -421,11 +407,9 @@ body {
 .card:hover {
     transform: scale(1,1);
     animation: float 2s ease-in-out infinite alternate-reverse both;
-    /* border: 5px solid blue; */
     background-color: #f5f6fa;
     color: #192a56;
     border: none;
-    
 }
 
 @keyframes float{
@@ -435,21 +419,4 @@ body {
     100% {
         transform: translateY(-10px);
     }
-}
-
-.pagination > li > a
-{
-    background-color: white;
-    color: black;
-    font-weight: bold;
-}
-
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover
-{
-    color: black;
-    background-color: #FBCB3B;;
-    border-color: #ddd;
 }

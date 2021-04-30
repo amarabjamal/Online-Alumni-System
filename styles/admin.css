@@ -19,7 +19,6 @@ main{
 }
 
 .logout-btn{
-    
     background-color: #d3d3d3;
     border-radius: 20px;
     padding-left: 20px !important;
@@ -57,11 +56,9 @@ a:hover{
 
 .activea{
     background-color: #132c33;
-    
 }
 
 table{
-    
     margin: 20px;
 }
 
@@ -77,7 +74,6 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    
 }
 
 .banner-back{
@@ -87,7 +83,6 @@ footer{
     color: white;
     border-radius: 15px;
     letter-spacing: 5px;
-
 }
 
 .banner-sm-btn{
@@ -96,7 +91,6 @@ footer{
     color: white;
     text-align: center;
     border-radius: 15px;
-
 }
 
 .banner-sm-btn:hover{
@@ -109,7 +103,6 @@ footer{
 }
 
 .end-btn{
-    
     align-content: flex-end;
 }
 
