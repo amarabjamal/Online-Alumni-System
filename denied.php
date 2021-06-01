@@ -1,3 +1,7 @@
+<?php
+include_once("include/config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -80,8 +84,18 @@
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    <script type="text/javascript"src="scripts/arrfordenied.js">
-                    </script>
+
+
+
+
+                    <?php
+
+                    ?>
+
+
+
+
+
                 </tbody>
                 </table>
 
