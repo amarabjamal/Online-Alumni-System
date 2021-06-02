@@ -108,5 +108,10 @@ include_once("include/config.php");
     <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
     
     <script src="scripts.js"></script>
+    
+    <?php
+        $pdo = null;
+    ?>
+
 </body>
 </html>

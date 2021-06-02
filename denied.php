@@ -1,5 +1,14 @@
 <?php
 include_once("include/config.php");
+
+include_once("include/userapprovalsystem.php");
+
+$sql = "select * from user, faculty WHERE user.facid = faculty.facid AND userstatus = 'denied' order by userid asc";
+$result = $pdo->query($sql);
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -59,9 +68,9 @@ include_once("include/config.php");
         <div class="sidenav-bg">
             <div class="container">
                 <nav class="nav nav-fill nav-pills sidenav">
-                    <a class="nav-link " href="pending.html">Pending Accounts</a>
-                    <a class="nav-link" href="approved.html">Approved Accounts</a>
-                    <a class="nav-link activea" href="denied.html">Denied Accounts</a>
+                    <a class="nav-link" href="pending.php">Pending Accounts</a>
+                    <a class="nav-link" href="approved.php">Approved Accounts</a>
+                    <a class="nav-link activea" href="denied.php">Denied Accounts</a>
                 </nav>
             </div>
         </div>
@@ -89,7 +98,18 @@ include_once("include/config.php");
 
 
                     <?php
-
+                        while ($res = $result->fetch()) {
+                            // the keys match the field names from the table
+                                echo "<tr>";
+                                echo "<td>".$res['username']."</td>";
+                                echo "<td>".$res['facname']."</td>";
+                                echo "<td>".$res['useremail']."</td>";
+                                echo "<td class=\"text-center\">69</td>";
+                                echo "<td class=\"text-center\">".$res['userbatch']."</td>";
+                                echo "<td class=\"text-center\">".$res['userstatus']."</td>";
+            
+                                echo "<td><a name=\"reapprove\" href=\"denied.php?id=$res[userid]&condition=approve\">Approve</a></td>";
+                            }
                     ?>
 
 
@@ -122,5 +142,9 @@ include_once("include/config.php");
         </div>
     </footer>
     
+    <?php
+        $pdo = null;
+    ?>
+
 </body>
 </html>

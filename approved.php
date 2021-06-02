@@ -1,5 +1,11 @@
 <?php
 include_once("include/config.php");
+
+include_once("include/userapprovalsystem.php");
+
+$sql = "select * from user, faculty WHERE user.facid = faculty.facid AND userstatus = 'approved' order by userid asc";
+$result = $pdo->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -59,9 +65,9 @@ include_once("include/config.php");
         <div class="sidenav-bg">
             <div class="container">
                 <nav class="nav nav-fill nav-pills sidenav">
-                    <a class="nav-link" href="pending.html">Pending Accounts</a>
-                    <a class="nav-link activea" href="approved.html">Approved Accounts</a>
-                    <a class="nav-link" href="denied.html">Denied Accounts</a>
+                    <a class="nav-link" href="pending.php">Pending Accounts</a>
+                    <a class="nav-link activea" href="approved.php">Approved Accounts</a>
+                    <a class="nav-link" href="denied.php">Denied Accounts</a>
                 </nav>
             </div>
         </div>
@@ -83,8 +89,23 @@ include_once("include/config.php");
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    <script type="text/javascript"src="scripts/arrforapproved.js">
-                    </script>
+                    
+                    <?php
+                            while ($res = $result->fetch()) {
+                                // the keys match the field names from the table
+                                    echo "<tr>";
+                                    echo "<td>".$res['username']."</td>";
+                                    echo "<td>".$res['facname']."</td>";
+                                    echo "<td>".$res['useremail']."</td>";
+                                    echo "<td class=\"text-center\">69</td>";
+                                    echo "<td class=\"text-center\">".$res['userbatch']."</td>";
+                                    echo "<td class=\"text-center\">".$res['userstatus']."</td>";
+                
+                                    echo "<td><a href=\"approved.php?id=$res[userid]&condition=deny\">Deny</a></td>";
+                                }
+                    ?>    
+
+
                 </tbody>
                 </table>
 
@@ -111,5 +132,9 @@ include_once("include/config.php");
         </div>
     </footer>
     
+    <?php
+        $pdo = null;
+    ?>
+
 </body>
 </html>

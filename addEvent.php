@@ -1,3 +1,7 @@
+<?php
+    include_once("include/config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -137,5 +141,10 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
     
     <script src="scripts/scripts.js"></script>
+    
+    <?php
+        $pdo = null;
+    ?>
+
 </body>
 </html>
