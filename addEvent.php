@@ -1,5 +1,81 @@
 <?php
     include_once("include/config.php");
+
+    if(isset($_POST['submit'])) {	
+        //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
+
+        $eventimage = $_FILES['file'];
+
+        $fileName = $_FILES['file']['name'];
+        $fileTmpName = $_FILES['file']['tmp_name'];
+        $fileSize = $_FILES['file']['size'];
+        $fileError = $_FILES['file']['error'];
+        $fileType = $_FILES['file']['type'];
+
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        echo "$fileSize";
+
+        if(in_array($fileActualExt, $allowed)){
+            if($fileError ===0){
+                if($fileSize < 149627600){
+                    $fileNameNew = uniqid('', true).".".$fileActualExt;
+                    $fileDest = 'images/event/'.$fileNameNew;
+                    move_uploaded_file($fileTmpName, $fileDest);
+                    header("Location: editevent.php?uploadsuccess");
+
+                }else{
+                    echo "File too big";
+                }
+            }else{
+                echo "There was an error";
+            }
+        } else{
+            echo "You cannot upload files of this type!";
+        }
+
+
+        $eventname = $_POST['eventname'];
+        $eventstartdate = $_POST['eventstartdate'];
+        $eventenddate = $_POST['eventenddate'];
+        $venue = $_POST['venue'];
+        $eventbody = $_POST['body'];
+        $imagepath = $fileDest;
+        
+        echo "$eventname";
+            
+        
+            // if all the fields are filled (not empty) 
+            
+            //Step 3. Execute the SQL query.	
+            //insert data to database			
+            try {
+              // begin a transaction
+              $pdo->beginTransaction();
+              // a set of queries: if one fails, an exception will be thrown
+              $sql = "INSERT INTO events(eventname,imagepath,eventdesc, eventstartdatetime, eventenddatetime, venueid, adminid) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',1,1)";
+              echo "poopoo";
+              $pdo->query($sql);
+              // if we arrive here, it means that no exception was thrown
+              // which means no query has failed, so we can commit the
+              // transaction
+              $pdo->commit();
+              echo "poopoo";
+            } catch (Exception $e) {
+              // we must rollback the transaction since an error occurred
+              // with insert
+              $pdo->rollback();
+            }
+        
+            //Step 4. Process the results.
+            //display success message & the new data can be viewed on index.php
+            
+
+            header('Location: http://localhost/Online-alumni-system/editevent.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -72,20 +148,30 @@
 
         <div class="container">
             <div class="formthing">
-                <form action="addEvent.html" method="post">
+                <form action="addEvent.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label >Event Name</label><br>
-                        <input type="text" name="title" id="neweventname" class="form-control" placeholder="Event Name">
+                        <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name">
                     </div>
                     
                     <div>
-                        <label> Date of Event</label><br>
-                        <input type="date" id="neweventdate"  class="form-control" name="date">
+                        <label>Image</label><br>
+                        <input type="file" id="file" name="file" class="form-control">
+                    </div>
+
+                    <div>
+                        <label> Date of Event Start</label><br>
+                        <input type="datetime-local" id="eventstartdate" name="eventstartdate" class="form-control">
+                    </div>
+
+                    <div>
+                        <label> Date of Event End</label><br>
+                        <input type="datetime-local" id="eventstartdate" name="eventenddate" class="form-control">
                     </div>
 
                     <div>
                         <label for="VenueSelect">Venue</label><br>
-                            <select class="form-control" id="newvenue">
+                            <select class="form-control" id="venue" name="venue">
                                 <option>...</option>
                                 <option>Microsoft Teams</option>
                                 <option>Faculty of Arts and Social Sciences</option>
@@ -114,7 +200,7 @@
                     
 
                     <div class="py-3">
-                        <button type="button" class="btn btn-success btn-block">Submit</button>
+                        <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </div>
 
                 </form>
@@ -125,7 +211,7 @@
 
     </main>
 
-
+    <!--
     <footer id="control">
         <div class="bg-dark py-4">
             <div class="container text-center">
@@ -133,7 +219,7 @@
             </div>
         </div>
     </footer>
-
+    -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

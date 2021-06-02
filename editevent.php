@@ -1,5 +1,8 @@
 <?php
 include_once("include/config.php");
+
+$sql = "select * from events, venue WHERE venue.venueid = events.venueid order by eventid asc";
+$result = $pdo->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -75,16 +78,29 @@ include_once("include/config.php");
                 <thead>
                     <tr>
                         <th style="width:5%" class="text-center">No.</th>
-                        <th style="width:20%">Event Name</th>
-                        <th style="width:15%">Venue</th>
+                        <th style="width:12%">Event Name</th>
+                        <th style="width:33%">Venue</th>
                         <th style="width:38%">Brief</th>
                         <th style="width:12%" class="text-center">Date</th>
                         <th style="width:10%" class="text-center">Control</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
-                    <script type="text/javascript"src="scripts/eventarr.js">
-                    </script>
+
+                    <?php
+                        while ($res = $result->fetch()) {
+                            // the keys match the field names from the table
+                                echo "<tr>";
+                                echo "<td>".$res['eventid']."</td>";
+                                echo "<td>".$res['eventname']."</td>";
+                                echo "<td>".$res['venuename']."</td>";
+                                echo "<td>".$res['eventdesc']."</td>";
+                                echo "<td class=\"text-center\">".$res['eventstartdatetime']."</td>";
+                                echo "<td><a href=\"editevent.php?id=$res[eventid]&condition=approve\">Edit</a> | <a href=\"editevent.php?id=$res[eventid]&condition=delete\">Delete</a></td>";
+                            }
+                    ?>
+
+
                 </tbody>
                 </table>
         </div>
@@ -93,7 +109,7 @@ include_once("include/config.php");
 
     </main>
 
-
+    <!--
     <footer id="control">
         <div class="bg-dark py-4" >
             <div class="container text-center">
@@ -101,7 +117,8 @@ include_once("include/config.php");
             </div>
         </div>
     </footer>
-    
+    -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
