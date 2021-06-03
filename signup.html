@@ -38,7 +38,7 @@
                     <h1 class="font-weight-bold pb-3">SIGN UP</h1>
                     <hr>
                     <h4>Create your account</h4>
-                    <form action="#">
+                    <form method="POST" action="signup.php">
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                                         </div>
-                                        <input id="fullname" type="text" class="form-control" placeholder="" aria-label="fullname" required>
+                                        <input id="fullname" name="fullname" type="text" class="form-control" placeholder="" aria-label="fullname" required>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
                                         </div>
-                                        <input id="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                        <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
                                         </div>
-                                        <input id="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
+                                        <input id="password" name="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
                                     </div>
                                     <small id="passwordHelpBlock" class="form-text text-muted"></small>
                                 </div>
@@ -89,7 +89,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
                                         </div>
-                                        <input id="cpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
+                                        <input id="cpassword" name="cpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
                                     </div>
                                     <small id="passwordCheckBlock" class="form-text text-muted"></small>
                                 </div>
@@ -105,7 +105,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text"><i class="bi bi-calendar-fill"></i></label>
                                         </div>
-                                        <select class="custom-select" id="classOf" required>
+                                        <select class="custom-select" id="classOf" name="classOf" required>
                                             <option value="">Choose...</option>
                                         </select>
                                     </div>
@@ -121,7 +121,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text"><i class="bi bi-bar-chart-fill"></i></label>
                                         </div>
-                                        <select class="custom-select" id="faculty" required>
+                                        <select class="custom-select" id="faculty" name="faculty" required>
                                             <option value="">Choose...</option>
                                         </select>
                                     </div>
@@ -137,7 +137,7 @@
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="consent" required>
+                                    <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
                                     <label class="form-check-label" for="exampleCheck1">I agree to the <a href="#">Terms &amp; Conditions</a></label>
                                 </div>
                             </div>
