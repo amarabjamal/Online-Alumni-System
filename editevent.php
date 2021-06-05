@@ -1,7 +1,7 @@
 <?php
 include_once("include/config.php");
 
-$sql = "select * from events, venue WHERE venue.venueid = events.venueid order by eventid asc";
+$sql = "select * from events, venues WHERE venues.id = events.venue_id order by events.id asc";
 $result = $pdo->query($sql);
 ?>
 
@@ -91,12 +91,12 @@ $result = $pdo->query($sql);
                         while ($res = $result->fetch()) {
                             // the keys match the field names from the table
                                 echo "<tr>";
-                                echo "<td>".$res['eventid']."</td>";
-                                echo "<td>".$res['eventname']."</td>";
-                                echo "<td>".$res['venuename']."</td>";
-                                echo "<td>".$res['eventdesc']."</td>";
-                                echo "<td class=\"text-center\">".$res['eventstartdatetime']."</td>";
-                                echo "<td><a href=\"editevent.php?id=$res[eventid]&condition=approve\">Edit</a> | <a href=\"editevent.php?id=$res[eventid]&condition=delete\">Delete</a></td>";
+                                echo "<td>".$res[0]."</td>";
+                                echo "<td>".$res['name']."</td>";
+                                echo "<td>".$res['venue']."</td>";
+                                echo "<td>".$res['content']."</td>";
+                                echo "<td class=\"text-center\">".$res['start_at']."</td>";
+                                echo "<td><a href=\"editevent.php?id=$res[0]&condition=approve\">Edit</a> | <a href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
                             }
                     ?>
 

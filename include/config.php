@@ -2,7 +2,7 @@
 //Step 1: Connecting to a Database using PDO API
 // modify these variables for your installation
 try {	
-	$connectionString = "mysql:host=localhost;dbname=wptest1";
+	$connectionString = "mysql:host=localhost;dbname=alumni_system";
 	$databaseUsername = 'user1';
 	$databasePassword = 'user1abc';
 

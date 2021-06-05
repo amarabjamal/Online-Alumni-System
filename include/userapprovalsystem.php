@@ -6,7 +6,7 @@ if(isset($_GET["id"]) && $_GET["condition"]=='approve')
         // begin a transaction
         $pdo->beginTransaction();
         // a set of queries: if one fails, an exception will be thrown
-        $sql = "update user set userstatus='Approved' where userid=$id";
+        $sql = "update users set status_id=2 where id=$id";
         $pdo->query($sql);//run the query & returns a PDOStatement object
         // if we arrive here, it means that no exception was thrown
         // which means no query has failed, so we can commit the
@@ -29,7 +29,7 @@ if(isset($_GET["id"]) && $_GET["condition"]=='deny')
         // begin a transaction
         $pdo->beginTransaction();
         // a set of queries: if one fails, an exception will be thrown
-        $sql = "update user set userstatus='Denied' where userid=$id";
+        $sql = "update users set status_id=3 where id=$id";
         $pdo->query($sql);//run the query & returns a PDOStatement object
         // if we arrive here, it means that no exception was thrown
         // which means no query has failed, so we can commit the

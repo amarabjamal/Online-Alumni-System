@@ -3,7 +3,7 @@ include_once("include/config.php");
 
 include_once("include/userapprovalsystem.php");
 
-$sql = "select * from user, faculty WHERE user.facid = faculty.facid AND userstatus = 'denied' order by userid asc";
+$sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Denied\" order by users.id asc";
 $result = $pdo->query($sql);
 
 
@@ -86,7 +86,6 @@ $result = $pdo->query($sql);
                         <th style="width:20%">Name</th>
                         <th style="width:25%">Faculty</th>
                         <th style="width:20%">Email</th>
-                        <th style="width:5%" class="text-center">Age</th>
                         <th style="width:5%" class="text-center">Batch</th>
                         <th style="width:10%" class="text-center">Status</th>
                         <th style="width:15%" class="text-center">Control</th>
@@ -101,14 +100,14 @@ $result = $pdo->query($sql);
                         while ($res = $result->fetch()) {
                             // the keys match the field names from the table
                                 echo "<tr>";
-                                echo "<td>".$res['username']."</td>";
-                                echo "<td>".$res['facname']."</td>";
-                                echo "<td>".$res['useremail']."</td>";
-                                echo "<td class=\"text-center\">69</td>";
-                                echo "<td class=\"text-center\">".$res['userbatch']."</td>";
-                                echo "<td class=\"text-center\">".$res['userstatus']."</td>";
+                                echo "<td>".$res['full_name']."</td>";
+                                echo "<td>".$res['faculty']."</td>";
+                                echo "<td>".$res['email']."</td>";
+                                
+                                echo "<td class=\"text-center\">".$res['grad_year']."</td>";
+                                echo "<td class=\"text-center\">".$res['status']."</td>";
             
-                                echo "<td><a name=\"reapprove\" href=\"denied.php?id=$res[userid]&condition=approve\">Approve</a></td>";
+                                echo "<td><a name=\"reapprove\" href=\"denied.php?id=$res[0]&condition=approve\">Approve</a></td>";
                             }
                     ?>
 
