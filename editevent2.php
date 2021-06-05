@@ -1,7 +1,7 @@
 <?php
     include_once("include/config.php");
 
-    if(isset($_POST['submit'])) {	
+    if(isset($_POST['submit']) && isset($_POST['eventid'])) {	
         //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
 
         $eventimage = $_FILES['file'];
@@ -37,7 +37,7 @@
             echo "You cannot upload files of this type!";
         }
 
-
+        $eventid = $_POST['eventid'];
         $eventname = $_POST['eventname'];
         $eventstartdate = $_POST['eventstartdate'];
         $eventenddate = $_POST['eventenddate'];
@@ -56,12 +56,13 @@
               // begin a transaction
               $pdo->beginTransaction();
               // a set of queries: if one fails, an exception will be thrown
-              $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',(SELECT id FROM venues WHERE venue = '$venue'),1)";
+              $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= (SELECT id FROM venues WHERE venue = '$venue'), admin_id = 1 WHERE id = '$eventid'";
               echo "poopoo";
               $pdo->query($sql);
               // if we arrive here, it means that no exception was thrown
               // which means no query has failed, so we can commit the
               // transaction
+              header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
               $pdo->commit();
               echo "poopoo";
             } catch (Exception $e) {
@@ -75,6 +76,19 @@
             
 
             header('Location: http://localhost/Online-alumni-system/editevent.php');
+    }
+
+    if(isset($_GET['id'])) {	
+        $id = $_GET['id'];
+
+        $sql = "SELECT * FROM events, venues WHERE venues.id = events.venue_id AND events.id = $id";
+        $result = $pdo->query($sql);
+
+        $inp = $result->fetch();
+
+        $inp['start_at'] = str_replace(" ", "T", $inp['start_at']) ;
+        $inp['end_at'] = str_replace(" ", "T", $inp['end_at']) ;
+        $inp['content'] = str_replace( '&', '&amp;', $inp['content'] );
     }
 ?>
 
@@ -148,10 +162,11 @@
 
         <div class="container">
             <div class="formthing">
-                <form action="addEvent.php" method="post" enctype="multipart/form-data">
+                <form action="editevent2.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label >Event Name</label><br>
-                        <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name">
+                        <input type="text" hidden id="eventid" name="eventid" value = "<?php echo "".$inp['0'].""; ?>">
+                        <label >Event Name </label><br>
+                        <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name" value="<?php echo "".$inp['name'].""; ?>">
                     </div>
                     
                     <div>
@@ -160,13 +175,13 @@
                     </div>
 
                     <div>
-                        <label> Date of Event Start</label><br>
-                        <input type="datetime-local" id="eventstartdate" name="eventstartdate" class="form-control">
+                        <label> Date of Event Start </label><br>
+                        <input type="datetime-local" id="eventstartdate" name="eventstartdate" class="form-control" value="<?php echo "".$inp['start_at'].""; ?>">
                     </div>
 
                     <div>
                         <label> Date of Event End</label><br>
-                        <input type="datetime-local" id="eventstartdate" name="eventenddate" class="form-control">
+                        <input type="datetime-local" id="eventstartdate" name="eventenddate" class="form-control" value="<?php echo "".$inp['end_at'].""; ?>">
                     </div>
 
                     <div>
@@ -194,7 +209,7 @@
 
                     <div>
                         <label >Content of Post</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="body" id="body"><?php echo "".$inp['content'].""; ?></textarea>
                     </div>
                     
                     

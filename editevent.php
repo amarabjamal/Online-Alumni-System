@@ -1,8 +1,31 @@
 <?php
 include_once("include/config.php");
 
+if (isset($_GET['id']) && $_GET['condition'] == "delete"){
+    $id = $_GET['id'];
+    echo "$id";
+
+    try {
+        // begin a transaction
+        $pdo->beginTransaction();
+        // a set of queries: if one fails, an exception will be thrown
+        $sql = "DELETE FROM events WHERE id=$id";
+        $pdo->query($sql);//run the query & returns a PDOStatement object
+        // if we arrive here, it means that no exception was thrown
+        // which means no query has failed, so we can commit the
+        // transaction
+        $pdo->commit();
+    } catch (Exception $e) {
+        // we must rollback the transaction since an error occurred
+        // with insert
+        $pdo->rollback();
+    }
+}
+
 $sql = "select * from events, venues WHERE venues.id = events.venue_id order by events.id asc";
 $result = $pdo->query($sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +119,7 @@ $result = $pdo->query($sql);
                                 echo "<td>".$res['venue']."</td>";
                                 echo "<td>".$res['content']."</td>";
                                 echo "<td class=\"text-center\">".$res['start_at']."</td>";
-                                echo "<td><a href=\"editevent.php?id=$res[0]&condition=approve\">Edit</a> | <a href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
+                                echo "<td><a href=\"editevent2.php?id=$res[0]\">Edit</a> | <a href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
                             }
                     ?>
 
