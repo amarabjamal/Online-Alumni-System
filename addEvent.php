@@ -1,6 +1,8 @@
 <?php
     include_once("include/config.php");
 
+    
+
     if(isset($_POST['submit'])) {	
         //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
 
@@ -56,7 +58,7 @@
               // begin a transaction
               $pdo->beginTransaction();
               // a set of queries: if one fails, an exception will be thrown
-              $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',(SELECT id FROM venues WHERE venue = '$venue'),1)";
+              $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',(SELECT id FROM venues WHERE venue = '$venue'),'$_SESSION[admin_id]')";
               echo "poopoo";
               $pdo->query($sql);
               // if we arrive here, it means that no exception was thrown
@@ -103,7 +105,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="pending.html"><img class="logo" src="images/um-logo.png" width="175"  alt="logo"></a>
+            <a class="navbar-brand" href="pending.php"><img class="logo" src="images/um-logo.png" width="175"  alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -111,21 +113,21 @@
         <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
                 <li class="nav-item ">
-                    <a class="nav-link other" href="pending.html">Account Control</a>
+                    <a class="nav-link other" href="pending.php">Account Control</a>
                 </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle other" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Events
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="addEvent.html">New Event</a>
-                <a class="dropdown-item" href="editEvent.html">Edit Event</a>
+                <a class="dropdown-item" href="addEvent.php">New Event</a>
+                <a class="dropdown-item" href="editEvent.php">Edit Event</a>
             </li>
             <li class="nav-item" id="control">
-                <a class="nav-link logout-btn other" href="#">Log Out</a>
+                <a class="nav-link logout-btn other" href="adminlogout.php">Log Out</a>
             </li>
             <li class="nav-item" id="control-lg">
-                <a class="nav-link other" href="#">Log Out</a>
+                <a class="nav-link other" href="adminlogout.php">Log Out</a>
             </li>
         </ul>
         </div>

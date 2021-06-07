@@ -1,6 +1,8 @@
 <?php
 //Step 1: Connecting to a Database using PDO API
 // modify these variables for your installation
+session_start();
+
 try {	
 	$connectionString = "mysql:host=localhost;dbname=alumni_system";
 	$databaseUsername = 'user1';
@@ -17,6 +19,11 @@ catch(PDOException $e)
     {
     echo "Database connection failed: " . $e->getMessage();
 }
+
+if(isset($_SESSION['admin_id'])){
+    echo "".$_SESSION['admin_id']."";
+}   
+
 
 
 ?>
