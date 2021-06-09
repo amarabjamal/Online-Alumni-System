@@ -100,7 +100,7 @@ $result = $pdo->query($sql);
                                     echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                     echo "<td class=\"text-center\">".$res['status']."</td>";
                 
-                                    echo "<td><a href=\"approved.php?id=$res[0]&condition=deny\">Deny</a></td>";
+                                    echo "<td><a href=\"approved.php?id=$res[0]&condition=deny\">Deny</a> | <a href=\"edituser.php?id=$res[0]&condition=edit\">Edit</a></td>";
                                 }
                     ?>    
 
