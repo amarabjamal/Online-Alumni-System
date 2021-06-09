@@ -35,6 +35,7 @@ else {
         if (password_verify($password, $user['password'])) { 
             $_SESSION['logged_in'] = true;
             $_SESSION['id'] = $user['id'];
+            $_SESSION['name'] = $user['full_name'];
             //echo "Login success";
             header('location: index.php');
             //header('location: profile.php?action=login_success');
