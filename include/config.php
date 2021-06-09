@@ -12,4 +12,6 @@ try{
     die();
 }
 
+//echo "Successfully connected to database";
+
 ?>
