@@ -36,7 +36,7 @@ else {
             $_SESSION['logged_in'] = true;
             $_SESSION['id'] = $user['id'];
             //echo "Login success";
-            header('location: index.html');
+            header('location: index.php');
             //header('location: profile.php?action=login_success');
             //exit(0);
         } else {
