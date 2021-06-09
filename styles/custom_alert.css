@@ -27,7 +27,7 @@
         transform: translate(-50%, -150%);
     }
     100%{
-        transform: translate(-50%, 10%);
+        transform: translate(-50%, 125%);
     }
 }
 .alert.hide{
@@ -35,7 +35,7 @@
 }
 @keyframes hide_slide {
     0%{
-        transform: translate(-50%, 10%);
+        transform: translate(-50%, 125%);
     }
     100%{
         transform: translate(-50%, -150%);

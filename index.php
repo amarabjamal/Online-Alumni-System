@@ -20,8 +20,13 @@ session_start();
         
         <link href="styles/style.css" rel="stylesheet">
 
-        <!--Owl Carousel-->
+        <!-- Owl Carousel -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+        <!-- Custom Alert  -->
+        <link rel="stylesheet" href="styles/custom_alert.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
         <title>UM Alumni</title>
     </head>
@@ -39,6 +44,31 @@ session_start();
     <!--OwlCarousel-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+    <?php if($_GET['action'] == 'logout_success') { ?>
+    <div class="alert show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Logged out successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert').removeClass("show");
+    $('.alert').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+    
     <!-- ===================================== Start Header Area ===================================== -->
     <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
@@ -342,11 +372,6 @@ session_start();
     </footer>
 
     <!-- ===================================== End Footer Area ===================================== -->
+
 </body>
 </html>
-
-<?php
-    if($_GET['action'] == 'logout_success') {
-        echo "<script> alert('Log out success!'); </script>";
-    }
-?>
