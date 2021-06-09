@@ -75,7 +75,9 @@ session_start();
             <div class="container">
 
                 <div class="landing-content">
-            
+                    <?php
+                        if($_SESSION['logged_in'] == TRUE) { 
+                    ?>
                     <h1>Welcome, UM Alumni!</h1>
 
                     <p class="landing-desc">
@@ -87,6 +89,16 @@ session_start();
                     <a href="./signup.html">
                         <button type="button" class="landing-btn-2">Join Now</button>
                     </a>
+                    <?php } else {?>
+                    <h1>Hello, <?php echo $_SESSION['name']; ?>!</h1>
+
+                    <p class="landing-desc">
+                        Interact with other alumni, find a job oppurtunity and get the latest news &amp; events!
+                        <br><br>
+                        <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
+                    </p>    
+                    
+                    <?php }?>
 
                 </div>
                 
