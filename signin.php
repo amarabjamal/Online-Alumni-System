@@ -49,7 +49,7 @@
                     <h1 class="font-weight-bold pb-3">SIGN IN</h1>
                     <hr>
                     <h4>Login into your account</h4>
-                    <form action="">
+                    <form method="POST" action="process_signin.php">
 
                         <!--  Email Input Start -->
                         <div class="form-row">
@@ -91,7 +91,7 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <div class="input-group mb-3">
-                                        <select id="status"  class="custom-select" required>
+                                        <select id="status" name="status"  class="custom-select" required>
                                             <option value="alumni">Alumni</option>
                                             <option value="admin">Admin</option>
                                         </select>
