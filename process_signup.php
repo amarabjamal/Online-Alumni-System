@@ -64,12 +64,8 @@ if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || 
 } else {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    echo "check 1";
-
     $sql = "SELECT * FROM users WHERE email = '".$email."'";
     $result = $conn->query($sql);
-
-    echo "check 2";
     
     if($result->num_rows > 0){
 
@@ -99,27 +95,6 @@ if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || 
         }
 
         $conn = null;
-
-        /* echo "check 3";
-        try {
-            $stmt = $conn->prepare("INSERT INTO users (full_name, email, password, grad_year, fac_id, status_id) VALUES (?, ?, ?, ?, ?, ?)");
-            echo "check 4";
-            $stmt->bindParam();
-            $stmt->bindParam("sssiii", $full_name, $email, $hashed_password, $grad_year, $faculty, 1);
-            echo "check 5";
-            $stmt->execute();
-            
-            echo "<h1>Registration successful.</h1><br>";
-
-            echo "<a href=\"signin.php\">Sign In</a>";
-        } catch (PDOException $e) {
-            echo "Errro";
-            echo "Error :". $e->getMessage();
-        }
-        
-    
-        $stmt->close();
-        $conn->close(); */
     
     }
 }
