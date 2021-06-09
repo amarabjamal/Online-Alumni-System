@@ -43,7 +43,7 @@ include_once("include/config.php");
                     <h1 class="font-weight-bold pb-3">SIGN UP</h1>
                     <hr>
                     <h4>Create your account</h4>
-                    <form action="#">
+                    <form method="POST" action="signup_processing.php">
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
