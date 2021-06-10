@@ -37,7 +37,7 @@
             <div class="row form-body">
                 
                 <!-- Side Image Area Start -->
-                <div class="col-md-5 login-image">
+                <div class="col-md-6 login-image">
                     <img src="./images/signin.svg" alt="" width="100%">
                 </div>
 
@@ -45,10 +45,20 @@
 
                 <!-- Form Area Start -->
 
-                <div class="col-md-7 px-5 pt-5">
+                <div class="col-md-6 px-5 pt-5">
                     <h1 class="font-weight-bold pb-3">SIGN IN</h1>
                     <hr>
                     <h4>Login into your account</h4>
+                    
+                    <?php if($_GET['action'] == 'login_failed') { ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Incorrect username or password.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
+
                     <form method="POST" action="process_signin.php">
 
                         <!--  Email Input Start -->
@@ -107,7 +117,7 @@
                             </div>
                         </div>
                         <a href="#" onclick="alert('Function not supported yet.')">Forgot Password?</a>
-                        <p>Don't have an account? <a href="./signup.html">Sign Up</a></p>
+                        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                     </form>
                 </div>
 
