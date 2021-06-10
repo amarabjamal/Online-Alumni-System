@@ -1,3 +1,39 @@
+<?php
+
+    //database connection
+    //database connection
+    $servername = "localhost";
+    $username = "aisyah";
+    $password = "test1234";
+
+    try {
+        // connect with database
+        $conn = new PDO("mysql:host=$servername; dbname=alumni_profile", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //echo "Connected successfully";
+        $id = $_GET['id'];
+        $result = $conn->prepare("SELECT * FROM user WHERE UserID =:id");
+        $result->bindParam(":id",$id);
+        $result->execute();
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
+        //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
+        $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
+        $faculty->execute();
+        $f = $faculty->fetch(PDO::FETCH_ASSOC);
+        $f['UserID'] = $id;
+        print_r($f);
+    } 
+    catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+
+    //close connection
+    $conn = null;
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +116,7 @@
     <div class="row profile-card">
         <p class="back">
             <img src="images/arrow-left-short.svg" alt="go back" width="30px" height="30px" style="margin: auto;">
-            <a href="alumni.html">back</a>
+            <a href="alumni.php">back</a>
         </p>
 
         <div class="col-md-4 right-pane">
@@ -101,12 +137,11 @@
 
             <div class="row p2">
                 <div class="details">
-                    <h2>Name</h2>
-                    <p class="about-me">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tortor
-                        vitae lobortis commodo. Donec.</p>
-                    <p>Course</p>
-                    <p>2019-2022</p>
-                    <p>+601234567890</p>
+                    <h2><?php echo $row['UserName']; ?></h2>
+                    <p class="about-me"><?php echo $row['AboutMe']; ?></p>
+                    <p><?php echo $f['FacName']; ?></p>
+                    <p><?php echo $row['UserGradDate']; ?></p>
+                    <p><?php echo $row['UserPhoneNumber']; ?></p>
                 </div>
             </div>
         </div>

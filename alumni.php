@@ -12,7 +12,10 @@
         //echo "Connected successfully";
 
         // Fetch UserName and UserProfilePic from User
-        $user = $conn->query("SELECT UserName, UserProfilePic FROM user")->fetchAll();
+        $user = $conn->query("SELECT * FROM user")->fetchAll();
+        // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
+        // WHERE sm.UserID = us.UserID")->fetchAll();
+        
     } 
     catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
@@ -183,20 +186,22 @@
             
             <div class="col-md-3 col-sm-6 col-xs-12 spc">
                 <div class="card">
-                    <img src="<?php echo $col['UserProfilePic']; ?>" alt="man">
+                    <img src="images/avatar.png" alt="man">
                     <div class="desc">
                         <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['UserName']); ?></p>
                         <p class="abtMe">About Me</p>
                     </div>
+
                     <div class="socmed">
-                        <a href="https://www.facebook.com/login/web/"><i
-                                class="fa fa-facebook-official bg-transparent"></i></a>
-                        <a href="https://github.com/login"><i class="fa fa-github-square bg-transparent"></i></a>
-                        <a href="https://www.linkedin.com/uas/login"><i
-                                class="fa fa-linkedin-square bg-transparent"></i></a>
+                    <a href="<?php echo $column['UserName'];?>"><i
+                            class="fa fa-facebook-official bg-transparent"></i></a>
+                    <a href="<?php echo $column['UserName'];?>"><i class="fa fa-github-square bg-transparent"></i></a>
+                    <a href="<?php echo $column['UserName'];?>"><i
+                            class="fa fa-linkedin-square bg-transparent"></i></a>
                     </div>
+                    
                     <div class="button">
-                        <a class="btn btn-primary" href="profile.html" role="button">View Profile</a>
+                        <a class="btn btn-primary" href="profile.php?id=<?php echo $col['UserID']?>" role="button">View Profile</a>
                     </div>
                 </div>
             </div>
