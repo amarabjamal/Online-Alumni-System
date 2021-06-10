@@ -167,7 +167,7 @@ include_once("include/config.php");
                                 <button type="submit" class="btn1 mt-3 mb-5">Create Account</button>
                             </div>
                         </div>
-                        <p>Already have an account? <a href="./signin.html">Sign In</a></p>
+                        <p>Already have an account? <a href="signin.php">Sign In</a></p>
                     </form>
                 </div>
             </div>
