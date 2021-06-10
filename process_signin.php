@@ -61,7 +61,7 @@ else {
             header('location: pending.php?action=login_success');
             exit(0);
         } else {
-            header("Location: pending.php?action=login_failed");
+            header("Location: signin.php?action=login_failed");
         }
     }
 }
