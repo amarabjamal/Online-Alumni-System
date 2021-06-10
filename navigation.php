@@ -2,7 +2,9 @@
 
 session_start();
 
-if($_SESSION['logged_in'] == TRUE) { ?>
+//need to handle for admin **not yet
+
+if(isset($_SESSION['logged_in']) == TRUE) { ?>
     <!-- Logged in navbar html goes here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
