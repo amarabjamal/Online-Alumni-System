@@ -65,6 +65,45 @@ if($_SESSION['logged_in'] == TRUE) {
                         </div>
                     <?php } ?>
 
+                    <?php if($_GET['action'] == 'register_success') { ?>
+                        <style>
+                            .fas {
+                                margin-right: 10px;
+                                color: green;
+                            }
+
+                            .modal-footer {
+                                display: flex;
+                                justify-content: center;
+                            }
+                        </style>
+                        <!-- Modal -->
+                        <div class="modal fade" id="success_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-check-circle"></i>Success</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Your account has been succesfully created. <br>
+                                    Please wait for approval to access all the features.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function(){
+                                $("#success_message").modal('show');
+                            });
+                        </script>
+                    <?php } ?>
+
                     <form method="POST" action="process_signin.php">
 
                         <!--  Email Input Start -->
