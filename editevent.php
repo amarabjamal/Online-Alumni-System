@@ -64,7 +64,7 @@ $result = $conn->query($sql);
             <h2 class="banner-back">Edit Event</h2>
         </div>
         <div class="container py-4 ">
-                <a href="addEvent.html" class="banner-sm-btn">Create a new event</a>
+                <a href="addEvent.php" class="banner-sm-btn">Create a new event</a>
         </div>
         
         

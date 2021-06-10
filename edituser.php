@@ -19,7 +19,9 @@ if(isset($_GET['id'])) {
 if(isset($_POST['submit']) && isset($_POST['id'])) {	
     //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
 
-    $eventimage = $_FILES['file'];
+    $userid = $_POST['id'];
+
+    $image = $_FILES['file'];
 
     $fileName = $_FILES['file']['name'];
     $fileTmpName = $_FILES['file']['tmp_name'];
@@ -40,22 +42,25 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDest = 'images/profile/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDest);
-                
-
+                header("Location: edituser.php?id=$userid&condition=edit");
             }else{
                 echo "File too big";
+                
             }
         }else{
             echo "There was an error";
+            header("Location: edituser.php?id=$userid&condition=edit");
+        exit;
         }
     } else{
         echo "You cannot upload files of this type!";
+        header("Location: edituser.php?id=$userid&condition=edit");
+        exit;
     }
 
-    $userid = $_POST['id'];
+    
     $username = $_POST['name'];
     $useremail = $_POST['email'];
-    $userpass = $_POST['pass'];
     $usergradyear = $_POST['gradyear'];
     $imagepath = $fileDest;
     $userenrollyear = $_POST['enrollyear'];
@@ -86,14 +91,40 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
             $conn->beginTransaction();
             //header('Location: http://localhost/Online-alumni-system/approved.php?2');
             // a set of queries: if one fails, an exception will be thrown
-            $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', password = '$userpass', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
+            $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
             echo "poopoo";
             $conn->query($sql);
             // if we arrive here, it means that no exception was thrown
             // which means no query has failed, so we can commit the
             // transaction
-            header('Location: http://localhost/Online-alumni-system/approved.php? ');
+            
             $conn->commit();
+            header('Location: http://localhost/Online-alumni-system/approved.php? ');
+            echo "poopoo";
+            
+          } catch (Exception $e) {
+            // we must rollback the transaction since an error occurred
+            // with insert
+            $conn->rollback();
+          }
+    } else{
+        $sql = "INSERT INTO countries (country) VALUES ('$usercountry')";
+        $conn->query($sql);
+        try {
+            // begin a transaction
+            //header('Location: http://localhost/Online-alumni-system/approved.php?1');
+            $conn->beginTransaction();
+            //header('Location: http://localhost/Online-alumni-system/approved.php?2');
+            // a set of queries: if one fails, an exception will be thrown
+            $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
+            echo "poopoo";
+            $conn->query($sql);
+            // if we arrive here, it means that no exception was thrown
+            // which means no query has failed, so we can commit the
+            // transaction
+            
+            $conn->commit();
+            header('Location: http://localhost/Online-alumni-system/approved.php? ');
             echo "poopoo";
             
           } catch (Exception $e) {
@@ -186,18 +217,10 @@ $result = $conn->query($sql);
 
                     <div class="form-group">
                         <label >User Email Address </label><br>
-                        <input required type="text" id="email" name="email" class="form-control" placeholder="User Email" value="<?php echo "".$inp['email'].""; ?>">
+                        <input required type="email" id="email" name="email" class="form-control" placeholder="User Email" value="<?php echo "".$inp['email'].""; ?>">
                     </div>
 
-                    <div class="form-group">
-                        <label >Password </label><br>
-                        <input required type="password" id="pass" name="pass" class="form-control" placeholder="" value="123456">
-                    </div>
-
-                    <div class="form-group">
-                        <label >Re-type Password </label><br>
-                        <input required type="password" id="rpass" name="rpass" class="form-control" placeholder="" value="123456">
-                    </div>
+                    
                     
                     <div>
                         <label>Image</label><br>
@@ -328,7 +351,7 @@ $result = $conn->query($sql);
                     -->
                 </form>
 
-                <form action="resetpassword.php" method="post">
+                <form action="adminresetpassword.php" method="post">
                         <input type="text" name = "resetaccid" value="<?php echo "".$inp['0'].""; ?>" hidden>
                         <input type="submit" class="btn btn-primary btn-block" value="Reset Password">
                 </form>

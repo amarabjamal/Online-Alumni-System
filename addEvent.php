@@ -27,7 +27,7 @@
                     $fileNameNew = uniqid('', true).".".$fileActualExt;
                     $fileDest = 'images/event/'.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDest);
-                    header("Location: editevent.php?uploadsuccess");
+                    
 
                 }else{
                     echo "File too big";
@@ -37,6 +37,8 @@
             }
         } else{
             echo "You cannot upload files of this type!";
+            header("Location: addevent.php?condition=wrongfile");
+            exit;
         }
 
 
