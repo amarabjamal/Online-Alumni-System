@@ -1,3 +1,15 @@
+<?php
+include_once("include/config.php");
+
+session_start();
+
+if($_SESSION['logged_in'] == TRUE) { 
+
+    header('Location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="./images/favicon.svg">
     
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap 4.0 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
@@ -17,6 +28,9 @@
 
     <!--Bootsrap icons-->
     <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <title>Sign Up | UM Alumni</title>
 </head>
@@ -31,21 +45,21 @@
     <section class="Form my-4 mx-5">
         <div class="container">
             <div class="row form-body">
-                <div class="col-md-5 login-image">
+                <div class="col-md-6 login-image">
                     <img src="./images/singup.svg" alt="" width="100%">
                 </div>
-                <div class="col-md-7 px-5 pt-5">
+                <div class="col-md-6 px-5 pt-5">
                     <h1 class="font-weight-bold pb-3">SIGN UP</h1>
                     <hr>
                     <h4>Create your account</h4>
-                    <form action="#">
+                    <form method="POST" action="process_signup.php">
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="fullname">Full Name</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-user-graduate"></i></i></span>
                                         </div>
                                         <input id="fullname" name="full_name" type="text" class="form-control" placeholder="" aria-label="fullname" required>
                                     </div>
@@ -58,7 +72,7 @@
                                     <label for="email">Email</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></i></span>
                                         </div>
                                         <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
                                     </div>
@@ -72,7 +86,7 @@
                                     <label for="password">Password</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
                                         </div>
                                         <input id="password" name="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
                                     </div>
@@ -87,7 +101,7 @@
                                     <label for="cpassword">Confirm Password</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
                                         <input id="cpassword" name="rpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
                                     </div>
@@ -103,7 +117,7 @@
 
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text"><i class="bi bi-calendar-fill"></i></label>
+                                            <label class="input-group-text"><i class="fas fa-calendar"></i></label>
                                         </div>
                                         <select id="classOf" name="grad_year" class="custom-select" required>
                                             <option value="">Choose...</option>
@@ -119,10 +133,25 @@
                                     <label for="faculty">Faculty</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text"><i class="bi bi-bar-chart-fill"></i></label>
+                                            <label class="input-group-text"><i class="fas fa-graduation-cap"></i></label>
                                         </div>
                                         <select id="faculty" name="faculty" class="custom-select" required>
                                             <option value="">Choose...</option>
+                                            <?php
+                                                try {
+                                                    $sql = "SELECT * from faculties ORDER BY id ASC";
+                                                    $faculties = $conn->query($sql);
+
+                                                    while ($faculty = $faculties->fetch()) {
+                                                        echo "<option value=\"".$faculty['id']."\">".$faculty['faculty']."</option>";
+                                                    }
+                                                        
+                                                    $conn = null;
+                                                } catch(Exception $e) {
+                                                    echo "<script>alert('Error: can't load faculties')</script>";
+                                                }
+                                                
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -131,14 +160,13 @@
 
                         <script>
                             loadAgeSelector();
-                            loadFacultySelector();
                         </script>
 
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="consent" required>
-                                    <label class="form-check-label" for="exampleCheck1">I agree to the <a href="#">Terms &amp; Conditions</a></label>
+                                    <label class="form-check-label" for="exampleCheck1">I agree to the Terms &amp; Conditions</label>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +176,7 @@
                                 <button type="submit" class="btn1 mt-3 mb-5">Create Account</button>
                             </div>
                         </div>
-                        <p>Already have an account? <a href="./signin.html">Sign In</a></p>
+                        <p>Already have an account? <a href="signin.php">Sign In</a></p>
                     </form>
                 </div>
             </div>
