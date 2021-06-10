@@ -1,25 +1,17 @@
 <?php
 
-    //database connection
-    $servername = "localhost";
-    $username = "aisyah";
-    $password = "test1234";
+include_once("include/config.php");
 
-    try {
-        // connect with database
-        $conn = new PDO("mysql:host=$servername; dbname=alumni_profile", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //echo "Connected successfully";
 
-        // Fetch UserName and UserProfilePic from User
-        $user = $conn->query("SELECT * FROM user")->fetchAll();
-        // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
-        // WHERE sm.UserID = us.UserID")->fetchAll();
+    //     // Fetch UserName and UserProfilePic from User
+    //     $user = $conn->query("SELECT * FROM user")->fetchAll();
+    //     // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
+    //     // WHERE sm.UserID = us.UserID")->fetchAll();
         
-    } 
-    catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    // } 
+    // catch(PDOException $e) {
+    //     echo "Connection failed: " . $e->getMessage();
+    // }
 
     //close connection
     $conn = null;
@@ -62,48 +54,7 @@
 
 
     <!-- ===================================== Start Header Area ===================================== -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120"
-                        alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link normal-link" href="./index.html#about-us">About Us</a>
-                        <a class="nav-item nav-link normal-link" href="./events.html">Events</a>
-                        <a class="nav-item nav-link normal-link" href="./jobs.html">Jobs</a>
-                        <a class="nav-item nav-link normal-link active" href="./alumni.html">Alumni</a>
-                        <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
-
-                        <div id="control" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="profile-picture" src="./images/avatar-2.png" alt="profile picture">
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="./manageAccount.html">Your profile</a>
-                                <a class="dropdown-item" href="./editProfile.html">Edit profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./index.html">Log out</a>
-                            </div>
-                        </div>
-
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./manageAccount.html">Your
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="editProfile.html">Edit
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./index.html">Log out</a>
-
-                    </div>
-
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
 
     <!-- ROW FOR HEADER -->
@@ -201,7 +152,7 @@
                     </div>
                     
                     <div class="button">
-                        <a class="btn btn-primary" href="profile.php?id=<?php echo $col['UserID']?>" role="button">View Profile</a>
+                        <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['UserID']?>" role="button">View Profile</a>
                     </div>
                 </div>
             </div>

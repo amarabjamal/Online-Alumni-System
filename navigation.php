@@ -18,7 +18,7 @@ if($_SESSION['logged_in'] == TRUE) { ?>
                         <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                         <a class="nav-item nav-link normal-link" href="events.html">Events</a>
                         <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
-                        <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
+                        <a class="nav-item nav-link normal-link" href="alumni.php">Alumni</a>
                         <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
 
                         <div id="control" class="nav-item dropdown">
@@ -60,7 +60,7 @@ if($_SESSION['logged_in'] == TRUE) { ?>
                     <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                     <a class="nav-item nav-link normal-link" href="events.html">Events</a>
                     <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
-                    <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
+                    <a class="nav-item nav-link normal-link" href="alumni.php">Alumni</a>
                     <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
                     <a class="nav-item nav-link normal-link" href="signin.php">Sign In</a>
                     <a class="nav-item nav-link register-btn" href="signup.php">Sign Up</a>
