@@ -7,6 +7,6 @@ if(isset($_SESSION['admin_id'])){
     session_destroy(); 
 }
 
-header("Location: index.html")
+header('Location: index.php?action=logout_success');
 
 ?>

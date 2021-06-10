@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if($_SESSION['logged_in'] == TRUE) { 
+
+    header('Location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +17,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="./images/favicon.svg">
     
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap 4.0 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
     <!--Style css-->
     <link href="styles/login.css" rel="stylesheet">
 
-    <!--Bootsrap icons-->
-    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <title>Sign In | UM Alumni</title>
 </head>
@@ -33,7 +43,7 @@
             <div class="row form-body">
                 
                 <!-- Side Image Area Start -->
-                <div class="col-md-5 login-image">
+                <div class="col-md-6 login-image">
                     <img src="./images/signin.svg" alt="" width="100%">
                 </div>
 
@@ -41,11 +51,21 @@
 
                 <!-- Form Area Start -->
 
-                <div class="col-md-7 px-5 pt-5">
+                <div class="col-md-6 px-5 pt-5">
                     <h1 class="font-weight-bold pb-3">SIGN IN</h1>
                     <hr>
                     <h4>Login into your account</h4>
-                    <form action="">
+                    
+                    <?php if($_GET['action'] == 'login_failed') { ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Incorrect username or password.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
+
+                    <form method="POST" action="process_signin.php">
 
                         <!--  Email Input Start -->
                         <div class="form-row">
@@ -53,7 +73,7 @@
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <div class="input-group mb-3">
-                                        <input id="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                        <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
                                     </div>
                                 </div>
                             </div>
@@ -66,12 +86,14 @@
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <div class="input-group mb-3">
-                                        <input id="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
+                                        <input id="password" name="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <span class="eye" onclick="togglePasswordDisplay()">
-                                                    <i id="show" class="bi bi-eye-fill"></i>
-                                                    <i id="hide" class="bi bi-eye-slash-fill"></i>
+                                                    <!-- <i id="show" class="bi bi-eye-fill"></i>
+                                                    <i id="hide" class="bi bi-eye-slash-fill"></i> -->
+                                                    <i id="show" class="fas fa-eye"></i>
+                                                    <i id="hide" class="fas fa-eye-slash"></i>
                                                 </span>
                                             </span>
                                         </div>
@@ -87,7 +109,7 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" id="status" required>
+                                        <select id="status" name="status"  class="custom-select" required>
                                             <option value="alumni">Alumni</option>
                                             <option value="admin">Admin</option>
                                         </select>
@@ -103,7 +125,7 @@
                             </div>
                         </div>
                         <a href="#" onclick="alert('Function not supported yet.')">Forgot Password?</a>
-                        <p>Don't have an account? <a href="./signup.html">Sign Up</a></p>
+                        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                     </form>
                 </div>
 

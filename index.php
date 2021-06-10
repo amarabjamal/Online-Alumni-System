@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,8 +20,13 @@
         
         <link href="styles/style.css" rel="stylesheet">
 
-        <!--Owl Carousel-->
+        <!-- Owl Carousel -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+        <!-- Custom Alert  -->
+        <link rel="stylesheet" href="styles/custom_alert.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
         <title>UM Alumni</title>
     </head>
@@ -29,36 +40,64 @@
 
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
+    
     <!--OwlCarousel-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-    <!-- ===================================== Start Header Area ===================================== -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120" alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-
-                    <a class="nav-item nav-link normal-link" href="#about-us">About Us</a>
-                    <a class="nav-item nav-link normal-link" href="./events.html">Events</a>
-                    <a class="nav-item nav-link normal-link" href="./jobs.html">Jobs</a>
-                    <a class="nav-item nav-link normal-link" href="./alumni.html">Alumni</a>
-                    <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
-                    <a class="nav-item nav-link normal-link" href="./signin.html">Sign In</a>
-                    <a class="nav-item nav-link register-btn" href="./signup.html">Sign Up</a>
-
-                    
-                </div>
     
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Display message for successful logout -->
+    <?php if($_GET['action'] == 'logout_success') { ?>
+    <div class="alert show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Logged out successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert').removeClass("show");
+    $('.alert').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
+    <!-- Display message for successful login -->
+    <?php if($_GET['action'] == 'login_success') { ?>
+        <div class="alert show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Logged in successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert').removeClass("show");
+    $('.alert').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+    
+    <!-- ===================================== Start Header Area ===================================== -->
+    <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
     
     <i onclick="topFunction()" id="myBtn" class="bi bi-arrow-up-circle-fill"></i>
@@ -93,7 +132,9 @@
             <div class="container">
 
                 <div class="landing-content">
-            
+                    <?php
+                        if($_SESSION['logged_in'] !== TRUE) { 
+                    ?>
                     <h1>Welcome, UM Alumni!</h1>
 
                     <p class="landing-desc">
@@ -105,6 +146,16 @@
                     <a href="./signup.html">
                         <button type="button" class="landing-btn-2">Join Now</button>
                     </a>
+                    <?php } else {?>
+                    <h1>Hello, <?php echo $_SESSION['name']; ?>!</h1>
+
+                    <p class="landing-desc">
+                        Interact with other alumni, find a job oppurtunity and get the latest news &amp; events!
+                        <br><br>
+                        <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
+                    </p>    
+                    
+                    <?php }?>
 
                 </div>
                 
@@ -348,5 +399,6 @@
     </footer>
 
     <!-- ===================================== End Footer Area ===================================== -->
+
 </body>
 </html>
