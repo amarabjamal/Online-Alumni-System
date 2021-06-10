@@ -27,14 +27,6 @@ $rpassword = $_POST['rpassword'];
 $grad_year = (int)$_POST["grad_year"];
 $faculty = (int)$_POST["faculty"];
 
-/* echo $full_name."<br>";
-echo $email."<br>";
-echo $password."<br>";
-echo $grad_year."<br>";
-echo gettype($grad_year);
-echo $faculty."<br>";
-echo gettype($faculty); */
-
 $passwordMatch = checkPassword($password, $rpassword);
 
 if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || empty($rpassword) || empty($grad_year) || empty($faculty)) {
@@ -72,13 +64,10 @@ if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || 
     $sql = "SELECT * FROM users WHERE email = '".$email."'";
     $result = $conn->query($sql);
     
-    if($result->num_rows > 0){
+    if($result->rowCount() > 0){
 
-        echo "<h1>Email already exists.</h1><br>";
-
-        echo "<a href=\"signup.php\">Sign Up</a><br><br>";
-        echo "<a href=\"signin.php\">Sign In</a>";
-    
+        header("Location: signup.php?action=email_exist");
+        exit(0);
     }else{
         try {
             // begin a transaction
@@ -91,11 +80,9 @@ if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || 
             // transaction
             $conn->commit();
 
-            echo "<h1>Registration successful.</h1><br>";
-
-            echo "<a href=\"signin.php\">Sign In</a>";
+            header("Location: signin.php?action=register_success");
+            exit(0);
         } catch (Exception $e) {
-            echo "Registration failed.";
             $conn->rollback();
         }
 
