@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if($_SESSION['logged_in'] == TRUE) { 
+
+    header('Location: index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -10,17 +17,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="./images/favicon.svg">
     
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap 4.0 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     
     <!--Style css-->
     <link href="styles/login.css" rel="stylesheet">
 
-    <!--Bootsrap icons-->
-    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <title>Sign In | UM Alumni</title>
 </head>
@@ -84,8 +90,10 @@
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <span class="eye" onclick="togglePasswordDisplay()">
-                                                    <i id="show" class="bi bi-eye-fill"></i>
-                                                    <i id="hide" class="bi bi-eye-slash-fill"></i>
+                                                    <!-- <i id="show" class="bi bi-eye-fill"></i>
+                                                    <i id="hide" class="bi bi-eye-slash-fill"></i> -->
+                                                    <i id="show" class="fas fa-eye"></i>
+                                                    <i id="hide" class="fas fa-eye-slash"></i>
                                                 </span>
                                             </span>
                                         </div>

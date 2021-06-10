@@ -2,7 +2,12 @@
 
 include_once("include/config.php");
 
-/*<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">*/
+session_start();
+
+if($_SESSION['logged_in'] == TRUE) { 
+
+    header('Location: index.php');
+}
 
 function prepare_input($data) {
     $data = trim($data);

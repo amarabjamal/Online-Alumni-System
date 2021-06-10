@@ -40,14 +40,41 @@ session_start();
 
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
+    
     <!--OwlCarousel-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
+    
+    <!-- Display message for successful logout -->
     <?php if($_GET['action'] == 'logout_success') { ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert').removeClass("show");
+        $('.alert').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert').removeClass("show");
+    $('.alert').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
+    <!-- Display message for successful login -->
+    <?php if($_GET['action'] == 'login_success') { ?>
+        <div class="alert show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Logged in successfully!</span>
         <div class="close-btn">
             <span class="fas fa-times"></span>
         </div>

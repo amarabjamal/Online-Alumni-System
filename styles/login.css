@@ -14,16 +14,14 @@ body {
 }
 
 a {
-    transition: .2s;
+    transition: .5s ease;
     color: var(--heading-text-color);
-    padding: 5px 3px;
-    border-radius: 5px;
 }
 
 a:hover {
+    transition: .5s ease;
     text-decoration: none;
-    color: var(--heading-text-color);
-    background-color: var(--section-bg-color);
+    color: #888;
 }
 
 h1, h4, label {
@@ -62,6 +60,10 @@ h1, h4, label {
 /* .form-group {
     max-width: 350px;
 } */
+
+.input-group-text {
+    min-width: 50px;
+}
 
 .input-box {
     height: 50px;

@@ -4,6 +4,11 @@ include_once("include/config.php");
 
 session_start();
 
+if($_SESSION['logged_in'] == TRUE) { 
+
+    header('Location: index.php');
+}
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 $status = $_POST['status'];
@@ -24,9 +29,7 @@ if(empty($email) || empty($password) || empty($status)) {
     }
 } 
 else {
-    //echo "check 1";
     if ($status === 'alumni') {
-        //echo "check 2";
         $sql = "SELECT * FROM users WHERE email = '".$email."' LIMIT 1";
         $result = $conn->query($sql);
 
@@ -36,14 +39,13 @@ else {
             $_SESSION['logged_in'] = true;
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['name'] = $user['full_name'];
+            $_SESSION['role'] = "user";
+            $_SESSION['status'] = $user['status_id'];
             //echo "Login success";
-            header('location: index.php');
-            //header('location: profile.php?action=login_success');
-            //exit(0);
+            header('location: index.php?action=login_success');
+            exit(0);
         } else {
-            //echo "Login failed";
-            $errors['login_fail'] = "Wrong username / password";
-            header("Location: signin.php?action=login_failed"); //handle wrong password later
+            header("Location: signin.php?action=login_failed"); 
         }
     } elseif ($status === 'admin') {
         $sql = "SELECT * FROM admins WHERE email = '".$email."' LIMIT 1";
@@ -53,14 +55,13 @@ else {
 
         if (password_verify($password, $admin['password'])) { 
             $_SESSION['logged_in'] = true;
-            $_SESSION['id'] = $admin['id'];
-            echo "Login success";
-            //header('location: profile.php?action=login_success');
-            //exit(0);
+            $_SESSION['admin_id'] = $admin['id'];
+            $_SESSION['name'] = $admin['name'];
+            $_SESSION['role'] = "admin";
+            header('location: pending.php?action=login_success');
+            exit(0);
         } else {
-            echo "Login failed";
-            $errors['login_fail'] = "Wrong username / password";
-            header("Location: signin.php?action=login_failed"); //handle wrong password later
+            header("Location: pending.php?action=login_failed");
         }
     }
 }
