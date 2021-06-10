@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.alert{
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: #ffdb9b;
+    padding: 20px 40px;
+    min-width: 420px;
+    max-width: 420px;
+    border-radius: 35px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.alert.showAlert{
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert.show{
+    animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+    0%{
+        transform: translate(-50%, -150%);
+    }
+    100%{
+        transform: translate(-50%, 125%);
+    }
+}
+.alert.hide{
+    animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+    0%{
+        transform: translate(-50%, 125%);
+    }
+    100%{
+        transform: translate(-50%, -150%);
+    }
+}
+.alert .fa-exclamation-circle{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ce8500;
+    font-size: 30px;
+}
+.alert .msg{
+    padding: 0 20px;
+    font-size: 18px;
+    color: #ce8500;
+}
+.alert .close-btn{
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    padding: 20px 20px;
+    cursor: pointer;
+}
+.alert .close-btn .fas{
+    color: #ce8500;
+    font-size: 22px;
+    line-height: 40px;
+    transition: transform .2s;
+}
+.alert .close-btn .fas:hover{
+    transform: scale(1.5);
+}
