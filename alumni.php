@@ -1,5 +1,5 @@
 <?php
-
+//database connection
 include_once("include/config.php");
 
 

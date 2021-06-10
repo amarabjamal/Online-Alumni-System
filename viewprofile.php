@@ -1,33 +1,30 @@
 <?php
 
-    //database connection
-    //database connection
-    $servername = "localhost";
-    $username = "aisyah";
-    $password = "test1234";
+//database connection
+include_once("include/config.php");
 
-    try {
-        // connect with database
-        $conn = new PDO("mysql:host=$servername; dbname=alumni_profile", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //echo "Connected successfully";
-        $id = $_GET['id'];
-        $result = $conn->prepare("SELECT * FROM user WHERE UserID =:id");
-        $result->bindParam(":id",$id);
-        $result->execute();
-        $row = $result->fetch(PDO::FETCH_ASSOC);
+    // try {
+    //     // connect with database
+    //     $conn = new PDO("mysql:host=$servername; dbname=alumni_profile", $username, $password);
+    //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //     //echo "Connected successfully";
+    //     $id = $_GET['id'];
+    //     $result = $conn->prepare("SELECT * FROM user WHERE UserID =:id");
+    //     $result->bindParam(":id",$id);
+    //     $result->execute();
+    //     $row = $result->fetch(PDO::FETCH_ASSOC);
 
-        //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
-        //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
-        $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
-        $faculty->execute();
-        $f = $faculty->fetch(PDO::FETCH_ASSOC);
-        $f['UserID'] = $id;
-        print_r($f);
-    } 
-    catch(PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    //     //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
+    //     //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
+    //     $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
+    //     $faculty->execute();
+    //     $f = $faculty->fetch(PDO::FETCH_ASSOC);
+    //     $f['UserID'] = $id;
+    //     print_r($f);
+    // } 
+    // catch(PDOException $e) {
+    //     echo "Connection failed: " . $e->getMessage();
+    // }
 
     //close connection
     $conn = null;
