@@ -7,7 +7,7 @@ if($_SESSION['logged_in'] == TRUE) { ?>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img class="logo" src="images/um-logo.png" width="120"
+                <a class="navbar-brand" href="index.php"><img class="logo" src="images/um-logo.png" width="120"
                         alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@ if($_SESSION['logged_in'] == TRUE) { ?>
                 </button>
                 <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link normal-link" href="index.html#about-us">About Us</a>
+                        <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                         <a class="nav-item nav-link normal-link" href="events.html">Events</a>
                         <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
                         <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
@@ -50,14 +50,14 @@ if($_SESSION['logged_in'] == TRUE) { ?>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120" alt="logo"></a>
+                <a class="navbar-brand" href="index.php"><img class="logo" src="images/um-logo.png" width="120" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
 
-                    <a class="nav-item nav-link normal-link" href="index.html#about-us">About Us</a>
+                    <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                     <a class="nav-item nav-link normal-link" href="events.html">Events</a>
                     <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
                     <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
