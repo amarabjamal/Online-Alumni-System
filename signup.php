@@ -52,6 +52,16 @@ if($_SESSION['logged_in'] == TRUE) {
                     <h1 class="font-weight-bold pb-3">SIGN UP</h1>
                     <hr>
                     <h4>Create your account</h4>
+
+                    <?php if($_GET['action'] == 'email_exist') { ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Email address already in use.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
+
                     <form method="POST" action="process_signup.php">
                         <div class="form-row">
                             <div class="col">
