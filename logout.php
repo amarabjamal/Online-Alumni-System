@@ -2,12 +2,17 @@
 
 session_start();
 
-unset($_SESSION['logged_in']);
-unset($_SESSION['user_id']);
-unset( $_SESSION['name']);
+if($_SESSION['logged_in'] == TRUE) { 
 
-session_destroy();
+    unset($_SESSION['logged_in']);
+    unset($_SESSION['user_id']);
+    unset( $_SESSION['name']);
 
-header('Location: index.php?action=logout_success');
+    session_destroy();
+
+    header('Location: index.php?action=logout_success');
+} else {
+    header('Location: index.php');
+}
 
 ?>
