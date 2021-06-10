@@ -62,8 +62,9 @@
               // if we arrive here, it means that no exception was thrown
               // which means no query has failed, so we can commit the
               // transaction
-              header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+              
               $pdo->commit();
+              header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
@@ -75,7 +76,7 @@
             //display success message & the new data can be viewed on index.php
             
 
-            header('Location: http://localhost/Online-alumni-system/editevent.php');
+            
     }
 
     if(isset($_GET['id'])) {	
