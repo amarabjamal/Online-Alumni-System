@@ -143,7 +143,7 @@ session_start();
                         <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
                     </p>
 
-                    <a href="./signup.html">
+                    <a href="signup.php">
                         <button type="button" class="landing-btn-2">Join Now</button>
                     </a>
                     <?php } else {?>
