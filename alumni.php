@@ -1,20 +1,15 @@
 <?php
+
 //database connection
 include_once("include/config.php");
 
+// Fetch UserName and UserProfilePic from User
+$user = $conn->query("SELECT * FROM user")->fetchAll();
+// $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
+// WHERE sm.UserID = us.UserID")->fetchAll();
 
-    //     // Fetch UserName and UserProfilePic from User
-    //     $user = $conn->query("SELECT * FROM user")->fetchAll();
-    //     // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
-    //     // WHERE sm.UserID = us.UserID")->fetchAll();
-        
-    // } 
-    // catch(PDOException $e) {
-    //     echo "Connection failed: " . $e->getMessage();
-    // }
-
-    //close connection
-    $conn = null;
+//close connection
+$conn = null;
 
 ?>
 
