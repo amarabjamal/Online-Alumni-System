@@ -3,8 +3,10 @@ include_once("include/config.php");
 
 include_once("include/userapprovalsystem.php");
 
+session_start();
+
 $sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Denied\" order by users.id asc";
-$result = $pdo->query($sql);
+$result = $conn->query($sql);
 
 
 
@@ -142,7 +144,7 @@ $result = $pdo->query($sql);
     </footer>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>

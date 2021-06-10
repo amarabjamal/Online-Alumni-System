@@ -1,6 +1,8 @@
 <?php
     include_once("include/config.php");
 
+    session_start();
+
     if(isset($_POST['submit']) && isset($_POST['eventid'])) {	
         //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
 
@@ -54,22 +56,22 @@
             //insert data to database			
             try {
               // begin a transaction
-              $pdo->beginTransaction();
+              $conn->beginTransaction();
               // a set of queries: if one fails, an exception will be thrown
-              $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= (SELECT id FROM venues WHERE venue = '$venue'), admin_id = 1 WHERE id = '$eventid'";
+              $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= (SELECT id FROM venues WHERE venue = '$venue'), admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
               echo "poopoo";
-              $pdo->query($sql);
+              $conn->query($sql);
               // if we arrive here, it means that no exception was thrown
               // which means no query has failed, so we can commit the
               // transaction
               
-              $pdo->commit();
+              $conn->commit();
               header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
               // with insert
-              $pdo->rollback();
+              $conn->rollback();
             }
         
             //Step 4. Process the results.
@@ -83,7 +85,7 @@
         $id = $_GET['id'];
 
         $sql = "SELECT * FROM events, venues WHERE venues.id = events.venue_id AND events.id = $id";
-        $result = $pdo->query($sql);
+        $result = $conn->query($sql);
 
         $inp = $result->fetch();
 
@@ -245,7 +247,7 @@
     <script src="scripts/scripts.js"></script>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>

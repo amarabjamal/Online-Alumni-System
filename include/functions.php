@@ -1,11 +1,11 @@
 <?php
 
-function check_login($username, $password, $pdo) {
+function check_login($username, $password, $conn) {
     if (isset($username) && isset($password)){
 
         $sql = "select * from admins WHERE email = '$username'";
         
-        $account = $pdo->query($sql);
+        $account = $conn->query($sql);
         $acc = $account->fetch();
     
         if(isset($acc['id'])){

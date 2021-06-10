@@ -1,29 +1,17 @@
 <?php
-//Step 1: Connecting to a Database using PDO API
-// modify these variables for your installation
-session_start();
 
-try {	
-	$connectionString = "mysql:host=localhost;dbname=alumni_system";
-	$databaseUsername = 'user1';
-	$databasePassword = 'user1abc';
+$host = "localhost";
+$db_name = "alumni_system";
+$username = "alumni_access";
+$password = "yThZyu3a9lFqBfDz";
 
-	$pdo = new PDO($connectionString, $databaseUsername, $databasePassword);
-	// set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
+try{
+    $conn = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Database connected successfully <br>"; 
-	
-    }
-catch(PDOException $e)
-    {
-    echo "Database connection failed: " . $e->getMessage();
+}catch(PDOException $exception){
+    echo "Connection error: " . $exception->getMessage();
+    die();
 }
-
-if(isset($_SESSION['admin_id'])){
-    echo "".$_SESSION['admin_id']."";
-}   
-
-
 
 ?>

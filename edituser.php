@@ -3,11 +3,13 @@ include_once("include/config.php");
 
 include_once("include/userapprovalsystem.php");
 
+session_start();
+
 if(isset($_GET['id'])) {	
     $id = $_GET['id'];
 
     $sql = "SELECT * FROM users, faculties, statuses, countries WHERE (faculties.id = users.fac_id AND statuses.id = users.status_id AND countries.id = users.country_id) AND users.id = $id";
-    $result = $pdo->query($sql);
+    $result = $conn->query($sql);
 
     $inp = $result->fetch();
 
@@ -65,7 +67,7 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
     
       
     $sql = "SELECT * FROM countries";
-    $country = $pdo->query($sql);
+    $country = $conn->query($sql);
     $ispresentcountry = false;
     while ($coun = $country->fetch()) {
         if ($usercountry == $coun['country']){
@@ -81,23 +83,23 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
         try {
             // begin a transaction
             //header('Location: http://localhost/Online-alumni-system/approved.php?1');
-            $pdo->beginTransaction();
+            $conn->beginTransaction();
             //header('Location: http://localhost/Online-alumni-system/approved.php?2');
             // a set of queries: if one fails, an exception will be thrown
             $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', password = '$userpass', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
             echo "poopoo";
-            $pdo->query($sql);
+            $conn->query($sql);
             // if we arrive here, it means that no exception was thrown
             // which means no query has failed, so we can commit the
             // transaction
             header('Location: http://localhost/Online-alumni-system/approved.php? ');
-            $pdo->commit();
+            $conn->commit();
             echo "poopoo";
             
           } catch (Exception $e) {
             // we must rollback the transaction since an error occurred
             // with insert
-            $pdo->rollback();
+            $conn->rollback();
           }
     }
         // if all the fields are filled (not empty) 
@@ -114,7 +116,7 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
 }
 
 $sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Approved\" order by users.id asc";
-$result = $pdo->query($sql);
+$result = $conn->query($sql);
 
 ?>
 
@@ -231,7 +233,7 @@ $result = $pdo->query($sql);
                                     <?php
 
                                         $sql = "SELECT * FROM faculties";
-                                        $faculty = $pdo->query($sql);
+                                        $faculty = $conn->query($sql);
                                         $p = 1;
                                         while ($fac = $faculty->fetch()) {
                                             // the keys match the field names from the table
@@ -267,7 +269,7 @@ $result = $pdo->query($sql);
                                     <?php
 
                                         $sql = "SELECT * FROM statuses ORDER BY id asc";
-                                        $result = $pdo->query($sql);
+                                        $result = $conn->query($sql);
                                         $p = 1;
                                         while ($res = $result->fetch()) {
                                             // the keys match the field names from the table
@@ -312,7 +314,7 @@ $result = $pdo->query($sql);
     </footer>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>

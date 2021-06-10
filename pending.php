@@ -3,36 +3,12 @@ include_once("include/config.php");
 //include_once("include/functions.php");
 include_once("include/userapprovalsystem.php");
 
+session_start();
+
 $sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Pending\" order by users.id asc";
-$result = $pdo->query($sql);
+$result = $conn->query($sql);
 
-$username = "admin@email.com";
-$password = 123123;
 
-if (isset($username) && isset($password)){
-
-    $sql = "select * from admins WHERE email = '$username'";
-    
-    $account = $pdo->query($sql);
-    $acc = $account->fetch();
-
-    if(isset($acc['id'])){
-        echo "Account Exists <br>";
-        if(isset($acc['password'])){
-            if($acc['password']==$password){
-                echo "Credentials correct <br>";
-                $_SESSION['admin_id'] = $acc['id'];
-                
-            } else{
-                echo "Wrong account <br>";
-            }
-        }
-    } else{
-        echo "Account does not exist <br>";
-    }
-
-    
-}
 
 
 
@@ -85,7 +61,7 @@ if (isset($username) && isset($password)){
                 <a class="nav-link logout-btn other" href="adminlogout.php">Log Out</a>
             </li>
             <li class="nav-item" id="control-lg">
-                <a class="nav-link other" href="adminlogout.php">Log Out</a>
+                <a class="nav-link other" href="logout.php">Log Out</a>
             </li>
         </ul>
         </div>
@@ -166,7 +142,7 @@ if (isset($username) && isset($password)){
     </footer>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>

@@ -1,7 +1,7 @@
 <?php
     include_once("include/config.php");
 
-    
+    session_start();
 
     if(isset($_POST['submit'])) {	
         //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
@@ -56,20 +56,20 @@
             //insert data to database			
             try {
               // begin a transaction
-              $pdo->beginTransaction();
+              $conn->beginTransaction();
               // a set of queries: if one fails, an exception will be thrown
               $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',(SELECT id FROM venues WHERE venue = '$venue'),'$_SESSION[admin_id]')";
               echo "poopoo";
-              $pdo->query($sql);
+              $conn->query($sql);
               // if we arrive here, it means that no exception was thrown
               // which means no query has failed, so we can commit the
               // transaction
-              $pdo->commit();
+              $conn->commit();
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
               // with insert
-              $pdo->rollback();
+              $conn->rollback();
             }
         
             //Step 4. Process the results.
@@ -231,7 +231,7 @@
     <script src="scripts/scripts.js"></script>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>

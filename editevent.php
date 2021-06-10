@@ -1,29 +1,31 @@
 <?php
 include_once("include/config.php");
 
+session_start();
+
 if (isset($_GET['id']) && $_GET['condition'] == "delete"){
     $id = $_GET['id'];
     
 
     try {
         // begin a transaction
-        $pdo->beginTransaction();
+        $conn->beginTransaction();
         // a set of queries: if one fails, an exception will be thrown
         $sql = "DELETE FROM events WHERE id=$id";
-        $pdo->query($sql);//run the query & returns a PDOStatement object
+        $conn->query($sql);//run the query & returns a PDOStatement object
         // if we arrive here, it means that no exception was thrown
         // which means no query has failed, so we can commit the
         // transaction
-        $pdo->commit();
+        $conn->commit();
     } catch (Exception $e) {
         // we must rollback the transaction since an error occurred
         // with insert
-        $pdo->rollback();
+        $conn->rollback();
     }
 }
 
 $sql = "select * from events, venues WHERE venues.id = events.venue_id order by events.id asc";
-$result = $pdo->query($sql);
+$result = $conn->query($sql);
 
 
 ?>
@@ -152,7 +154,7 @@ $result = $pdo->query($sql);
     <script src="scripts.js"></script>
     
     <?php
-        $pdo = null;
+        $conn = null;
     ?>
 
 </body>
