@@ -115,6 +115,34 @@ if(isset($_POST['submit']) && isset($_POST['id'])) {
         
 }
 
+if(isset($_POST['deleteacc']) && isset($_POST['id'])) {
+
+    $did = $_POST['id'];
+    try {
+        // begin a transaction
+        //header('Location: http://localhost/Online-alumni-system/approved.php?1');
+        $conn->beginTransaction();
+        //header('Location: http://localhost/Online-alumni-system/approved.php?2');
+        // a set of queries: if one fails, an exception will be thrown
+        $sql = "DELETE FROM users WHERE id = $did";
+        echo "poopoo";
+        $conn->query($sql);
+        // if we arrive here, it means that no exception was thrown
+        // which means no query has failed, so we can commit the
+        // transaction
+        
+        $conn->commit();
+        header('Location: http://localhost/Online-alumni-system/approved.php?action=accountdeleted ');
+        echo "poopoo";
+        
+      } catch (Exception $e) {
+        // we must rollback the transaction since an error occurred
+        // with insert
+        $conn->rollback();
+      }
+
+}
+
 $sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Approved\" order by users.id asc";
 $result = $conn->query($sql);
 
@@ -142,36 +170,7 @@ $result = $conn->query($sql);
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="pending.php"><img class="logo" src="images/um-logo.png" width="175"  alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-      
-        <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-            <ul class="navbar-nav">
-                <li class="nav-item ">
-                    <a class="nav-link other" href="pending.php">Account Control</a>
-                </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle other" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Events
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="addEvent.php">New Event</a>
-                <a class="dropdown-item" href="editEvent.php">Edit Event</a>
-            </li>
-            <li class="nav-item" id="control">
-                <a class="nav-link logout-btn other" href="adminlogout.php">Log Out</a>
-            </li>
-            <li class="nav-item" id="control-lg">
-                <a class="nav-link other" href="adminlogout.php">Log Out</a>
-            </li>
-        </ul>
-        </div>
-    </div>
-    </nav>
+    <?php include_once("adminnavigation.php"); ?>
 
     <main >
         
@@ -296,7 +295,45 @@ $result = $conn->query($sql);
                         <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
                     </div>
 
+                    <div class="">
+                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
+                    
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete the account?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger" name="deleteacc">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    
+
+                    <!--
+                    <div class="">
+                        <a href="https://google.com" class="btn btn-primary btn-block">Reset Password</a>
+                    </div>
+                    -->
                 </form>
+
+                <form action="resetpassword.php" method="post">
+                        <input type="text" name = "resetaccid" value="<?php echo "".$inp['0'].""; ?>" hidden>
+                        <input type="submit" class="btn btn-primary btn-block" value="Reset Password">
+                </form>
+
+                
                 
     
             </div>

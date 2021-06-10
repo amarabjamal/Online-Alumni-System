@@ -53,7 +53,7 @@ else {
 
         $admin = $result->fetch(PDO::FETCH_BOTH);
 
-        if (password_verify($password, $admin['password'])) { 
+        if ($password == $admin['password']) { 
             $_SESSION['logged_in'] = true;
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['name'] = $admin['name'];
@@ -61,7 +61,7 @@ else {
             header('location: pending.php?action=login_success');
             exit(0);
         } else {
-            header("Location: pending.php?action=login_failed");
+            header("Location: index.php?action=login_failed");
         }
     }
 }
