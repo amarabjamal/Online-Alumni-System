@@ -31,32 +31,41 @@ $passwordMatch = checkPassword($password, $rpassword);
 
 if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || empty($rpassword) || empty($grad_year) || empty($faculty)) {
     if(!$passwordMatch) {
-        echo "Passwords didn't match. Try again.<br>";
+        $_SESSION['password_mismatch'] = TRUE;
     }
 
     if (empty($full_name)) {
-        echo "Name field is empty<br>";
+        //echo "Name field is empty<br>";
+        $_SESSION['name_error'] = TRUE;
     } 
 
     if (empty($email)) {
-        echo "Email field is empty<br>";
+        //echo "Email field is empty<br>";
+        $_SESSION['email_error'] = TRUE;
     } 
 
     if (empty($password)) {
-        echo "Password field is empty<br>";
+        //echo "Password field is empty<br>";
+        $_SESSION['password_error'] = TRUE;
     }
 
     if (empty($rpassword)) {
-        echo "Repeat password field is empty<br>";
+        //echo "Repeat password field is empty<br>";
+        $_SESSION['rpassword_error'] = TRUE;
     } 
 
     if (empty($grad_year)) {
-        echo "Graduation year is not selected<br>";
+        //echo "Graduation year is not selected<br>";
+        $_SESSION['grad_year_error'] = TRUE;
     } 
 
     if (empty($faculty)) {
-        echo "faculty is not selected<br>";
+        //echo "faculty is not selected<br>";
+        $_SESSION['faculty_error'] = TRUE;
     } 
+
+    header("Location: signup.php");
+    exit(0);
 
 } else {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
