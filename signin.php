@@ -67,12 +67,12 @@ if($_SESSION['logged_in'] == TRUE) {
 
                     <?php if($_GET['action'] == 'register_success') { ?>
                         <style>
-                            .fas {
+                            .green {
                                 margin-right: 10px;
                                 color: green;
                             }
 
-                            .modal-footer {
+                            .modal-header, .modal-footer {
                                 display: flex;
                                 justify-content: center;
                             }
@@ -82,7 +82,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-check-circle"></i>Success</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle"><i class="green fas fa-check-circle"></i>Success</h5>
                             </div>
                             <div class="modal-body">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -91,7 +91,7 @@ if($_SESSION['logged_in'] == TRUE) {
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
+                                <button type="button" class="btn btn-secondary btn-success" data-dismiss="modal">Continue</button>
                             </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ if($_SESSION['logged_in'] == TRUE) {
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <div class="input-group mb-3">
-                                        <input id="password" name="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
+                                        <input id="password" name="password" type="password" name="password" placeholder="" class="form-control is-invalid" aria-label="password">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <span class="eye" onclick="togglePasswordDisplay()">
