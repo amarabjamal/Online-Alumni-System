@@ -112,7 +112,10 @@ if($_SESSION['logged_in'] == TRUE) {
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <div class="input-group mb-3">
-                                        <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                        <input id="email" name="email" type="email" class="form-control" aria-label="email" required>
+                                        <div class="invalid-feedback">
+                                            Email field is empty.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -125,16 +128,17 @@ if($_SESSION['logged_in'] == TRUE) {
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <div class="input-group mb-3">
-                                        <input id="password" name="password" type="password" name="password" placeholder="" class="form-control is-invalid" aria-label="password">
+                                        <input id="password" name="password" type="password" name="password" class="form-control" aria-label="password" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <span class="eye" onclick="togglePasswordDisplay()">
-                                                    <!-- <i id="show" class="bi bi-eye-fill"></i>
-                                                    <i id="hide" class="bi bi-eye-slash-fill"></i> -->
                                                     <i id="show" class="fas fa-eye"></i>
                                                     <i id="hide" class="fas fa-eye-slash"></i>
                                                 </span>
                                             </span>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Password field is empty.
                                         </div>
                                     </div>
                                 </div>
@@ -167,6 +171,27 @@ if($_SESSION['logged_in'] == TRUE) {
                         <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                     </form>
                 </div>
+
+                <?php if($_SESSION['email_error']) { ?>
+                        <script>
+                            $( "#email" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['password_error']) { ?>
+                        <script>
+                            $( "#password" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+
+                    unset($_SESSION['email_error']);
+                    unset($_SESSION['password_error']);
+
+                    session_destroy();
+                    ?>
 
                 <!-- Form Area End -->
             </div>
