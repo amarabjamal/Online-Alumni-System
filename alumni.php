@@ -2,8 +2,11 @@
 
 include_once("include/config.php");
 
-session_start();
-
+if(!isset($_SESSION)){ 
+    
+    session_start(); 
+    
+} 
 
 // Fetch UserName and UserProfilePic from User
 $user = $conn->query("SELECT * FROM users")->fetchAll();
