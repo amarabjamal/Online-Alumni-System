@@ -48,7 +48,8 @@ function verifyPassword() {
    //minimum password length validation  
     if(password.length < 8) {  
         document.getElementById('passwordHelpBlock').classList.add('red-alert')
-        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password";   
+        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password"; 
+        return false;  
     }  
 
     //Reset message when password is emptied or has at least 8 characters
@@ -64,6 +65,7 @@ function verifyPassword() {
         document.getElementById('passwordCheckBlock').classList.add('red-alert')
         document.getElementById('cpassword').classList.add('red-border');
         document.getElementById('passwordCheckBlock').innerText = "Those passwords didn’t match. Try again.";
+        return false;
     }
 
     if (password != cpassword & password == '') {
@@ -77,4 +79,26 @@ function verifyPassword() {
         document.getElementById('passwordCheckBlock').innerText = "";
     }
 
+    if( password == cpassword ) {
+        return true;
+    }
+
 }  
+
+function verifySubmit() {
+    var password = document.getElementById('password').value; 
+    var cpassword = document.getElementById('cpassword').value; 
+
+   //minimum password length validation  
+    if(password.length < 8) {  
+        alert('Use 8 characters or more for your password')
+        return false;  
+    } 
+
+    if (password == cpassword) {
+        return true;
+    } else {
+        alert('Those passwords didn’t match. Try again.');
+        return false;
+    }
+}

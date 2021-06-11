@@ -62,7 +62,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         </div>
                     <?php } ?>
 
-                    <form method="POST" action="process_signup.php">
+                    <form method="POST" action="process_signup.php" onsubmit="return verifySubmit()">
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
