@@ -4,7 +4,7 @@ include_once("include/config.php");
 
 session_start();
 
-if($_SESSION['logged_in'] == TRUE) { 
+if(isset($_GET['action']) && $_GET['action'] == 'logout_success') { 
 
     header('Location: index.php');
 }

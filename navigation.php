@@ -1,8 +1,13 @@
 <?php
+include_once("include/config.php");
 
-session_start();
+if(!isset($_SESSION)){ 
+    
+    session_start(); 
+    
+} 
 
-if(!isset($_SESSION['logged_in']) == TRUE) { ?>
+if(isset($_GET['action']) && isset($_GET['action']) == 'logout_success') { ?>
     <!-- Logged in navbar html goes here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">

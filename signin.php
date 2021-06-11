@@ -1,8 +1,7 @@
 <?php
+include_once("include/config.php");
 
-session_start();
-
-if($_SESSION['logged_in'] == TRUE) { 
+if(isset($_SESSION['logged_in']) == TRUE) { 
 
     header('Location: index.php');
 }
@@ -56,7 +55,7 @@ if($_SESSION['logged_in'] == TRUE) {
                     <hr>
                     <h4>Login into your account</h4>
                     
-                    <?php if($_GET['action'] == 'login_failed') { ?>
+                    <?php if(isset($_GET['action']) == 'login_failed') { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Incorrect username or password.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

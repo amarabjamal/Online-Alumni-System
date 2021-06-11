@@ -2,7 +2,7 @@
 
 session_start();
 
-if($_SESSION['logged_in'] == TRUE && $_SESSION['role'] == 'user') { 
+if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['role']) == 'user') { 
 
     unset($_SESSION['logged_in']);
     unset($_SESSION['user_id']);
@@ -13,7 +13,7 @@ if($_SESSION['logged_in'] == TRUE && $_SESSION['role'] == 'user') {
     session_destroy();
 
     header('Location: index.php?action=logout_success');
-} elseif ($_SESSION['logged_in'] == TRUE && $_SESSION['role'] == 'admin') {
+} elseif (isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['role']) == 'admin') {
     unset($_SESSION['logged_in']);
     unset($_SESSION['admin_id']);
     unset( $_SESSION['name']);

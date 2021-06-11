@@ -4,18 +4,18 @@
 include_once("include/config.php");
     
 $id = $_GET['id'];
-$result = $conn->prepare("SELECT * FROM user WHERE UserID =:id");
+$result = $conn->prepare("SELECT * FROM users WHERE id =:id");
 $result->bindParam(":id",$id);
 $result->execute();
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-//$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
-//$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
-$faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
-$faculty->execute();
-$f = $faculty->fetch(PDO::FETCH_ASSOC);
-$f['UserID'] = $id;
-print_r($f);
+// //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
+// //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
+// $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
+// $faculty->execute();
+// $f = $faculty->fetch(PDO::FETCH_ASSOC);
+// $f['UserID'] = $id;
+// print_r($f);
 
 //close connection
 $conn = null;
@@ -84,11 +84,11 @@ $conn = null;
 
             <div class="row p2">
                 <div class="details">
-                    <h2><?php echo $row['UserName']; ?></h2>
-                    <p class="about-me"><?php echo $row['AboutMe']; ?></p>
-                    <p><?php echo $f['FacName']; ?></p>
-                    <p><?php echo $row['UserGradDate']; ?></p>
-                    <p><?php echo $row['UserPhoneNumber']; ?></p>
+                    <h2><?php echo htmlspecialchars($row['full_name']); ?></h2>
+                    <p class="about-me">About Me</p>
+                    <p><?php echo htmlspecialchars($f['faculty']); ?></p>
+                    <p><?php echo htmlspecialchars($row['grad_year']); ?></p>
+                    <p>Phone Number</p>
                 </div>
             </div>
         </div>

@@ -1,6 +1,10 @@
 <?php
 
-session_start();
+if(!isset($_SESSION)){ 
+    
+    session_start(); 
+
+} 
 
 ?>
 
@@ -45,7 +49,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if($_GET['action'] == 'logout_success') { ?>
+    <?php if(isset($_GET['action']) == 'logout_success') { ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
@@ -71,7 +75,7 @@ session_start();
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if($_GET['action'] == 'login_success') { ?>
+    <?php if(isset($_GET['action']) == 'login_success') { ?>
         <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
@@ -133,7 +137,7 @@ session_start();
 
                 <div class="landing-content">
                     <?php
-                        if($_SESSION['logged_in'] !== TRUE) { 
+                        if(isset($_SESSION['logged_in']) !== TRUE) { 
                     ?>
                     <h1>Welcome, UM Alumni!</h1>
 

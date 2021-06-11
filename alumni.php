@@ -3,8 +3,13 @@
 //database connection
 include_once("include/config.php");
 
+if(!isset($_SESSION)){ 
+    
+    session_start(); 
+    
+} 
 // Fetch UserName and UserProfilePic from User
-$user = $conn->query("SELECT * FROM user")->fetchAll();
+$user = $conn->query("SELECT * FROM users")->fetchAll();
 // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
 // WHERE sm.UserID = us.UserID")->fetchAll();
 
@@ -134,7 +139,7 @@ $conn = null;
                 <div class="card">
                     <img src="images/avatar.png" alt="man">
                     <div class="desc">
-                        <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['UserName']); ?></p>
+                        <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['full_name']); ?></p>
                         <p class="abtMe">About Me</p>
                     </div>
 
@@ -147,7 +152,7 @@ $conn = null;
                     </div>
                     
                     <div class="button">
-                        <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['UserID']?>" role="button">View Profile</a>
+                        <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['id']?>" role="button">View Profile</a>
                     </div>
                 </div>
             </div>
