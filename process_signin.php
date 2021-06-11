@@ -16,15 +16,12 @@ $errors = [];
 
 if(empty($email) || empty($password) || empty($status)) {
     if (empty($email)) {
-        echo 'Email field is empty.';
         $_SESSION['email_error'] = TRUE;
     }
     if (empty($password)) {
-        echo 'Password field is empty.';
         $_SESSION['password_error'] = TRUE;
     }
     if (empty($status)) {
-        //echo 'Please select your status';
         $errors['status'] = 'Please select your status';
     }
 
