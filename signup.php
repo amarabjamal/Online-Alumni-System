@@ -99,8 +99,9 @@ if($_SESSION['logged_in'] == TRUE) {
                                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                                         </div>
                                         <input id="password" name="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
+                                        <div id="password_error" class="invalid-feedback"></div>
                                     </div>
-                                    <small id="passwordHelpBlock" class="form-text text-muted"></small>
+                                    <!-- <small id="passwordHelpBlock" class="form-text text-muted"></small> -->
                                 </div>
                             </div>
                         </div>
@@ -108,14 +109,15 @@ if($_SESSION['logged_in'] == TRUE) {
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="cpassword">Confirm Password</label>
+                                    <label for="rpassword">Confirm Password</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
-                                        <input id="cpassword" name="rpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
+                                        <input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
+                                        <div id="rpassword_error" class="invalid-feedback"></div>
                                     </div>
-                                    <small id="passwordCheckBlock" class="form-text text-muted"></small>
+                                    <!-- <small id="passwordCheckBlock" class="form-text text-muted"></small> -->
                                 </div>
                             </div>
                         </div>

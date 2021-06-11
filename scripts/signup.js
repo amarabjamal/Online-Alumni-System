@@ -43,51 +43,68 @@ function loadFacultySelector()
 
 function verifyPassword() {  
     var password = document.getElementById('password').value; 
-    var cpassword = document.getElementById('cpassword').value; 
+    var rpassword = document.getElementById('rpassword').value; 
 
    //minimum password length validation  
     if(password.length < 8) {  
-        document.getElementById('passwordHelpBlock').classList.add('red-alert')
-        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password"; 
-        return false;  
+        /* document.getElementById('passwordHelpBlock').classList.add('red-alert')
+        document.getElementById('passwordHelpBlock').innerText = "Use 8 characters or more for your password";  */
+        /* $( "#rpassword" ).addClass( "is-invalid" );
+        $( "#rpassword_error" ).text('');  */
+        document.getElementById('password').classList.add('is-invalid')
+        document.getElementById('password_error').innerText = "Use 8 characters or more for your password";
     }  
 
     //Reset message when password is emptied or has at least 8 characters
     if(password.length == 0 || password.length >= 8) {
-        document.getElementById('passwordHelpBlock').innerText = "";  
+        /* document.getElementById('passwordHelpBlock').innerText = "";  */
+        
+        document.getElementById('password').classList.remove('is-invalid')
+        document.getElementById('password_error').innerText= "";
     }
 
-    if(password == cpassword && cpassword != '') {
-        document.getElementById('cpassword').classList.remove('red-border');
-        document.getElementById('passwordCheckBlock').innerText= "";
+    if(password == rpassword && rpassword != '') {
+        /* document.getElementById('rpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText= ""; */
+        /* $( "#rpassword" ).removeClass( "is-invalid" );
+        $( "#rpassword_error" ).text(''); */
+        document.getElementById('rpassword').classList.remove('is-invalid');
+        document.getElementById('rpassword_error').innerText= "";
     }
-    else if (password != cpassword && cpassword != '') {
-        document.getElementById('passwordCheckBlock').classList.add('red-alert')
-        document.getElementById('cpassword').classList.add('red-border');
-        document.getElementById('passwordCheckBlock').innerText = "Those passwords didn’t match. Try again.";
-        return false;
-    }
-
-    if (password != cpassword & password == '') {
-        document.getElementById('passwordCheckBlock').classList.add('red-alert')
-        document.getElementById('cpassword').classList.remove('red-border');
-        document.getElementById('passwordCheckBlock').innerText = "Enter the password first.";
-    }
-
-    if (cpassword == '') {
-        document.getElementById('cpassword').classList.remove('red-border');
-        document.getElementById('passwordCheckBlock').innerText = "";
+    else if (password != rpassword && rpassword != '') {
+        /* document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('rpassword').classList.add('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Those passwords didn’t match. Try again."; */
+        /* $( "#rpassword" ).addClass( "is-invalid" );
+        $( "#rpassword_error" ).text('Those passwords didn’t match. Try again.'); */
+        document.getElementById('rpassword').classList.add('is-invalid');
+        document.getElementById('rpassword_error').innerText= "Those passwords didn’t match. Try again.";
     }
 
-    if( password == cpassword ) {
-        return true;
+    if (password != rpassword & password == '') {
+        /* document.getElementById('passwordCheckBlock').classList.add('red-alert')
+        document.getElementById('rpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = "Enter the password first."; */
+        /* $( "#rpassword" ).removeClass( "is-invalid" );
+        $( "#rpassword_error" ).text('Enter the password first.'); */
+        document.getElementById('rpassword').classList.add('is-invalid');
+        document.getElementById('rpassword_error').innerText= "Enter the password first.";
+    }
+
+    if (rpassword == '') {
+        /* document.getElementById('rpassword').classList.remove('red-border');
+        document.getElementById('passwordCheckBlock').innerText = ""; */
+        /* $( "#rpassword" ).removeClass( "is-invalid" );
+        $( "#rpassword_error" ).text(''); */
+        document.getElementById('rpassword').classList.remove('is-invalid');
+        document.getElementById('rpassword_error').innerText= "";
     }
 
 }  
 
 function verifySubmit() {
     var password = document.getElementById('password').value; 
-    var cpassword = document.getElementById('cpassword').value; 
+    var rpassword = document.getElementById('rpassword').value; 
 
    //minimum password length validation  
     if(password.length < 8) {  
@@ -95,7 +112,7 @@ function verifySubmit() {
         return false;  
     } 
 
-    if (password == cpassword) {
+    if (password == rpassword) {
         return true;
     } else {
         alert('Those passwords didn’t match. Try again.');
