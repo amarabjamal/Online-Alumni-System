@@ -8,8 +8,34 @@ if(!isset($_SESSION)){
     
 } 
 
+//define total number of results you want per page  
+$results_per_page = 10;  
+//find the total number of results stored in the database  
+$user = $conn->query("SELECT SQL_CALC_FOUND_ROWS * FROM users")->fetchAll();
+$user = $conn->prepare("SELECT FOUND_ROWS()"); 
+$user->execute();
+$row_count =$user->fetchColumn();
+// echo $row_count;
+
+ //determine the total number of pages available  
+ $number_of_page = ceil ($row_count / $results_per_page); 
+ 
+ //determine which page number visitor is currently on  
+ if (!isset ($_GET['page']) ) {  
+    $page = 1;  
+} else {  
+    $page = $_GET['page'];  
+}  
+
+//determine the sql LIMIT starting number for the results on the displaying page  
+$page_first_result = ($page-1) * $results_per_page; 
+
+//retrieve the selected results from database 
+$user = $conn->query("SELECT * FROM users LIMIT 12")->fetchAll();
+
+
 // Fetch UserName and UserProfilePic from User
-$user = $conn->query("SELECT * FROM users")->fetchAll();
+//$user = $conn->query("SELECT * FROM users LIMIT 12")->fetchAll();
 // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
 // WHERE sm.UserID = us.UserID")->fetchAll();
 
@@ -165,17 +191,13 @@ $conn = null;
 
     <!-- Pagination Start -->
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center mt-5">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
+        <? for($page = 1; $page<= $number_of_page; $page++) { ?>  
+            <ul class="pagination justify-content-center mt-5">
+                
+                <li class="page-item"><a class="page-link" href="<?php echo "alumni.php?page=' . $page . '">' . $page . ';?>"></a></li>
+                
+            </ul>
+        <?php } ?>
     </nav>
     <!-- Pagination End -->
 
