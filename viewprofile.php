@@ -2,7 +2,11 @@
 
 //database connection
 include_once("include/config.php");
-    
+
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+} 
+
 $id = $_GET['id'];
 $result = $conn->prepare("SELECT * FROM users WHERE id =:id");
 $result->bindParam(":id",$id);

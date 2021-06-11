@@ -1,10 +1,14 @@
 <?php
 include_once("include/config.php");
 
-if(!isset($_SESSION)){ 
+// if(!isset($_SESSION)){ 
     
-    session_start(); 
+//     session_start(); 
     
+// } 
+
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
 } 
 
 if(isset($_GET['action']) && isset($_GET['action']) == 'logout_success') { ?>

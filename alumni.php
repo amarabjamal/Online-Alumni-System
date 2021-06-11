@@ -2,42 +2,45 @@
 
 include_once("include/config.php");
 
-if(!isset($_SESSION)){ 
-    
-    session_start(); 
-    
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
 } 
 
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+
 //define total number of results you want per page  
-$results_per_page = 10;  
+$results_per_page = 12;  
+$start_from = ($page-1)*12;
+
+$result = $conn->query("SELECT * FROM users LIMIT $start_from,$results_per_page");
+
 //find the total number of results stored in the database  
 $user = $conn->query("SELECT SQL_CALC_FOUND_ROWS * FROM users")->fetchAll();
 $user = $conn->prepare("SELECT FOUND_ROWS()"); 
 $user->execute();
 $row_count =$user->fetchColumn();
-// echo $row_count;
 
- //determine the total number of pages available  
- $number_of_page = ceil ($row_count / $results_per_page); 
- 
- //determine which page number visitor is currently on  
- if (!isset ($_GET['page']) ) {  
-    $page = 1;  
-} else {  
-    $page = $_GET['page'];  
-}  
 
-//determine the sql LIMIT starting number for the results on the displaying page  
-$page_first_result = ($page-1) * $results_per_page; 
+//determine the total number of pages available  
+$number_of_page = ceil ($row_count / $results_per_page); 
+
+//  //determine which page number visitor is currently on  
+//  if (!isset ($_GET['page']) ) {  
+//     $page = 1;  
+// } else {  
+//     $page = $_GET['page'];  
+// }  
+
+// //determine the sql LIMIT starting number for the results on the displaying page  
+// $page_first_result = ($page-1) * $results_per_page; 
 
 //retrieve the selected results from database 
-$user = $conn->query("SELECT * FROM users LIMIT 12")->fetchAll();
+// $pagination = $conn->query("SELECT * FROM users");
 
-
-// Fetch UserName and UserProfilePic from User
-//$user = $conn->query("SELECT * FROM users LIMIT 12")->fetchAll();
-// $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
-// WHERE sm.UserID = us.UserID")->fetchAll();
 
 //close connection
 $conn = null;
@@ -159,7 +162,7 @@ $conn = null;
 
     <!-- ROW FOR CARDS-->
     <div class="row cards">
-        <?php foreach($user as $col){ ?>
+        <?php foreach($result as $col){ ?>
             
             <div class="col-md-3 col-sm-6 col-xs-12 spc">
                 <div class="card">
@@ -184,23 +187,25 @@ $conn = null;
             </div>
 
         <?php }?>
-        
-
     </div>
 
+    <!-- PAGINATION START -->
+    <ul class="pagination justify-content-center">
+        <?php 
 
-    <!-- Pagination Start -->
-    <nav aria-label="Page navigation example">
-        <? for($page = 1; $page<= $number_of_page; $page++) { ?>  
-            <ul class="pagination justify-content-center mt-5">
-                
-                <li class="page-item"><a class="page-link" href="<?php echo "alumni.php?page=' . $page . '">' . $page . ';?>"></a></li>
-                
-            </ul>
-        <?php } ?>
-    </nav>
-    <!-- Pagination End -->
-
+            if($page>1){
+                echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
+            }
+            for($i=1; $i<=$number_of_page; $i++){
+                echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
+            }
+            if($i>$page){
+                echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
+            }
+        ?>
+    </ul>
+    
+    
     <!-- ===================================== Start Footer Area ===================================== -->
 
     <footer id="footer" class="mt-auto">
