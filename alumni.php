@@ -1,13 +1,10 @@
 <?php
 
-//database connection
 include_once("include/config.php");
 
-if(!isset($_SESSION)){ 
-    
-    session_start(); 
-    
-} 
+session_start();
+
+
 // Fetch UserName and UserProfilePic from User
 $user = $conn->query("SELECT * FROM users")->fetchAll();
 // $socmed = $conn->query("SELECT sm . * , us . * FROM user_social_media sm, user us 
