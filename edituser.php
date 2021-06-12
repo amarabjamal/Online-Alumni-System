@@ -76,28 +76,16 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
     $userstatusid = $_POST['status'];
     $usercountry = $_POST['country'];
 
+    
 
-    if(!$usergradyear > $userenrollyear){
-        header("Location: edituser.php?id=1&validyears=false");
+
+    if(! ($usergradyear > $userenrollyear)){
+        header("Location: edituser.php?id=$userid&validyears=false");
         exit;
     }
 
 
-    $sql = "SELECT * FROM countries";
-    $country = $conn->query($sql);
-    $ispresentcountry = false;
-    while ($coun = $country->fetch()) {
-        if ($usercountry == $coun['country']) {
-            $ispresentcountry = true;
-            break;
-        }
-    }
 
-
-    if (!$ispresentcountry) {
-        $sql = "INSERT INTO countries (country) VALUES ('$usercountry')";
-        $conn->query($sql);
-    }
 
 
     if(in_array($fileActualExt, $allowed)){
@@ -107,7 +95,7 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
             $conn->beginTransaction();
             //header('Location: http://localhost/Online-alumni-system/approved.php?2');
             // a set of queries: if one fails, an exception will be thrown
-            $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
+            $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = '$facultyid', status_id = $userstatusid, country_id = '$usercountry' WHERE id = '$userid'";
             echo "poopoo";
             $conn->query($sql);
             // if we arrive here, it means that no exception was thrown
@@ -129,7 +117,7 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
             $conn->beginTransaction();
             //header('Location: http://localhost/Online-alumni-system/approved.php?2');
             // a set of queries: if one fails, an exception will be thrown
-            $sql = "UPDATE users SET full_name = '$username' , email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = (SELECT id FROM countries WHERE country = '$usercountry') WHERE id = '$userid'";
+            $sql = "UPDATE users SET full_name = '$username' , email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = '$usercountry' WHERE id = '$userid'";
             echo "poopoo";
             $conn->query($sql);
             // if we arrive here, it means that no exception was thrown
@@ -271,7 +259,27 @@ $result = $conn->query($sql);
 
                     <div class="pt-5">
                         <label for="Country">Country</label><br>
-                        <input required type="text" id="country" name="country" class="form-control" placeholder="User Country" value="<?php echo "" . $inp['country'] . ""; ?>">
+                        <select class="form-control" id="country" name="country">
+                            
+                            <?php
+
+                            $sql = "SELECT * FROM countries";
+                            $country = $conn->query($sql);
+                            $p = 1;
+                            while ($coun = $country->fetch()) {
+                                // the keys match the field names from the table
+
+                                if ($p == $inp['country_id']) {
+                                    echo "<option value = $p selected=\"selected\">$coun[country]</option>";
+                                } else {
+                                    echo "<option value = $p>$coun[country]</option>";
+                                }
+                                $p++;
+                            }
+
+                            ?>
+
+                        </select>
                     </div>
 
                     <div>
