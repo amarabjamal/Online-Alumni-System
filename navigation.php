@@ -1,11 +1,10 @@
 <?php
-include_once("include/config.php");
 
-if(session_status() === PHP_SESSION_NONE){
-    session_start();
-} 
+if(session_status() === PHP_SESSION_NONE) session_start();
 
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) { ?>
+//need to handle for admin **not yet
+
+if(isset($_SESSION['logged_in']) == TRUE) { ?>
     <!-- Logged in navbar html goes here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -20,8 +19,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) { ?>
                     <div class="navbar-nav">
                         <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                         <a class="nav-item nav-link normal-link" href="events.html">Events</a>
-                        <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
-                        <a class="nav-item nav-link normal-link" href="alumni.php">Alumni</a>
+                        <a class="nav-item nav-link normal-link" href="jobs.php">Jobs</a>
+                        <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
                         <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
 
                         <div id="control" class="nav-item dropdown">
@@ -62,8 +61,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) { ?>
 
                     <a class="nav-item nav-link normal-link" href="index.php#about-us">About Us</a>
                     <a class="nav-item nav-link normal-link" href="events.html">Events</a>
-                    <a class="nav-item nav-link normal-link" href="jobs.html">Jobs</a>
-                    <a class="nav-item nav-link normal-link" href="alumni.php">Alumni</a>
+                    <a class="nav-item nav-link normal-link" href="jobs.php">Jobs</a>
+                    <a class="nav-item nav-link normal-link" href="alumni.html">Alumni</a>
                     <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
                     <a class="nav-item nav-link normal-link" href="signin.php">Sign In</a>
                     <a class="nav-item nav-link register-btn" href="signup.php">Sign Up</a>
