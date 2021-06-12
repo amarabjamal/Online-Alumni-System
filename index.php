@@ -2,6 +2,8 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 
+include("include/config.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -263,64 +265,48 @@ if(session_status() === PHP_SESSION_NONE) session_start();
                 
                 <!-- Carousel Start -->
 
-                <div class="job-wrapper">
-                    <div class="job-carousel owl-carousel">
-                        <div class="job-card card-1">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                <?php 
 
-                        <div class="job-card card-2">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                        try {
+                            //Prepared Statements in PDO - prepare, bind, execute
+                            // perform query
+                            /* $query = "SELECT * FROM job_ads 
+                                        LEFT JOIN companies
+                                        ON job_ads.com_id = companies.id;
+                                        ORDER BY job_ads.id DESC LIMIT 5 ";  */ 
+                            $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+
+                            if($stmt->rowCount() > 0) {
+                                echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
+
+                                while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                    echo "<div class=\"job-card\">";
+                                    echo "<div class=\"position\">".$job_ads->title."</div>";
+                                    if ($job_ads->com_id == NULL) {
+                                        echo "<div class=\"company\">No company data</div>";
+                                    } else {
+                                        echo "<div class=\"company\">".$job_ads->com_id."</div>";
+                                    }
+                                    echo "<div class=\"details\">";
+                                    echo "Salary: RM".$job_ads->salary."<br>";  
+                                    echo "Publish at ".$job_ads->published_at."<br>";  
+                                    echo "</div></div>";                                        
+                                } 
+
+                                echo "</div></div>";
+                            }        
+
+                            // disconnect from database
+                            $conn = NULL;
+                        } catch (PDOException $e) {
+                            echo "Error: ".$e->getMessage();
+                            exit;
+                        }
                         
-                        <div class="job-card card-3">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                        ?>
 
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-5">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <script>
                         $(".job-carousel").owlCarousel({
                         margin: 20,
