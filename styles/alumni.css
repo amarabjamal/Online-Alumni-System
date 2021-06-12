@@ -332,7 +332,6 @@ body {
     vertical-align: middle;
     margin-bottom: 10px;
     /* min-width: 200px; */
-
 }
 
 
@@ -411,6 +410,7 @@ body {
     color: #192a56;
     border: none;
 }
+
 
 @keyframes float{
     0% {

@@ -1,3 +1,31 @@
+<?php
+
+//database connection
+include_once("include/config.php");
+
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+} 
+
+$id = $_GET['id'];
+$result = $conn->prepare("SELECT * FROM users WHERE id =:id");
+$result->bindParam(":id",$id);
+$result->execute();
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+// //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
+// //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
+// $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
+// $faculty->execute();
+// $f = $faculty->fetch(PDO::FETCH_ASSOC);
+// $f['UserID'] = $id;
+// print_r($f);
+
+//close connection
+$conn = null;
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,48 +59,7 @@
         crossorigin="anonymous"></script>
 
     <!-- ===================================== Start Header Area ===================================== -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120"
-                        alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link normal-link" href="./index.html#about-us">About Us</a>
-                        <a class="nav-item nav-link normal-link" href="./events.html">Events</a>
-                        <a class="nav-item nav-link normal-link" href="./jobs.html">Jobs</a>
-                        <a class="nav-item nav-link normal-link" href="./alumni.html">Alumni</a>
-                        <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
-
-                        <div id="control" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="profile-picture" src="./images/avatar-2.png" alt="profile picture">
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="./manageAccount.html">Your profile</a>
-                                <a class="dropdown-item" href="./editProfile.html">Edit profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./index.html">Log out</a>
-                            </div>
-                        </div>
-
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./manageAccount.html">Your
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="editProfile.html">Edit
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./index.html">Log out</a>
-
-                    </div>
-
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
 
 
@@ -80,7 +67,7 @@
     <div class="row profile-card">
         <p class="back">
             <img src="images/arrow-left-short.svg" alt="go back" width="30px" height="30px" style="margin: auto;">
-            <a href="alumni.html">back</a>
+            <a href="alumni.php">back</a>
         </p>
 
         <div class="col-md-4 right-pane">
@@ -101,12 +88,11 @@
 
             <div class="row p2">
                 <div class="details">
-                    <h2>Name</h2>
-                    <p class="about-me">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius tortor
-                        vitae lobortis commodo. Donec.</p>
-                    <p>Course</p>
-                    <p>2019-2022</p>
-                    <p>+601234567890</p>
+                    <h2><?php echo htmlspecialchars($row['full_name']); ?></h2>
+                    <p class="about-me">About Me</p>
+                    <p><?php echo htmlspecialchars($f['faculty']); ?></p>
+                    <p><?php echo htmlspecialchars($row['grad_year']); ?></p>
+                    <p>Phone Number</p>
                 </div>
             </div>
         </div>
