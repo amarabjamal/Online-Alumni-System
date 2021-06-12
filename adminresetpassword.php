@@ -20,12 +20,13 @@ if(isset($_POST['id']) && isset($_POST['pass']) && isset($_POST['rpass'])) {
     $rpass = $_POST['rpass'];
 
     try {
+        $hpass= password_hash($pass, PASSWORD_DEFAULT);
         // begin a transaction
         //header('Location: http://localhost/Online-alumni-system/approved.php?1');
         $conn->beginTransaction();
         //header('Location: http://localhost/Online-alumni-system/approved.php?2');
         // a set of queries: if one fails, an exception will be thrown
-        $sql = "UPDATE users SET password = '$pass' WHERE id = '$id'";
+        $sql = "UPDATE users SET password = '$hpass' WHERE id = '$id'";
         echo "poopoo";
         $conn->query($sql);
         // if we arrive here, it means that no exception was thrown
