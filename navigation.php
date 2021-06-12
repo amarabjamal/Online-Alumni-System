@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if($_SESSION['logged_in'] == TRUE) { ?>
     <!-- Logged in navbar html goes here -->
     <header>
