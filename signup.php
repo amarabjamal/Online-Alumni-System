@@ -3,7 +3,7 @@ include_once("include/config.php");
 
 session_start();
 
-if($_SESSION['logged_in'] == TRUE) { 
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) { 
 
     header('Location: index.php');
 }
@@ -53,7 +53,7 @@ if($_SESSION['logged_in'] == TRUE) {
                     <hr>
                     <h4>Create your account</h4>
 
-                    <?php if($_GET['action'] == 'email_exist') { ?>
+                    <?php if(isset($_GET['action']) && $_GET['action'] == 'email_exist') { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Email address already in use.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -204,7 +204,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         <p>Already have an account? <a href="signin.php">Sign In</a></p>
                     </form>
 
-                    <?php if($_SESSION['name_error']) { ?>
+                    <?php if(isset($_SESSION['name_error']) && $_SESSION['name_error']) { ?>
                         <script>
                             $( "#full_name" ).addClass( "is-invalid" );
                         </script>
@@ -212,7 +212,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['email_error']) { ?>
+                    <?php if(isset($_SESSION['email_error']) && $_SESSION['email_error']) { ?>
                         <script>
                             $( "#email" ).addClass( "is-invalid" );
                         </script>
@@ -220,7 +220,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['password_error']) { ?>
+                    <?php if(isset($_SESSION['password_error']) && $_SESSION['password_error']) { ?>
                         <script>
                             $( "#password" ).addClass( "is-invalid" );
                         </script>
@@ -228,7 +228,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['rpassword_error']) { ?>
+                    <?php if(isset($_SESSION['rpassword_error']) && $_SESSION['rpassword_error']) { ?>
                         <script>
                             $( "#rpassword" ).addClass( "is-invalid" );
                             $( "#rpassword_error" ).text("Repeat password field is empty");
@@ -237,7 +237,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['grad_year_error']) { ?>
+                    <?php if(isset($_SESSION['grad_year_error']) && $_SESSION['grad_year_error']) { ?>
                         <script>
                             $( "#grad_year" ).addClass( "is-invalid" );
                         </script>
@@ -245,7 +245,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['faculty_error']) { ?>
+                    <?php if(isset($_SESSION['faculty_error']) && $_SESSION['faculty_error']) { ?>
                         <script>
                             $( "#faculty" ).addClass( "is-invalid" );
                         </script>
@@ -253,7 +253,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if(!$_SESSION['password_error'] && $_SESSION['password_mismatch']) { ?>
+                    <?php if(!isset($_SESSION['password_error']) && isset($_SESSION['password_mismatch']) && $_SESSION['password_mismatch']) { ?>
                         <script>
                             $( "#password" ).addClass( "is-invalid" );
                             $( "#rpassword" ).addClass( "is-invalid" );

@@ -60,9 +60,10 @@ if(session_status() === PHP_SESSION_NONE) session_start();
     <?php } ?>
 
     <?php if(isset($_SESSION['logged_in'])) { ?>
-        <?php if($_SESSION['status'] != 1 || $_SESSION['status'] != 3) { ?>
+        <?php if($_SESSION['status'] == 1 || $_SESSION['status'] == 3) { ?>
         <div class="error_container">
         <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+        
         <p>
             You do not have access to this page.
             Kindly wait for your account approval.

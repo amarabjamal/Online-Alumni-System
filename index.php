@@ -47,7 +47,7 @@ include("include/config.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if($_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE) { ?>
+    <?php if(isset($_SESSION['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && isset($_SESSION['logged_in'])) { ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
@@ -73,7 +73,7 @@ include("include/config.php");
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if($_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
+    <?php if(isset($_SESSION['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
         <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
@@ -135,7 +135,7 @@ include("include/config.php");
 
                 <div class="landing-content">
                     <?php
-                        if($_SESSION['logged_in'] !== TRUE) { 
+                        if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) { 
                     ?>
                     <h1>Welcome, UM Alumni!</h1>
 

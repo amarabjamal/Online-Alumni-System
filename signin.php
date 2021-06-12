@@ -2,7 +2,7 @@
 
 session_start();
 
-if($_SESSION['logged_in'] == TRUE) { 
+if(isset($_SESSION['loggen_in']) && $_SESSION['logged_in'] == TRUE) { 
 
     header('Location: index.php');
 }
@@ -56,7 +56,7 @@ if($_SESSION['logged_in'] == TRUE) {
                     <hr>
                     <h4>Login into your account</h4>
                     
-                    <?php if($_GET['action'] == 'login_failed') { ?>
+                    <?php if(isset($_GET['action']) && $_GET['action'] == 'login_failed') { ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Incorrect username or password.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -65,7 +65,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         </div>
                     <?php } ?>
 
-                    <?php if($_GET['action'] == 'register_success') { ?>
+                    <?php if(isset($_GET['action']) && $_GET['action'] == 'register_success') { ?>
                         <style>
                             .green {
                                 margin-right: 10px;
@@ -172,7 +172,7 @@ if($_SESSION['logged_in'] == TRUE) {
                     </form>
                 </div>
 
-                <?php if($_SESSION['email_error']) { ?>
+                <?php if(isset($_SESSION['email_error']) && $_SESSION['email_error']) { ?>
                         <script>
                             $( "#email" ).addClass( "is-invalid" );
                         </script>
@@ -180,7 +180,7 @@ if($_SESSION['logged_in'] == TRUE) {
                         } 
                     ?>
 
-                    <?php if($_SESSION['password_error']) { ?>
+                    <?php if(isset($_SESSION['password_error']) && $_SESSION['password_error']) { ?>
                         <script>
                             $( "#password" ).addClass( "is-invalid" );
                         </script>
