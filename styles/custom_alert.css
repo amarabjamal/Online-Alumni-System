@@ -71,3 +71,75 @@
 .alert .close-btn .fas:hover{
     transform: scale(1.5);
 }
+
+.alert2{
+    margin: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: #51c4d3;
+    padding: 20px 40px;
+    min-width: 420px;
+    max-width: 420px;
+    border-radius: 35px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.alert2.showAlert{
+    opacity: 1;
+    pointer-events: auto;
+}
+.alert2.show{
+    animation: show_slide 1s ease forwards;
+}
+@keyframes show_slide {
+    0%{
+        transform: translate(-50%, -150%);
+    }
+    100%{
+        transform: translate(-50%, 125%);
+    }
+}
+.alert2.hide{
+    animation: hide_slide 1s ease forwards;
+}
+@keyframes hide_slide {
+    0%{
+        transform: translate(-50%, 125%);
+    }
+    100%{
+        transform: translate(-50%, -150%);
+    }
+}
+.alert2 .fa-exclamation-circle{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0c424e;
+    font-size: 30px;
+}
+.alert2 .msg{
+    padding: 0 20px;
+    font-size: 18px;
+    color: #0c424e;
+}
+.alert2 .close-btn{
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    padding: 20px 20px;
+    cursor: pointer;
+}
+.alert2 .close-btn .fas{
+    color: #0c424e;
+    font-size: 22px;
+    line-height: 40px;
+    transition: transform .2s;
+}
+.alert2 .close-btn .fas:hover{
+    transform: scale(1.5);
+}

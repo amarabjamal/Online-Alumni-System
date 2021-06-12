@@ -65,6 +65,45 @@ if($_SESSION['logged_in'] == TRUE) {
                         </div>
                     <?php } ?>
 
+                    <?php if($_GET['action'] == 'register_success') { ?>
+                        <style>
+                            .green {
+                                margin-right: 10px;
+                                color: green;
+                            }
+
+                            .modal-header, .modal-footer {
+                                display: flex;
+                                justify-content: center;
+                            }
+                        </style>
+                        <!-- Modal -->
+                        <div class="modal fade" id="success_message" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle"><i class="green fas fa-check-circle"></i>Success</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Your account has been succesfully created. <br>
+                                    Please wait for approval to access all the features.
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-success" data-dismiss="modal">Continue</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function(){
+                                $("#success_message").modal('show');
+                            });
+                        </script>
+                    <?php } ?>
+
                     <form method="POST" action="process_signin.php">
 
                         <!--  Email Input Start -->
@@ -73,7 +112,10 @@ if($_SESSION['logged_in'] == TRUE) {
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <div class="input-group mb-3">
-                                        <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                        <input id="email" name="email" type="email" class="form-control" aria-label="email" required>
+                                        <div class="invalid-feedback">
+                                            Email field is empty.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -86,16 +128,17 @@ if($_SESSION['logged_in'] == TRUE) {
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <div class="input-group mb-3">
-                                        <input id="password" name="password" type="password" name="password" placeholder="" class="form-control" aria-label="password">
+                                        <input id="password" name="password" type="password" name="password" class="form-control" aria-label="password" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <span class="eye" onclick="togglePasswordDisplay()">
-                                                    <!-- <i id="show" class="bi bi-eye-fill"></i>
-                                                    <i id="hide" class="bi bi-eye-slash-fill"></i> -->
                                                     <i id="show" class="fas fa-eye"></i>
                                                     <i id="hide" class="fas fa-eye-slash"></i>
                                                 </span>
                                             </span>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Password field is empty.
                                         </div>
                                     </div>
                                 </div>
@@ -128,6 +171,27 @@ if($_SESSION['logged_in'] == TRUE) {
                         <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
                     </form>
                 </div>
+
+                <?php if($_SESSION['email_error']) { ?>
+                        <script>
+                            $( "#email" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['password_error']) { ?>
+                        <script>
+                            $( "#password" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+
+                    unset($_SESSION['email_error']);
+                    unset($_SESSION['password_error']);
+
+                    session_destroy();
+                    ?>
 
                 <!-- Form Area End -->
             </div>

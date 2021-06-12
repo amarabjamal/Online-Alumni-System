@@ -16,17 +16,17 @@ $errors = [];
 
 if(empty($email) || empty($password) || empty($status)) {
     if (empty($email)) {
-        echo 'Email field is empty.';
-        $errors['email'] = 'Email field is empty.';
+        $_SESSION['email_error'] = TRUE;
     }
     if (empty($password)) {
-        echo 'Password field is empty.';
-        $errors['password'] = 'Password field is empty.';
+        $_SESSION['password_error'] = TRUE;
     }
     if (empty($status)) {
-        echo 'Please select your status';
         $errors['status'] = 'Please select your status';
     }
+
+    header("Location: signin.php");
+    exit(0);
 } 
 else {
     if ($status === 'alumni') {
@@ -61,7 +61,7 @@ else {
             header('location: pending.php?action=login_success');
             exit(0);
         } else {
-            header("Location: pending.php?action=login_failed");
+            header("Location: signin.php?action=login_failed");
         }
     }
 }
