@@ -1,11 +1,14 @@
 <?php
 
+// DATABASE CONNECTION
 include_once("include/config.php");
 
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 } 
 
+
+// PAGINATION CODE
 if(isset($_GET['page'])){
     $page = $_GET['page'];
 }else{
@@ -28,19 +31,14 @@ $row_count =$user->fetchColumn();
 //determine the total number of pages available  
 $number_of_page = ceil ($row_count / $results_per_page); 
 
-//  //determine which page number visitor is currently on  
-//  if (!isset ($_GET['page']) ) {  
-//     $page = 1;  
-// } else {  
-//     $page = $_GET['page'];  
-// }  
-
-// //determine the sql LIMIT starting number for the results on the displaying page  
-// $page_first_result = ($page-1) * $results_per_page; 
-
-//retrieve the selected results from database 
-// $pagination = $conn->query("SELECT * FROM users");
-
+// SOCIAL MEDIA
+// global $conn;
+// function getSocMed(&$var){
+//     echo $var;
+//     $med = $conn->query("SELECT * FROM users INNER JOIN user_social_media ON users.id=user_social_media.user_id WHERE users.id = '".$var."'");
+//     $med->execute();
+//     $socmed = $med->fetch(PDO::FETCH_ASSOC);
+// }
 
 //close connection
 $conn = null;
@@ -173,11 +171,11 @@ $conn = null;
                     </div>
 
                     <div class="socmed">
-                    <a href="<?php echo $column['UserName'];?>"><i
-                            class="fa fa-facebook-official bg-transparent"></i></a>
-                    <a href="<?php echo $column['UserName'];?>"><i class="fa fa-github-square bg-transparent"></i></a>
-                    <a href="<?php echo $column['UserName'];?>"><i
-                            class="fa fa-linkedin-square bg-transparent"></i></a>
+                        <?php 
+                            // SOCIAL MEDIA
+                            // $id = $col['id'];
+                            // getSocMed($id);
+                        ?>
                     </div>
                     
                     <div class="button">

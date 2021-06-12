@@ -1,17 +1,11 @@
 <?php
 include_once("include/config.php");
 
-// if(!isset($_SESSION)){ 
-    
-//     session_start(); 
-    
-// } 
-
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 } 
 
-if(isset($_GET['action']) && isset($_GET['action']) == 'logout_success') { ?>
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) { ?>
     <!-- Logged in navbar html goes here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
