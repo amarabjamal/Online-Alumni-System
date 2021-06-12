@@ -31,6 +31,8 @@ $row_count =$user->fetchColumn();
 //determine the total number of pages available  
 $number_of_page = ceil ($row_count / $results_per_page); 
 
+// PAGINATION STOP
+
 // SOCIAL MEDIA
 // global $conn;
 // function getSocMed(&$var){
