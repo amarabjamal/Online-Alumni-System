@@ -137,6 +137,13 @@ if($_SESSION['logged_in'] == TRUE) {
                                         </div>
                                         <select id="grad_year" name="grad_year" class="custom-select" required>
                                             <option value="">Choose...</option>
+                                            <script>
+                                                var startyear = 1905;
+                                                var endyear = new Date().getFullYear();
+                                                for (var i = endyear;i >= startyear;i--){
+                                                    document.write("<option value=\""+i+"\">"+i+"</option>");
+                                                }
+                                            </script>
                                         </select>
                                         <div class="invalid-feedback">
                                             Graduation year is not selected.
@@ -179,10 +186,6 @@ if($_SESSION['logged_in'] == TRUE) {
                                 </div>
                             </div>
                         </div>
-
-                        <script>
-                            loadAgeSelector();
-                        </script>
 
                         <div class="form-row">
                             <div class="col">

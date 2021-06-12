@@ -6,7 +6,7 @@ function loadAgeSelector()
         option=document.createElement("Option");
         option.text = i;
         option.value = i;
-        document.getElementById("classOf").add(option);
+        document.getElementById("grad_year").add(option);
     }
 }
 
