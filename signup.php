@@ -52,16 +52,29 @@ if($_SESSION['logged_in'] == TRUE) {
                     <h1 class="font-weight-bold pb-3">SIGN UP</h1>
                     <hr>
                     <h4>Create your account</h4>
-                    <form method="POST" action="process_signup.php">
+
+                    <?php if($_GET['action'] == 'email_exist') { ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Email address already in use.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
+
+                    <form method="POST" action="process_signup.php" onsubmit="return verifySubmit()"> 
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="fullname">Full Name</label>
+                                    <label for="full_name">Full Name</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-graduate"></i></i></span>
                                         </div>
-                                        <input id="fullname" name="full_name" type="text" class="form-control" placeholder="" aria-label="fullname" required>
+                                        <input id="full_name" name="full_name" type="text" class="form-control" placeholder="" aria-label="full name" required>
+                                        <div class="invalid-feedback">
+                                            Name field is empty.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -75,6 +88,9 @@ if($_SESSION['logged_in'] == TRUE) {
                                             <span class="input-group-text"><i class="fas fa-envelope"></i></i></span>
                                         </div>
                                         <input id="email" name="email" type="email" class="form-control" placeholder="" aria-label="email" required>
+                                        <div class="invalid-feedback">
+                                            Email field is empty.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +105,8 @@ if($_SESSION['logged_in'] == TRUE) {
                                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                                         </div>
                                         <input id="password" name="password" type="password" class="form-control" placeholder="" aria-label="password" onkeyup="verifyPassword()" required>
+                                        <div id="password_error" class="invalid-feedback"></div>
                                     </div>
-                                    <small id="passwordHelpBlock" class="form-text text-muted"></small>
                                 </div>
                             </div>
                         </div>
@@ -98,14 +114,14 @@ if($_SESSION['logged_in'] == TRUE) {
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="cpassword">Confirm Password</label>
+                                    <label for="rpassword">Confirm Password</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                         </div>
-                                        <input id="cpassword" name="rpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
+                                        <input id="rpassword" name="rpassword" type="password" class="form-control" placeholder="" aria-label="confirm password" onkeyup="verifyPassword()" required>
+                                        <div id="rpassword_error" class="invalid-feedback"></div>
                                     </div>
-                                    <small id="passwordCheckBlock" class="form-text text-muted"></small>
                                 </div>
                             </div>
                         </div>
@@ -113,15 +129,25 @@ if($_SESSION['logged_in'] == TRUE) {
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="classOf">Class of</label>
+                                    <label for="grad_year">Class of</label>
 
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text"><i class="fas fa-calendar"></i></label>
                                         </div>
-                                        <select id="classOf" name="grad_year" class="custom-select" required>
+                                        <select id="grad_year" name="grad_year" class="custom-select" required>
                                             <option value="">Choose...</option>
+                                            <script>
+                                                var startyear = 1905;
+                                                var endyear = new Date().getFullYear();
+                                                for (var i = endyear;i >= startyear;i--){
+                                                    document.write("<option value=\""+i+"\">"+i+"</option>");
+                                                }
+                                            </script>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Graduation year is not selected.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -153,14 +179,13 @@ if($_SESSION['logged_in'] == TRUE) {
                                                 
                                             ?>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Faculty is not selected.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <script>
-                            loadAgeSelector();
-                        </script>
 
                         <div class="form-row">
                             <div class="col">
@@ -178,6 +203,70 @@ if($_SESSION['logged_in'] == TRUE) {
                         </div>
                         <p>Already have an account? <a href="signin.php">Sign In</a></p>
                     </form>
+
+                    <?php if($_SESSION['name_error']) { ?>
+                        <script>
+                            $( "#full_name" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['email_error']) { ?>
+                        <script>
+                            $( "#email" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['password_error']) { ?>
+                        <script>
+                            $( "#password" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['rpassword_error']) { ?>
+                        <script>
+                            $( "#rpassword" ).addClass( "is-invalid" );
+                            $( "#rpassword_error" ).text("Repeat password field is empty");
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['grad_year_error']) { ?>
+                        <script>
+                            $( "#grad_year" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if($_SESSION['faculty_error']) { ?>
+                        <script>
+                            $( "#faculty" ).addClass( "is-invalid" );
+                        </script>
+                    <?php   
+                        } 
+                    ?>
+
+                    <?php if(!$_SESSION['password_error'] && $_SESSION['password_mismatch']) { ?>
+                        <script>
+                            $( "#password" ).addClass( "is-invalid" );
+                            $( "#rpassword" ).addClass( "is-invalid" );
+                            $( "#rpassword_error" ).text("Password didn't match. Try again.");
+                        </script>
+                    <?php   
+                        } 
+
+                    unset($_SESSION['email_error']);
+                    unset($_SESSION['password_error']);
+
+                    session_destroy();
+                    ?>
                 </div>
             </div>
         </div>

@@ -24,7 +24,6 @@ if($_SESSION['logged_in'] == TRUE && $_SESSION['role'] == 'user') {
     header('Location: index.php?action=logout_success');
 } else {
     header('Location: index.php');
-
 }
 
 ?>

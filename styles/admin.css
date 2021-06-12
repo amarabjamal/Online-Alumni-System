@@ -5,8 +5,6 @@
     color: white;
 }
 
-
-
 main{
     font-family: 'Montserrat', sans-serif;
 }
@@ -120,41 +118,5 @@ footer{
     #control {
         display: none;
     }
-}
-
-#profileImage {
-    
-    display:block;
-    /* If you want to crop the image to a certain size, use something like this */
-    object-fit:scale-down;
-    width: 350px;
-    height: 350px;
-}
-
-.deny-btn{
-    background-color: red;
-    color: white;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 40px;
-}
-
-.approve-btn{
-    background-color: rgb(19, 92, 10);
-    color: white;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 40px;
-}
-
-.edit-btn{
-    background-color: rgb(14, 50, 90);
-    color: white;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 40px;
 }
 

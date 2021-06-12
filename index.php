@@ -1,5 +1,8 @@
 <?php
 
+if(session_status() === PHP_SESSION_NONE) session_start();
+
+include("include/config.php");
 
 ?>
 
@@ -44,7 +47,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success') { ?>
+    <?php if($_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE) { ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
@@ -70,7 +73,7 @@
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'login_success') { ?>
+    <?php if($_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
         <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
@@ -132,7 +135,7 @@
 
                 <div class="landing-content">
                     <?php
-                        if(!isset($_SESSION['logged_in'])) { 
+                        if($_SESSION['logged_in'] !== TRUE) { 
                     ?>
                     <h1>Welcome, UM Alumni!</h1>
 
@@ -142,7 +145,7 @@
                         <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
                     </p>
 
-                    <a href="./signup.html">
+                    <a href="signup.php">
                         <button type="button" class="landing-btn-2">Join Now</button>
                     </a>
                     <?php } else {?>
@@ -262,64 +265,48 @@
                 
                 <!-- Carousel Start -->
 
-                <div class="job-wrapper">
-                    <div class="job-carousel owl-carousel">
-                        <div class="job-card card-1">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                <?php 
 
-                        <div class="job-card card-2">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                        try {
+                            //Prepared Statements in PDO - prepare, bind, execute
+                            // perform query
+                            /* $query = "SELECT * FROM job_ads 
+                                        LEFT JOIN companies
+                                        ON job_ads.com_id = companies.id;
+                                        ORDER BY job_ads.id DESC LIMIT 5 ";  */ 
+                            $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+
+                            if($stmt->rowCount() > 0) {
+                                echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
+
+                                while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                    echo "<div class=\"job-card\">";
+                                    echo "<div class=\"position\">".$job_ads->title."</div>";
+                                    if ($job_ads->com_id == NULL) {
+                                        echo "<div class=\"company\">No company data</div>";
+                                    } else {
+                                        echo "<div class=\"company\">".$job_ads->com_id."</div>";
+                                    }
+                                    echo "<div class=\"details\">";
+                                    echo "Salary: RM".$job_ads->salary."<br>";  
+                                    echo "Publish at ".$job_ads->published_at."<br>";  
+                                    echo "</div></div>";                                        
+                                } 
+
+                                echo "</div></div>";
+                            }        
+
+                            // disconnect from database
+                            $conn = NULL;
+                        } catch (PDOException $e) {
+                            echo "Error: ".$e->getMessage();
+                            exit;
+                        }
                         
-                        <div class="job-card card-3">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                        ?>
 
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-5">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <script>
                         $(".job-carousel").owlCarousel({
                         margin: 20,
@@ -357,45 +344,7 @@
 
     <!-- ===================================== Start Footer Area ===================================== -->
     
-    <footer id="footer" class="mt-auto">
-        <div class="footer-link-section">
-            <div class="container">
-                <div class="row justify-content-left">
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="#">Find Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Links</h3>
-                        <ul>
-                            <li><a href="#">About UM</a></li>
-                            <li><a href="#">Study @ UM</a></li>
-                            <li><a href="#">General Enquiry</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Follow Us</h3>
-                        <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyrights -->
-        <div class="copyright py-4">
-            <div class="container text-center">
-                <p class="mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <?php include_once('footer.php') ?>
 
     <!-- ===================================== End Footer Area ===================================== -->
 
