@@ -23,6 +23,11 @@ if(session_status() === PHP_SESSION_NONE) session_start();
     <link href="styles/style.css" rel="stylesheet">
 
     <link href="styles/jobs.css" rel="stylesheet" type="text/css">
+    <link href="styles/page_error.css" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
     <title>Jobs | UM Alumni </title>
 
     <!--Bootsrap icons-->
@@ -45,8 +50,26 @@ if(session_status() === PHP_SESSION_NONE) session_start();
     <main>
 
     <?php if(!isset($_SESSION['logged_in'])) { ?>
-        <h1>Need to login</h1>
+        <div class="error_container">
+        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+        <p>
+            Please <a href="signin.php">Sign in</a> first to access the page.
+        </p>
+        </div>
     
+    <?php } ?>
+
+    <?php if(isset($_SESSION['logged_in'])) { ?>
+        <?php if($_SESSION['status'] != 1 || $_SESSION['status'] != 3) { ?>
+        <div class="error_container">
+        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+        <p>
+            You do not have access to this page.
+            Kindly wait for your account approval.
+        </p>
+        </div>
+    
+    <?php } ?>
     <?php } ?>
 
     </main>
