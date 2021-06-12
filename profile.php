@@ -1,41 +1,11 @@
 <?php
 
-session_start();
+include_once("include/config.php");
 
-
-private $servername;
-private $username;
-private $password;
-private $dbname;
-private $charset;
-
-public function connect() {
-    $this->servername = "localhost";
-    $this->username = "root";
-    $this->password = "";
-    $this->dbname = "userprofile";
-    $this->charset = "utf8mb4";
+if(session_status() === PHP_SESSION_NONE){
+    session_start;
 }
 
-try{
-    $dsn = "mysql:host=".$this->servername.";dbname=".this->dbname.";charset=".$this->charset;
-    $pdo = new PDO($dsn, $this->username, $this->password);
-    echo "Connection successful";
-} catch (PDOException $e) {
-    echo "Connection failed: ".$e->getMessage();
-
-}
-
-$userName = $_POST['name'];
-$userEmail = $_POST['email'];
-$userCompany = $_POST['company'];
-$userPosition = $_POST['position'];
-$usermajor = $_POST['major']
-
-$sql = "INSERT INTO user (name, email, company, position, major) VALUES (:name, :email, :company, :position:, major)";
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['name' => $userName, 'email' => $userEmail, 'company' => $userCompany, 'position' => $userPosition, 'major' => $userPosition]);
 ?>
 
 
@@ -86,14 +56,7 @@ $stmt->execute(['name' => $userName, 'email' => $userEmail, 'company' => $userCo
                             <img src="images/avatar-2.png" width="30%" alt="icon"><br><br>
 
 
-                            <h4>Danita Fabian</h4>
-                            <h6>Malaysia</h6>
-                            <h6>Developer at Grab</h6>
-                            <p>FCSIT</p>
-                            <p>Department of Software Engineering</p>
-
-                            <h6> aaabbb@gmail.com</h6>
-
+                        
                         </div>
                         <hr>
                         <div class="pt-3">
