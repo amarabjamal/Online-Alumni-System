@@ -6,40 +6,55 @@
     if(isset($_POST['submit']) && isset($_POST['eventid'])) {	
         //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
 
+        $eventid = $_POST['eventid'];
+
         $eventimage = $_FILES['file'];
 
-        $fileName = $_FILES['file']['name'];
-        $fileTmpName = $_FILES['file']['tmp_name'];
-        $fileSize = $_FILES['file']['size'];
-        $fileError = $_FILES['file']['error'];
-        $fileType = $_FILES['file']['type'];
+        $image = $_FILES['file'];
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+        if(isset($image)){
+            
+            
 
-        $allowed = array('jpg', 'jpeg', 'png');
+            $fileName = $_FILES['file']['name'];
+            $fileTmpName = $_FILES['file']['tmp_name'];
+            $fileSize = $_FILES['file']['size'];
+            $fileError = $_FILES['file']['error'];
+            $fileType = $_FILES['file']['type'];
 
-        echo "$fileSize";
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
 
-        if(in_array($fileActualExt, $allowed)){
-            if($fileError ===0){
-                if($fileSize < 149627600){
-                    $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    $fileDest = 'images/event/'.$fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDest);
-                    header("Location: editevent.php?uploadsuccess");
+            $allowed = array('jpg', 'jpeg', 'png');
 
-                }else{
-                    echo "File too big";
+            echo "$fileSize";
+
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    if ($fileSize < 149627600) {
+                        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                        $fileDest = 'images/profile/' . $fileNameNew;
+                        move_uploaded_file($fileTmpName, $fileDest);
+                        header("Location: editevent2.php?id=$eventid&condition=edit1");
+                    } else {
+                        echo "File too big";
+                    }
+                } else {
+                    echo "There was an error";
+                    header("Location: editevent2.php?id=$eventid&condition=edit2");
+                    exit;
                 }
-            }else{
-                echo "There was an error";
+            } else {
+                echo "You cannot upload files of this type!";
+                header("Location: editevent2.php?id=$eventid&condition=imageerror");
+                
+                
             }
-        } else{
-            echo "You cannot upload files of this type!";
+
+        $imagepath = $fileDest;
         }
 
-        $eventid = $_POST['eventid'];
+        
         $eventname = $_POST['eventname'];
         $eventstartdate = $_POST['eventstartdate'];
         $eventenddate = $_POST['eventenddate'];
@@ -48,31 +63,58 @@
         $imagepath = $fileDest;
         
         echo "$eventname";
+
+        if($eventstartdate > $eventenddate){
+            header("Location: editevent2.php?id=$eventid&condition=dateerror");
+            exit;
+        }
             
         
-            // if all the fields are filled (not empty) 
-            
-            //Step 3. Execute the SQL query.	
-            //insert data to database			
+        if(in_array($fileActualExt, $allowed)){
+
             try {
-              // begin a transaction
-              $conn->beginTransaction();
-              // a set of queries: if one fails, an exception will be thrown
-              $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= (SELECT id FROM venues WHERE venue = '$venue'), admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
-              echo "poopoo";
-              $conn->query($sql);
-              // if we arrive here, it means that no exception was thrown
-              // which means no query has failed, so we can commit the
-              // transaction
-              
-              $conn->commit();
-              header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
-              echo "poopoo";
-            } catch (Exception $e) {
-              // we must rollback the transaction since an error occurred
-              // with insert
-              $conn->rollback();
-            }
+                // begin a transaction
+                $conn->beginTransaction();
+                // a set of queries: if one fails, an exception will be thrown
+                $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= '$venue', admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
+                echo "poopoo";
+                $conn->query($sql);
+                // if we arrive here, it means that no exception was thrown
+                // which means no query has failed, so we can commit the
+                // transaction
+                
+                $conn->commit();
+                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                echo "poopoo";
+              } catch (Exception $e) {
+                // we must rollback the transaction since an error occurred
+                // with insert
+                $conn->rollback();
+              }
+        } else{
+            try {
+                // begin a transaction
+                $conn->beginTransaction();
+                // a set of queries: if one fails, an exception will be thrown
+                $sql = "UPDATE events SET name = '$eventname', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= '$venue', admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
+                echo "poopoo";
+                $conn->query($sql);
+                // if we arrive here, it means that no exception was thrown
+                // which means no query has failed, so we can commit the
+                // transaction
+                
+                $conn->commit();
+                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                echo "poopoo";
+              } catch (Exception $e) {
+                // we must rollback the transaction since an error occurred
+                // with insert
+                $conn->rollback();
+              }
+        }
+        
+
+            
         
             //Step 4. Process the results.
             //display success message & the new data can be viewed on index.php
@@ -110,6 +152,8 @@
         
         <link rel="stylesheet" href="styles/admin.css">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         
         <title>Alumni System</title>
     </head>
@@ -126,7 +170,7 @@
         
         
         <div class="container py-5">
-            <h2 class="banner-back">Create a new event</h2>
+            <h2 class="banner-back">Edit event</h2>
 
         </div>
 
@@ -137,18 +181,69 @@
         <div class="container">
             <div class="formthing">
                 <form action="editevent2.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
+                    <div class="form-group pb-5">
                         <input type="text" hidden id="eventid" name="eventid" value = "<?php echo "".$inp['0'].""; ?>">
                         <label >Event Name </label><br>
                         <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name" value="<?php echo "".$inp['name'].""; ?>">
                     </div>
                     
+
+
+
+                    <?php if(isset($_GET['condition']) && $_GET['condition']=='imageerror'){ ?>
+                        <div class="alert alert-danger" role="alert">
+                        Warning: Image error
+                        </div>
+                    <?php } ?>
+
+                    <div id="profile-container">
+                        <h2>Current Image</h2>
+                        <?php if (isset($inp['image_url'])) { ?>
+
+                            <img src="<?php echo $inp['image_url']; ?>" id="profileImage" alt="Profile picture" />
+
+                        <?php } else { ?>
+
+                            <image id="profileImage" src="" />
+
+                        <?php } ?>
+                    </div>
+
+                    To change image, upload file below <br>
+                    <input id="imageUpload" type="file" name="file" placeholder="Photo" capture>
+
+
+                    <script>
+                        $("#profileImage").click(function(e) {
+                            $("#imageUpload").click();
+                        });
+
+                        function fasterPreview(uploader) {
+                            if (uploader.files && uploader.files[0]) {
+                                $('#profileImage').attr('src',
+                                    window.URL.createObjectURL(uploader.files[0]));
+                            }
+                        }
+
+                        $("#imageUpload").change(function() {
+                            fasterPreview(this);
+                        });
+                    </script>
+
+
+
+                    <!--
                     <div>
                         <label>Image</label><br>
                         <input type="file" id="file" name="file" class="form-control">
                     </div>
+                    -->
 
-                    <div>
+
+
+                    
+
+                    <div class="pt-5">
                         <label> Date of Event Start </label><br>
                         <input type="datetime-local" id="eventstartdate" name="eventstartdate" class="form-control" value="<?php echo "".$inp['start_at'].""; ?>">
                     </div>
@@ -158,25 +253,33 @@
                         <input type="datetime-local" id="eventstartdate" name="eventenddate" class="form-control" value="<?php echo "".$inp['end_at'].""; ?>">
                     </div>
 
+                    <?php if(isset($_GET['condition']) && $_GET['condition']=='dateerror'){ ?>
+                        <div class="alert alert-danger" role="alert">
+                        Warning: Invalid set of dates
+                        </div>
+                    <?php } ?>
+
                     <div>
                         <label for="VenueSelect">Venue</label><br>
                             <select class="form-control" id="venue" name="venue">
-                                <option>...</option>
-                                <option>Microsoft Teams</option>
-                                <option>Faculty of Arts and Social Sciences</option>
-                                <option>Faculty of Built Environment</option>
-                                <option>Faculty of Business and Accountancy</option>
-                                <option>Faculty of Computer Science and Information Technology</option>
-                                <option>Faculty of Creative Arts</option>
-                                <option>Faculty of Dentistry</option>
-                                <option>Faculty of Economics and Adminstration</option>
-                                <option>Faculty of Education</option>
-                                <option>Faculty of Engineering</option>
-                                <option>Faculty of Law</option>
-                                <option>Faculty of Language and Linguistics</option>
-                                <option>Faculty of Medicine</option>
-                                <option>Faculty of Pharmacy</option>
-                                <option>Faculty of Science</option>
+                                <?php
+
+                                        $sql = "SELECT * FROM venues";
+                                        $venues = $conn->query($sql);
+                                        $p = 1;
+                                        while ($ven = $venues->fetch()) {
+                                            // the keys match the field names from the table
+                                            
+                                            if($ven['id'] == $inp['venue_id']){
+                                                echo "<option value = $p selected=\"selected\">$ven[venue]</option>";
+                                            } else{
+                                                echo "<option value = $p>$ven[venue]</option>";
+                                            }
+                                            $p += 1;
+                                            
+                                        }
+
+                                    ?>
                                 
                             </select>
                     </div>

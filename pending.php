@@ -104,13 +104,13 @@ $result = $conn->query($sql);
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
                 <thead>
                     <tr>
-                        <th style="width:20%">Name</th>
+                        <th style="width:17%">Name</th>
                         <th style="width:25%">Faculty</th>
                         <th style="width:20%">Email</th>
                         
                         <th style="width:5%" class="text-center">Batch</th>
                         <th style="width:10%" class="text-center">Status</th>
-                        <th style="width:15%" class="text-center">Control</th>
+                        <th style="width:23%" class="text-center">Control</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -125,7 +125,7 @@ $result = $conn->query($sql);
                                 
                                 echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                 echo "<td class=\"text-center\">".$res['status']."</td>";
-                                echo "<td><a href=\"pending.php?id=$res[0]&condition=approve\">Approve</a> | <a href=\"pending.php?id=$res[0]&condition=deny\">Deny</a></td>";
+                                echo "<td><a class=\"approve-btn\" href=\"pending.php?id=$res[0]&condition=approve\" >Approve</a> | <a class=\"deny-btn\" href=\"pending.php?id=$res[0]&condition=deny\">Deny</a></td>";
                             }
                     ?>    
 

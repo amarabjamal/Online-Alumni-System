@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET["id"]) && $_GET["condition"]=='approve')
+if(isset($_GET["id"]) && isset($_GET["condition"]) && $_GET["condition"]=='approve')
 {
     $id = $_GET['id'];
     try {
@@ -22,7 +22,7 @@ if(isset($_GET["id"]) && $_GET["condition"]=='approve')
     
 }
 
-if(isset($_GET["id"]) && $_GET["condition"]=='deny')
+if(isset($_GET["id"]) && isset($_GET["condition"]) && $_GET["condition"]=='deny')
 {
     $id = $_GET['id'];
     try {

@@ -21,6 +21,8 @@
 
         echo "$fileSize";
 
+        
+
         if(in_array($fileActualExt, $allowed)){
             if($fileError ===0){
                 if($fileSize < 149627600){
@@ -37,7 +39,7 @@
             }
         } else{
             echo "You cannot upload files of this type!";
-            header("Location: addevent.php?condition=wrongfile");
+            header("Location: addevent.php?condition=imageerror");
             exit;
         }
 
@@ -48,8 +50,18 @@
         $venue = $_POST['venue'];
         $eventbody = $_POST['body'];
         $imagepath = $fileDest;
+
+        if($eventstartdate > $eventenddate){
+            header("Location: addevent.php?condition=dateerror");
+            exit;
+        }
         
         echo "$eventname";
+        echo "$eventstartdate";
+        echo "$eventenddate<br>";
+        echo "$venue";
+        echo "$eventbody";
+        echo "$imagepath";
             
         
             // if all the fields are filled (not empty) 
@@ -60,13 +72,14 @@
               // begin a transaction
               $conn->beginTransaction();
               // a set of queries: if one fails, an exception will be thrown
-              $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate',(SELECT id FROM venues WHERE venue = '$venue'),'$_SESSION[admin_id]')";
+              $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate','$venue','$_SESSION[admin_id]')";
               echo "poopoo";
               $conn->query($sql);
               // if we arrive here, it means that no exception was thrown
               // which means no query has failed, so we can commit the
               // transaction
               $conn->commit();
+              header('Location: http://localhost/Online-alumni-system/editevent.php?success');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
@@ -78,7 +91,7 @@
             //display success message & the new data can be viewed on index.php
             
 
-            header('Location: http://localhost/Online-alumni-system/editevent.php');
+            
     }
 ?>
 
@@ -129,10 +142,22 @@
                         <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name">
                     </div>
                     
+                    <?php if(isset($_GET['condition']) && $_GET['condition']=='imageerror'){ ?>
+                        <div class="alert alert-danger" role="alert">
+                        Warning: Image error
+                        </div>
+                    <?php } ?>
+
                     <div>
                         <label>Image</label><br>
                         <input type="file" id="file" name="file" class="form-control">
                     </div>
+
+                    <?php if(isset($_GET['condition']) && $_GET['condition']=='dateerror'){ ?>
+                        <div class="alert alert-danger" role="alert">
+                        Warning: Invalid set of dates
+                        </div>
+                    <?php } ?>
 
                     <div>
                         <label> Date of Event Start</label><br>
@@ -147,22 +172,24 @@
                     <div>
                         <label for="VenueSelect">Venue</label><br>
                             <select class="form-control" id="venue" name="venue">
-                                <option>...</option>
-                                <option>Microsoft Teams</option>
-                                <option>Faculty of Arts and Social Sciences</option>
-                                <option>Faculty of Built Environment</option>
-                                <option>Faculty of Business and Accountancy</option>
-                                <option>Faculty of Computer Science and Information Technology</option>
-                                <option>Faculty of Creative Arts</option>
-                                <option>Faculty of Dentistry</option>
-                                <option>Faculty of Economics and Adminstration</option>
-                                <option>Faculty of Education</option>
-                                <option>Faculty of Engineering</option>
-                                <option>Faculty of Law</option>
-                                <option>Faculty of Language and Linguistics</option>
-                                <option>Faculty of Medicine</option>
-                                <option>Faculty of Pharmacy</option>
-                                <option>Faculty of Science</option>
+                                <?php
+
+                                        $sql = "SELECT * FROM venues";
+                                        $venues = $conn->query($sql);
+                                        $p = 1;
+                                        while ($ven = $venues->fetch()) {
+                                            // the keys match the field names from the table
+                                            
+                                            if($ven['id'] == 19){
+                                                echo "<option value = $p selected=\"selected\">$ven[venue]</option>";
+                                            } else{
+                                                echo "<option value = $p>$ven[venue]</option>";
+                                            }
+                                            $p += 1;
+                                            
+                                        }
+
+                                    ?>
                                 
                             </select>
                     </div>

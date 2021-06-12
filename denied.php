@@ -80,7 +80,7 @@ $result = $conn->query($sql);
                                 echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                 echo "<td class=\"text-center\">".$res['status']."</td>";
             
-                                echo "<td><a name=\"reapprove\" href=\"denied.php?id=$res[0]&condition=approve\">Approve</a></td>";
+                                echo "<td><a class=\"approve-btn\" name=\"reapprove\" href=\"denied.php?id=$res[0]&condition=approve\">Approve</a></td>";
                             }
                     ?>
 

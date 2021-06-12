@@ -88,7 +88,7 @@ $result = $conn->query($sql);
                         <th style="width:20%">Email</th>
                         <th style="width:5%" class="text-center">Batch</th>
                         <th style="width:10%" class="text-center">Status</th>
-                        <th style="width:15%" class="text-center">Control</th>
+                        <th style="width:20%" class="text-center">Control</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -104,7 +104,7 @@ $result = $conn->query($sql);
                                     echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                     echo "<td class=\"text-center\">".$res['status']."</td>";
                 
-                                    echo "<td><a href=\"approved.php?id=$res[0]&condition=deny\">Deny</a> | <a href=\"edituser.php?id=$res[0]&condition=edit\">Edit</a></td>";
+                                    echo "<td><a class=\"deny-btn\" href=\"approved.php?id=$res[0]&condition=deny\" >Deny</a> | <a class=\"edit-btn\" href=\"edituser.php?id=$res[0]&condition=edit\">Edit</a></td>";
                                 }
                     ?>    
 
