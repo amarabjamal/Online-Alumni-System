@@ -20,27 +20,21 @@ $results_per_page = 12;
 $start_from = ($page-1)*12;
 
 $result = $conn->query("SELECT * FROM users LIMIT $start_from,$results_per_page");
+// $row = $result->fetch(PDO::FETCH_ASSOC);
+
+// print_r($row);
 
 //find the total number of results stored in the database  
 $user = $conn->query("SELECT SQL_CALC_FOUND_ROWS * FROM users")->fetchAll();
 $user = $conn->prepare("SELECT FOUND_ROWS()"); 
 $user->execute();
+
 $row_count =$user->fetchColumn();
 
 
 //determine the total number of pages available  
 $number_of_page = ceil ($row_count / $results_per_page); 
 
-// PAGINATION STOP
-
-// SOCIAL MEDIA
-// global $conn;
-// function getSocMed(&$var){
-//     echo $var;
-//     $med = $conn->query("SELECT * FROM users INNER JOIN user_social_media ON users.id=user_social_media.user_id WHERE users.id = '".$var."'");
-//     $med->execute();
-//     $socmed = $med->fetch(PDO::FETCH_ASSOC);
-// }
 
 //close connection
 $conn = null;
@@ -197,28 +191,20 @@ $conn = null;
         <!-- ROW FOR CARDS-->
         <div class="row cards">
             <?php foreach($result as $col){ ?>
-                
-                <div class="col-md-3 col-sm-6 col-xs-12 spc">
-                    <div class="card">
-                        <img src="images/avatar.png" alt="man">
-                        <div class="desc">
-                            <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['full_name']); ?></p>
-                            <p class="abtMe">About Me</p>
-                        </div>
+                    
+                    <div class="col-md-3 col-sm-6 col-xs-12 spc">
+                        <div class="card">
+                            <img src="images/avatar.png" alt="man">
+                            <div class="desc">
+                                <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['full_name']); ?></p>
+                                <p class="abtMe">About Me</p>
+                            </div>
 
-                        <div class="socmed">
-                            <?php 
-                                // SOCIAL MEDIA
-                                // $id = $col['id'];
-                                // getSocMed($id);
-                            ?>
-                        </div>
-                        
-                        <div class="button">
-                            <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['id']?>" role="button">View Profile</a>
+                            <div class="button">
+                                <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['id']?>" role="button">View Profile</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
             <?php }?>
         </div>
