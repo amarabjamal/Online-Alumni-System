@@ -30,8 +30,6 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
     <title>Jobs | UM Alumni </title>
 
-    <!--Bootsrap icons-->
-    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
