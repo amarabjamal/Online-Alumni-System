@@ -299,7 +299,7 @@ include("include/config.php");
                         <h2>Jobs Listing</h2>
                     </div>
                     <div class="col-5">
-                        <div class="side-view-more"><a href="./jobs.html">View More</a></div>
+                        <div class="side-view-more"><a href="jobs.php">View More</a></div>
                     </div>
                 </div>
                 
