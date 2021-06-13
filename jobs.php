@@ -133,10 +133,10 @@ include_once("include/config.php");
                                 </div>
                                 <div class="modal-body">
                                     <div class="row mb-3">
-                                        <div class="col-4"><?php echo $res['name']; ?></div>
-                                        <div class="col-4"><?php echo $res['location']; ?></div>
+                                        <div class="col-4"><small><i class="fas fa-hand-holding-usd"></i> RM <?php echo $res['salary']; ?></small></div>
+                                        <div class="col-4"><small><i class="fas fa-building"></i> <?php echo $res['name']; ?></small></div>
+                                        <div class="col-4"><small><i class="fas fa-map-marker-alt"></i> <?php echo $res['location']; ?></small></div>
                                     </div>
-                                    <strong>Salary</strong>: RM<?php echo $res['salary']; ?><br>
                                     <?php echo $res['content']; ?>
                                 </div>
                                 <div class="modal-footer">
