@@ -2,6 +2,8 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 
+include_once("include/config.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +75,63 @@ if(session_status() === PHP_SESSION_NONE) session_start();
         <div id="page_heading">
             <h1>Jobs</h1>
         </div>
+
+        <section id="upcoming-events" class="upcoming-events">
+            <div class="container">
+                <div class="row">
+
+                <?php 
+
+                    try {
+                        $query = "SELECT  
+                                    job_ads.id,
+                                    job_ads.title,
+                                    job_ads.salary,
+                                    job_ads.content,
+                                    job_ads.published_at,
+                                    companies.name,
+                                    companies.location,
+                                    users.full_name
+                                FROM job_ads
+                                LEFT JOIN companies
+                                ON job_ads.com_id = companies.id 
+                                JOIN users
+                                ON job_ads.user_id = users.id 
+                                ORDER BY job_ads.id DESC 
+                                ";
+                        $stmt = $conn->query($query);
+
+                        if($stmt != 0) {
+                            while($res = $stmt->fetch()) { ?>
+                            <div class="col-4">
+                                <div class="job-card">
+                                    <div class="position"><?php echo $res['title']; ?></div>
+                                    <!-- if ($job_ads->com_id == NULL) {
+                                        <div class="company">No company data</div>;
+                                    } else {
+                                    } -->
+                                    <div class="company"><?php if($res['name'] == NULL) { echo "No company details";} else { echo $res['name'];} ?></div>
+                                    <div class="details">
+                                        Salary: RM<?php echo $res['salary']; ?><br>  
+                                        Publish on <?php echo date('d/m/y', strtotime($res['published_at'])); ?><br>  
+                                        By <?php echo $res['full_name']; ?>
+                                    </div>
+                                </div> 
+                            </div>                                      
+                        <?php    } 
+                        }        
+
+                        // disconnect from database
+                        $conn = NULL;
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
+
+                    ?>
+
+                </div>
+            </div>
+        </section>
     <?php } ?>
     <?php } ?>
 

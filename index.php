@@ -284,7 +284,7 @@ include("include/config.php");
 
                 </div>
                 <div class="more-container">
-                    <a href="./events.html"><button class="view-more"><span>View All Events </span></button></a>
+                    <a href="events.php"><button class="view-more"><span>View All Events </span></button></a>
                 </div>
             </div>
         </section>
@@ -309,44 +309,38 @@ include("include/config.php");
 
                 <?php 
 
-                        try {
-                            //Prepared Statements in PDO - prepare, bind, execute
-                            // perform query
-                            /* $query = "SELECT * FROM job_ads 
-                                        LEFT JOIN companies
-                                        ON job_ads.com_id = companies.id;
-                                        ORDER BY job_ads.id DESC LIMIT 5 ";  */ 
-                            $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
-                            $stmt = $conn->prepare($query);
-                            $stmt->execute();
+                    try {
+                        $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
+                        $stmt = $conn->prepare($query);
+                        $stmt->execute();
 
-                            if($stmt->rowCount() > 0) {
-                                echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
+                        if($stmt->rowCount() > 0) {
+                            echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
 
-                                while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
-                                    echo "<div class=\"job-card\">";
-                                    echo "<div class=\"position\">".$job_ads->title."</div>";
-                                    if ($job_ads->com_id == NULL) {
-                                        echo "<div class=\"company\">No company data</div>";
-                                    } else {
-                                        echo "<div class=\"company\">".$job_ads->com_id."</div>";
-                                    }
-                                    echo "<div class=\"details\">";
-                                    echo "Salary: RM".$job_ads->salary."<br>";  
-                                    echo "Publish at ".$job_ads->published_at."<br>";  
-                                    echo "</div></div>";                                        
-                                } 
+                            while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                echo "<div class=\"job-card\">";
+                                echo "<div class=\"position\">".$job_ads->title."</div>";
+                                if ($job_ads->com_id == NULL) {
+                                    echo "<div class=\"company\">No company data</div>";
+                                } else {
+                                    echo "<div class=\"company\">".$job_ads->com_id."</div>";
+                                }
+                                echo "<div class=\"details\">";
+                                echo "Salary: RM".$job_ads->salary."<br>";  
+                                echo "Publish at ".$job_ads->published_at."<br>";  
+                                echo "</div></div>";                                        
+                            } 
 
-                                echo "</div></div>";
-                            }        
+                            echo "</div></div>";
+                        }        
 
-                            // disconnect from database
-                            $conn = NULL;
-                        } catch (PDOException $e) {
-                            echo "Error: ".$e->getMessage();
-                        }
+                        // disconnect from database
+                        $conn = NULL;
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
                         
-                        ?>
+                ?>
 
                 <script>
                         $(".job-carousel").owlCarousel({
