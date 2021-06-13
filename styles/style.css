@@ -554,11 +554,7 @@ html {
     justify-content: center;
     align-items: center;
 } */
-/* .modal_content p{
-    margin-top: 20px;
-    padding: 10px;
-    background: #c5c5c5;
-} */
+
 .modal_content .image_details {
     display: flex;
     flex-direction: row;
@@ -571,13 +567,19 @@ html {
     height: 220px;
 }
 .modal_content .details{
-    background-color: #888;
     margin-left: 20px;
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     overflow-x: hidden;
     flex-grow: 3;
     min-height: 220px;
+}
+
+.modal_content .event_content {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgb(212, 212, 212);
+    border-radius: 5px;
 }
 
 /* Page Heading */

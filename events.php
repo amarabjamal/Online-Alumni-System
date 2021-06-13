@@ -144,7 +144,7 @@ $page_first_result = ($page-1) * $results_per_page;
                                         echo            "End at:<br> ".$res['end_at']."<br>";
                                         echo            "Venue:<br> ".$res['venue']."<br>";
                                         echo        "</div></div>";
-                                        echo        "<p>".$res['content']."</p>";
+                                        echo        "<div class=\"event_content\">".$res['content']."</div>";
                                         echo "</div></div>";
                                         echo "<div class=\"modal-footer\">";
                                         echo   "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>";
