@@ -15,8 +15,8 @@
                 Events
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="addEvent.php">New Event</a>
-                <a class="dropdown-item" href="editEvent.php">Edit Event</a>
+                <a class="dropdown-item" href="add_event.php">New Event</a>
+                <a class="dropdown-item" href="edit_event.php">Edit Event</a>
             </li>
             <li class="nav-item" id="control">
                 <a class="nav-link logout-btn other" href="logout.php">Log Out</a>

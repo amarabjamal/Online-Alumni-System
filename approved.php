@@ -104,7 +104,7 @@ $result = $conn->query($sql);
                                     echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                     echo "<td class=\"text-center\">".$res['status']."</td>";
                 
-                                    echo "<td><a class=\"deny-btn\" href=\"approved.php?id=$res[0]&condition=deny\" >Deny</a> | <a class=\"edit-btn\" href=\"edituser.php?id=$res[0]&condition=edit\">Edit</a></td>";
+                                    echo "<td><a class=\"deny-btn\" href=\"approved.php?id=$res[0]&condition=deny\" >Deny</a> | <a class=\"edit-btn\" href=\"edit_user.php?id=$res[0]&condition=edit\">Edit</a></td>";
                                 }
                     ?>    
 

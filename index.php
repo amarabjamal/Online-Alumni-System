@@ -48,7 +48,9 @@ include("include/config.php");
     
     <!-- Display message for successful logout -->
     <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && !isset($_SESSION['logged_in'])) { ?>
+
     <div class="alert_v1 show">
+
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
         <div class="close-btn">
@@ -74,7 +76,9 @@ include("include/config.php");
 
     <!-- Display message for successful login -->
     <?php if(isset($_GET['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE && isset($_SESSION['logged_in'])) { ?>
+
         <div class="alert_v1 show">
+
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
         <div class="close-btn">

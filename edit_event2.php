@@ -35,18 +35,18 @@
                         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                         $fileDest = 'images/profile/' . $fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDest);
-                        header("Location: editevent2.php?id=$eventid&condition=edit1");
+                        header("Location: edit_event2.php?id=$eventid&condition=edit1");
                     } else {
                         echo "File too big";
                     }
                 } else {
                     echo "There was an error";
-                    header("Location: editevent2.php?id=$eventid&condition=edit2");
+                    header("Location: edit_event2.php?id=$eventid&condition=edit2");
                     exit;
                 }
             } else {
                 echo "You cannot upload files of this type!";
-                header("Location: editevent2.php?id=$eventid&condition=imageerror");
+                header("Location: edit_event2.php?id=$eventid&condition=imageerror");
                 
                 
             }
@@ -65,7 +65,7 @@
         echo "$eventname";
 
         if($eventstartdate > $eventenddate){
-            header("Location: editevent2.php?id=$eventid&condition=dateerror");
+            header("Location: edit_event2.php?id=$eventid&condition=dateerror");
             exit;
         }
             
@@ -84,7 +84,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                header('Location: edit_event.php?sucess');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
@@ -104,7 +104,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                header('Location: edit_event.php?sucess');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
@@ -180,7 +180,7 @@
 
         <div class="container">
             <div class="formthing">
-                <form action="editevent2.php" method="post" enctype="multipart/form-data">
+                <form action="edit_event2.php" method="post" enctype="multipart/form-data">
                     <div class="form-group pb-5">
                         <input type="text" hidden id="eventid" name="eventid" value = "<?php echo "".$inp['0'].""; ?>">
                         <label >Event Name </label><br>

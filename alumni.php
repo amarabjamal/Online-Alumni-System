@@ -86,172 +86,175 @@ $conn = null;
     <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
 
-    <!-- ROW FOR HEADER -->
+
     <div class="container">
-    <div class="row graduate-text">
-        <!-- header -->
-        <div class="col  alumni-text">
-            <h1>Alumni</h1>
-            <p>(n.) former student or pupil of a school, college, or university. </p>
-            <div class="search-box">
-                <input type="text" placeholder="Search for alumni..">
+        <!-- ROW FOR HEADER -->
+        <div class="row graduate-text">
+            <!-- header -->
+            <div class="col  alumni-text">
+                <h1>Alumni</h1>
+                <p>(n.) former student or pupil of a school, college, or university. </p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for alumni..">
 
-                <div class="autocom-box"></div>
+                    <div class="autocom-box"></div>
 
-                <div class="search-icon" onclick="displayPage()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search bg-transparent text-white" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
+                    <div class="search-icon" onclick="displayPage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search bg-transparent text-white" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <!-- graduate image -->
-        <div class="col d-none d-lg-block graduate">
-            <img src="images/graduate.png" alt="graduate">
-        </div>
-    </div>
-    
-
-    <!-- ROW FOR INDICATOR -->
-    <div class="row indi-box">
-        <!-- column untuk indicator -->
-        <div class="col-4 indicator">
-            <p><a href="index.html">home</a> > <span><a href="alumni.html">Alumni</a></span></p>
-        </div>
-    </div>
-
-    <!-- ROW FOR FILTER -->
-
-    <div class="row filter">
-        <!-- column for Batch -->
-        <div class="col-lg-4 search-input">
-            <input type="text" name="batch" placeholder="Batch" class="batch">
-            <div class="autocom-batch">
+            <!-- graduate image -->
+            <div class="col d-none d-lg-block graduate">
+                <img src="images/graduate.png" alt="graduate">
             </div>
         </div>
 
-        <!-- column for faculty -->
-        <div class="col-lg-4 break">
-            <select name="faculty" id="main-menu" class="custom-select">
-                <option value="selectF" disabled selected>Please Select Faculty</option>
-                <option value="education">Faculty of Education</option>
-                <option value="dentistry">Faculty of Dentistry</option>
-                <option value="engineering">Faculty of Engineering</option>
-                <option value="science">Faculty of Science</option>
-                <option value="law">Faculty of Law</option>
-                <option value="medicine">Faculty of Medicine</option>
-                <option value="artsocial">Faculty of Art and Social Sciences</option>
-                <option value="business">Faculty of Business and Accountancy</option>
-                <option value="economics">Faculty of Economics and Administration</option>
-                <option value="languages">Faculty of Languages and Linguistics</option>
-                <option value="environment">Faculty of Built Environment</option>
-                <option value="compsc">Faculty of Computer Science and Information Technology</option>
-                <option value="pharmacy">Faculty of Pharmacy</option>
-                <option value="creative">Faculty of Creative and Arts</option>
-                <option value="business">Faculty of Business and Accountancy</option>
-            </select>
+
+
+        <!-- ROW FOR INDICATOR -->
+        <div class="row indi-box">
+            <!-- column untuk indicator -->
+            <div class="col-4 indicator">
+                <p><a href="index.html">home</a> > <span><a href="alumni.html">Alumni</a></span></p>
+            </div>
         </div>
 
-        <!-- column for major -->
-        <div class="col-lg-4 break">
-            <select name="major" id="sub-menu" class="custom-select">
-                <option value="selectM" disabled selected>Please Select Major</option>
-            </select>
-        </div>
-    </div>
+        <!-- ROW FOR FILTER -->
 
-    <!-- ROW FOR CARDS-->
-    <div class="row cards">
-        <?php foreach($result as $col){ ?>
-            
-            <div class="col-md-3 col-sm-6 col-xs-12 spc">
-                <div class="card">
-                    <img src="images/avatar.png" alt="man">
-                    <div class="desc">
-                        <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['full_name']); ?></p>
-                        <p class="abtMe">About Me</p>
-                    </div>
-
-                    <div class="socmed">
-                        <?php 
-                            // SOCIAL MEDIA
-                            // $id = $col['id'];
-                            // getSocMed($id);
-                        ?>
-                    </div>
-                    
-                    <div class="button">
-                        <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['id']?>" role="button">View Profile</a>
-                    </div>
+        <div class="row filter">
+            <!-- column for Batch -->
+            <div class="col-lg-4 search-input">
+                <input type="text" name="batch" placeholder="Batch" class="batch">
+                <div class="autocom-batch">
                 </div>
             </div>
 
-        <?php }?>
-    </div>
+            <!-- column for faculty -->
+            <div class="col-lg-4 break">
+                <select name="faculty" id="main-menu" class="custom-select">
+                    <option value="selectF" disabled selected>Please Select Faculty</option>
+                    <option value="education">Faculty of Education</option>
+                    <option value="dentistry">Faculty of Dentistry</option>
+                    <option value="engineering">Faculty of Engineering</option>
+                    <option value="science">Faculty of Science</option>
+                    <option value="law">Faculty of Law</option>
+                    <option value="medicine">Faculty of Medicine</option>
+                    <option value="artsocial">Faculty of Art and Social Sciences</option>
+                    <option value="business">Faculty of Business and Accountancy</option>
+                    <option value="economics">Faculty of Economics and Administration</option>
+                    <option value="languages">Faculty of Languages and Linguistics</option>
+                    <option value="environment">Faculty of Built Environment</option>
+                    <option value="compsc">Faculty of Computer Science and Information Technology</option>
+                    <option value="pharmacy">Faculty of Pharmacy</option>
+                    <option value="creative">Faculty of Creative and Arts</option>
+                    <option value="business">Faculty of Business and Accountancy</option>
+                </select>
+            </div>
 
-    <!-- PAGINATION START -->
-    <ul class="pagination justify-content-center">
-        <?php 
+            <!-- column for major -->
+            <div class="col-lg-4 break">
+                <select name="major" id="sub-menu" class="custom-select">
+                    <option value="selectM" disabled selected>Please Select Major</option>
+                </select>
+            </div>
+        </div>
 
-            if($page>1){
-                echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
-            }
-            for($i=1; $i<=$number_of_page; $i++){
-                echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
-            }
-            if($i>$page){
-                echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
-            }
-        ?>
-    </ul>
-    
+        <!-- ROW FOR CARDS-->
+        <div class="row cards">
+            <?php foreach($result as $col){ ?>
+                
+                <div class="col-md-3 col-sm-6 col-xs-12 spc">
+                    <div class="card">
+                        <img src="images/avatar.png" alt="man">
+                        <div class="desc">
+                            <p class="name" style="font-weight: 800;"><?php echo htmlspecialchars($col['full_name']); ?></p>
+                            <p class="abtMe">About Me</p>
+                        </div>
+
+                        <div class="socmed">
+                            <?php 
+                                // SOCIAL MEDIA
+                                // $id = $col['id'];
+                                // getSocMed($id);
+                            ?>
+                        </div>
+                        
+                        <div class="button">
+                            <a class="btn btn-primary" href="viewprofile.php?id=<?php echo $col['id']?>" role="button">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+
+            <?php }?>
+        </div>
+
+
+        <!-- PAGINATION START -->
+        <ul class="pagination justify-content-center">
+            <?php 
+
+                if($page>1){
+                    echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
+                }
+                for($i=1; $i<=$number_of_page; $i++){
+                    echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
+                }
+                if($i>$page){
+                    echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
+                }
+            ?>
+        </ul>
+
     </div>
     <!-- ===================================== Start Footer Area ===================================== -->
 
     <footer id="footer" class="mt-auto">
-        <div class="footer-link-section">
-            <div class="container">
-                <div class="row justify-content-left">
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="#">Find Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Links</h3>
-                        <ul>
-                            <li><a href="#">About UM</a></li>
-                            <li><a href="#">Study @ UM</a></li>
-                            <li><a href="#">General Enquiry</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Follow Us</h3>
-                        <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Twitter</a></li>
-                        </ul>
+            <div class="footer-link-section">
+                <div class="container">
+                    <div class="row justify-content-left">
+                        <div class="col-sm-6 col-md-4 item">
+                            <h3>Contact</h3>
+                            <ul>
+                                <li><a href="#">Find Us</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4 item">
+                            <h3>Links</h3>
+                            <ul>
+                                <li><a href="#">About UM</a></li>
+                                <li><a href="#">Study @ UM</a></li>
+                                <li><a href="#">General Enquiry</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4 item">
+                            <h3>Follow Us</h3>
+                            <ul>
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">Twitter</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Copyrights -->
-        <div class="copyright py-4">
-            <div class="container text-center">
-                <p class="mb-0 py-2">&copy;
-                    <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
-                </p>
+            <!-- Copyrights -->
+            <div class="copyright py-4">
+                <div class="container text-center">
+                    <p class="mb-0 py-2">&copy;
+                        <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
-
+        </footer>
     <!-- ===================================== End Footer Area ===================================== -->
 
     <script src="scripts/alumni.js"></script>
