@@ -48,7 +48,7 @@ include("include/config.php");
     
     <!-- Display message for successful logout -->
     <?php if(isset($_SESSION['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && isset($_SESSION['logged_in'])) { ?>
-    <div class="alert show">
+    <div class="alert_v1 show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
         <div class="close-btn">
@@ -59,14 +59,14 @@ include("include/config.php");
     <script>
 
     setTimeout(function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
     },3000);
     
 
     $('.close-btn').click(function(){
-    $('.alert').removeClass("show");
-    $('.alert').addClass("hide");
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
     });
         
     </script>
@@ -74,7 +74,7 @@ include("include/config.php");
 
     <!-- Display message for successful login -->
     <?php if(isset($_SESSION['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
-        <div class="alert show">
+        <div class="alert_v1 show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
         <div class="close-btn">
@@ -85,14 +85,14 @@ include("include/config.php");
     <script>
 
     setTimeout(function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
     },3000);
     
 
     $('.close-btn').click(function(){
-    $('.alert').removeClass("show");
-    $('.alert').addClass("hide");
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
     });
         
     </script>
@@ -155,7 +155,15 @@ include("include/config.php");
                         Interact with other alumni, find a job oppurtunity and get the latest news &amp; events!
                         <br><br>
                         <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
-                    </p>    
+                    </p>
+                    
+                    <?php 
+                        if (isset($_SESSION['status']) && $_SESSION['status'] == 1) { ?>
+                                <div class="alert alert-primary" role="alert">
+                                Your account is pending approval. Kindly wait for admin to review your account.
+                                </div>
+                    <?php    }
+                    ?>
                     
                     <?php }?>
 
