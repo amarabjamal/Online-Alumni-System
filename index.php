@@ -220,7 +220,41 @@ include("include/config.php");
             <div class="container">
                 <h2>Upcoming Events</h2>
                 <div class="row">
-                    <div class="col-md-4">
+
+                    <?php 
+
+                        try {
+                            //Prepared Statements in PDO - prepare, bind, execute
+                            // perform query
+                            /* $query = "SELECT * FROM job_ads 
+                                        LEFT JOIN companies
+                                        ON job_ads.com_id = companies.id;
+                                        ORDER BY job_ads.id DESC LIMIT 5 ";  */ 
+                            $query = "SELECT * FROM events ORDER BY id DESC LIMIT 3 ";  
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+
+                            if($stmt->rowCount() > 0) {
+
+                                while($events = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                    echo "<div class=\"col-md-4\">";
+                                    echo    "<div class=\"card event-card\">";
+                                    echo        "<img src=\"".$events->image_url."\" class=\"event-img\">";
+                                    echo        "<div class=\"card-body\">";
+                                    echo            "<h5 class=\"event-title\">".$events->name."</h5>";          
+                                    echo            "<a href=\"#\" class=\"event-btn\">Explore <span>&rarr;</span></a>";
+                                    echo    "</div></div></div>";
+                                } 
+
+                            }        
+
+                        } catch (PDOException $e) {
+                            echo "Error: ".$e->getMessage();
+                        }
+                        
+                    ?>
+
+                    <!-- <div class="col-md-4">
                         <div class="card event-card">
                             <img src="./images/event1.jpeg" class="event-img" alt="">
                             <div class="card-body">
@@ -230,6 +264,7 @@ include("include/config.php");
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card event-card">
                             <img src="./images/event2.jpeg" class="event-img" alt="">
@@ -240,6 +275,7 @@ include("include/config.php");
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="card event-card">
                             <img src="./images/event3.jpeg" class="event-img" alt="">
@@ -249,7 +285,8 @@ include("include/config.php");
                                 <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    
                 </div>
                 <div class="more-container">
                     <a href="./events.html"><button class="view-more"><span>View All Events </span></button></a>
@@ -312,7 +349,6 @@ include("include/config.php");
                             $conn = NULL;
                         } catch (PDOException $e) {
                             echo "Error: ".$e->getMessage();
-                            exit;
                         }
                         
                         ?>
