@@ -554,11 +554,11 @@ html {
     justify-content: center;
     align-items: center;
 } */
-.modal_content p{
+/* .modal_content p{
     margin-top: 20px;
     padding: 10px;
     background: #c5c5c5;
-}
+} */
 .modal_content .image_details {
     display: flex;
     flex-direction: row;
