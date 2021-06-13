@@ -544,3 +544,38 @@ html {
 }
 
 /* End Footer */
+
+
+/* Modal content */
+
+/* .modal_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+.modal_content p{
+    margin-top: 20px;
+    padding: 10px;
+    background: #c5c5c5;
+}
+.modal_content .image_details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: space-around;
+}
+.modal_content img{
+    width: 220px;
+    height: 220px;
+}
+.modal_content .details{
+    background-color: #888;
+    margin-left: 20px;
+    height: 100%;
+    padding: 20px;
+    overflow-x: hidden;
+    flex-grow: 3;
+    min-height: 220px;
+}

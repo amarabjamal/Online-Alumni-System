@@ -241,9 +241,36 @@ include("include/config.php");
                                     echo    "<div class=\"card event-card\">";
                                     echo        "<img src=\"".$events->image_url."\" class=\"event-img\">";
                                     echo        "<div class=\"card-body\">";
-                                    echo            "<h5 class=\"event-title\">".$events->name."</h5>";          
-                                    echo            "<a href=\"#\" class=\"event-btn\">Explore <span>&rarr;</span></a>";
+                                    echo            "<h5 class=\"event-title\">".$events->name."</h5>";    
+                                    echo            "<button type=\"button\" class=\"event-btn\" data-toggle=\"modal\" data-target=\"#event_".$events->id."\">Explore <span>&rarr;</span></button>";
                                     echo    "</div></div></div>";
+
+                                    //Modal To view event's details
+
+                                    echo "<div class=\"modal fade\" id=\"event_".$events->id."\" tabindex=\"-1\">";
+                                    echo "<div class=\"modal-dialog\" role=\"document\">";
+                                    echo    "<div class=\"modal-content\">";
+                                    echo    "<div class=\"modal-header\">";
+                                    echo        "<h5 class=\"modal-title\">".$events->name."</h5>";
+                                    echo    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\">";
+                                    echo    "<span>&times;</span>";
+                                    echo    "</button>";
+                                    echo "</div>";
+                                    echo "<div class=\"modal-body\">";
+                                    echo    "<div class=\"modal_content\">";
+                                    echo        "<div class=\"image_details\">";
+                                    echo        "<img src=\"".$events->image_url."\">";
+                                    echo        "<div class=\"details\">";
+                                    echo            "Start at:<br> ".$events->start_at."<br>";
+                                    echo            "End at:<br> ".$events->end_at."<br>";
+                                    echo            "Venue:<br> ";
+                                    echo        "</div></div>";
+                                    echo        "<p>".$events->content."</p>";
+                                    echo "</div></div>";
+                                    echo "<div class=\"modal-footer\">";
+                                    echo   "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>";
+                                    echo"</div></div></div></div>";
+
                                 } 
 
                             }        
@@ -253,7 +280,7 @@ include("include/config.php");
                         }
                         
                     ?>
-                    
+
                 </div>
                 <div class="more-container">
                     <a href="./events.html"><button class="view-more"><span>View All Events </span></button></a>
