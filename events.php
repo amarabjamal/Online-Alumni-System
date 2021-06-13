@@ -5,7 +5,7 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 include_once("include/config.php");
 
 //define total number of results you want per page  
-$results_per_page = 10;  
+$results_per_page = 9;
 
 //find the total number of results stored in the database   
 $number_of_result = $conn->query('SELECT count(*) from events')->fetchColumn(); 
