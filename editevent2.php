@@ -84,7 +84,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                header('Location: editevent.php?sucess');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
@@ -104,7 +104,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: http://localhost/Online-alumni-system/editevent.php?sucess');
+                header('Location: editevent.php?sucess');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
