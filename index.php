@@ -47,7 +47,7 @@ include("include/config.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && !isset($_SESSION['logged_in'])) { ?>
+    <?php if(isset($_GET['action']) && isset($_GET['action']) == 'logout_success' && isset($_SESSION['logged_in']) == FALSE && !isset($_SESSION['logged_in'])) { ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>

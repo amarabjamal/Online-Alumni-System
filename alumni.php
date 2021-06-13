@@ -55,7 +55,7 @@ $conn = null;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Search Alumni | UM Alumni </title>
+    <title>Search Alumni | UM Alumni hello</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -85,8 +85,31 @@ $conn = null;
     <!-- ===================================== Start Header Area ===================================== -->
     <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
+    <main>
 
-    <div class="container">
+    <?php if(!isset($_SESSION['logged_in'])) { ?>
+        <div class="error_container">
+        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+        <p>
+            Please <a href="signin.php">Sign in</a> first to access the page.
+        </p>
+        </div>
+    
+    <?php } ?>
+
+    <?php if(isset($_SESSION['logged_in'])) { ?>
+        <?php if($_SESSION['status'] == 1 || $_SESSION['status'] == 3) { ?>
+        <div class="error_container">
+        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+        
+        <p>
+            You do not have access to this page.
+            Kindly wait for your account approval.
+        </p>
+        </div>
+    
+    <?php } else { ?>
+        <div class="container">
         <!-- ROW FOR HEADER -->
         <div class="row graduate-text">
             <!-- header -->
@@ -190,22 +213,25 @@ $conn = null;
             <?php }?>
         </div>
 
-        <!-- PAGINATION START -->
-        <ul class="pagination justify-content-center">
-            <?php 
+            <!-- PAGINATION START -->
+            <ul class="pagination justify-content-center">
+                <?php 
 
-                if($page>1){
-                    echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
-                }
-                for($i=1; $i<=$number_of_page; $i++){
-                    echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
-                }
-                if($i>$page){
-                    echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
-                }
-            ?>
-        </ul>
-    </div>
+                    if($page>1){
+                        echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
+                    }
+                    for($i=1; $i<=$number_of_page; $i++){
+                        echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
+                    }
+                    if($i>$page){
+                        echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
+                    }
+                ?>
+            </ul>
+        </div>
+    <?php } ?>
+    <?php } ?>
+
     <!-- ===================================== Start Footer Area ===================================== -->
 
     <footer id="footer" class="mt-auto">
