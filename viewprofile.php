@@ -7,19 +7,18 @@ if(session_status() === PHP_SESSION_NONE){
     session_start();
 } 
 
+// FETCH DATA FROM TABLE USER
 $id = $_GET['id'];
 $result = $conn->prepare("SELECT * FROM users WHERE id =:id");
 $result->bindParam(":id",$id);
 $result->execute();
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-// //$faculty = $conn->prepare("SELECT faculty.FacName , user.FacultyID FROM faculty , user  WHERE fac.FacID = us.FacID");
-// //$faculty = $conn->prepare("SELECT faculty. * , user. * FROM faculty,user WHERE faculty.FacID = user.FacID");
-// $faculty = $conn->prepare("SELECT faculty.FacID, faculty.FacName, user.UserID FROM user INNER JOIN faculty ON faculty.FacID= user.FacID");
-// $faculty->execute();
-// $f = $faculty->fetch(PDO::FETCH_ASSOC);
-// $f['UserID'] = $id;
-// print_r($f);
+// FETCH DATA FROM TABLE FACULTIES
+$f = $row['fac_id'];
+$faculty = $conn->prepare("SELECT faculties.id, faculties.faculty FROM users INNER JOIN faculties ON faculties.id= users.fac_id WHERE users.fac_id=$f");
+$faculty->execute();
+$fac = $faculty->fetch(PDO::FETCH_ASSOC);
 
 //close connection
 $conn = null;
@@ -90,7 +89,7 @@ $conn = null;
                 <div class="details">
                     <h2><?php echo htmlspecialchars($row['full_name']); ?></h2>
                     <p class="about-me">About Me</p>
-                    <p><?php echo htmlspecialchars($f['faculty']); ?></p>
+                    <p><?php echo htmlspecialchars($fac['faculty']); ?></p>
                     <p><?php echo htmlspecialchars($row['grad_year']); ?></p>
                 </div>
             </div>
@@ -210,7 +209,7 @@ $conn = null;
     <!-- ===================================== Start Footer Area ===================================== -->
 
     <?php include_once("footer.php"); ?>
-    
+
     <!-- ===================================== End Footer Area ===================================== -->
 
 </body>
