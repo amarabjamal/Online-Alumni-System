@@ -76,7 +76,7 @@ include_once("include/config.php");
             <h1>Jobs</h1>
         </div>
 
-        <section id="upcoming-events" class="upcoming-events">
+        <section class="my-5">
             <div class="container">
                 <div class="row">
 
@@ -91,7 +91,8 @@ include_once("include/config.php");
                                     job_ads.published_at,
                                     companies.name,
                                     companies.location,
-                                    users.full_name
+                                    users.full_name,
+                                    users.id
                                 FROM job_ads
                                 LEFT JOIN companies
                                 ON job_ads.com_id = companies.id 
@@ -102,7 +103,7 @@ include_once("include/config.php");
                         $stmt = $conn->query($query);
 
                         if($stmt != 0) {
-                            while($res = $stmt->fetch()) { ?>
+                            while($res = $stmt->fetch()) { /* print_r($res); */?>
                             <div class="col-4">
                                 <div class="job-card">
                                     <div class="position"><?php echo $res['title']; ?></div>
@@ -112,12 +113,39 @@ include_once("include/config.php");
                                     } -->
                                     <div class="company"><?php if($res['name'] == NULL) { echo "No company details";} else { echo $res['name'];} ?></div>
                                     <div class="details">
-                                        Salary: RM<?php echo $res['salary']; ?><br>  
-                                        Publish on <?php echo date('d/m/y', strtotime($res['published_at'])); ?><br>  
-                                        By <?php echo $res['full_name']; ?>
+                                        <strong>Salary</strong>: RM<?php echo $res['salary']; ?><br><br><br>  
+                                        <i class="fas fa-calendar-day"></i> Published on <?php echo date('d/m/y', strtotime($res['published_at'])); ?><br>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" style="float: right" class="btn btn-primary" data-toggle="modal" data-target="#job_<?php echo $res[0]; ?>">
+                                        More details
+                                        </button>
                                     </div>
                                 </div> 
-                            </div>                                      
+                            </div> 
+                            
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="job_<?php echo $res[0]; ?>" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><?php echo $res['title']; ?></h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mb-3">
+                                        <div class="col-4"><?php echo $res['name']; ?></div>
+                                        <div class="col-4"><?php echo $res['location']; ?></div>
+                                    </div>
+                                    <strong>Salary</strong>: RM<?php echo $res['salary']; ?><br>
+                                    <?php echo $res['content']; ?>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col">Published by <a href="viewprofile.php?id=<?php echo $res[8]; ?>"><?php echo $res['full_name']; ?></a> on <?php echo date('d/m/y', strtotime($res['published_at'])); ?></div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         <?php    } 
                         }        
 
