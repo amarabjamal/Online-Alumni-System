@@ -71,7 +71,7 @@ if(session_status() === PHP_SESSION_NONE) session_start();
         </div>
     
     <?php } else { ?>
-        //Main content goes here
+        <!-- Main content goes here -->
         
     <?php } ?>
     <?php } ?>
