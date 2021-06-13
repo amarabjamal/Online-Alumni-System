@@ -70,7 +70,9 @@ if(session_status() === PHP_SESSION_NONE) session_start();
     
     <?php } else { ?>
         <!-- Main content goes here -->
-        
+        <div id="page_heading">
+            <h1>Jobs</h1>
+        </div>
     <?php } ?>
     <?php } ?>
 
