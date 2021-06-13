@@ -55,18 +55,29 @@ $conn = null;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Search Alumni | UM Alumni hello</title>
+    <link href="./images/favicon.svg" rel="icon">
+
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link href="styles/style.css" rel="stylesheet">
+    
+    <link href="styles/alumni.css" rel="stylesheet">
+    <link href="styles/page_error.css" rel="stylesheet" type="text/css">
 
     <!-- font awesome icons -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-    <link rel="icon" href="./images/favicon.svg">
-    <link href="styles/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/alumni.css">
+    <title>Search Alumni | UM Alumni</title>
+
+    <!--Bootsrap icons-->
+    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
@@ -86,26 +97,25 @@ $conn = null;
     <?php include_once("navigation.php"); ?>
     <!-- ===================================== End Header Area ===================================== -->
     <main>
-
     <?php if(!isset($_SESSION['logged_in'])) { ?>
         <div class="error_container">
-        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
-        <p>
-            Please <a href="signin.php">Sign in</a> first to access the page.
-        </p>
+            <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+            <p>
+                Please <a href="signin.php">Sign in</a> first to access the page.
+            </p>
         </div>
-    
+
     <?php } ?>
 
     <?php if(isset($_SESSION['logged_in'])) { ?>
         <?php if($_SESSION['status'] == 1 || $_SESSION['status'] == 3) { ?>
         <div class="error_container">
-        <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
-        
-        <p>
-            You do not have access to this page.
-            Kindly wait for your account approval.
-        </p>
+            <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+            
+            <p>
+                You do not have access to this page.
+                Kindly wait for your account approval.
+            </p>
         </div>
     
     <?php } else { ?>
@@ -213,68 +223,28 @@ $conn = null;
             <?php }?>
         </div>
 
-            <!-- PAGINATION START -->
-            <ul class="pagination justify-content-center">
-                <?php 
+        <!-- PAGINATION START -->
+        <ul class="pagination justify-content-center">
+            <?php 
 
-                    if($page>1){
-                        echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
-                    }
-                    for($i=1; $i<=$number_of_page; $i++){
-                        echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
-                    }
-                    if($i>$page){
-                        echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
-                    }
-                ?>
-            </ul>
+                if($page>1){
+                    echo "<a href='alumni.php?page=".($page-1)."' class='btn btn-danger rounded'>Previous</a>";
+                }
+                for($i=1; $i<=$number_of_page; $i++){
+                    echo "<a href='alumni.php?page=".$i."' class='btn btn-primary rounded'>$i</a>";
+                }
+                if($i>$page){
+                    echo "<a href='alumni.php?page=".($page+1)."' class='btn btn-danger rounded'>Next</a>";
+                }
+            ?>
+        </ul>
         </div>
     <?php } ?>
     <?php } ?>
+    </main>
 
     <!-- ===================================== Start Footer Area ===================================== -->
-
-    <footer id="footer" class="mt-auto">
-            <div class="footer-link-section">
-                <div class="container">
-                    <div class="row justify-content-left">
-                        <div class="col-sm-6 col-md-4 item">
-                            <h3>Contact</h3>
-                            <ul>
-                                <li><a href="#">Find Us</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-md-4 item">
-                            <h3>Links</h3>
-                            <ul>
-                                <li><a href="#">About UM</a></li>
-                                <li><a href="#">Study @ UM</a></li>
-                                <li><a href="#">General Enquiry</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 col-md-4 item">
-                            <h3>Follow Us</h3>
-                            <ul>
-                                <li><a href="#">Facebook</a></li>
-                                <li><a href="#">Instagram</a></li>
-                                <li><a href="#">Twitter</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Copyrights -->
-            <div class="copyright py-4">
-                <div class="container text-center">
-                    <p class="mb-0 py-2">&copy;
-                        <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </footer>
+    <?php include_once("footer.php"); ?>
     <!-- ===================================== End Footer Area ===================================== -->
 
     <script src="scripts/alumni.js"></script>
