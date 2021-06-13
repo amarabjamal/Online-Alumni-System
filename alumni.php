@@ -87,6 +87,7 @@ $conn = null;
     <!-- ===================================== End Header Area ===================================== -->
 
     <!-- ROW FOR HEADER -->
+    <div class="container">
     <div class="row graduate-text">
         <!-- header -->
         <div class="col  alumni-text">
@@ -111,6 +112,7 @@ $conn = null;
             <img src="images/graduate.png" alt="graduate">
         </div>
     </div>
+    
 
     <!-- ROW FOR INDICATOR -->
     <div class="row indi-box">
@@ -205,7 +207,7 @@ $conn = null;
         ?>
     </ul>
     
-    
+    </div>
     <!-- ===================================== Start Footer Area ===================================== -->
 
     <footer id="footer" class="mt-auto">
