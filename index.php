@@ -253,39 +253,6 @@ include("include/config.php");
                         }
                         
                     ?>
-
-                    <!-- <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event1.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">WEBINAR : FUTURE OF BLOCKCHAIN TECHNOLOGY</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event2.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">PROJECT MANAGEMENT PROFESSIONAL COURSE</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event3.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">RESPONSIBLE CONDUCT OF RESEARCH WORKSHOP</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div> -->
                     
                 </div>
                 <div class="more-container">
