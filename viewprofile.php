@@ -20,6 +20,14 @@ $faculty = $conn->prepare("SELECT faculties.id, faculties.faculty FROM users INN
 $faculty->execute();
 $fac = $faculty->fetch(PDO::FETCH_ASSOC);
 
+// FETCH DATA FROM TABLE USER_SOCIAL_MEDIA AND SOCIAL_MEDIA
+$id = $row['id'];
+$socialmedia = $conn->prepare("SELECT user_social_media.user_id, user_social_media.social_media_id, user_social_media.username , social_media.name FROM user_social_media INNER JOIN social_media ON user_social_media.social_media_id = social_media.id WHERE user_social_media.user_id=$id");
+$socialmedia->execute();
+
+// echo $s['social_media_id'];
+// print_r($s);
+
 //close connection
 $conn = null;
     
@@ -77,11 +85,31 @@ $conn = null;
                 </div>
 
                 <div class="socmed">
-                    <a href="https://www.facebook.com/login/web/"><i
-                            class="fa fa-facebook-official fa-2x bg-transparent"></i></a>
-                    <a href="https://github.com/login"><i class="fa fa-github-square fa-2x bg-transparent"></i></a>
-                    <a href="https://www.linkedin.com/uas/login"><i
-                            class="fa fa-linkedin-square fa-2x bg-transparent"></i></a>
+                    <?php 
+                        while ($s = $socialmedia->fetch(PDO::FETCH_ASSOC)){
+                            // echo $s['social_media_id'];
+                            if ($s['social_media_id'] == 1){
+                                echo '<a href=/facebook/'.$s['username'].'><i
+                                class="fa fa-facebook-official fa-2x bg-transparent"></i></a>';
+
+                            }elseif ($s['social_media_id'] == 2){
+                                echo '<a href=/twitter/'.$s['username'].'><i
+                                class="fa fa-twitter fa-2x bg-transparent"></i></a>';
+
+                            }elseif ($s['social_media_id'] == 3){
+                                echo '<a href=/linkedin/'.$s['username'].'><i
+                                class="fa fa-linkedin-square fa-2x bg-transparent"></i></a>';
+                            }elseif ($s['social_media_id'] == 4){
+                                echo '<a href=/github/'.$s['username'].'><i
+                                class="fa fa-github fa-2x bg-transparent"></i></a>';
+                            }elseif ($s['social_media_id'] == 5){
+                                echo '<a href=/email/'.$s['username'].'><i
+                                class="fa fa-envelope fa-2x bg-transparent"></i></a>';
+                            }else {
+                                echo "Null";
+                            }
+                        }
+                    ?>
                 </div>
             </div>
 
