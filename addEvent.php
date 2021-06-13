@@ -79,7 +79,7 @@
               // which means no query has failed, so we can commit the
               // transaction
               $conn->commit();
-              header('Location: http://localhost/Online-alumni-system/editevent.php?success');
+              header('Location: editevent.php?success');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
