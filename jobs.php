@@ -70,6 +70,9 @@ if(session_status() === PHP_SESSION_NONE) session_start();
         </p>
         </div>
     
+    <?php } else { ?>
+        //Main content goes here
+        
     <?php } ?>
     <?php } ?>
 
