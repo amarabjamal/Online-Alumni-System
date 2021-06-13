@@ -47,7 +47,7 @@ include("include/config.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if(isset($_SESSION['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && isset($_SESSION['logged_in'])) { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE && !isset($_SESSION['logged_in'])) { ?>
     <div class="alert_v1 show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
@@ -73,7 +73,7 @@ include("include/config.php");
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if(isset($_SESSION['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE && isset($_SESSION['logged_in'])) { ?>
         <div class="alert_v1 show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
@@ -159,12 +159,14 @@ include("include/config.php");
                     
                     <?php 
                         if (isset($_SESSION['status']) && $_SESSION['status'] == 1) { ?>
-                                <div class="alert alert-primary" role="alert">
-                                Your account is pending approval. Kindly wait for admin to review your account.
+                                <div class="alert alert-info" role="alert">
+                                    Your account is pending approval. Kindly wait for admin to review your account.
                                 </div>
-                    <?php    }
-                    ?>
-                    
+                    <?php } elseif (isset($_SESSION['status']) && $_SESSION['status'] == 3) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Your account is denied approval.
+                                </div>
+                    <?php }?>
                     <?php }?>
 
                 </div>
