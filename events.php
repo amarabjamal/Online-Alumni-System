@@ -4,6 +4,27 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
 include_once("include/config.php");
 
+//define total number of results you want per page  
+$results_per_page = 10;  
+
+//find the total number of results stored in the database   
+$number_of_result = $conn->query('SELECT count(*) from events')->fetchColumn(); 
+
+//determine the total number of pages available  
+$number_of_page = ceil ($number_of_result / $results_per_page);  
+
+//determine which page number visitor is currently on  
+if (!isset ($_GET['page']) ) {  
+    $page = 1;  
+} else {  
+    $page = $_GET['page'];  
+}
+
+$current_page = $page;
+
+//determine the sql LIMIT starting number for the results on the displaying page  
+$page_first_result = ($page-1) * $results_per_page;  
+
 ?>
 
 <!DOCTYPE html>
@@ -78,18 +99,19 @@ include_once("include/config.php");
         </div>
             <!-- ================================= Start Upcoming Events Area ================================= -->
 
-            <section id="upcoming-events" class="upcoming-events">
+            <section class=" my-5 ">
                 <div class="container">
                     <div class="row">
-
+                        
                         <?php 
 
                             try {
                                 $query = "SELECT * FROM events 
-                                            JOIN venues
-                                            ON events.venue_id = venues.id
-                                            ORDER BY events.id DESC LIMIT 3
-                                            ";  
+                                        JOIN venues
+                                        ON events.venue_id = venues.id
+                                        ORDER BY events.id DESC 
+                                        LIMIT " . $page_first_result . ',' . $results_per_page;
+
                                 $stmt = $conn->prepare($query);
                                 $stmt->execute();
 
@@ -101,7 +123,7 @@ include_once("include/config.php");
                                         echo        "<img src=\"".$events->image_url."\" class=\"event-img\">";
                                         echo        "<div class=\"card-body\">";
                                         echo            "<h5 class=\"event-title\">".$events->name."</h5>";    
-                                        echo            "<button type=\"button\" class=\"event-btn\" data-toggle=\"modal\" data-target=\"#event_".$events->id."\">Explore <span>&rarr;</span></button>";
+                                        echo            "<button type=\"button\" class=\"event-btn\" data-toggle=\"modal\" data-target=\"#event_".$events->id."\">View Details</button>";
                                         echo    "</div></div></div>";
 
                                         //Modal To view event's details
@@ -141,6 +163,28 @@ include_once("include/config.php");
                         ?>
 
                     </div>
+
+                    <!-- Pagination Start -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mt-5">
+                        <?php if($page > 1) {
+                            echo '<li class="page-item"><a class="page-link" href = "events.php?page=' . $current_page - 1 . '" tabindex="-1">Previous</a></li>';  
+                        } 
+                        for($page = 1; $page<= $number_of_page; $page++) { 
+                            if($page == $current_page) {
+                                echo '<li class="page-item active"><a class="page-link" href = "events.php?page=' . $page . '">' . $page . ' <span class="sr-only">(current)</span></a></li>';  
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href = "events.php?page=' . $page . '">' . $page . ' </a></li>';  
+                            }
+                        } 
+                        if($number_of_page > 1 && $current_page != $number_of_page) {
+                            echo '<li class="page-item"><a class="page-link" href = "events.php?page=' . $current_page + 1 . '">Next</a></li>';  
+                        } 
+                        ?>
+                        </ul>
+                    </nav>
+                    <!-- Pagination End -->
+
                 </div>
             </section>
 
