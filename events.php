@@ -2,6 +2,8 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 
+include_once("include/config.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
     <link href="styles/style.css" rel="stylesheet">
 
-    <link href="styles/events.css" rel="stylesheet" type="text/css">
+    <!-- <link href="styles/events.css" rel="stylesheet" type="text/css"> -->
     <link href="styles/page_error.css" rel="stylesheet" type="text/css">
 
     <!-- Font Awesome  -->
@@ -70,7 +72,81 @@ if(session_status() === PHP_SESSION_NONE) session_start();
     
     <?php } else { ?>
         <!-- Main content goes here -->
-        
+
+        <div id="page_heading">
+            <h1>Events</h1>
+        </div>
+            <!-- ================================= Start Upcoming Events Area ================================= -->
+
+            <section id="upcoming-events" class="upcoming-events">
+                <div class="container">
+                    <div class="row">
+
+                        <?php 
+
+                            try {
+                                $query = "SELECT * FROM events 
+                                            JOIN venues
+                                            ON events.venue_id = venues.id
+                                            ORDER BY events.id DESC LIMIT 3
+                                            ";  
+                                $stmt = $conn->prepare($query);
+                                $stmt->execute();
+
+                                if($stmt->rowCount() > 0) {
+
+                                    while($events = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                        echo "<div class=\"col-md-4\">";
+                                        echo    "<div class=\"card event-card\">";
+                                        echo        "<img src=\"".$events->image_url."\" class=\"event-img\">";
+                                        echo        "<div class=\"card-body\">";
+                                        echo            "<h5 class=\"event-title\">".$events->name."</h5>";    
+                                        echo            "<button type=\"button\" class=\"event-btn\" data-toggle=\"modal\" data-target=\"#event_".$events->id."\">Explore <span>&rarr;</span></button>";
+                                        echo    "</div></div></div>";
+
+                                        //Modal To view event's details
+
+                                        echo "<div class=\"modal fade\" id=\"event_".$events->id."\" tabindex=\"-1\">";
+                                        echo "<div class=\"modal-dialog\" role=\"document\">";
+                                        echo    "<div class=\"modal-content\">";
+                                        echo    "<div class=\"modal-header\">";
+                                        echo        "<h5 class=\"modal-title\">".$events->name."</h5>";
+                                        echo    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\">";
+                                        echo    "<span>&times;</span>";
+                                        echo    "</button>";
+                                        echo "</div>";
+                                        echo "<div class=\"modal-body\">";
+                                        echo    "<div class=\"modal_content\">";
+                                        echo        "<div class=\"image_details\">";
+                                        echo        "<img src=\"".$events->image_url."\">";
+                                        echo        "<div class=\"details\">";
+                                        echo            "Start at:<br> ".$events->start_at."<br>";
+                                        echo            "End at:<br> ".$events->end_at."<br>";
+                                        echo            "Venue:<br> ".$events->venue."<br>";
+                                        echo        "</div></div>";
+                                        echo        "<p>".$events->content."</p>";
+                                        echo "</div></div>";
+                                        echo "<div class=\"modal-footer\">";
+                                        echo   "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>";
+                                        echo"</div></div></div></div>";
+
+                                    } 
+
+                                }        
+
+                            } catch (PDOException $e) {
+                                echo "Error: ".$e->getMessage();
+                            }
+                            
+                        ?>
+
+                    </div>
+                </div>
+            </section>
+
+        <!-- ================================= End Upcoming Events Area ================================= -->
+
+        <!-- End of Main content -->
     <?php } ?>
     <?php } ?>
 
