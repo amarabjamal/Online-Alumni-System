@@ -75,10 +75,10 @@ $result = $conn->query($sql);
                     <tr>
                         <th style="width:5%" class="text-center">No.</th>
                         <th style="width:12%">Event Name</th>
-                        <th style="width:33%">Venue</th>
-                        <th style="width:38%">Brief</th>
-                        <th style="width:12%" class="text-center">Date</th>
-                        <th style="width:10%" class="text-center">Control</th>
+                        <th style="width:23%">Venue</th>
+                        <th style="width:30%">Brief</th>
+                        <th style="width:10%" class="text-center">Date</th>
+                        <th style="width:20%" class="text-center">Control</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -94,7 +94,7 @@ $result = $conn->query($sql);
                                 echo "<td>".$res['venue']."</td>";
                                 echo "<td>".$res['content']."</td>";
                                 echo "<td class=\"text-center\">".$res['start_at']."</td>";
-                                echo "<td><a href=\"editevent2.php?id=$res[0]\">Edit</a> | <a href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
+                                echo "<td><a class=\"edit-btn\" href=\"editevent2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
                             }
                     ?>
 
