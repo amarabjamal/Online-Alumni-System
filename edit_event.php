@@ -64,7 +64,7 @@ $result = $conn->query($sql);
             <h2 class="banner-back">Edit Event</h2>
         </div>
         <div class="container py-4 ">
-                <a href="addEvent.php" class="banner-sm-btn">Create a new event</a>
+                <a href="add_event.php" class="banner-sm-btn">Create a new event</a>
         </div>
         
         
@@ -94,7 +94,7 @@ $result = $conn->query($sql);
                                 echo "<td>".$res['venue']."</td>";
                                 echo "<td>".$res['content']."</td>";
                                 echo "<td class=\"text-center\">".$res['start_at']."</td>";
-                                echo "<td><a class=\"edit-btn\" href=\"editevent2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"editevent.php?id=$res[0]&condition=delete\">Delete</a></td>";
+                                echo "<td><a class=\"edit-btn\" href=\"edit_event2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"edit_event.php?id=$res[0]&condition=delete\">Delete</a></td>";
                             }
                     ?>
 

@@ -39,7 +39,7 @@
             }
         } else{
             echo "You cannot upload files of this type!";
-            header("Location: addevent.php?condition=imageerror");
+            header("Location: add_event.php?condition=imageerror");
             exit;
         }
 
@@ -52,7 +52,7 @@
         $imagepath = $fileDest;
 
         if($eventstartdate > $eventenddate){
-            header("Location: addevent.php?condition=dateerror");
+            header("Location: add_event.php?condition=dateerror");
             exit;
         }
         
@@ -79,7 +79,7 @@
               // which means no query has failed, so we can commit the
               // transaction
               $conn->commit();
-              header('Location: editevent.php?success');
+              header('Location: edit_event.php?success');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
@@ -136,7 +136,7 @@
 
         <div class="container">
             <div class="formthing">
-                <form action="addEvent.php" method="post" enctype="multipart/form-data">
+                <form action="add_event.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label >Event Name</label><br>
                         <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name">
