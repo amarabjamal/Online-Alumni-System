@@ -230,7 +230,11 @@ include("include/config.php");
                                         LEFT JOIN companies
                                         ON job_ads.com_id = companies.id;
                                         ORDER BY job_ads.id DESC LIMIT 5 ";  */ 
-                            $query = "SELECT * FROM events ORDER BY id DESC LIMIT 3 ";  
+                            $query = "SELECT * FROM events 
+                                        JOIN venues
+                                        ON events.venue_id = venues.id
+                                        ORDER BY events.id DESC LIMIT 3
+                                        ";  
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
 
@@ -263,7 +267,7 @@ include("include/config.php");
                                     echo        "<div class=\"details\">";
                                     echo            "Start at:<br> ".$events->start_at."<br>";
                                     echo            "End at:<br> ".$events->end_at."<br>";
-                                    echo            "Venue:<br> ";
+                                    echo            "Venue:<br> ".$events->venue."<br>";
                                     echo        "</div></div>";
                                     echo        "<p>".$events->content."</p>";
                                     echo "</div></div>";
