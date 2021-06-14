@@ -25,8 +25,11 @@ $id = $row['id'];
 $socialmedia = $conn->prepare("SELECT user_social_media.user_id, user_social_media.social_media_id, user_social_media.username , social_media.name FROM user_social_media INNER JOIN social_media ON user_social_media.social_media_id = social_media.id WHERE user_social_media.user_id=$id");
 $socialmedia->execute();
 
-// echo $s['social_media_id'];
-// print_r($s);
+// FETCH DATA FROM TABLE EXPS 
+$id = $_GET['id'];
+$experience = $conn->prepare("SELECT title, statuses, year_start, year_end FROM exps WHERE user_id='$id'");
+$experience->execute();
+
 
 //close connection
 $conn = null;
@@ -126,32 +129,25 @@ $conn = null;
             <h1 class="title">Experience</h1>
             <div class="card shadow">
                 <div class="card-body">
-                    <h5 class="card-title">Current</h5>
-                    <p class="card-text">Working at Starbucks</p>
-
-                    <h5 class="card-title">Past</h5>
-
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2020 - 2021</div>
-                            <div class="mb-2 timeline-content">
-                                <h3>Junior Developer</h3>
-                                <p>Telekom Malaysia</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-items">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-date">2019 - 2020</div>
-                            <div class="timeline-content">
-                                <h3>Intern</h3>
-                                <p>DahMakan</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                        while($xp = $experience->fetch(PDO::FETCH_ASSOC)){
+                            if($xp['statuses'] == "current"){
+                                echo '<h5 class="card-title">Current</h5>';
+                                echo '<p class="card-text">'.$xp['title'].'</p>';
+                            }else {
+                                // echo '<h5 class="card-title">Past</h5>';
+                                echo'<div class="timeline-items">
+                                        <div class="timeline-item">
+                                            <div class="timeline-dot"></div>
+                                            <div class="timeline-date">Year '.$xp['year_start']. '-' .$xp['year_end']. '</div>
+                                            <div class="mb-2 timeline-content">
+                                                <h3>'.$xp['title'].'</h3>
+                                            </div>
+                                        </div>
+                                    </div>';
+                            }
+                        }
+                    ?>
                 </div>
             </div>
 
