@@ -30,6 +30,10 @@ $id = $_GET['id'];
 $experience = $conn->prepare("SELECT title, statuses, year_start, year_end FROM exps WHERE user_id='$id'");
 $experience->execute();
 
+// FETCH DATA FROM PROJECTS
+$id = $_GET['id'];
+$project = $conn->prepare("SELECT * FROM projects WHERE user_id='$id'");
+$project->execute();
 
 //close connection
 $conn = null;
@@ -152,80 +156,31 @@ $conn = null;
             </div>
 
             <h1 class="title" style="margin-top:20px;">University Project</h1>
-            <div class="card project-float shadow">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <div class="card-body">
-                            <p class="card-subtitle mb-2 text-muted">Year</p>
-                            <h4 class="card-title">Project Title</h4>
+            <?php 
+                while($p = $project->fetch(PDO::FETCH_ASSOC)){
+                    echo '<div class="card project-float shadow">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <p class="card-subtitle mb-2 text-muted">'.$p['start_date'].'</p>
+                                    <h4 class="card-title">'.$p['name'].'</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge badge-pill" style="background-color: #b8e994;">skill0</span>
+                                    <span class="badge badge-pill" style="background-color: #fab1a0;">skill1</span>
+                                    <span class="badge badge-pill" style="background-color: #ffeaa7;">skill2</span>
+                                    <span class="badge badge-pill" style="background-color: #7ed6df;">skill3</span>
+
+                                    <p class="card-text">'.$p['content'].'</p>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <span class="badge badge-pill" style="background-color: #b8e994;">skill0</span>
-                            <span class="badge badge-pill" style="background-color: #fab1a0;">skill1</span>
-                            <span class="badge badge-pill" style="background-color: #ffeaa7;">skill2</span>
-                            <span class="badge badge-pill" style="background-color: #7ed6df;">skill3</span>
-
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                venenatis consectetur
-                                ligula, in
-                                tincidunt mi dapibus consequat. In faucibus sapien.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card project-float shadow">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <div class="card-body">
-                            <p class="card-subtitle mb-2 text-muted">Year</p>
-                            <h4 class="card-title">Project Title</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <span class="badge badge-pill" style="background-color: #b8e994;">skill0</span>
-                            <span class="badge badge-pill" style="background-color: #fab1a0;">skill1</span>
-                            <span class="badge badge-pill" style="background-color: #ffeaa7;">skill2</span>
-                            <span class="badge badge-pill" style="background-color: #7ed6df;">skill3</span>
-
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                venenatis consectetur
-                                ligula, in
-                                tincidunt mi dapibus consequat. In faucibus sapien.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card project-float shadow">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <div class="card-body">
-                            <p class="card-subtitle mb-2 text-muted">Year</p>
-                            <h4 class="card-title">Project Title</h4>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <span class="badge badge-pill" style="background-color: #b8e994;">skill0</span>
-                            <span class="badge badge-pill" style="background-color: #fab1a0;">skill1</span>
-                            <span class="badge badge-pill" style="background-color: #ffeaa7;">skill2</span>
-                            <span class="badge badge-pill" style="background-color: #7ed6df;">skill3</span>
-
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                venenatis consectetur
-                                ligula, in
-                                tincidunt mi dapibus consequat. In faucibus sapien.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </div>';
+                }
+            ?>
 
         </div>
     </div>
