@@ -43,6 +43,8 @@ $page_first_result = ($page-1) * $results_per_page;
         
         <link rel="stylesheet" href="styles/admin.css">
 
+        <link rel="stylesheet" href="styles/page_error.css">
+
         <link rel="stylesheet" href="styles/custom_alert.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -80,10 +82,49 @@ $page_first_result = ($page-1) * $results_per_page;
     </script>
     <?php } ?>
 
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_denied') { ?>
+        <div class="alert2 show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Account has been denied</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert2').removeClass("show");
+    $('.alert2').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
 
 <?php include_once("adminnavigation.php"); ?>
 
     <main >
+
+        <?php if(!isset($_SESSION['logged_in'])) { ?>
+            <div class="error_container">
+                <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+                <p>
+                    Please <a style = "color: black" href="signin.php">Sign in</a> first to access the page.
+                </p>
+            </div>
+
+        <?php } else{ ?>
+
+        
+
+
         <div class="sidenav-bg">
             <div class="container">
                 <nav class="nav nav-fill nav-pills sidenav">
@@ -96,8 +137,10 @@ $page_first_result = ($page-1) * $results_per_page;
 
         <div class="container">
             <br>
+            <!--
             <input type="text" id="search-bar" class="form-control" placeholder="Search Bar">
-            
+            -->
+
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
                 <thead>
                     <tr>
@@ -168,6 +211,8 @@ $page_first_result = ($page-1) * $results_per_page;
                 </nav>
                 <!-- Pagination End -->
         </div>
+
+        <?php } ?>
     </main>
 
 
