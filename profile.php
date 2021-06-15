@@ -131,7 +131,8 @@ $conn = null;
                     <div class="card-box">
                         <div class="card-body">
                             <h5>EXPERIENCE</h5><br>
-                            <a class="btn btn-primary" href="add_event.php?id='. $xp['id'] . '">Add</a>
+                            <a href="add_exps.php" class="btn btn-primary float-right mb-3"><i class="fa fa-plus"></i> Add Experience</a>
+                            
                             <div class="table-responsive">
                                 <table id="data_table1" class="table table-borderless mb-0">
 
@@ -153,6 +154,7 @@ $conn = null;
                                                             <td>'.$xp['title']. '</td>
                                                             <td>
                                                                 <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a> 
                                                             </td>
                                                         </tr>';
                                                 }else{
@@ -160,7 +162,8 @@ $conn = null;
                                                             <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td>
-                                                                <a class="ajax-action-links btn btn-success" href="editevent.php?id='. $xp['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-success" href="editevent.php?id='. $xp['id'] . '">Edit</a>
+                                                                <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';
                                                 }
