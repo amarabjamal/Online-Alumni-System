@@ -90,15 +90,29 @@ $conn = null;
                             <?php 
                                 while($s = $skills->fetch(PDO::FETCH_ASSOC)){
                                     echo '<h6>'. $s['skill'] .'<span class="float-right">'. ucfirst($s['skill_level']) .'</span></h6>';
+
+                                    if($s['skill_level'] == "beginner"){
+                                        echo '<div class="progress progress-sm m-0">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0"
+                                                aria-valuemax="100" style="width: 35%">
+                                            </div>
+                                        </div>';
+                                    }elseif($s['skill_level'] == "intermediate"){
+                                        echo '<div class="progress progress-sm m-0">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                                                aria-valuemax="100" style="width: 65%">
+                                            </div>
+                                        </div>';
+                                    }elseif($s['skill_level'] == "advanced"){
+                                        echo '<div class="progress progress-sm m-0">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                                                aria-valuemax="100" style="width: 85%">
+                                            </div>
+                                        </div>';
+                                    }
                                 }
                             ?>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                    aria-valuemax="100" style="width: 85%">
-                                    <span class="sr-only">90% Complete</span>
-
-                                </div>
-                            </div>
+                            
                         </div>
                         <br>
                         <div class="text-center"> <a href="editProfile.html"><button class="edit">Edit</button></a>
