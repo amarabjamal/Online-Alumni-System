@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +43,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if($_GET['action'] == 'logout_success' && $_SESSION['logged_in'] == FALSE) { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' &&  !isset($_SESSION['logged_in'])){ ?>
     <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
@@ -71,7 +69,7 @@ session_start();
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if($_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE) { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' &&  !isset($_SESSION['logged_in'])) { ?>
         <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
