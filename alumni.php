@@ -130,7 +130,7 @@ $conn = null;
         <!-- ROW FOR HEADER -->
         <div class="row graduate-text">
             <!-- header -->
-            <div class="col  alumni-text">
+            <div class="col-8 alumni-text">
                 <h1>Alumni</h1>
                 <p>(n.) former student or pupil of a school, college, or university. </p>
                 <form action="viewprofile.php" method="GET">
@@ -151,7 +151,7 @@ $conn = null;
                 </div>
             </div>
             <!-- graduate image -->
-            <div class="col d-none d-lg-block graduate">
+            <div class="col-4 d-none d-lg-block graduate">
                 <img src="images/graduate.png" alt="graduate">
             </div>
         </div>
