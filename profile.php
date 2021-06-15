@@ -75,7 +75,7 @@ $conn = null;
         <div class="container">
             <div class="row gutters">
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-                    <div class="card-box  ">
+                    <div class="card-box h-100">
                         <div class="text-center">
                             <img src="images/avatar-2.png" width="30%" alt="icon"><br><br>
                             <?php 
@@ -86,26 +86,26 @@ $conn = null;
                         <hr>
                         
                         <div class="pt-3">
-                            <h4 class="text-center">Skills</h4>
+                            <h4 class="text-center mb-2">Skills</h4>
                             <?php 
                                 while($s = $skills->fetch(PDO::FETCH_ASSOC)){
                                     echo '<h6>'. $s['skill'] .'<span class="float-right">'. ucfirst($s['skill_level']) .'</span></h6>';
 
                                     if($s['skill_level'] == "beginner"){
-                                        echo '<div class="progress progress-sm m-0">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="35" aria-valuemin="0"
+                                        echo '<div class="progress progress-sm my-2">
+                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="35" aria-valuemin="0"
                                                 aria-valuemax="100" style="width: 35%">
                                             </div>
                                         </div>';
                                     }elseif($s['skill_level'] == "intermediate"){
-                                        echo '<div class="progress progress-sm m-0">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"
+                                        echo '<div class="progress progress-sm my-2">
+                                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="65" aria-valuemin="0"
                                                 aria-valuemax="100" style="width: 65%">
                                             </div>
                                         </div>';
                                     }elseif($s['skill_level'] == "advanced"){
-                                        echo '<div class="progress progress-sm m-0">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                                        echo '<div class="progress progress-sm my-2">
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="85" aria-valuemin="0"
                                                 aria-valuemax="100" style="width: 85%">
                                             </div>
                                         </div>';
@@ -123,12 +123,9 @@ $conn = null;
 
 
                     </div>
-
-
-
                 </div>
                 <div class=" col-xl-8 col-lg-8 col-sm-12 ">
-                    <div class="card-box">
+                    <div class="card-box h-100">
                         <div class="card-body">
                             <h5>EXPERIENCE</h5><br>
                             <a href="add_exps.php" class="btn btn-primary float-right mb-3"><i class="fa fa-plus"></i> Add Experience</a>
@@ -152,7 +149,7 @@ $conn = null;
                                                     echo '<tr class="table-row">
                                                             <td>'.$xp['year_start'].' </td>
                                                             <td>'.$xp['title']. '</td>
-                                                            <td>
+                                                            <td class="text-center">
                                                                 <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
                                                                 <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a> 
                                                             </td>
@@ -161,7 +158,7 @@ $conn = null;
                                                     echo '<tr class="table-row">
                                                             <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
                                                             <td>'.$xp['title']. '</td>
-                                                            <td>
+                                                            <td class="text-center">
                                                                 <a class="ajax-action-links btn btn-success" href="editevent.php?id='. $xp['id'] . '">Edit</a>
                                                                 <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a>  
                                                             </td>
@@ -197,43 +194,18 @@ $conn = null;
                                                 echo '<tr class="table-row">
                                                             <td>'.$p['name'].' </td>
                                                             <td>'.$p['start_date']. '</td>
-                                                            <td>
+                                                            <td class="text-center">
                                                                 <a class="ajax-action-links btn btn-success" href="editproject.php?id='. $p['id'] . '">Edit</a> 
-                                                                <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $p['id'] . '">Delete</a>  
+                                                                <a class="ajax-action-links btn btn-danger" href="delete_project.php?id='. $p['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';
                                             }
                                         ?>
-                                        <!-- <tr>
-
-                                            <td id="project_name1">Online Alumni System</td>
-                                            <td id="date1">5.06.2020</td>
-                                            <td class="center">
-                                                <input type="button" id="edit_btn1" value="Edit" class="edit"
-                                                    onclick="edit_r('1')">
-                                                <input type="button" id="save_btn1" value="Save" class="save"
-                                                    onclick="save_r('1')">
-                                                <input type="button" id="del_btn1" value="Delete" class="delete"
-                                                    onclick="delete_r('1')">
-                                            </td>
-
-                                        </tr> -->
-                                        <!-- <tr>
-                                            <td><input type="text" id="new_project"></td>
-                                            <td><input type="text" id="new_date"></td>
-                                            <td class="center"><input type="button" class="add" onclick="add_r();" value="Add"></td>
-                                        </tr> -->
-
-
                                     </tbody>
+
                                 </table>
                             </div>
-
-
-
-
-
-                        </div>
+                       </div>
 
                     </div>
                 </div>
