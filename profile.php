@@ -16,10 +16,14 @@ $faculty->execute();
 $fac = $faculty->fetch(PDO::FETCH_ASSOC);
 
 // FETCH DATA FROM TABLE EXPS
-$id = $_GET['id'];
+$id = $_SESSION['user_id'];
 $experience = $conn->prepare("SELECT title, statuses, year_start, year_end, id FROM exps WHERE user_id='$id'");
 $experience->execute();
-// $xp = $experience->fetchAll();
+
+// FETCH DATA FROM TABLE PROJECT
+$id = $_SESSION['user_id'];
+$project = $conn->prepare("SELECT * FROM projects WHERE user_id='$id'");
+$project->execute();
 
 
 $conn = null;
@@ -175,7 +179,20 @@ $conn = null;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id=row1>
+
+                                        <?php 
+                                            while($p = $project->fetch(PDO::FETCH_ASSOC)){
+                                                
+                                                echo '<tr class="table-row">
+                                                            <td>'.$p['name'].' </td>
+                                                            <td>'.$p['start_date']. '</td>
+                                                            <td>
+                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $p['id'] . '">Edit</a> 
+                                                            </td>
+                                                        </tr>';
+                                            }
+                                        ?>
+                                        <!-- <tr>
 
                                             <td id="project_name1">Online Alumni System</td>
                                             <td id="date1">5.06.2020</td>
@@ -188,26 +205,12 @@ $conn = null;
                                                     onclick="delete_r('1')">
                                             </td>
 
-                                        </tr>
-                                        <tr id=row2>
-
-                                            <td id="project_name2">Feseni UM</td>
-                                            <td id="date2">7.11.2020</td>
-                                            <td class="center">
-                                                <input type="button" id="edit_btn1" value="Edit" class="edit"
-                                                    onclick="edit_r('2')">
-                                                <input type="button" id="save_btn1" value="Save" class="save"
-                                                    onclick="save_r('2')">
-                                                <input type="button" id="del_btn1" value="Delete" class="delete"
-                                                    onclick="delete_r('2')">
-                                            </td>
-
-                                        </tr>
-                                        <tr>
+                                        </tr> -->
+                                        <!-- <tr>
                                             <td><input type="text" id="new_project"></td>
                                             <td><input type="text" id="new_date"></td>
                                             <td class="center"><input type="button" class="add" onclick="add_r();" value="Add"></td>
-                                        </tr>
+                                        </tr> -->
 
 
                                     </tbody>
