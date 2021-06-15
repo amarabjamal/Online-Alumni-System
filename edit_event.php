@@ -39,6 +39,8 @@ if (!isset ($_GET['page']) ) {
     $page = $_GET['page'];  
 }
 
+$num=1 + (10 * ($page-1));
+
 $current_page = $page;
 
 //determine the sql LIMIT starting number for the results on the displaying page  
@@ -64,18 +66,99 @@ $page_first_result = ($page-1) * $results_per_page;
 
         <link rel="stylesheet" href="styles/page_error.css">
 
+        <link rel="stylesheet" href="styles/custom_alert.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
         
         <title>Alumni System</title>
     </head>
 <body class="d-flex flex-column h-100 ">
     <!--Bootstrap js-->
-    
+
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'image') { ?>
+            <div class="alert2 show">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="msg">Event edited. (With Image)</span>
+            <div class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+
+        <script>
+
+        setTimeout(function(){
+            $('.alert2').removeClass("show");
+            $('.alert2').addClass("hide");
+        },3000);
+        
+
+        $('.close-btn').click(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+        });
+            
+        </script>
+        <?php } ?>
+
+        <?php if(isset($_GET['action']) && $_GET['action'] == 'noimage') { ?>
+            <div class="alert2 show">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="msg">Event edited. (No Image)</span>
+            <div class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+
+        <script>
+
+        setTimeout(function(){
+            $('.alert2').removeClass("show");
+            $('.alert2').addClass("hide");
+        },3000);
+        
+
+        $('.close-btn').click(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+        });
+            
+        </script>
+        <?php } ?>
+
+        <?php if(isset($_GET['action']) && $_GET['action'] == 'addsuccess') { ?>
+            <div class="alert2 show">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="msg">Event has been added</span>
+            <div class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+
+        <script>
+
+        setTimeout(function(){
+            $('.alert2').removeClass("show");
+            $('.alert2').addClass("hide");
+        },3000);
+        
+
+        $('.close-btn').click(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+        });
+            
+        </script>
+        <?php } ?>
 
     
     <?php include_once("adminnavigation.php"); ?>
     
 
     <main >
+
+        
+
 
         <?php if(!isset($_SESSION['logged_in'])) { ?>
             <div class="error_container">
@@ -120,7 +203,7 @@ $page_first_result = ($page-1) * $results_per_page;
 
                             $stmt = $conn->query($query);
 
-                            $num=1;
+                            
 
                             if($stmt != 0) {
 

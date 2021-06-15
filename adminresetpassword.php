@@ -18,27 +18,18 @@ if(isset($_POST['id']) && isset($_POST['pass']) && isset($_POST['rpass'])) {
     $id = $_POST['id'];
     $pass = $_POST['pass'];
     $rpass = $_POST['rpass'];
+    $hpass = password_hash($pass, PASSWORD_DEFAULT);
 
     try {
-        // begin a transaction
-        //header('Location: http://localhost/Online-alumni-system/approved.php?1');
-        $conn->beginTransaction();
-        //header('Location: http://localhost/Online-alumni-system/approved.php?2');
-        // a set of queries: if one fails, an exception will be thrown
-        $sql = "UPDATE users SET password = '$pass' WHERE id = '$id'";
-        echo "poopoo";
-        $conn->query($sql);
-        // if we arrive here, it means that no exception was thrown
-        // which means no query has failed, so we can commit the
-        // transaction
         
+        $conn->beginTransaction();
+        $sql = "UPDATE users SET password = '$hpass' WHERE id = '$id'";
+        $conn->query($sql);  
+
         $conn->commit();
         header('Location: http://localhost/Online-alumni-system/approved.php?passwordreset ');
-        echo "poopoo";
         
       } catch (Exception $e) {
-        // we must rollback the transaction since an error occurred
-        // with insert
         $conn->rollback();
       }
 }

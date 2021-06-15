@@ -64,31 +64,20 @@
         echo "$imagepath";
             
         
-            // if all the fields are filled (not empty) 
-            
-            //Step 3. Execute the SQL query.	
-            //insert data to database			
+            		
             try {
-              // begin a transaction
+              
               $conn->beginTransaction();
-              // a set of queries: if one fails, an exception will be thrown
+              
               $sql = "INSERT INTO events(name,image_url,content, start_at, end_at, venue_id, admin_id) VALUES('$eventname','$imagepath','$eventbody','$eventstartdate','$eventenddate','$venue','$_SESSION[admin_id]')";
-              echo "poopoo";
               $conn->query($sql);
-              // if we arrive here, it means that no exception was thrown
-              // which means no query has failed, so we can commit the
-              // transaction
+              
               $conn->commit();
-              header('Location: edit_event.php?success');
-              echo "poopoo";
+              header('Location: edit_event.php?action=addsuccess');
             } catch (Exception $e) {
-              // we must rollback the transaction since an error occurred
-              // with insert
+              
               $conn->rollback();
             }
-        
-            //Step 4. Process the results.
-            //display success message & the new data can be viewed on index.php
             
 
             

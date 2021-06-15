@@ -49,6 +49,7 @@
                 header("Location: edit_event2.php?id=$eventid&condition=imageerror");
                 
                 
+                
             }
 
         $imagepath = $fileDest;
@@ -84,7 +85,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: edit_event.php?sucess');
+                header('Location: edit_event.php?action=image');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
@@ -104,7 +105,7 @@
                 // transaction
                 
                 $conn->commit();
-                header('Location: edit_event.php?sucess');
+                header('Location: edit_event.php?action=noimage');
                 echo "poopoo";
               } catch (Exception $e) {
                 // we must rollback the transaction since an error occurred
