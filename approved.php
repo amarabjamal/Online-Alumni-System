@@ -171,7 +171,9 @@ $page_first_result = ($page-1) * $results_per_page;
     </main>
 
 
-    <footer id="control">
+    
+
+    <footer id="footer" class="mt-auto">
         <div class="bg-dark py-4">
             <div class="container text-center">
                 <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
