@@ -179,7 +179,7 @@ include_once("include/config.php");
                                             <button class='btn btn-info btn-xs btn-edit' data-toggle="modal" data-target="#jobs_<?php echo $res[0]; ?>"><i class="fas fa-edit"></i></button>
                                             <form method="POST" action="process_job_ads.php">
                                                 <input type="hidden" id="job_ads_id" name="job_ads_id" value="<?php echo $res[0]; ?>">
-                                                <button type="submit" name="delete" class='btn btn-danger btn-xs btn-delete'><i class="fas fa-trash-alt"></i></button>
+                                                <button type="submit" name="delete_job" class='btn btn-danger btn-xs btn-delete'><i class="fas fa-trash-alt"></i></button>
                                             </form>  
                                         </div>  
                                     </td>
@@ -230,10 +230,12 @@ include_once("include/config.php");
                                     <input type="text" name="location" class="form-control" value="<?php echo $res['location']; ?>" readonly>
                                     </div>
 
+                                    <input type="hidden" id="job_ads_id" name="job_ads_id" value="<?php echo $res[0]; ?>">
+
                                     </div>
                                     <div class="modal-footer" style="border-top:none;">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" name="edit_job">Create</button>
+                                        <button type="submit" class="btn btn-primary" name="update_job">Update</button>
                                         </form>
                                     </div>
                                     </div>

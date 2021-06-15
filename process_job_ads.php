@@ -81,7 +81,7 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
     } catch (PDOException $e) {
         echo "Error: ".$e->getMessage();
     }
-} elseif(isset($_POST['delete']) && isset($_SESSION['user_id'])) {
+} elseif(isset($_POST['delete_job']) && isset($_SESSION['user_id'])) {
     $job_ads_id = (int)$_POST['job_ads_id'];
     /* echo $job_ads_id;
     echo gettype($job_ads_id); */
@@ -93,6 +93,27 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
         $conn->commit();
         
         header('Location: add_jobs.php?action=deleted');
+    } catch (PDOException $e) {
+        $conn->rollback();
+        echo "Error: ".$e->getMessage();
+    }
+} elseif(isset($_POST['update_job']) && isset($_SESSION['user_id'])) {
+    
+    $title = prepare_input($_POST['job_title']);
+    $salary = (double)$_POST['salary'];
+    $content = prepare_input($_POST['content']);
+    $job_ads_id = (int)$_POST['job_ads_id'];
+
+    try {
+        $conn->beginTransaction();
+        $query = "UPDATE job_ads
+                    SET title = '".$title."', salary = $salary, content = '".$content."'
+                    WHERE id = $job_ads_id";
+        $conn->query($query);
+
+        $conn->commit();
+        
+        header('Location: add_jobs.php?action=update_success');
     } catch (PDOException $e) {
         $conn->rollback();
         echo "Error: ".$e->getMessage();
