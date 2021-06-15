@@ -126,7 +126,7 @@ $conn = null;
                     <div class="card-box">
                         <div class="card-body">
                             <h5>EXPERIENCE</h5><br>
-                            
+                            <a class="btn btn-primary" href="add_event.php?id='. $xp['id'] . '">Add</a>
                             <div class="table-responsive">
                                 <table id="data_table1" class="table table-borderless mb-0">
 
@@ -166,7 +166,9 @@ $conn = null;
                             </div>
                             <hr>
 
-                            <h5>PROJECTS</h5><br>
+                            <h5>PROJECTS</h5>
+                            <a class="btn btn-primary" href="add_project.php?id='. $xp['id'] . '">Add</a>
+                            <br>
                             <div class="table-responsive">
                                 <table id="data_table"class="table table-borderless mb-0">
                                     <thead class="table-head">
