@@ -30,10 +30,47 @@ $id = $_GET['id'];
 $experience = $conn->prepare("SELECT title, statuses, year_start, year_end FROM exps WHERE user_id='$id'");
 $experience->execute();
 
+// ATTEMPT 1
 // FETCH DATA FROM PROJECTS
 $id = $_GET['id'];
 $project = $conn->prepare("SELECT * FROM projects WHERE user_id='$id'");
 $project->execute();
+$p = $project->fetchAll(PDO::FETCH_ASSOC);
+
+// FETCH DATA FROM USER_SKILL AND SKILLS
+$id = $row['id'];
+$skills = $conn->prepare("SELECT user_skill.skill_id, user_skill.projects_id, skills.skill FROM user_skill INNER JOIN skills ON user_skill.skill_id = skills.id WHERE user_skill.user_id=$id");
+$skills->execute();
+$s = $skills->fetchAll(PDO::FETCH_OBJ);
+
+// $list = array();
+// if($result->num_rows > 0) {
+//     $i = 0;
+//     while($row = $result->fetch_assoc()) {
+//         $list[$i] = $row;
+//         $i++;
+//     }
+// }
+// return $list;
+// }
+// while ($s = $skills->fetchAll(PDO::FETCH_ASSOC)){
+//     foreach($s as $res){
+//         echo $res['skill'] . $res['projects_id'] ;
+//     }
+// }
+
+// ATTEMPT 2
+// FETCH DATA FROM PROJECTS, USER_SKILL AND SKILLS
+// $id = $_GET['id'];
+// $xproject = $conn->prepare("SELECT projects.*, skills.skill, user_skill.skill_id, user_skill.projects_id FROM(user_skill INNER JOIN skills ON  skills.id = user_skill.skill_id) INNER JOIN projects ON user_skill.projects_id = projects.id WHERE projects.user_id=$id");
+// $xproject->execute();
+// $pxs = $xproject->fetchAll(PDO::FETCH_ASSOC);
+
+// foreach($pxs as $result){
+//     // $arr[$item['projects_id']][] = $item;
+//     echo $result['projects_id'] . '>' . $result['skill'] . '<br>' ;
+// }
+
 
 //close connection
 $conn = null;
@@ -157,30 +194,81 @@ $conn = null;
 
             <h1 class="title" style="margin-top:20px;">University Project</h1>
             <?php 
-                while($p = $project->fetch(PDO::FETCH_ASSOC)){
+                //ATTEMPT 1
+                // foreach($pxs as $result  => $v){
+                //     echo '<div class="card project-float shadow">
+                //             <div class="row no-gutters">
+                //                 <div class="col-md-4">
+                //                     <div class="card-body">
+                //                         <p class="card-subtitle mb-2 text-muted">'.$v['start_date'].'</p>
+                //                         <h4 class="card-title">'.$v['name'].'</h4>
+                //                     </div>
+                //                 </div>
+                //                 <div class="col-md-8">
+                //                     <div class="card-body">';
+                //                         // if ($s['projects_id'] == $sres['id'] ){
+                //                         //     echo $s['projects_id'];
+                //                         //     // echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$s['skill'].'</span>';
+                //                         //     foreach($s as $res){
+                //                         //         echo $res['skill'];
+                //                         //     }
+                                            
+                //                         // }
+                                        
+                //                         echo '<p class="card-text mt-2">'.$v['content'].'</p>
+
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>';
+                //     // echo $v['user_id'] . '>' . $v['projects_id'] . '>' . $v['skill'] . '<br>' ;
+                // }
+
+                // problem: entah kenapa tak boleh display skill and
+                // kelaur warning - foreach() argument must be of type array|object, bool given
+                foreach($p as $sres){
                     echo '<div class="card project-float shadow">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <div class="card-body">
-                                    <p class="card-subtitle mb-2 text-muted">'.$p['start_date'].'</p>
-                                    <h4 class="card-title">'.$p['name'].'</h4>
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <div class="card-body">
+                                        <p class="card-subtitle mb-2 text-muted">'.$sres['start_date'].'</p>
+                                        <h4 class="card-title">'.$sres['name'].'</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">';
+                                        
+                                        foreach($s as $res){
+                                            echo $res['projects_id'] . $sres['id'] . $res['skill'];
+                                            // if($res['projects_id'] == $sres['id']){
+                                            //     echo $res['projects_id'] . $sres['id'] . $res['skill'];
+                                            // }
+                                            
+                                        }
+                                        // if (is_array($s) || is_object($s)){
+                                        //     foreach($s as $res){
+                                        //         echo $res['skill'];
+                                        //         if ($s['projects_id'] == $sres['id'] ){
+                                        //             echo $s['projects_id'];
+                                        //             // echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$s['skill'].'</span>';
+                                        //             foreach($s as $res){
+                                        //                 echo $res['skill'];
+                                        //             }
+                                                    
+                                        //         }
+                                        //     }
+                                        // }else {
+                                        //     echo "Unfortunately, an error occured.";
+                                        // }
+
+                                        echo '<p class="card-text mt-2">'.$sres['content'].'</p>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <span class="badge badge-pill" style="background-color: #b8e994;">skill0</span>
-                                    <span class="badge badge-pill" style="background-color: #fab1a0;">skill1</span>
-                                    <span class="badge badge-pill" style="background-color: #ffeaa7;">skill2</span>
-                                    <span class="badge badge-pill" style="background-color: #7ed6df;">skill3</span>
-
-                                    <p class="card-text">'.$p['content'].'</p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+                        </div>';
                 }
-            ?>
+                ?>
 
         </div>
     </div>

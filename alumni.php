@@ -7,7 +7,6 @@ if(session_status() === PHP_SESSION_NONE){
     session_start();
 } 
 
-
 // PAGINATION CODE
 if(isset($_GET['page'])){
     $page = $_GET['page'];
@@ -34,6 +33,18 @@ $row_count =$user->fetchColumn();
 
 //determine the total number of pages available  
 $number_of_page = ceil ($row_count / $results_per_page); 
+
+// SEARCH BAR
+if(isset($_POST["submit"])) {
+    $name = $_POST["search"];
+    $search = $conn->query("SELECT * FROM users");
+    $search->execute();
+    if($search_result = $search->fetch(PDO::FETCH_ASSOC)){
+        echo $search_result;
+        // echo "viewprofile.php?id=<?php echo $col['id']"
+    }
+}
+
 
 
 //close connection
@@ -120,19 +131,21 @@ $conn = null;
             <div class="col  alumni-text">
                 <h1>Alumni</h1>
                 <p>(n.) former student or pupil of a school, college, or university. </p>
-                <div class="search-box">
-                    <input type="text" placeholder="Search for alumni..">
+                <form action="viewprofile.php" method="GET">
+                    <div class="search-box">
+                        <input type="text" name="search" placeholder="Search for alumni..">
 
-                    <div class="autocom-box"></div>
+                        <div class="autocom-box"></div>
 
-                    <div class="search-icon" onclick="displayPage()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search bg-transparent text-white" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
+                        <div class="search-icon" type="submit" name="submit"  onclick="displayPage()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search bg-transparent text-white" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <!-- graduate image -->
             <div class="col d-none d-lg-block graduate">
