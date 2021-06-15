@@ -80,6 +80,31 @@ $page_first_result = ($page-1) * $results_per_page;
     </script>
     <?php } ?>
 
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_denied') { ?>
+        <div class="alert2 show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Account has been denied</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert2').removeClass("show");
+    $('.alert2').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
 
 <?php include_once("adminnavigation.php"); ?>
 
@@ -96,8 +121,10 @@ $page_first_result = ($page-1) * $results_per_page;
 
         <div class="container">
             <br>
+            <!--
             <input type="text" id="search-bar" class="form-control" placeholder="Search Bar">
-            
+            -->
+
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
                 <thead>
                     <tr>

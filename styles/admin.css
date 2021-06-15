@@ -162,3 +162,13 @@ footer{
     text-transform: uppercase;
     border-radius: 40px;
 }
+
+.deny-btn:hover{
+    color: white;
+}
+.approve-btn:hover{
+    color: white;
+}
+.edit-btn:hover{
+    color: white;
+}

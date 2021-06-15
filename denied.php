@@ -45,6 +45,10 @@ $page_first_result = ($page-1) * $results_per_page;
         
         <link rel="stylesheet" href="styles/admin.css">
 
+        <link rel="stylesheet" href="styles/custom_alert.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
         <title>Alumni System</title>
     </head>
 <body class="d-flex flex-column h-100">
@@ -53,6 +57,32 @@ $page_first_result = ($page-1) * $results_per_page;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
     <?php include_once("adminnavigation.php"); ?>
+
+
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_approved') { ?>
+        <div class="alert2 show">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Account has been approved</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+    },3000);
+    
+
+    $('.close-btn').click(function(){
+    $('.alert2').removeClass("show");
+    $('.alert2').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
 
     <main >
         <div class="sidenav-bg">
@@ -68,7 +98,9 @@ $page_first_result = ($page-1) * $results_per_page;
         
         <div class="container">
             <br>
+            <!--
             <input type="text" id="search-bar" class="form-control" placeholder="Search Bar">
+            -->
             
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
                 <thead>

@@ -115,7 +115,9 @@ $page_first_result = ($page-1) * $results_per_page;
         </script>
         
             <br>
+            <!--
             <input type="text" id="search-bar" class="form-control" placeholder="Search Bar">
+            -->
 
             
             <table class="table table-striped table-hover table-bordered container" id="mainTable">
