@@ -18,12 +18,15 @@
                 <a class="dropdown-item" href="add_event.php">New Event</a>
                 <a class="dropdown-item" href="edit_event.php">Edit Event</a>
             </li>
+            <?php if(isset($_SESSION['logged_in'])) { ?>
             <li class="nav-item" id="control">
                 <a class="nav-link logout-btn other" href="logout.php">Log Out</a>
             </li>
+            
             <li class="nav-item" id="control-lg">
                 <a class="nav-link other" href="logout.php">Log Out</a>
             </li>
+            <?php } ?>
         </ul>
         </div>
     
