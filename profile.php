@@ -17,7 +17,7 @@ $fac = $faculty->fetch(PDO::FETCH_ASSOC);
 
 // FETCH DATA FROM TABLE EXPS
 $id = $_GET['id'];
-$experience = $conn->prepare("SELECT title, statuses, year_start, year_end, user_id FROM exps WHERE user_id='$id'");
+$experience = $conn->prepare("SELECT title, statuses, year_start, year_end, id FROM exps WHERE user_id='$id'");
 $experience->execute();
 // $xp = $experience->fetchAll();
 
@@ -130,7 +130,7 @@ $conn = null;
                                         <tr class="center">
                                             <th>Year</th>
                                             <th>Description</th>
-                                            <th>Edit/Delete</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
 
@@ -143,7 +143,7 @@ $conn = null;
                                                             <td>'.$xp['year_start'].' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td>
-                                                                <a class="ajax-action-links" href="edit.php?id='. $xp['user_id'] . '"><img src="crud-icon/edit.png" title="Edit" /></a> <a class="ajax-action-links" href="delete.php?id='. $xp['user_id'] . '"><img src="crud-icon/delete.png" title="Delete" /></a>
+                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
                                                             </td>
                                                         </tr>';
                                                 }else{
@@ -151,7 +151,7 @@ $conn = null;
                                                             <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td>
-                                                                <a class="ajax-action-links" href="edit.php?id='. $xp['user_id'] . '"><img src="crud-icon/edit.png" title="Edit" /></a> <a class="ajax-action-links" href="delete.php?id='. $xp['user_id'] . '"><img src="crud-icon/delete.png" title="Delete" /></a>
+                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
                                                             </td>
                                                         </tr>';
                                                 }
