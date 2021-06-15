@@ -5,8 +5,8 @@ if (session_status() === PHP_SESSION_NONE){
     session_start();
 }
 
-$id = $_GET['id'];
-$result = $conn->prepare("SELECT * FROM users WHERE id =:id");
+$id = $_SESSION['user_id'];
+$result = $conn->prepare("SELECT * FROM users WHERE id =$id");
 $result->execute();
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

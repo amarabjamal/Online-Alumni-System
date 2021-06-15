@@ -6,7 +6,9 @@ session_start();
 
 if($_SESSION['logged_in'] == TRUE) { 
 
-    header('Location: index.php');
+    $session_id = session_id();
+    header("Location: index.php?session_id=". $session_id );
+    // header('Location: index.php');
 }
 
 $email = $_POST['email'];
