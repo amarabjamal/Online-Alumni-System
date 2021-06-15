@@ -110,6 +110,7 @@ $conn = null;
             </p>
         </div>
 
+
     <?php } ?>
 
     <?php if(isset($_SESSION['logged_in'])) { ?>
@@ -124,7 +125,8 @@ $conn = null;
         </div>
     
     <?php } else { ?>
-        <div class="container">
+
+    <div class="container">
         <!-- ROW FOR HEADER -->
         <div class="row graduate-text">
             <!-- header -->
@@ -146,12 +148,15 @@ $conn = null;
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
             <!-- graduate image -->
             <div class="col d-none d-lg-block graduate">
                 <img src="images/graduate.png" alt="graduate">
             </div>
         </div>
+
+
 
         <!-- ROW FOR INDICATOR -->
         <div class="row indi-box">
@@ -222,6 +227,7 @@ $conn = null;
             <?php }?>
         </div>
 
+
         <!-- PAGINATION START -->
         <ul class="pagination justify-content-center">
             <?php 
@@ -242,6 +248,8 @@ $conn = null;
     <?php } ?>
     </main>
 
+    </div>
+   
     <!-- ===================================== Start Footer Area ===================================== -->
     <?php include_once("footer.php"); ?>
     <!-- ===================================== End Footer Area ===================================== -->

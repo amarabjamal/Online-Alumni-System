@@ -45,18 +45,18 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
                     $fileNameNew = uniqid('', true) . "." . $fileActualExt;
                     $fileDest = 'images/profile/' . $fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDest);
-                    header("Location: edituser.php?id=$userid&condition=edit1");
+                    header("Location: edit_user.php?id=$userid&condition=edit1");
                 } else {
                     echo "File too big";
                 }
             } else {
                 echo "There was an error";
-                header("Location: edituser.php?id=$userid&condition=edit2");
+                header("Location: edit_user.php?id=$userid&condition=edit2");
                 exit;
             }
         } else {
             echo "You cannot upload files of this type!";
-            header("Location: edituser.php?condition=imageerror");
+            header("Location: edit_user.php?condition=imageerror");
             
             
         }
@@ -80,7 +80,7 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
 
 
     if(! ($usergradyear > $userenrollyear)){
-        header("Location: edituser.php?id=$userid&validyears=false");
+        header("Location: edit_user.php?id=$userid&validyears=false");
         exit;
     }
 
@@ -202,7 +202,7 @@ $result = $conn->query($sql);
 
         <div class="container py-5">
             <div class="formthing">
-                <form action="edituser.php" method="post" enctype="multipart/form-data">
+                <form action="edit_user.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" hidden id="id" name="id" value="<?php echo "" . $inp['0'] . ""; ?>">
 

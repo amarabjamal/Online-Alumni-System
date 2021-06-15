@@ -2,6 +2,8 @@
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 
+include_once("include/config.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +32,6 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
     <title>Jobs | UM Alumni </title>
 
-    <!--Bootsrap icons-->
-    <link href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -71,8 +71,95 @@ if(session_status() === PHP_SESSION_NONE) session_start();
         </div>
     
     <?php } else { ?>
-        //Main content goes here
-        
+        <!-- Main content goes here -->
+        <div id="page_heading">
+            <h1>Jobs</h1>
+        </div>
+
+        <section class="my-5">
+            <div class="container">
+                <div class="row">
+
+                <?php 
+
+                    try {
+                        $query = "SELECT  
+                                    job_ads.id,
+                                    job_ads.title,
+                                    job_ads.salary,
+                                    job_ads.content,
+                                    job_ads.published_at,
+                                    companies.name,
+                                    companies.location,
+                                    users.full_name,
+                                    users.id
+                                FROM job_ads
+                                LEFT JOIN companies
+                                ON job_ads.com_id = companies.id 
+                                JOIN users
+                                ON job_ads.user_id = users.id 
+                                ORDER BY job_ads.id DESC 
+                                ";
+                        $stmt = $conn->query($query);
+
+                        if($stmt != 0) {
+                            while($res = $stmt->fetch()) { /* print_r($res); */?>
+                            <div class="col-4">
+                                <div class="job-card">
+                                    <div class="position"><?php echo $res['title']; ?></div>
+                                    <!-- if ($job_ads->com_id == NULL) {
+                                        <div class="company">No company data</div>;
+                                    } else {
+                                    } -->
+                                    <div class="company"><?php if($res['name'] == NULL) { echo "No company details";} else { echo $res['name'];} ?></div>
+                                    <div class="details">
+                                        <strong>Salary</strong>: RM<?php echo $res['salary']; ?><br><br><br>  
+                                        <i class="fas fa-calendar-day"></i> Published on <?php echo date('d/m/y', strtotime($res['published_at'])); ?><br>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" style="float: right" class="btn btn-primary" data-toggle="modal" data-target="#job_<?php echo $res[0]; ?>">
+                                        More details
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div> 
+                            
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="job_<?php echo $res[0]; ?>" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><?php echo $res['title']; ?></h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mb-3">
+                                        <div class="col-4"><small><i class="fas fa-hand-holding-usd"></i> RM <?php echo $res['salary']; ?></small></div>
+                                        <div class="col-4"><small><i class="fas fa-building"></i> <?php echo $res['name']; ?></small></div>
+                                        <div class="col-4"><small><i class="fas fa-map-marker-alt"></i> <?php echo $res['location']; ?></small></div>
+                                    </div>
+                                    <?php echo $res['content']; ?>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="col">Published by <a href="viewprofile.php?id=<?php echo $res[8]; ?>"><?php echo $res['full_name']; ?></a> on <?php echo date('d/m/y', strtotime($res['published_at'])); ?></div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        <?php    } 
+                        }        
+
+                        // disconnect from database
+                        $conn = NULL;
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
+
+                    ?>
+
+                </div>
+            </div>
+        </section>
     <?php } ?>
     <?php } ?>
 

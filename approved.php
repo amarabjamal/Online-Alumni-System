@@ -5,8 +5,26 @@ include_once("include/userapprovalsystem.php");
 
 session_start();
 
-$sql = "select * from users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Approved\" order by users.id asc";
-$result = $conn->query($sql);
+$results_per_page = 10;
+
+//find the total number of results stored in the database   
+$number_of_result = $conn->query('SELECT count(*) from users, statuses WHERE users.status_id = statuses.id AND statuses.status = "Approved"')->fetchColumn(); 
+
+//determine the total number of pages available  
+$number_of_page = ceil ($number_of_result / $results_per_page);  
+
+//determine which page number visitor is currently on  
+if (!isset ($_GET['page']) ) {  
+    $page = 1;  
+} else {  
+    $page = $_GET['page'];  
+}
+
+$current_page = $page;
+
+//determine the sql LIMIT starting number for the results on the displaying page  
+$page_first_result = ($page-1) * $results_per_page; 
+
 
 ?>
 
@@ -94,8 +112,16 @@ $result = $conn->query($sql);
                 <tbody id="myTable">
                     
                     <?php
-                            while ($res = $result->fetch()) {
-                                // the keys match the field names from the table
+
+                        try {
+                            $query = "SELECT * FROM users, faculties, statuses WHERE (users.fac_id = faculties.id AND users.status_id = statuses.id) AND statuses.status = \"Approved\" order by users.id asc
+                                    LIMIT " . $page_first_result . ',' . $results_per_page;
+
+                            $stmt = $conn->query($query);
+
+                            if($stmt != 0) {
+
+                                while($res = $stmt->fetch()) { 
                                     echo "<tr>";
                                     echo "<td>".$res['full_name']."</td>";
                                     echo "<td>".$res['faculty']."</td>";
@@ -104,30 +130,50 @@ $result = $conn->query($sql);
                                     echo "<td class=\"text-center\">".$res['grad_year']."</td>";
                                     echo "<td class=\"text-center\">".$res['status']."</td>";
                 
-                                    echo "<td><a class=\"deny-btn\" href=\"approved.php?id=$res[0]&condition=deny\" >Deny</a> | <a class=\"edit-btn\" href=\"edituser.php?id=$res[0]&condition=edit\">Edit</a></td>";
-                                }
+                                    echo "<td><a class=\"deny-btn\" href=\"approved.php?id=$res[0]&condition=deny\" >Deny</a> | <a class=\"edit-btn\" href=\"edit_user.php?id=$res[0]&condition=edit\">Edit</a></td>";
+
+                                } 
+
+                            }        
+
+                        } catch (PDOException $e) {
+                            echo "Error: ".$e->getMessage();
+                        }
+
+                            
                     ?>    
 
 
                 </tbody>
                 </table>
 
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="approved.html" tabindex="-1" aria-disabled="true">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="approved.html">1</a></li>
-                      <li class="page-item disabled">
-                        <a class="page-link" href="approved.html">Next</a>
-                      </li>
-                    </ul>
+                <!-- Pagination Start -->
+                <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mt-5">
+                        <?php if($page > 1) {
+                            echo '<li class="page-item"><a class="page-link" href = "approved.php?page=' . $current_page - 1 . '" tabindex="-1">Previous</a></li>';  
+                        } 
+                        for($page = 1; $page<= $number_of_page; $page++) { 
+                            if($page == $current_page) {
+                                echo '<li class="page-item active"><a class="page-link" href = "approved.php?page=' . $page . '">' . $page . ' <span class="sr-only">(current)</span></a></li>';  
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href = "approved.php?page=' . $page . '">' . $page . ' </a></li>';  
+                            }
+                        } 
+                        if($number_of_page > 1 && $current_page != $number_of_page) {
+                            echo '<li class="page-item"><a class="page-link" href = "approved.php?page=' . $current_page + 1 . '">Next</a></li>';  
+                        } 
+                        ?>
+                        </ul>
                 </nav>
+                <!-- Pagination End -->
         </div>
     </main>
 
 
-    <footer id="control">
+    
+
+    <footer id="footer" class="mt-auto">
         <div class="bg-dark py-4">
             <div class="container text-center">
                 <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>

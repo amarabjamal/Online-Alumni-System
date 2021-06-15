@@ -39,7 +39,7 @@
             }
         } else{
             echo "You cannot upload files of this type!";
-            header("Location: addevent.php?condition=imageerror");
+            header("Location: add_event.php?condition=imageerror");
             exit;
         }
 
@@ -52,7 +52,7 @@
         $imagepath = $fileDest;
 
         if($eventstartdate > $eventenddate){
-            header("Location: addevent.php?condition=dateerror");
+            header("Location: add_event.php?condition=dateerror");
             exit;
         }
         
@@ -79,7 +79,7 @@
               // which means no query has failed, so we can commit the
               // transaction
               $conn->commit();
-              header('Location: http://localhost/Online-alumni-system/editevent.php?success');
+              header('Location: edit_event.php?success');
               echo "poopoo";
             } catch (Exception $e) {
               // we must rollback the transaction since an error occurred
@@ -136,7 +136,7 @@
 
         <div class="container">
             <div class="formthing">
-                <form action="addEvent.php" method="post" enctype="multipart/form-data">
+                <form action="add_event.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label >Event Name</label><br>
                         <input required type="text" id="eventname" name="eventname" class="form-control" placeholder="Event Name">
@@ -213,15 +213,13 @@
 
     </main>
 
-    <!--
-    <footer id="control">
+    <footer id="footer" class="mt-auto">
         <div class="bg-dark py-4">
             <div class="container text-center">
                 <p class="text-muted mb-0 py-2">&copy; <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.</p>
             </div>
         </div>
     </footer>
-    -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
