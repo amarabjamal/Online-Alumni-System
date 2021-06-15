@@ -191,7 +191,7 @@ include_once("include/config.php");
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Add new ads</h5>
+                                        <h5 class="modal-title">Edit Job Ads</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>

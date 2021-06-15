@@ -5,8 +5,6 @@ include_once("include/config.php");
 session_start();
 
 function prepare_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
