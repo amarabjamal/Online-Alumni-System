@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 
 if($_SESSION['logged_in'] == TRUE) { ?>
     <!-- Logged in navbar html goes here -->
@@ -27,8 +29,8 @@ if($_SESSION['logged_in'] == TRUE) { ?>
                                 <img class="profile-picture" src="./images/avatar-2.png" alt="profile picture">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="manageAccount.html">Your profile</a>
-                                <a class="dropdown-item" href="editProfile.html">Edit profile</a>
+                                <a class="dropdown-item" href="profile.php?id=<?php echo $_SESSION['user_id']?>">Your profile</a>
+                                <a class="dropdown-item" href="edit_profile.php?id=<?php echo $_SESSION['user_id']?>">Edit profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout.php">Log out</a>
                             </div>
