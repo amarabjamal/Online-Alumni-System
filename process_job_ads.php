@@ -81,8 +81,25 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
     } catch (PDOException $e) {
         echo "Error: ".$e->getMessage();
     }
+} elseif(isset($_POST['delete']) && isset($_SESSION['user_id'])) {
+    $job_ads_id = (int)$_POST['job_ads_id'];
+    /* echo $job_ads_id;
+    echo gettype($job_ads_id); */
+    try {
+        $conn->beginTransaction();
+        $query = "DELETE FROM job_ads WHERE id = $job_ads_id";
+        $conn->query($query);
+
+        $conn->commit();
+        
+        header('Location: add_jobs.php?action=deleted');
+    } catch (PDOException $e) {
+        $conn->rollback();
+        echo "Error: ".$e->getMessage();
+    }
 } else {
-    header('Location: add_jobs.php');
+    echo "hey";
+    //header('Location: add_jobs.php');
 }
 
 ?>

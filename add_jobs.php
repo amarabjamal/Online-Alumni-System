@@ -79,15 +79,15 @@ include_once("include/config.php");
         <section class="upcoming-events">
             <div class="container">
             <div class="add_jobs_button my-3" style="height:30px">
-                <button type="button" class="btn btn-light" style="float:right;" data-toggle="modal" data-target="#new_ads"><i class="fas fa-plus"></i> New ads</button>
+                <button type="button" class="btn btn-light" style="float:right;" data-toggle="modal" data-target="#new_ads"><i class="fas fa-plus"></i> New Ads</button>
             </div>
 
-            <!-- New ADs Modal -->
+            <!-- New Job Ads Modal -->
             <div class="modal fade" id="new_ads" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add new ads</h5>
+                    <h5 class="modal-title">Add New Ads</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -143,7 +143,7 @@ include_once("include/config.php");
                 <th>Salary (RM)</th>
                 <th>Company, Location</th>
                 <th>Publish Date</th>
-                <th></th>
+                <th width="120px"></th>
                 </thead>
                 <tbody>
 
@@ -175,10 +175,71 @@ include_once("include/config.php");
                                     </td>
                                     <td><?php echo date('d/m/y', strtotime($res['published_at'])); ?></td>
                                     <td>
-                                        <button class='btn btn-info btn-xs btn-edit'><i class="fas fa-edit"></i></button>
-                                        <button class='btn btn-danger btn-xs btn-delete'><i class="fas fa-trash-alt"></i></button>
+                                        <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+                                            <button class='btn btn-info btn-xs btn-edit' data-toggle="modal" data-target="#jobs_<?php echo $res[0]; ?>"><i class="fas fa-edit"></i></button>
+                                            <form method="POST" action="process_job_ads.php">
+                                                <input type="hidden" id="job_ads_id" name="job_ads_id" value="<?php echo $res[0]; ?>">
+                                                <button type="submit" name="delete" class='btn btn-danger btn-xs btn-delete'><i class="fas fa-trash-alt"></i></button>
+                                            </form>  
+                                        </div>  
                                     </td>
                                 </tr>
+
+                                <!-- Edit Job Ads Modal -->
+
+                                <div class="modal fade" id="jobs_<?php echo $res[0]; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add new ads</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                    <form method="POST" action="process_job_ads.php">
+
+                                    <div class="form-group">
+                                    <label><b>Job Title:</b></label>
+                                    <input type="text" name="job_title" class="form-control" value="<?php echo $res['title']; ?>" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label><b>Salary:</b></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text">RM</span>
+                                        </div>
+                                        <input type="number" min="0" step="any" name="salary" class="form-control" value="<?php echo $res['salary']; ?>" required>
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label><b>Details:</b></label>
+                                    <textarea class="form-control" name="content"  rows="5" required><?php echo $res['content']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label><b>Company:</b></label>
+                                    <input type="text" name="company" class="form-control" value="<?php echo $res['name']; ?>" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label><b>Location:</b></label>
+                                    <input type="text" name="location" class="form-control" value="<?php echo $res['location']; ?>" readonly>
+                                    </div>
+
+                                    </div>
+                                    <div class="modal-footer" style="border-top:none;">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary" name="edit_job">Create</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
                 <?php    } 
                         }        
 
