@@ -1,6 +1,15 @@
 <?php
 include_once("include/config.php");
 
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+$id = $_SESSION['user_id'];
+$result = $conn->prepare("SELECT * FROM users WHERE id =$id");
+$result->execute();
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -73,14 +82,14 @@ include_once("include/config.php");
                                 <div class="form-group">
                                     <label class="col-md-3">Name</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Enter your name">
+                                        <input type="text" style="font-weight: bold;" class="form-control" id="full_name" name="full_name" placeholder="Enter your name" required value="<?php echo $row['full_name'] ?>">
                                     </div>
 
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3">Email address</label>
                                     <div class="col-sm-12">
-                                        <input type="email" class="form-control" placeholder="Enter your email address">
+                                        <input type="email" style="font-weight: bold;" class="form-control" id="email" name="email" placeholder="Enter your email address" value="<?php echo $row['email'] ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -141,7 +150,7 @@ include_once("include/config.php");
                                 <div class="form-group">
                                     <label class="col-md-3">Year Enrolled:</label>
                                     <div class="col-sm-12">
-                                        <input type="date" class="form-control" placeholder="Enter your year of study" name="year_enroll">
+                                        <input type="date" class="form-control" id="enroll_year" name="enroll_year" placeholder="Enter your year of study" value = "<?php echo $row['enroll_year']?>">
                                     </div>
 
                                 </div>
@@ -149,7 +158,7 @@ include_once("include/config.php");
                                 <div class="form-group">
                                     <div class="col-sm-12">
 
-                                        <button id="submit"type="button" class="btn btn-success" data-toggle="modal"
+                                        <button id="submit" type="button" class="btn btn-success" data-toggle="modal"
                                             data-target="#submitModal">Submit</button>
                                         <div class="modal fade" id="submitModal" tabindex=-1 role="dialog"
                                             aria-labelledby="submitModalLabel" aria-hidden="true">

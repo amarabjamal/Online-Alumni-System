@@ -1,7 +1,23 @@
 <?php
 include_once("include/config.php");
+// $id = $_GET['id'] ? intval($_GET['id']) : 0;
+$id = $_SESSION['user_id'];
+try {
+    $sql = "SELECT * FROM users WHERE id =:id LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    $stmt->execute();    
+} catch (Exception $e) {
+    echo "Error " . $e->getMessage();
+    exit();
+}
 
-session_start();
+if (!$stmt->rowCount()) {
+    header("Location: edit_profile.php");
+    exit();
+}
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if (isset($_POST['submit']))
 {
     if ((!isset($_POST['name'])) || 

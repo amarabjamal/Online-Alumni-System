@@ -1,8 +1,15 @@
 <?php
 include_once("include/config.php");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 
+// FETCH DATA FROM TABLE EXPS
+$id = $_GET['id'] ? intval($_GET['id']) : 0;
+$experience = $conn->prepare("SELECT title, statuses, year_start, year_end, id FROM exps WHERE id='$id'");
+$experience->execute();
+$row = $experience->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -33,7 +40,7 @@ session_start();
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 
-    <?php include_once(navigation.php); ?>
+    
 
     <main class="flex-shrink-0">
         <div class="container">
@@ -45,7 +52,7 @@ session_start();
                                     <h5>EXPERIENCE</h5><br>
                                     <?php if (isset($_GET['status']) && $_GET['status'] == "updated") : ?>
                                         <div class="alert alert-success" role="alert">
-                                            <strong>Created</strong>
+                                            <strong>Updated!</strong>
                                         </div>
                                     <?php endif ?>
                                     <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
@@ -69,10 +76,10 @@ session_start();
 
                                                 <tbody>
                                                     <tr class="table-row">
-                                                        <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?"></td>
-                                                        <td><input type="text" class="form-control" id="year_start" name="year_start" placeholder="Year Start"></td>
-                                                        <td><input type="text" class="form-control" id="year_end" name="year_end" placeholder="Year End"></td>
-                                                        <td><input type="text" class="form-control" id="title" name="title" placeholder="Description"></td>
+                                                        <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?" value="<?php echo $row['statuses'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="year_start" name="year_start" placeholder="Year Start" value="<?php echo $row['year_start'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="year_end" name="year_end" placeholder="Year End" value="<?php echo $row['year_end'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="title" name="title" placeholder="Description" value="<?php echo $row['title'] ?>"></td>
                                                     </tr>
                                                 </tbody>
                                                 

@@ -150,7 +150,7 @@ $conn = null;
                                                             <td>'.$xp['year_start'].' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td class="text-center">
-                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-success" href="edit_exps.php?id='. $xp['id'] . '">Edit</a> 
                                                                 <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a> 
                                                             </td>
                                                         </tr>';
@@ -159,7 +159,7 @@ $conn = null;
                                                             <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td class="text-center">
-                                                                <a class="ajax-action-links btn btn-success" href="editevent.php?id='. $xp['id'] . '">Edit</a>
+                                                                <a class="ajax-action-links btn btn-success" href="edit_exps.php?id='. $xp['id'] . '">Edit</a>
                                                                 <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $xp['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';
