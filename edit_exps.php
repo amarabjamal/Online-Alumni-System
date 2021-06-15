@@ -3,6 +3,7 @@ include_once("include/config.php");
 
 session_start();
 
+
 ?>
 
 <!DOCTYPE HTML>
@@ -37,42 +38,57 @@ session_start();
     <main class="flex-shrink-0">
         <div class="container">
             <div class="row gutters">
-                <div class= "col-sm-12 d-flex justify-content-center">
-                    <form action="edit_exps.php" method="POST">
-                        <div class="form-group">
-                            <label class="col-md-3">Status</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control">
+                <div class="col-sm">
+                    <a href="profile.php" class="mb-3 text-dark"><< Back</a>
+                    <div class="card-box">
+                                <div class="card-body">
+                                    <h5>EXPERIENCE</h5><br>
+                                    <?php if (isset($_GET['status']) && $_GET['status'] == "updated") : ?>
+                                        <div class="alert alert-success" role="alert">
+                                            <strong>Created</strong>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>Fail Create</strong>
+                                        </div>
+                                    <?php endif ?>
+                                    <div class="table-responsive">
+                                        <form  action="update_exps.php" method="POST">
+
+                                            <table id="data_table1" class="table table-borderless mb-0">
+
+                                                <thead class="table-head">
+                                                    <tr class="center">
+                                                        <th>Status</th>
+                                                        <th>Year Start</th>
+                                                        <th>Year End</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr class="table-row">
+                                                        <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?"></td>
+                                                        <td><input type="text" class="form-control" id="year_start" name="year_start" placeholder="Year Start"></td>
+                                                        <td><input type="text" class="form-control" id="year_end" name="year_end" placeholder="Year End"></td>
+                                                        <td><input type="text" class="form-control" id="title" name="title" placeholder="Description"></td>
+                                                    </tr>
+                                                </tbody>
+                                                
+                                            </table>
+                                            <button type="submit" class="btn btn-success">Save</button>
+                                        </form>
+                                        
+                                    </div>
+                                    <hr>
+
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3">Year start</label>
-                            <div class="col-sm-12">
-                                <input type="date" class="form-control">
-                                
-                            </div> 
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3">Year end</label>
-                            <div class="col-sm-12">
-                                <input type="date" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3">Title/label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <button id="submit" class="btn btn-success">Submit</button>
-                                <button id="delete" class="btn btn-danger">Delete</button>
-                            </div>
-                        </div>
-                            
-                    </form> 
-                </div> 
-            </div> 
+                    </div>
+                </div>
+        </div>
         </div>
     </main>
 
