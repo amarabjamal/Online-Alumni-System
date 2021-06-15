@@ -238,28 +238,28 @@ $conn = null;
                                 <div class="col-md-8">
                                     <div class="card-body">';
                                         
-                                        foreach($s as $res){
-                                            echo $res['projects_id'] . $sres['id'] . $res['skill'];
-                                            // if($res['projects_id'] == $sres['id']){
-                                            //     echo $res['projects_id'] . $sres['id'] . $res['skill'];
-                                            // }
+                                        // foreach($s as $res){
+                                        //     echo $res['projects_id'] . $sres['id'] . $res['skill'];
+                                        //     // if($res['projects_id'] == $sres['id']){
+                                        //     //     echo $res['projects_id'] . $sres['id'] . $res['skill'];
+                                        //     // }
                                             
-                                        }
-                                        // if (is_array($s) || is_object($s)){
-                                        //     foreach($s as $res){
-                                        //         echo $res['skill'];
-                                        //         if ($s['projects_id'] == $sres['id'] ){
-                                        //             echo $s['projects_id'];
-                                        //             // echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$s['skill'].'</span>';
-                                        //             foreach($s as $res){
-                                        //                 echo $res['skill'];
-                                        //             }
-                                                    
-                                        //         }
-                                        //     }
-                                        // }else {
-                                        //     echo "Unfortunately, an error occured.";
                                         // }
+                                        if (is_array($s) || is_object($s)){
+                                            foreach($s as $res){
+                                                echo $res['skill'];
+                                                if ($s['projects_id'] == $sres['id'] ){
+                                                    echo $s['projects_id'];
+                                                    // echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$s['skill'].'</span>';
+                                                    foreach($s as $res){
+                                                        echo $res['skill'];
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        }else {
+                                            echo "Unfortunately, an error occured.";
+                                        }
 
                                         echo '<p class="card-text mt-2">'.$sres['content'].'</p>
 
