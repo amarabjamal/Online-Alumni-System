@@ -115,7 +115,7 @@ $conn = null;
                             
                         </div>
                         <br>
-                        <div class="text-center"> <a href="delete_user.php?id='. $row['id'] . '"><button class="btn btn-danger">Delete User</button></a>
+                        <div class="text-center"> <a href="edit_profile.php?id='. $row['id'] . '"><button class="btn btn-warning">Edit</button></a>
                         </div>
 
 
