@@ -18,6 +18,7 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
     $company = prepare_input($_POST['company']);
     $location = prepare_input($_POST['location']);
     $user_id = $_SESSION['user_id'];
+    $timestamp = date("Y-m-d H:i:s", time());
 
     /* echo $title.'<br>'.gettype($title).'<br>';
     echo $salary.'<br>'.gettype($salary).'<br>';
@@ -27,24 +28,51 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
     echo $user_id; */
 
     try {
-        $query = "SELECT * FROM companies WHERE name LIKE '".$company."'";
+        $query = "SELECT * FROM companies WHERE name LIKE '".$company."' AND location LIKE '".$location."'";
 
         $stmt = $conn->query($query);
-
-        if($stmt != 0) {
-            $com_id = $stmt->fetch()['id'];
+        
+        if($stmt->rowCount() > 0){
+            while ($row = $stmt->fetch()) {
+                $com_id = $row['id'];
+            }
             try {
-                // begin a transaction
+
                 $conn->beginTransaction();
-                // a set of queries: if one fails, an exception will be thrown
+
                 $query = "INSERT INTO job_ads (title,salary,content,com_id,user_id) VALUES('$title', '$salary', '$content', '$com_id', '$user_id')";
                 $conn->query($query);
-                // if we arrive here, it means that no exception was thrown
-                // which means no query has failed, so we can commit the
-                // transaction
+
                 $conn->commit();
                 
                 header('Location: add_jobs.php?action=success');
+            } catch (PDOException $e) {
+                $conn->rollback();
+                echo "Error: ".$e->getMessage();
+            }
+        } else {
+
+            try {
+                $conn->beginTransaction();
+
+                $query = "INSERT INTO companies (name,location) VALUES('$company', '$location')";
+                $conn->query($query);
+
+                $conn->commit();
+                $com_id = $conn->lastInsertId();
+
+                try {
+                    $conn->beginTransaction();
+                    $query = "INSERT INTO job_ads (title,salary,content,com_id,user_id) VALUES('$title', '$salary', '$content', '$com_id', '$user_id')";
+                    $conn->query($query);
+
+                    $conn->commit();
+                    
+                    header('Location: add_jobs.php?action=success');
+                } catch (PDOException $e) {
+                    $conn->rollback();
+                    echo "Error: ".$e->getMessage();
+                }
             } catch (PDOException $e) {
                 $conn->rollback();
                 echo "Error: ".$e->getMessage();
