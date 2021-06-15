@@ -1,50 +1,40 @@
-<?php
-include_once("include/config.php");
-// $id = $_GET['id'] ? intval($_GET['id']) : 0;
-$id = $_SESSION['user_id'];
-try {
-    $sql = "SELECT * FROM users WHERE id =:id LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-    $stmt->execute();    
-} catch (Exception $e) {
-    echo "Error " . $e->getMessage();
+<?php 
+if ($_POST) {
+    $id      = (int) $_POST['id'];
+    $profile_picture_url = trim($_POST['profile_picture_url']);
+    $full_name    = trim($_POST['full_name']);
+    $country   = trim($_POST['country']);
+    $faculty = trim($_POST['faculty']);
+    $enroll_year = trim($_POST['enroll_year']);
+
+    try {
+        $sql = 'UPDATE users 
+                    SET profile_picture_url = :profile_picture_url, full_name = :full_name, country = :country, faculty = :faculty, enroll_year = :enroll_year 
+                WHERE id = :id';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":profile_picture_url", $profile_picture_url);
+        $stmt->bindParam(":full_name", $full_name);
+        $stmt->bindParam(":country", $country);
+        $stmt->bindParam(":faculty", $faculty);
+        $stmt->bindParam(":enroll_year", $enroll_year);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        if ($stmt->rowCount()) {
+            header("Location: edit_profile.php?id=".$id."&status=updated");
+            exit();
+        }
+        header("Location: edit_profile.php?id=".$id."&status=fail_update");
+        exit();
+    } catch (Exception $e) {
+        echo "Error " . $e->getMessage();
+        exit();
+    }
+} else {
+    header("Location: edit_profile.php?id=".$id."&status=fail_update");
     exit();
 }
-
-if (!$stmt->rowCount()) {
-    header("Location: edit_profile.php");
-    exit();
-}
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (isset($_POST['submit']))
-{
-    if ((!isset($_POST['name'])) || 
-        (!isset($_POST['email']))  
-        
-    {
-        $error = "*" . "Please fill all the required fields";
-    }
-    else
-    {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $yeare = $_POST['year_enroll'];
-        $country = $_POST['country'];
-        
-    }
-
-    $sql = "INSERT INTO users(name, email, year_enroll, country) VALUES(:name, :email, :year_enroll, :country)";
-	$query = $conn->prepare($sql);
-				
-	$query->bindparam(':name', $name);
-	$query->bindparam(':email', $email);
-	$query->bindparam(':year_enroll', $yeare);
-	$query->execute();
-
-    header("Location: profile.php");
-}
+?>
 
 
 

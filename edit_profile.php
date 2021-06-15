@@ -63,7 +63,19 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
     <main class="flex-shrink-0">
         <div class="container ">
+        <a href="profile.php" class="mb-3 text-dark"><< Go Back</a>
             <div class="row gutters">
+                
+                <?php if (isset($_GET['status']) && $_GET['status'] == "updated") : ?>
+                <div class="alert alert-success" role="alert">
+                    <strong>Updated ;)</strong>
+                </div>
+                <?php endif ?>
+                <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Fail Update :(</strong>
+                </div>
+                <?php endif ?>
                 <div class="col-sm-12 d-flex justify-content-center ">
                     <form class="horizontal" action="process_edit_profile.php" method="POST">
                     
@@ -75,7 +87,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                 <div class="form-group">
                                     <label class="col-md-3">Profile picture</label>
                                     <div class="col-sm-12">
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" id="profile_picture_url" name="profile_picture_url">
                                     </div>
 
                                 </div>
@@ -96,7 +108,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                     <label class="col-md-3 control-label">Country</label>
                                     <div class="col-sm-12">
                                         <select class="form-control">
-                                            <option selected="">Select country</option>
+                                            <option selected=""></option>
                                             <option>Bangladesh</option>
                                             <option>Brunei</option>
                                             <option>China</option>
@@ -128,7 +140,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                     <label class="col-md-3">Faculty</label>
                                     <div class="col-sm-12">
                                         <select class="form-control">
-                                            <option selected="" name="faculty">Select faculty</option>
+                                            <option selected="" name="faculty"></option>
                                             <option>Faculty of Education</option>
                                             <option>Faculty of Dentistry</option>
                                             <option>Faculty of Engineering</option>
