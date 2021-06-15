@@ -68,13 +68,20 @@ form div{
 
 body{
     margin-bottom: 100px;
+    height: 100%;
 }
 
+
+
 footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding-top: 70px;
+    height: 0px;
+    
 }
+
+
+
+
 
 .banner-back{
     padding: 30px;
