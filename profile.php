@@ -115,7 +115,7 @@ $conn = null;
                             
                         </div>
                         <br>
-                        <div class="text-center"> <a href="delete_user.php?id='. $row['id'] . '"><button class="btn btn-danger">Delete User</button></a>
+                        <div class="text-center"> <a href="edit_profile.php?id='. $row['id'] . '"><button class="btn btn-warning">Edit</button></a>
                         </div>
 
 
@@ -199,7 +199,7 @@ $conn = null;
                                                             <td>'.$p['start_date']. '</td>
                                                             <td>
                                                                 <a class="ajax-action-links btn btn-success" href="editproject.php?id='. $p['id'] . '">Edit</a> 
-                                                                <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $p['id'] . '">Delete</a>  
+                                                                <a class="ajax-action-links btn btn-danger" href="delete_project.php?id='. $p['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';
                                             }
