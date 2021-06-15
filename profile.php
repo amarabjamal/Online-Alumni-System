@@ -15,9 +15,11 @@ $faculty = $conn->prepare("SELECT faculties.id, faculties.faculty FROM users INN
 $faculty->execute();
 $fac = $faculty->fetch(PDO::FETCH_ASSOC);
 
+// FETCH DATA FROM TABLE EXPS
 $id = $_GET['id'];
-$experience = $conn->prepare("SELECT title, statuses, year_start, year_end FROM exps WHERE user_id='$id'");
+$experience = $conn->prepare("SELECT title, statuses, year_start, year_end, user_id FROM exps WHERE user_id='$id'");
 $experience->execute();
+// $xp = $experience->fetchAll();
 
 
 $conn = null;
@@ -123,35 +125,38 @@ $conn = null;
                             
                             <div class="table-responsive">
                                 <table id="data_table1" class="table table-borderless mb-0">
+
                                     <thead class="table-head">
                                         <tr class="center">
-
                                             <th>Year</th>
                                             <th>Description</th>
                                             <th>Edit/Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php
-                                        if(!empty($experience)){
-                                            foreach($experience as $row) {
-                                        ?>
-                                        <tr class="table-row">
-                                            <td><?php echo $row['year_start'] .' - ' .$row['year-end']; ?> </td>
-                                            <td><?php echo $row['title']; ?> </td>
-                                            <td>
-                                            <a href="edit_exp.php?id=<?=$experience['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                                            <a href="delete_exp.php?id=<?=$experience['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                            }
-                                        }
-                                        ?>
 
-                                            
-                                        </tr>
-                                       
+                                    <tbody>
+                                        <?php 
+                                            while($xp = $experience->fetch(PDO::FETCH_ASSOC)){
+                                                
+                                                if($xp['statuses'] == 'current'){
+                                                    echo '<tr class="table-row">
+                                                            <td>'.$xp['year_start'].' </td>
+                                                            <td>'.$xp['title']. '</td>
+                                                            <td>
+                                                                <a class="ajax-action-links" href="edit.php?id='. $xp['user_id'] . '"><img src="crud-icon/edit.png" title="Edit" /></a> <a class="ajax-action-links" href="delete.php?id='. $xp['user_id'] . '"><img src="crud-icon/delete.png" title="Delete" /></a>
+                                                            </td>
+                                                        </tr>';
+                                                }else{
+                                                    echo '<tr class="table-row">
+                                                            <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
+                                                            <td>'.$xp['title']. '</td>
+                                                            <td>
+                                                                <a class="ajax-action-links" href="edit.php?id='. $xp['user_id'] . '"><img src="crud-icon/edit.png" title="Edit" /></a> <a class="ajax-action-links" href="delete.php?id='. $xp['user_id'] . '"><img src="crud-icon/delete.png" title="Delete" /></a>
+                                                            </td>
+                                                        </tr>';
+                                                }
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
