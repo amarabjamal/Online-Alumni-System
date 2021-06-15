@@ -43,22 +43,6 @@ $skills = $conn->prepare("SELECT user_skill.skill_id, user_skill.projects_id, sk
 $skills->execute();
 $s = $skills->fetchAll(PDO::FETCH_OBJ);
 
-// $list = array();
-// if($result->num_rows > 0) {
-//     $i = 0;
-//     while($row = $result->fetch_assoc()) {
-//         $list[$i] = $row;
-//         $i++;
-//     }
-// }
-// return $list;
-// }
-// while ($s = $skills->fetchAll(PDO::FETCH_ASSOC)){
-//     foreach($s as $res){
-//         echo $res['skill'] . $res['projects_id'] ;
-//     }
-// }
-
 // ATTEMPT 2
 // FETCH DATA FROM PROJECTS, USER_SKILL AND SKILLS
 // $id = $_GET['id'];
@@ -175,7 +159,7 @@ $conn = null;
                             if($xp['statuses'] == "current"){
                                 echo '<h5 class="card-title">Current</h5>';
                                 echo '<p class="card-text">'.$xp['title'].'</p>';
-                            }else {
+                            }elseif($xp['statuses'] == "past"){
                                 // echo '<h5 class="card-title">Past</h5>';
                                 echo'<div class="timeline-items">
                                         <div class="timeline-item">
@@ -186,6 +170,8 @@ $conn = null;
                                             </div>
                                         </div>
                                     </div>';
+                            }elseif(is_null($xp['statuses'])){
+                                echo '<p>Information not available</p>';
                             }
                         }
                     ?>
@@ -224,8 +210,6 @@ $conn = null;
                 //     // echo $v['user_id'] . '>' . $v['projects_id'] . '>' . $v['skill'] . '<br>' ;
                 // }
 
-                // problem: entah kenapa tak boleh display skill and
-                // kelaur warning - foreach() argument must be of type array|object, bool given
                 foreach($p as $sres){
                     echo '<div class="card project-float shadow">
                             <div class="row no-gutters">
@@ -247,14 +231,9 @@ $conn = null;
                                         // }
                                         if (is_array($s) || is_object($s)){
                                             foreach($s as $res){
-                                                echo $res['skill'];
-                                                if ($s['projects_id'] == $sres['id'] ){
-                                                    echo $s['projects_id'];
-                                                    // echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$s['skill'].'</span>';
-                                                    foreach($s as $res){
-                                                        echo $res['skill'];
-                                                    }
-                                                    
+                                                // echo $res['skill'];
+                                                if ($res['projects_id'] == $sres['id'] ){
+                                                    echo '<span class="badge badge-pill mr-2" style="background-color: #b8e994;">'.$res['skill'].'</span>';
                                                 }
                                             }
                                         }else {

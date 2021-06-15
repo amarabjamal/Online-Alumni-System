@@ -34,19 +34,6 @@ $row_count =$user->fetchColumn();
 //determine the total number of pages available  
 $number_of_page = ceil ($row_count / $results_per_page); 
 
-// SEARCH BAR
-if(isset($_POST["submit"])) {
-    $name = $_POST["search"];
-    $search = $conn->query("SELECT * FROM users");
-    $search->execute();
-    if($search_result = $search->fetch(PDO::FETCH_ASSOC)){
-        echo $search_result;
-        // echo "viewprofile.php?id=<?php echo $col['id']"
-    }
-}
-
-
-
 //close connection
 $conn = null;
 
