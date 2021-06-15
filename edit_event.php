@@ -86,13 +86,21 @@ $result = $conn->query($sql);
                     <?php
                         $num=1;
                         while ($res = $result->fetch()) {
+                                if(strlen($res['content']) > 100){
+                                    $subb = substr($res['content'], 0, 100) . "...";
+                                }else{
+                                    $subb = substr($res['content'], 0, 100);
+                                }   
+                                    
                             // the keys match the field names from the table
                                 echo "<tr>";
                                 echo "<td>".$num."</td>";
                                 $num +=1 ;
                                 echo "<td>".$res['name']."</td>";
                                 echo "<td>".$res['venue']."</td>";
-                                echo "<td>".$res['content']."</td>";
+
+                                echo "<td>".$subb."</td>";
+
                                 echo "<td class=\"text-center\">".$res['start_at']."</td>";
                                 echo "<td><a class=\"edit-btn\" href=\"edit_event2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"edit_event.php?id=$res[0]&condition=delete\">Delete</a></td>";
                             }
