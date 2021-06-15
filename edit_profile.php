@@ -10,6 +10,11 @@ $result = $conn->prepare("SELECT * FROM users WHERE id =$id");
 $result->execute();
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
+// FETCH DATA FROM TABLE USER_SOCIAL_MEDIA AND SOCIAL_MEDIA
+$id = $_SESSION['user_id'];
+$countries = $conn->prepare("SELECT users.* , countries.country FROM users INNER JOIN countries ON users.country_id = countries.id WHERE users.id=$id");
+$countries->execute();
+$cou = $countries->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -104,31 +109,28 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                         <input type="email" style="font-weight: bold;" class="form-control" id="email" name="email" placeholder="Enter your email address" value="<?php echo $row['email'] ?>">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Country</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected=""></option>
-                                            <option>Bangladesh</option>
-                                            <option>Brunei</option>
-                                            <option>China</option>
-                                            <option>Egypt</option>
-                                            <option>India</option>
-                                            <option>Indonesia</option>
-                                            <option>Japan</option>
-                                            <option>Malaysia</option>
-                                            <option>Nigeria</option>
-                                            <option>Pakistan</option>
-                                            <option>Philipines</option>
-                                            <option>Qatar</option>
-                                            <option>Saudi Arabia</option>
-                                            <option>Singapore</option>
-                                            <option>Thailand</option>
-                                            <option>United Arab Emirates</option>
-                                            <option>United States</option>
+                                        <select id="country" name="country" class="custom-select" required>
+                                                <option value=""><?php echo $cou['country'] ?></option>
+                                                <?php
+                                                    try {
+                                                        $sql = "SELECT * from countries ORDER BY id ASC";
+                                                        $country = $conn->query($sql);
 
-
-                                        </select>
+                                                        while ($c = $country->fetch()) {
+                                                            echo "<option value=\"".$c['id']."\">".$c['country']."</option>";
+                                                        }
+                                                            
+                                                        $conn = null;
+                                                    } catch(Exception $e) {
+                                                        echo "<script>alert('Error: can't load countries')</script>";
+                                                    }
+                                                    
+                                                ?>
+                                            </select>
                                     </div>
 
                                 </div>
@@ -136,28 +138,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                 <br>
                                 <hr><br>
 
-                                <div class="form-group">
-                                    <label class="col-md-3">Faculty</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected="" name="faculty"></option>
-                                            <option>Faculty of Education</option>
-                                            <option>Faculty of Dentistry</option>
-                                            <option>Faculty of Engineering</option>
-                                            <option>Faculty of Science</option>
-                                            <option>Faculty of Law</option>
-                                            <option>Faculty of Medicine</option>
-                                            <option>Faculty of Arts and Social Sciences</option>
-                                            <option>Faculty of Business and Accountancy</option>
-                                            <option>Faculty of Economics and Administration</option>
-                                            <option>Faculty of Languages and Linguistics</option>
-                                            <option>Faculty of Built Environment</option>
-                                            <option>Faculty of Computer Science and Information Technology</option>
-                                            <option>Faculty of Pharmacy</option>
-                                            <option>Faculty of Creative Arts</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 
                                 <div class="form-group">
                                     <label class="col-md-3">Year Enrolled:</label>
