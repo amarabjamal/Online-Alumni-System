@@ -67,7 +67,7 @@ $conn = null;
                         <div class="text-center">
                             <img src="images/avatar-2.png" width="30%" alt="icon"><br><br>
                             <?php 
-                            
+                            echo "Test";
                             ?>
 
                         </div>
@@ -120,37 +120,38 @@ $conn = null;
                     <div class="card-box">
                         <div class="card-body">
                             <h5>EXPERIENCE</h5><br>
-                            <script type="text/javascript" src="scripts/edit_table.js"></script>
+                            
                             <div class="table-responsive">
                                 <table id="data_table1" class="table table-borderless mb-0">
                                     <thead class="table-head">
                                         <tr class="center">
 
-                                            <th>Description</th>
                                             <th>Year</th>
-                                            <th>Edit</th>
+                                            <th>Description</th>
+                                            <th>Edit/Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id="row1">
-
-                                            <td id="desc1">Internship at ...</td>
-                                            <td id="year1">2020-2021</td>
-                                            <td class="center">
-                                                <input type="button" id="edit_btn1" value="Edit" class="edit"
-                                                    onclick="edit_row('1')">
-                                                <input type="button" id="save_btn1" value="Save" class="save"
-                                                    onclick="save_row('1')">
-                                                <input type="button" id="del_btn1" value="Delete" class="delete"
-                                                    onclick="delete_row('1')">
+                                        <?php
+                                        if(!empty($experience)){
+                                            foreach($experience as $row) {
+                                        ?>
+                                        <tr class="table-row">
+                                            <td><?php echo $row['year_start'] .' - ' .$row['year-end']; ?> </td>
+                                            <td><?php echo $row['title']; ?> </td>
+                                            <td>
+                                            <a href="edit_exp.php?id=<?=$experience['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                                            <a href="delete_exp.php?id=<?=$experience['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                                             </td>
+                                        </tr>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
 
+                                            
                                         </tr>
-                                        <tr>
-                                            <td><input type="text" id="new_desc"></td>
-                                            <td><input type="text" id="new_year"></td>
-                                            <td class="center"><input type="button" class="add" onclick="add_row();" value="Add"></td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -224,47 +225,9 @@ $conn = null;
 
     <!-- ===================================== Start Footer Area ===================================== -->
 
-    <footer id="footer" class="mt-auto">
-        <div class="footer-link-section">
-            <div class="container">
-                <div class="row justify-content-left">
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="#">Find Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Links</h3>
-                        <ul>
-                            <li><a href="#">About UM</a></li>
-                            <li><a href="#">Study @ UM</a></li>
-                            <li><a href="#">General Enquiry</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Follow Us</h3>
-                        <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyrights -->
-        <div class="copyright py-4">
-            <div class="container text-center">
-                <p class="mb-0 py-2">&copy;
-                    <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include_once("footer.php");
+    ?>
 
     <!-- ===================================== End Footer Area ===================================== -->
 </body>
