@@ -25,6 +25,12 @@ $id = $_SESSION['user_id'];
 $project = $conn->prepare("SELECT * FROM projects WHERE user_id='$id'");
 $project->execute();
 
+// FETCH DATA FROM USER_SKILL AND SKILLS
+$id =$_SESSION['user_id'];
+$skills = $conn->prepare("SELECT user_skill.skill_level, skills.skill FROM user_skill INNER JOIN skills ON user_skill.skill_id = skills.id WHERE user_skill.user_id=$id");
+$skills->execute();
+// $s = $skills->fetch(PDO::FETCH_ASSOC);
+
 
 $conn = null;
 ?>
@@ -73,38 +79,23 @@ $conn = null;
                         <div class="text-center">
                             <img src="images/avatar-2.png" width="30%" alt="icon"><br><br>
                             <?php 
-                            echo "Test";
+                                echo '<h2>' . $row['full_name'] . '</h2>';
                             ?>
 
                         </div>
                         <hr>
+                        
                         <div class="pt-3">
                             <h4 class="text-center">Skills</h4>
-                            <h6>HTML5<span class="float-right">Intermediate</span></h6>
+                            <?php 
+                                while($s = $skills->fetch(PDO::FETCH_ASSOC)){
+                                    echo '<h6>'. $s['skill'] .'<span class="float-right">'. ucfirst($s['skill_level']) .'</span></h6>';
+                                }
+                            ?>
                             <div class="progress progress-sm m-0">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
                                     aria-valuemax="100" style="width: 85%">
                                     <span class="sr-only">90% Complete</span>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-1">
-                            <h6>PHP<span class="float-right">Intermediate</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0"
-                                    aria-valuemax="100" style="width: 67%">
-                                    <span class="sr-only">67% Complete</span>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-2 pt-1">
-                            <h6>Javascript<span class="float-right">Intermediate</span></h6>
-                            <div class="progress progress-sm m-0">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0"
-                                    aria-valuemax="100" style="width: 67%">
-                                    <span class="sr-only">67% Complete</span>
 
                                 </div>
                             </div>
@@ -155,7 +146,7 @@ $conn = null;
                                                             <td>'.$xp['year_start']. ' - ' .$xp['year_end'] .' </td>
                                                             <td>'.$xp['title']. '</td>
                                                             <td>
-                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $xp['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-success" href="editevent.php?id='. $xp['id'] . '">Edit</a> 
                                                             </td>
                                                         </tr>';
                                                 }
@@ -189,7 +180,7 @@ $conn = null;
                                                             <td>'.$p['name'].' </td>
                                                             <td>'.$p['start_date']. '</td>
                                                             <td>
-                                                                <a class="ajax-action-links btn btn-success" href="edit.php?id='. $p['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-success" href="editproject.php?id='. $p['id'] . '">Edit</a> 
                                                             </td>
                                                         </tr>';
                                             }
