@@ -73,7 +73,7 @@ if(!$passwordMatch || empty($full_name) || empty($email) || empty($password) || 
     $sql = "SELECT * FROM users WHERE email = '".$email."'";
     $result = $conn->query($sql);
     
-    if($result != 0){
+    if($result->rowCount() > 0){
 
         header("Location: signup.php?action=email_exist");
         exit(0);
