@@ -175,7 +175,8 @@ $conn = null;
                             <hr>
 
                             <h5>PROJECTS</h5>
-                            <a class="btn btn-primary" href="add_project.php?id='. $xp['id'] . '">Add</a>
+                            <a href="add_project.php" class="btn btn-primary float-right mb-3"><i class="fa fa-plus"></i> Add Project</a>
+                            
                             <br>
                             <div class="table-responsive">
                                 <table id="data_table"class="table table-borderless mb-0">
@@ -198,6 +199,7 @@ $conn = null;
                                                             <td>'.$p['start_date']. '</td>
                                                             <td>
                                                                 <a class="ajax-action-links btn btn-success" href="editproject.php?id='. $p['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-danger" href="delete.php?id='. $p['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';
                                             }
