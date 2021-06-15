@@ -62,6 +62,8 @@ $page_first_result = ($page-1) * $results_per_page;
         
         <link rel="stylesheet" href="styles/admin.css">
 
+        <link rel="stylesheet" href="styles/page_error.css">
+
         
         <title>Alumni System</title>
     </head>
@@ -74,6 +76,16 @@ $page_first_result = ($page-1) * $results_per_page;
     
 
     <main >
+
+        <?php if(!isset($_SESSION['logged_in'])) { ?>
+            <div class="error_container">
+                <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
+                <p>
+                    Please <a style = "color: black" href="signin.php">Sign in</a> first to access the page.
+                </p>
+            </div>
+
+        <?php } else{ ?>
 
         
 
@@ -167,7 +179,7 @@ $page_first_result = ($page-1) * $results_per_page;
                         </ul>
                 </nav>
                 <!-- Pagination End -->
-
+        <?php } ?>
     </main>
 
     <footer id="footer" class="mt-auto">
