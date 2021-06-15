@@ -1,10 +1,26 @@
 <?php
 include_once("include/config.php");
 
-session_start();
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
 
-$result = $conn->prepare("SELECT * FROM users ");
+$id = $_GET['id'];
+$result = $conn->prepare("SELECT * FROM users WHERE id =:id");
 $result->execute();
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+$f = $row['fac_id'];
+$faculty = $conn->prepare("SELECT faculties.id, faculties.faculty FROM users INNER JOIN faculties ON faculties.id=users.fac_id  WHERE users.fac_id=$f");
+$faculty->execute();
+$fac = $faculty->fetch(PDO::FETCH_ASSOC);
+
+$id = $_GET['id'];
+$experience = $conn->prepare("SELECT title, statuses, year_start, year_end FROM exps WHERE user_id='$id'");
+$experience->execute();
+
+
+$conn = null;
 ?>
 
 <!DOCTYPE html>
