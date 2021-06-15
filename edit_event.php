@@ -24,8 +24,25 @@ if (isset($_GET['id']) && $_GET['condition'] == "delete"){
     }
 }
 
-$sql = "select * from events, venues WHERE venues.id = events.venue_id order by events.id asc";
-$result = $conn->query($sql);
+$results_per_page = 10;
+
+//find the total number of results stored in the database   
+$number_of_result = $conn->query('SELECT count(*) from events')->fetchColumn(); 
+
+//determine the total number of pages available  
+$number_of_page = ceil ($number_of_result / $results_per_page);  
+
+//determine which page number visitor is currently on  
+if (!isset ($_GET['page']) ) {  
+    $page = 1;  
+} else {  
+    $page = $_GET['page'];  
+}
+
+$current_page = $page;
+
+//determine the sql LIMIT starting number for the results on the displaying page  
+$page_first_result = ($page-1) * $results_per_page; 
 
 
 ?>
@@ -84,26 +101,45 @@ $result = $conn->query($sql);
                 <tbody id="myTable">
 
                     <?php
-                        $num=1;
-                        while ($res = $result->fetch()) {
-                                if(strlen($res['content']) > 100){
-                                    $subb = substr($res['content'], 0, 100) . "...";
-                                }else{
-                                    $subb = substr($res['content'], 0, 100);
-                                }   
-                                    
-                            // the keys match the field names from the table
-                                echo "<tr>";
-                                echo "<td>".$num."</td>";
-                                $num +=1 ;
-                                echo "<td>".$res['name']."</td>";
-                                echo "<td>".$res['venue']."</td>";
 
-                                echo "<td>".$subb."</td>";
+                        try {
+                            $query = "SELECT * FROM events, venues WHERE venues.id = events.venue_id order by events.id asc
+                                    LIMIT " . $page_first_result . ',' . $results_per_page;
 
-                                echo "<td class=\"text-center\">".$res['start_at']."</td>";
-                                echo "<td><a class=\"edit-btn\" href=\"edit_event2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"edit_event.php?id=$res[0]&condition=delete\">Delete</a></td>";
-                            }
+                            $stmt = $conn->query($query);
+
+                            $num=1;
+
+                            if($stmt != 0) {
+
+                                while($res = $stmt->fetch()) { 
+                                    if(strlen($res['content']) > 100){
+                                        $subb = substr($res['content'], 0, 100) . "...";
+                                    }else{
+                                        $subb = substr($res['content'], 0, 100);
+                                    }   
+                                        
+                                // the keys match the field names from the table
+                                    echo "<tr>";
+                                    echo "<td>".$num."</td>";
+                                    $num +=1 ;
+                                    echo "<td>".$res['name']."</td>";
+                                    echo "<td>".$res['venue']."</td>";
+    
+                                    echo "<td>".$subb."</td>";
+    
+                                    echo "<td class=\"text-center\">".$res['start_at']."</td>";
+                                    echo "<td><a class=\"edit-btn\" href=\"edit_event2.php?id=$res[0]\">Edit</a> | <a class=\"deny-btn\" href=\"edit_event.php?id=$res[0]&condition=delete\">Delete</a></td>";
+
+                                } 
+
+                            }        
+
+                        } catch (PDOException $e) {
+                            echo "Error: ".$e->getMessage();
+                        }
+
+                        
                     ?>
 
 
@@ -111,7 +147,26 @@ $result = $conn->query($sql);
                 </table>
         </div>
 
-        
+        <!-- Pagination Start -->
+        <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mt-5">
+                        <?php if($page > 1) {
+                            echo '<li class="page-item"><a class="page-link" href = "edit_event.php?page=' . $current_page - 1 . '" tabindex="-1">Previous</a></li>';  
+                        } 
+                        for($page = 1; $page<= $number_of_page; $page++) { 
+                            if($page == $current_page) {
+                                echo '<li class="page-item active"><a class="page-link" href = "edit_event.php?page=' . $page . '">' . $page . ' <span class="sr-only">(current)</span></a></li>';  
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href = "edit_event.php?page=' . $page . '">' . $page . ' </a></li>';  
+                            }
+                        } 
+                        if($number_of_page > 1 && $current_page != $number_of_page) {
+                            echo '<li class="page-item"><a class="page-link" href = "edit_event.php?page=' . $current_page + 1 . '">Next</a></li>';  
+                        } 
+                        ?>
+                        </ul>
+                </nav>
+                <!-- Pagination End -->
 
     </main>
 
