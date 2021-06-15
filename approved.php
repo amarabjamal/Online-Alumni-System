@@ -82,10 +82,10 @@ $page_first_result = ($page-1) * $results_per_page;
     </script>
     <?php } ?>
 
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_denied') { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_approved') { ?>
         <div class="alert2 show">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg">Account has been denied</span>
+        <span class="msg">Account has been approved</span>
         <div class="close-btn">
             <span class="fas fa-times"></span>
         </div>

@@ -61,10 +61,10 @@ $page_first_result = ($page-1) * $results_per_page;
     <?php include_once("adminnavigation.php"); ?>
 
 
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_approved') { ?>
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'acc_denied') { ?>
         <div class="alert2 show">
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg">Account has been approved</span>
+        <span class="msg">Account has been denied</span>
         <div class="close-btn">
             <span class="fas fa-times"></span>
         </div>
