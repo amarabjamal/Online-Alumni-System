@@ -30,7 +30,7 @@ if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['user_id'])) { ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="profile.php">Your profile</a>
-                                <a class="dropdown-item" href="editProfile.html">Edit profile</a>
+                                <a class="dropdown-item" href="edit_profile.php">Edit profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="add_jobs.php">Your Jobs Ads</a>
                                 <div class="dropdown-divider"></div>
@@ -39,7 +39,7 @@ if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['user_id'])) { ?>
                         </div>
 
                         <a id="control-lg" class="nav-item nav-link normal-link" href="profile.php">Your profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="editProfile.html">Edit profile</a>
+                        <a id="control-lg" class="nav-item nav-link normal-link" href="edit_profile.php">Edit profile</a>
                         <a id="control-lg" class="nav-item nav-link normal-link" href="add_jobs.php">Your Job Ads</a>
                         <a id="control-lg" class="nav-item nav-link normal-link" href="logout.php">Log out</a>
 
