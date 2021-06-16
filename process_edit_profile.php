@@ -1,4 +1,10 @@
 <?php 
+include_once("include/config.php");
+
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
 if ($_POST) {
     $id      = (int) $_POST['id'];
     $profile_picture_url = trim($_POST['profile_picture_url']);

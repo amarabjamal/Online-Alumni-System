@@ -147,9 +147,8 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
                                     </div>
 
                                 </div>
-                                <br>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
+                                
+                                <div class="col-sm-12">
 
                                         <button id="submit" type="submit" class="btn btn-success" data-toggle="modal"
                                             data-target="#submitModal">Submit</button>
@@ -211,7 +210,6 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
 
 
                                     </div>
-                                </div>
                                 <hr>
 
                                 <div class="delete-section">
