@@ -33,7 +33,7 @@
                 if ($fileError === 0) {
                     if ($fileSize < 149627600) {
                         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                        $fileDest = 'images/profile/' . $fileNameNew;
+                        $fileDest = 'images/event/' . $fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDest);
                         header("Location: edit_event2.php?id=$eventid&condition=edit1");
                     } else {

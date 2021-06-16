@@ -62,7 +62,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == TRUE) {
                         </div>
                     <?php } ?>
 
-                    <form method="POST" action="process_signup.php" onsubmit="return verifySubmit()"> 
+                    <form method="POST" action="process_signup.php" novalidate> 
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group">
