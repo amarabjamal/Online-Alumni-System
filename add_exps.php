@@ -78,7 +78,20 @@ $conn = null;
 
                                                 <tbody>
                                                     <tr class="table-row">
-                                                        <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?"></td>
+                                                        <td class="form-group">
+                                                            <div class="input-group mb-3">
+                                                                <select id="status" name="statuses"  class="custom-select">
+                                                                    <?php if($row['statuses'] == "current"){ ?>
+                                                                        <option value="past" >Past</option>
+                                                                        <option value="current" selected>Current</option>
+                                                                    <?php } else{ ?>
+                                                                        <option value="current">Current</option>
+                                                                        <option value="past" selected>Past</option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                        <!-- <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?"></td> -->
                                                         <td><input type="text" class="form-control" id="year_start" name="year_start" placeholder="Year Start"></td>
                                                         <td><input type="text" class="form-control" id="year_end" name="year_end" placeholder="Year End"></td>
                                                         <td><input type="text" class="form-control" id="title" name="title" placeholder="Description"></td>
