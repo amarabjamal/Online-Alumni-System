@@ -76,7 +76,18 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
 
                                                 <tbody>
                                                     <tr class="table-row">
-                                                        <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?" value="<?php echo $row['statuses'] ?>"></td>
+                                                    <div class="form-row">
+                                                        <td class="form-group">
+                                                            <div class="input-group mb-3">
+                                                                <select id="status" name="statuses"  class="custom-select" required>
+                                                                    <option value=""><?php echo $row['statuses'] ?></option>
+                                                                    <option value="current">Current</option>
+                                                                    <option value="past">Past</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                            
+                                                        <!-- <td><input type="text" class="form-control" id="status" name="statuses" placeholder="Current / Past?" value="<?php echo $row['statuses'] ?>"></td> -->
                                                         <td><input type="text" class="form-control" id="year_start" name="year_start" placeholder="Year Start" value="<?php echo $row['year_start'] ?>"></td>
                                                         <td><input type="text" class="form-control" id="year_end" name="year_end" placeholder="Year End" value="<?php echo $row['year_end'] ?>"></td>
                                                         <td><input type="text" class="form-control" id="title" name="title" placeholder="Description" value="<?php echo $row['title'] ?>"></td>
