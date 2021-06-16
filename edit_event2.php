@@ -4,7 +4,7 @@
     session_start();
 
     if(isset($_POST['submit']) && isset($_POST['eventid'])) {	
-        //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
+        
 
         $eventid = $_POST['eventid'];
 
@@ -49,6 +49,7 @@
                 header("Location: edit_event2.php?id=$eventid&condition=imageerror");
                 
                 
+                
             }
 
         $imagepath = $fileDest;
@@ -73,51 +74,41 @@
         if(in_array($fileActualExt, $allowed)){
 
             try {
-                // begin a transaction
+
                 $conn->beginTransaction();
-                // a set of queries: if one fails, an exception will be thrown
+
                 $sql = "UPDATE events SET name = '$eventname', image_url = '$imagepath', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= '$venue', admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
                 echo "poopoo";
                 $conn->query($sql);
-                // if we arrive here, it means that no exception was thrown
-                // which means no query has failed, so we can commit the
-                // transaction
+
                 
                 $conn->commit();
-                header('Location: edit_event.php?sucess');
+                header('Location: edit_event.php?action=image');
                 echo "poopoo";
               } catch (Exception $e) {
-                // we must rollback the transaction since an error occurred
-                // with insert
+
                 $conn->rollback();
               }
         } else{
             try {
-                // begin a transaction
+
                 $conn->beginTransaction();
-                // a set of queries: if one fails, an exception will be thrown
+
                 $sql = "UPDATE events SET name = '$eventname', content = '$eventbody', start_at = '$eventstartdate', end_at = '$eventenddate', venue_id= '$venue', admin_id = '$_SESSION[admin_id]' WHERE id = '$eventid'";
-                echo "poopoo";
+
                 $conn->query($sql);
-                // if we arrive here, it means that no exception was thrown
-                // which means no query has failed, so we can commit the
-                // transaction
+
                 
                 $conn->commit();
-                header('Location: edit_event.php?sucess');
-                echo "poopoo";
+                header('Location: edit_event.php?action=noimage');
+
               } catch (Exception $e) {
-                // we must rollback the transaction since an error occurred
-                // with insert
+
                 $conn->rollback();
               }
         }
         
 
-            
-        
-            //Step 4. Process the results.
-            //display success message & the new data can be viewed on index.php
             
 
             
