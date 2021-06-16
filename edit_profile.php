@@ -201,7 +201,7 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Cancel</button>
                                                         <button type="button" class="btn btn-primary"
-                                                            data-dismiss="modal">Submit</button>
+                                                            data-dismiss="modal" >Submit</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,7 +239,7 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Cancel</button>
                                                     <button type="button" class="btn btn-primary"
-                                                        data-dismiss="modal">Submit</button>
+                                                        data-dismiss="modal" href="delete_user.php?id='. $row['id'] . '">Submit</button>
                                                 </div>
                                             </div>
                                         </div>
