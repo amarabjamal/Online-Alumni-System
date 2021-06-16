@@ -54,7 +54,7 @@ include_once("include/config.php");
     <div class="alert_v1 show">
 
         <span class="fas fa-exclamation-circle"></span>
-        <span class="msg">New Job Ads created successfully!</span>
+        <span class="msg">Added successfully!</span>
         <div class="close-btn">
             <span class="fas fa-times"></span>
         </div>

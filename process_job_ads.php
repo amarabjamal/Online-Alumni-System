@@ -59,18 +59,19 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
                 $conn->commit();
                 $com_id = $conn->lastInsertId();
 
-                try {
-                    $conn->beginTransaction();
-                    $query = "INSERT INTO job_ads (title,salary,content,com_id,user_id) VALUES('$title', '$salary', '$content', '$com_id', '$user_id')";
-                    $conn->query($query);
+            } catch (PDOException $e) {
+                $conn->rollback();
+                echo "Error: ".$e->getMessage();
+            }
 
-                    $conn->commit();
-                    
-                    header('Location: add_jobs.php?action=create_success');
-                } catch (PDOException $e) {
-                    $conn->rollback();
-                    echo "Error: ".$e->getMessage();
-                }
+            try {
+                $conn->beginTransaction();
+                $query = "INSERT INTO job_ads (title,salary,content,com_id,user_id) VALUES('$title', '$salary', '$content', '$com_id', '$user_id')";
+                $conn->query($query);
+
+                $conn->commit();
+                
+                header('Location: add_jobs.php?action=create_success');
             } catch (PDOException $e) {
                 $conn->rollback();
                 echo "Error: ".$e->getMessage();
