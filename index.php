@@ -1,5 +1,9 @@
 <?php
 
+if(session_status() === PHP_SESSION_NONE) session_start();
+
+include("include/config.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +47,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
     <!-- Display message for successful logout -->
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' &&  !isset($_SESSION['logged_in'])){ ?>
-    <div class="alert show">
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' &&  !isset($_SESSION['logged_in'])) { ?>
+
+    <div class="alert_v1 show">
+
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged out successfully!</span>
         <div class="close-btn">
@@ -55,22 +61,24 @@
     <script>
 
     setTimeout(function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
     },3000);
     
 
     $('.close-btn').click(function(){
-    $('.alert').removeClass("show");
-    $('.alert').addClass("hide");
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
     });
         
     </script>
     <?php } ?>
 
     <!-- Display message for successful login -->
-    <?php if(isset($_GET['action']) && $_GET['action'] == 'logout_success' &&  !isset($_SESSION['logged_in'])) { ?>
-        <div class="alert show">
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'login_success' && $_SESSION['logged_in'] == TRUE && isset($_SESSION['logged_in'])) { ?>
+
+        <div class="alert_v1 show">
+
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg">Logged in successfully!</span>
         <div class="close-btn">
@@ -81,14 +89,14 @@
     <script>
 
     setTimeout(function(){
-        $('.alert').removeClass("show");
-        $('.alert').addClass("hide");
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
     },3000);
     
 
     $('.close-btn').click(function(){
-    $('.alert').removeClass("show");
-    $('.alert').addClass("hide");
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
     });
         
     </script>
@@ -131,7 +139,7 @@
 
                 <div class="landing-content">
                     <?php
-                        if($_SESSION['logged_in'] !== TRUE) { 
+                        if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) { 
                     ?>
                     <h1>Welcome, UM Alumni!</h1>
 
@@ -151,8 +159,18 @@
                         Interact with other alumni, find a job oppurtunity and get the latest news &amp; events!
                         <br><br>
                         <strong>Expand your <span class="highlight">network</span>. Grow your <span class="highlight">career</span>.</strong>
-                    </p>    
+                    </p>
                     
+                    <?php 
+                        if (isset($_SESSION['status']) && $_SESSION['status'] == 1) { ?>
+                                <div class="alert alert-info" role="alert">
+                                    Your account is pending approval. Kindly wait for admin to review your account.
+                                </div>
+                    <?php } elseif (isset($_SESSION['status']) && $_SESSION['status'] == 3) { ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Your account is denied approval.
+                                </div>
+                    <?php }?>
                     <?php }?>
 
                 </div>
@@ -206,39 +224,67 @@
             <div class="container">
                 <h2>Upcoming Events</h2>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event1.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">WEBINAR : FUTURE OF BLOCKCHAIN TECHNOLOGY</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event2.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">PROJECT MANAGEMENT PROFESSIONAL COURSE</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card event-card">
-                            <img src="./images/event3.jpeg" class="event-img" alt="">
-                            <div class="card-body">
-                                <h5 class="event-title">RESPONSIBLE CONDUCT OF RESEARCH WORKSHOP</h5>
-                                
-                                <a href="#" class="event-btn">Explore <span>&rarr;</span></a>
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php 
+
+                    try {
+                        $query = "SELECT * FROM events, venues
+                                WHERE events.venue_id = venues.id
+                                ORDER BY events.id DESC 
+                                LIMIT 3";
+
+                        $stmt = $conn->query($query);
+
+                        if($stmt != 0) {
+
+                            while($res = $stmt->fetch()) { 
+                                echo "<div class=\"col-md-4\">";
+                                echo    "<div class=\"card event-card\">";
+                                echo        "<img src=\"".$res['image_url']."\" class=\"event-img\">";
+                                echo        "<div class=\"card-body\">";
+                                echo            "<h5 class=\"event-title\">".$res['name']."</h5>";    
+                                echo            "<button type=\"button\" class=\"event-btn\" data-toggle=\"modal\" data-target=\"#event_".$res[0]."\">View Details</button>";
+                                echo    "</div></div></div>";
+
+                                //Modal To view event's details
+
+                                echo "<div class=\"modal fade\" id=\"event_".$res[0]."\" tabindex=\"-1\">";
+                                echo "<div class=\"modal-dialog\" role=\"document\">";
+                                echo    "<div class=\"modal-content\">";
+                                echo    "<div class=\"modal-header\">";
+                                echo        "<h5 class=\"modal-title\">".$res['name']."</h5>";
+                                echo    "<button type=\"button\" class=\"close\" data-dismiss=\"modal\">";
+                                echo    "<span>&times;</span>";
+                                echo    "</button>";
+                                echo "</div>";
+                                echo "<div class=\"modal-body\">";
+                                echo    "<div class=\"modal_content\">";
+                                echo        "<div class=\"image_details\">";
+                                echo        "<img src=\"".$res['image_url']."\">";
+                                echo        "<div class=\"details\">";
+                                echo            "Start at:<br> ".$res['start_at']."<br>";
+                                echo            "End at:<br> ".$res['end_at']."<br>";
+                                echo            "Venue:<br> ".$res['venue']."<br>";
+                                echo        "</div></div>";
+                                echo        "<div class=\"event_content\">".$res['content']."</div>";
+                                echo "</div></div>";
+                                echo "<div class=\"modal-footer\">";
+                                echo   "<button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>";
+                                echo"</div></div></div></div>";
+
+                            } 
+
+                        }        
+
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
+                        
+                    ?>
+
                 </div>
                 <div class="more-container">
-                    <a href="./events.html"><button class="view-more"><span>View All Events </span></button></a>
+                    <a href="events.php"><button class="view-more"><span>View All Events </span></button></a>
                 </div>
             </div>
         </section>
@@ -254,77 +300,50 @@
                         <h2>Jobs Listing</h2>
                     </div>
                     <div class="col-5">
-                        <div class="side-view-more"><a href="./jobs.html">View More</a></div>
+                        <div class="side-view-more"><a href="jobs.php">View More</a></div>
                     </div>
                 </div>
                 
                 
                 <!-- Carousel Start -->
+                
 
-                <div class="job-wrapper">
-                    <div class="job-carousel owl-carousel">
-                        <div class="job-card card-1">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                <?php 
 
-                        <div class="job-card card-2">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                    try {
+                        $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
+                        $stmt = $conn->prepare($query);
+                        $stmt->execute();
+
+                        if($stmt->rowCount() > 0) {
+                            echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
+
+                            while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
+                                echo "<div class=\"job-card\">";
+                                echo "<div class=\"position\">".$job_ads->title."</div>";
+                                echo "<div class=\"details\">";
+                                echo "Salary: RM".$job_ads->salary."<br><br><br><br><br>";  
+                                echo "<small><i class=\"fas fa-calendar-day\"></i> Publish at ".date('d/m/y', strtotime($job_ads->published_at))."</small><br>";  
+                                echo "</div></div>";                                        
+                            } 
+
+                            echo "</div></div>";
+                        }        
+
+                        // disconnect from database
+                        $conn = NULL;
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
                         
-                        <div class="job-card card-3">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
+                ?>
 
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-5">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                        <div class="job-card card-4">
-                            <div class="company">Berjaya Sdn Bhd</div>
-                            <div class="position">Junior Software Engineer</div>
-                            <div class="details">
-                                Experience: 2 - 7 Years<br>
-                                Venue: Kuala Lumpur
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <script>
                         $(".job-carousel").owlCarousel({
                         margin: 20,
                         loop: true,
                         autoplay: true,
-                        autoplayTimeout: 2000,
+                        autoplayTimeout: 3000,
                         autoplayHoverPause: true,
                         responsive: {
                             0:{

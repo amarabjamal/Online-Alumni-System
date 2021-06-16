@@ -544,3 +544,117 @@ html {
 }
 
 /* End Footer */
+
+
+/* Modal content */
+
+/* .modal_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.modal_content .image_details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: space-around;
+}
+.modal_content img{
+    width: 220px;
+    height: 220px;
+}
+.modal_content .details{
+    margin-left: 20px;
+    height: 100%;
+    padding: 10px;
+    overflow-x: hidden;
+    flex-grow: 3;
+    min-height: 220px;
+}
+
+.modal_content .event_content {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgb(212, 212, 212);
+    border-radius: 5px;
+}
+
+/* Page Heading */
+
+#page_heading {
+    height: 250px;
+    background: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url("../images/job-bg.jpg");
+    background-size: cover;
+    background-position: center 580px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page_heading h1{
+    font-family: var(--montserrat);
+/*     padding-top: 170px; */
+    font-size: 70px;
+    letter-spacing: 6px;
+    font-weight: 600;
+    text-shadow: 0 0 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.search-box {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--primary-color);
+    border: var(--primary-color);
+    color: #fff;
+}
+
+.search-button:hover {
+    color: #000;
+    background-color: var(--primary-color);
+}
+
+
+/* Jobs page */
+
+.job-card{
+    font-family: var(--poppins);
+    color: var(--heading-text-color);
+    min-height: 200px;
+    margin: 20px 0;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: var(--section-bg-color);
+}
+
+.job-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.job-card .company {
+    margin-bottom: 0.5rem;
+    font-weight: 1000;
+}
+
+.job-card .position {
+    font-family: var(--poppins);
+    color: #777;
+    font-size: 20px;
+}
+
+.job-card .details {
+    font-family: var(--poppins);
+    font-size: 17px;
+}
