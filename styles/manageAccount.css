@@ -15,7 +15,7 @@ main {
 }
 
 .card-box {
-    
+    height: 100%;
     font-family:'Montserrat', sans-serif;
     background-color: var(--section-bg-color);
     border: 0px;

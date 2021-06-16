@@ -1,3 +1,22 @@
+<?php
+include_once("include/config.php");
+
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
+$id = $_SESSION['user_id'];
+$result = $conn->prepare("SELECT * FROM users WHERE id =$id");
+$result->execute();
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+// FETCH DATA FROM TABLE USER_SOCIAL_MEDIA AND SOCIAL_MEDIA
+$id = $_SESSION['user_id'];
+$countries = $conn->prepare("SELECT users.* , countries.country FROM users INNER JOIN countries ON users.country_id = countries.id WHERE users.id=$id");
+$countries->execute();
+$cou = $countries->fetch(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -41,56 +60,30 @@
         crossorigin="anonymous"></script> -->
 
     <!-- ===================================== Start Header Area ===================================== -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="./index.html"><img class="logo" src="images/um-logo.png" width="120"
-                        alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" style="justify-content: flex-end;" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link normal-link" href="./index.html#about-us">About Us</a>
-                        <a class="nav-item nav-link normal-link" href="./events.html">Events</a>
-                        <a class="nav-item nav-link normal-link" href="./jobs.html">Jobs</a>
-                        <a class="nav-item nav-link normal-link" href="./alumni.html">Alumni</a>
-                        <a class="nav-item nav-link normal-link" href="#footer">Contact Us</a>
-
-                        <div id="control" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="profile-picture" src="./images/avatar-2.png" alt="profile picture">
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="./manageAccount.html">Your profile</a>
-                                <a class="dropdown-item" href="./editProfile.html">Edit profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./index.html">Log out</a>
-                            </div>
-                        </div>
-
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./manageAccount.html">Your
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="editProfile.html">Edit
-                            profile</a>
-                        <a id="control-lg" class="nav-item nav-link normal-link" href="./index.html">Log out</a>
-
-                    </div>
-
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php 
+    include_once("navigation.php");
+    ?>
     <!-- ===================================== End Header Area ===================================== -->
 
 
     <main class="flex-shrink-0">
         <div class="container ">
+        <a href="profile.php" class="mb-3 text-dark"><< Go Back</a>
             <div class="row gutters">
+                
+                <?php if (isset($_GET['status']) && $_GET['status'] == "updated") : ?>
+                <div class="alert alert-success" role="alert">
+                    <strong>Updated ;)</strong>
+                </div>
+                <?php endif ?>
+                <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Fail Update :(</strong>
+                </div>
+                <?php endif ?>
                 <div class="col-sm-12 d-flex justify-content-center ">
-                    <form class="horizontal">
+                    <form class="horizontal" action="process_edit_profile.php" method="POST">
+                    
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>Edit User Profile</h3>
@@ -99,110 +92,65 @@
                                 <div class="form-group">
                                     <label class="col-md-3">Profile picture</label>
                                     <div class="col-sm-12">
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" id="profile_picture_url" name="profile_picture_url">
                                     </div>
 
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3">Name</label>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Enter your name">
+                                        <input type="text" style="font-weight: bold;" class="form-control" id="full_name" name="full_name" placeholder="Enter your name" required value="<?php echo $row['full_name'] ?>">
                                     </div>
 
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3">Email address</label>
                                     <div class="col-sm-12">
-                                        <input type="email" class="form-control" placeholder="Enter your email address">
+                                        <input type="email" style="font-weight: bold;" class="form-control" id="email" name="email" placeholder="Enter your email address" value="<?php echo $row['email'] ?>">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Country</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected="">Select country</option>
-                                            <option>Bangladesh</option>
-                                            <option>Brunei</option>
-                                            <option>China</option>
-                                            <option>Egypt</option>
-                                            <option>India</option>
-                                            <option>Indonesia</option>
-                                            <option>Japan</option>
-                                            <option>Malaysia</option>
-                                            <option>Nigeria</option>
-                                            <option>Pakistan</option>
-                                            <option>Philipines</option>
-                                            <option>Qatar</option>
-                                            <option>Saudi Arabia</option>
-                                            <option>Singapore</option>
-                                            <option>Thailand</option>
-                                            <option>United Arab Emirates</option>
-                                            <option>United States</option>
+                                        <select id="country" name="country" class="custom-select" required>
+                                                <option value=""><?php echo $cou['country'] ?></option>
+                                                <?php
+                                                    try {
+                                                        $sql = "SELECT * from countries ORDER BY id ASC";
+                                                        $country = $conn->query($sql);
 
-
-                                        </select>
+                                                        while ($c = $country->fetch()) {
+                                                            echo "<option value=\"".$c['id']."\">".$c['country']."</option>";
+                                                        }
+                                                            
+                                                        $conn = null;
+                                                    } catch(Exception $e) {
+                                                        echo "<script>alert('Error: can't load countries')</script>";
+                                                    }
+                                                    
+                                                ?>
+                                            </select>
                                     </div>
 
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-3">Company Name</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Enter your company name">
-
-                                    </div>
-
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3">Position</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control"
-                                            placeholder="Enter your position at the company">
-                                    </div>
-                                </div>
+                                
                                 <br>
                                 <hr><br>
 
+                               
+                                
                                 <div class="form-group">
-                                    <label class="col-md-3">Faculty</label>
+                                    <label class="col-md-3">Year Enrolled:</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected="">Select faculty</option>
-                                            <option>Faculty of Education</option>
-                                            <option>Faculty of Dentistry</option>
-                                            <option>Faculty of Engineering</option>
-                                            <option>Faculty of Science</option>
-                                            <option>Faculty of Law</option>
-                                            <option>Faculty of Medicine</option>
-                                            <option>Faculty of Arts and Social Sciences</option>
-                                            <option>Faculty of Business and Accountancy</option>
-                                            <option>Faculty of Economics and Administration</option>
-                                            <option>Faculty of Languages and Linguistics</option>
-                                            <option>Faculty of Built Environment</option>
-                                            <option>Faculty of Computer Science and Information Technology</option>
-                                            <option>Faculty of Pharmacy</option>
-                                            <option>Faculty of Creative Arts</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3">Major</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Enter your major">
+                                        <input type="text" class="form-control" id="enroll_year" name="enroll_year" placeholder="Enter your year of study" value = "<?php echo $row['enroll_year']?>">
                                     </div>
 
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-3">Year of study</label>
-                                    <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Enter your year of study">
-                                    </div>
+                                
+                                <div class="col-sm-12">
 
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-
-                                        <button id="submit"type="button" class="btn btn-success" data-toggle="modal"
+                                        <button id="submit" type="submit" class="btn btn-success" data-toggle="modal"
                                             data-target="#submitModal">Submit</button>
                                         <div class="modal fade" id="submitModal" tabindex=-1 role="dialog"
                                             aria-labelledby="submitModalLabel" aria-hidden="true">
@@ -252,7 +200,7 @@
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Cancel</button>
                                                         <button type="button" class="btn btn-primary"
-                                                            data-dismiss="modal">Submit</button>
+                                                            data-dismiss="modal" >Submit</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -262,7 +210,6 @@
 
 
                                     </div>
-                                </div>
                                 <hr>
 
                                 <div class="delete-section">
@@ -290,7 +237,7 @@
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Cancel</button>
                                                     <button type="button" class="btn btn-primary"
-                                                        data-dismiss="modal">Submit</button>
+                                                        data-dismiss="modal" href="delete_user.php?id='. $row['id'] . '">Submit</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,49 +266,10 @@
     </main>
 
     <!-- ===================================== Start Footer Area ===================================== -->
+<?php
+include_once("footer.php");
 
-    <footer id="footer" class="mt-auto">
-        <div class="footer-link-section">
-            <div class="container">
-                <div class="row justify-content-left">
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="#">Find Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Links</h3>
-                        <ul>
-                            <li><a href="#">About UM</a></li>
-                            <li><a href="#">Study @ UM</a></li>
-                            <li><a href="#">General Enquiry</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-4 item">
-                        <h3>Follow Us</h3>
-                        <ul>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Twitter</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Copyrights -->
-        <div class="copyright py-4">
-            <div class="container text-center">
-                <p class="mb-0 py-2">&copy;
-                    <script>document.write(new Date().getFullYear())</script> UM Alumni All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-
+?>
     <!-- ===================================== End Footer Area ===================================== -->
 </body>
 

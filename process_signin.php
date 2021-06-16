@@ -6,7 +6,9 @@ session_start();
 
 if(isset($_GET['action']) && $_GET['action'] == 'logout_success') { 
 
-    header('Location: index.php');
+    $session_id = session_id();
+    header("Location: index.php?session_id=". $session_id );
+    // header('Location: index.php');
 }
 
 $email = $_POST['email'];
