@@ -17,6 +17,7 @@ if (isset($_GET['id']) && $_GET['condition'] == "delete"){
         // which means no query has failed, so we can commit the
         // transaction
         $conn->commit();
+        header("Location: edit_event.php?action=deletesuccess");
     } catch (Exception $e) {
         // we must rollback the transaction since an error occurred
         // with insert
@@ -130,6 +131,31 @@ $page_first_result = ($page-1) * $results_per_page;
             <div class="alert2 show">
             <span class="fas fa-exclamation-circle"></span>
             <span class="msg">Event has been added</span>
+            <div class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+        </div>
+
+        <script>
+
+        setTimeout(function(){
+            $('.alert2').removeClass("show");
+            $('.alert2').addClass("hide");
+        },3000);
+        
+
+        $('.close-btn').click(function(){
+        $('.alert2').removeClass("show");
+        $('.alert2').addClass("hide");
+        });
+            
+        </script>
+        <?php } ?>
+
+        <?php if(isset($_GET['action']) && $_GET['action'] == 'deletesuccess') { ?>
+            <div class="alert2 show">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="msg">Event has been deleted</span>
             <div class="close-btn">
                 <span class="fas fa-times"></span>
             </div>
