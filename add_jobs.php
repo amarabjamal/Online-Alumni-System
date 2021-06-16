@@ -30,6 +30,11 @@ include_once("include/config.php");
     <!-- Font Awesome  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
+    <!-- Custom Alert  -->
+    <link rel="stylesheet" href="styles/custom_alert.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
     <title>Advertise Jobs | UM Alumni </title>
 
 </head>
@@ -42,6 +47,91 @@ include_once("include/config.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
+
+    <!-- Display message for successful create job -->
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'create_success' &&  isset($_SESSION['logged_in'])) { ?>
+
+    <div class="alert_v1 show">
+
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">New Job Ads created successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
+    },3000);
+
+
+    $('.close-btn').click(function(){
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
+    <!-- Display message for successful delete job -->
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'delete_success' &&  isset($_SESSION['logged_in'])) { ?>
+
+    <div class="alert_v1 show">
+
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Deleted successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
+    },3000);
+
+
+    $('.close-btn').click(function(){
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+
+    <!-- Display message for successful update job -->
+    <?php if(isset($_GET['action']) && $_GET['action'] == 'update_success' &&  isset($_SESSION['logged_in'])) { ?>
+
+    <div class="alert_v1 show">
+
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Updated successfully!</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+
+    <script>
+
+    setTimeout(function(){
+        $('.alert_v1').removeClass("show");
+        $('.alert_v1').addClass("hide");
+    },3000);
+
+
+    $('.close-btn').click(function(){
+    $('.alert_v1').removeClass("show");
+    $('.alert_v1').addClass("hide");
+    });
+        
+    </script>
+    <?php } ?>
+    
 
     <!-- ===================================== Start Header Area ===================================== -->
     <?php include_once("navigation.php"); ?>
@@ -60,7 +150,7 @@ include_once("include/config.php");
     <?php } ?>
 
     <?php if(isset($_SESSION['logged_in'])) { ?>
-        <?php if($_SESSION['status'] == 1 || $_SESSION['status'] == 3) { ?>
+        <?php if($_SESSION['status'] == 1 || $_SESSION['status'] == 3 || isset($_SESSION['admin_id'])) { ?>
         <div class="error_container">
         <h1><i style="color:red;" class="fas fa-exclamation-triangle"></i> Access Denied!</h1>
         

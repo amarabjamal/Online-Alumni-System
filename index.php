@@ -306,8 +306,47 @@ include("include/config.php");
                 
                 
                 <!-- Carousel Start -->
+                <?php
+                    try {
+                        $query = "SELECT  
+                                job_ads.id,
+                                job_ads.title,
+                                job_ads.salary,
+                                job_ads.published_at,
+                                companies.name,
+                                companies.location
+                                FROM job_ads
+                                LEFT JOIN companies
+                                ON job_ads.com_id = companies.id  
+                                ORDER BY job_ads.id DESC 
+                                LIMIT 5
+                                ";
+                        $stmt = $conn->query($query);
 
-                <?php 
+                        if($stmt != 0) {
+                            echo "<div class=\"job-wrapper\"><div class=\"job-carousel owl-carousel\">";
+                            while($res = $stmt->fetch()) { ?>
+                                <div class="job-card">
+                                <div class="position"><?php echo $res['title']; ?></div>
+                                <div class="company"><?php echo $res['name']; ?></div>
+                                    <div class="details">";
+                                        Salary: RM<?php echo $res['salary']; ?><br>
+                                        Publish at <?php echo $res['published at']; ?><br> 
+                                    </div>
+                                </div>
+                        <?php    } 
+
+                        }
+                            echo "</div></div>";
+                        // disconnect from database
+                        $conn = NULL;
+                    } catch (PDOException $e) {
+                        echo "Error: ".$e->getMessage();
+                    }
+
+                    ?>
+
+                <!-- <?php 
 
                     try {
                         $query = "SELECT * FROM job_ads ORDER BY id DESC LIMIT 5 ";  
@@ -340,14 +379,14 @@ include("include/config.php");
                         echo "Error: ".$e->getMessage();
                     }
                         
-                ?>
+                ?> -->
 
                 <script>
                         $(".job-carousel").owlCarousel({
                         margin: 20,
                         loop: true,
                         autoplay: true,
-                        autoplayTimeout: 2000,
+                        autoplayTimeout: 3000,
                         autoplayHoverPause: true,
                         responsive: {
                             0:{

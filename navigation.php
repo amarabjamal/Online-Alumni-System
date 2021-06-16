@@ -51,7 +51,7 @@ if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['user_id'])) { ?>
     </header>
 
 <?php
-} if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['admin_id'])) { ?>  
+} elseif(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['admin_id'])) { ?>  
     <!-- Logged in navbar html for admin goes here -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">

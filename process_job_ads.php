@@ -43,7 +43,7 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
 
                 $conn->commit();
                 
-                header('Location: add_jobs.php?action=success');
+                header('Location: add_jobs.php?action=create_success');
             } catch (PDOException $e) {
                 $conn->rollback();
                 echo "Error: ".$e->getMessage();
@@ -66,7 +66,7 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
 
                     $conn->commit();
                     
-                    header('Location: add_jobs.php?action=success');
+                    header('Location: add_jobs.php?action=create_success');
                 } catch (PDOException $e) {
                     $conn->rollback();
                     echo "Error: ".$e->getMessage();
@@ -90,7 +90,7 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
 
         $conn->commit();
         
-        header('Location: add_jobs.php?action=deleted');
+        header('Location: add_jobs.php?action=delete_success');
     } catch (PDOException $e) {
         $conn->rollback();
         echo "Error: ".$e->getMessage();
