@@ -5,7 +5,7 @@ session_start();
 
 // FETCH DATA FROM TABLE PROJECT
 $id = $_GET['id'] ? intval($_GET['id']) : 0;
-$experience = $conn->prepare("SELECT name, start_date, end_date, content, id FROM project WHERE id='$id'");
+$experience = $conn->prepare("SELECT name, start_date, end_date, content, id FROM projects WHERE id='$id'");
 $experience->execute();
 $row = $experience->fetch(PDO::FETCH_ASSOC);
 
@@ -38,7 +38,7 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 
-    <?php include_once(navigation.php); ?>
+    
 
     <main class="flex-shrink-0">
         <div class="container">
@@ -74,10 +74,10 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
 
                                                 <tbody>
                                                     <tr class="table-row">
-                                                        <td><input type="text" class="form-control" id="name" name="name" placeholder="Project Name"></td>
-                                                        <td><input type="text" class="form-control" id="start_date" name="start_date" placeholder="Start Date"></td>
-                                                        <td><input type="text" class="form-control" id="end_date" name="end_date" placeholder="End Date"></td>
-                                                        <td><input type="text" class="form-control" id="content" name="content" placeholder="Description"></td>
+                                                        <td><input type="text" class="form-control" id="name" name="name" placeholder="Project Name" value="<?php echo $row['name'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="start_date" name="start_date" placeholder="Start Date" value="<?php echo $row['start_date'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="end_date" name="end_date" placeholder="End Date" value="<?php echo $row['end_date'] ?>"></td>
+                                                        <td><input type="text" class="form-control" id="content" name="content" placeholder="Description" value="<?php echo $row['content'] ?>"></td>
                                                     </tr>
                                                 </tbody>
                                                 

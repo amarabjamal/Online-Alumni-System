@@ -195,7 +195,7 @@ $conn = null;
                                                             <td>'.$p['name'].' </td>
                                                             <td>'.$p['start_date']. '</td>
                                                             <td class="text-center">
-                                                                <a class="ajax-action-links btn btn-success" href="editproject.php?id='. $p['id'] . '">Edit</a> 
+                                                                <a class="ajax-action-links btn btn-success" href="edit_project.php?id='. $p['id'] . '">Edit</a> 
                                                                 <a class="ajax-action-links btn btn-danger" href="delete_project.php?id='. $p['id'] . '">Delete</a>  
                                                             </td>
                                                         </tr>';

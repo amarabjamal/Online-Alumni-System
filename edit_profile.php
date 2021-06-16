@@ -10,6 +10,11 @@ $result = $conn->prepare("SELECT * FROM users WHERE id =$id");
 $result->execute();
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
+// FETCH DATA FROM TABLE USER_SOCIAL_MEDIA AND SOCIAL_MEDIA
+$id = $_SESSION['user_id'];
+$countries = $conn->prepare("SELECT users.* , countries.country FROM users INNER JOIN countries ON users.country_id = countries.id WHERE users.id=$id");
+$countries->execute();
+$cou = $countries->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +68,19 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
     <main class="flex-shrink-0">
         <div class="container ">
+        <a href="profile.php" class="mb-3 text-dark"><< Go Back</a>
             <div class="row gutters">
+                
+                <?php if (isset($_GET['status']) && $_GET['status'] == "updated") : ?>
+                <div class="alert alert-success" role="alert">
+                    <strong>Updated ;)</strong>
+                </div>
+                <?php endif ?>
+                <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Fail Update :(</strong>
+                </div>
+                <?php endif ?>
                 <div class="col-sm-12 d-flex justify-content-center ">
                     <form class="horizontal" action="process_edit_profile.php" method="POST">
                     
@@ -75,7 +92,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                 <div class="form-group">
                                     <label class="col-md-3">Profile picture</label>
                                     <div class="col-sm-12">
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" id="profile_picture_url" name="profile_picture_url">
                                     </div>
 
                                 </div>
@@ -92,31 +109,28 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                         <input type="email" style="font-weight: bold;" class="form-control" id="email" name="email" placeholder="Enter your email address" value="<?php echo $row['email'] ?>">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Country</label>
                                     <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected="">Select country</option>
-                                            <option>Bangladesh</option>
-                                            <option>Brunei</option>
-                                            <option>China</option>
-                                            <option>Egypt</option>
-                                            <option>India</option>
-                                            <option>Indonesia</option>
-                                            <option>Japan</option>
-                                            <option>Malaysia</option>
-                                            <option>Nigeria</option>
-                                            <option>Pakistan</option>
-                                            <option>Philipines</option>
-                                            <option>Qatar</option>
-                                            <option>Saudi Arabia</option>
-                                            <option>Singapore</option>
-                                            <option>Thailand</option>
-                                            <option>United Arab Emirates</option>
-                                            <option>United States</option>
+                                        <select id="country" name="country" class="custom-select" required>
+                                                <option value=""><?php echo $cou['country'] ?></option>
+                                                <?php
+                                                    try {
+                                                        $sql = "SELECT * from countries ORDER BY id ASC";
+                                                        $country = $conn->query($sql);
 
-
-                                        </select>
+                                                        while ($c = $country->fetch()) {
+                                                            echo "<option value=\"".$c['id']."\">".$c['country']."</option>";
+                                                        }
+                                                            
+                                                        $conn = null;
+                                                    } catch(Exception $e) {
+                                                        echo "<script>alert('Error: can't load countries')</script>";
+                                                    }
+                                                    
+                                                ?>
+                                            </select>
                                     </div>
 
                                 </div>
@@ -124,28 +138,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
                                 <br>
                                 <hr><br>
 
-                                <div class="form-group">
-                                    <label class="col-md-3">Faculty</label>
-                                    <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option selected="" name="faculty">Select faculty</option>
-                                            <option>Faculty of Education</option>
-                                            <option>Faculty of Dentistry</option>
-                                            <option>Faculty of Engineering</option>
-                                            <option>Faculty of Science</option>
-                                            <option>Faculty of Law</option>
-                                            <option>Faculty of Medicine</option>
-                                            <option>Faculty of Arts and Social Sciences</option>
-                                            <option>Faculty of Business and Accountancy</option>
-                                            <option>Faculty of Economics and Administration</option>
-                                            <option>Faculty of Languages and Linguistics</option>
-                                            <option>Faculty of Built Environment</option>
-                                            <option>Faculty of Computer Science and Information Technology</option>
-                                            <option>Faculty of Pharmacy</option>
-                                            <option>Faculty of Creative Arts</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 
                                 <div class="form-group">
                                     <label class="col-md-3">Year Enrolled:</label>
