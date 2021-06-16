@@ -57,7 +57,7 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
                                     <?php endif ?>
                                     <?php if (isset($_GET['status']) && $_GET['status'] == "fail_update") : ?>
                                         <div class="alert alert-danger" role="alert">
-                                            <strong>Fail Create</strong>
+                                            <strong>Fail to update!</strong>
                                         </div>
                                     <?php endif ?>
                                     <div class="table-responsive">
@@ -79,10 +79,14 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
                                                     <div class="form-row">
                                                         <td class="form-group">
                                                             <div class="input-group mb-3">
-                                                                <select id="status" name="statuses"  class="custom-select" required>
-                                                                    <option value=""><?php echo $row['statuses'] ?></option>
-                                                                    <option value="current">Current</option>
-                                                                    <option value="past">Past</option>
+                                                                <select id="status" name="statuses"  class="custom-select">
+                                                                    <?php if($row['statuses'] == "current"){ ?>
+                                                                        <option value="past" >Past</option>
+                                                                        <option value="current" selected>Current</option>
+                                                                    <?php } else{ ?>
+                                                                        <option value="current">Current</option>
+                                                                        <option value="past" selected>Past</option>
+                                                                    <?php } ?>
                                                                 </select>
                                                             </div>
                                                         </td>

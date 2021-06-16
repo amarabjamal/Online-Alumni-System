@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE){
 
 if ($_POST) {
     $id = $_SESSION['user_id'];
-    $statuses = trim($_POST['statuses']);
+    $statuses = $_POST['statuses'];
     $year_start  = trim($_POST['year_start']);
     $year_end  = trim($_POST['year_end']);
     $title = trim($_POST['title']);
