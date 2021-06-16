@@ -151,7 +151,7 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
                                 <div class="form-group">
                                     <div class="col-sm-12">
 
-                                        <button id="submit" type="button" class="btn btn-success" data-toggle="modal"
+                                        <button id="submit" type="submit" class="btn btn-success" data-toggle="modal"
                                             data-target="#submitModal">Submit</button>
                                         <div class="modal fade" id="submitModal" tabindex=-1 role="dialog"
                                             aria-labelledby="submitModalLabel" aria-hidden="true">

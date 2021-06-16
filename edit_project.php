@@ -59,7 +59,7 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
                                         </div>
                                     <?php endif ?>
                                     <div class="table-responsive">
-                                        <form  action="update_project.php" method="POST">
+                                        <form  action="process_edit_project.php" method="POST">
 
                                             <table id="data_table1" class="table table-borderless mb-0">
 

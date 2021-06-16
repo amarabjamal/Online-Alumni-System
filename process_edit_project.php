@@ -26,10 +26,10 @@ if ($_POST) {
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         if ($stmt->rowCount()) {
-            header("Location: edit_project.php?id=".$id."&status=updated");
+            header("Location: edit_project.php?id=".$id."&status=edited");
             exit();
         }
-        header("Location: edit_project.php?id=".$id."&status=fail_update");
+        header("Location: edit_project.php?id=".$id."&status=fail_edited");
         exit();
     } catch (Exception $e) {
         echo "Error " . $e->getMessage();
