@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['submit']) && isset($_POST['id'])) {
-    //The mysqli_real_escape_string() function escapes special characters in a string for use in an SQL statement.
+    
 
     $userid = $_POST['id'];
 
@@ -90,46 +90,36 @@ if (isset($_POST['submit']) && isset($_POST['id'])) {
 
     if(in_array($fileActualExt, $allowed)){
         try {
-            // begin a transaction
-            //header('Location: http://localhost/Online-alumni-system/approved.php?1');
+            
             $conn->beginTransaction();
-            //header('Location: http://localhost/Online-alumni-system/approved.php?2');
-            // a set of queries: if one fails, an exception will be thrown
+            
             $sql = "UPDATE users SET full_name = '$username' , profile_picture_url = '$imagepath', email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = '$facultyid', status_id = $userstatusid, country_id = '$usercountry' WHERE id = '$userid'";
             echo "poopoo";
             $conn->query($sql);
-            // if we arrive here, it means that no exception was thrown
-            // which means no query has failed, so we can commit the
-            // transaction
+            
     
             $conn->commit();
             header('Location: http://localhost/Online-alumni-system/approved.php?image ');
             echo "poopoo";
         } catch (Exception $e) {
-            // we must rollback the transaction since an error occurred
-            // with insert
+            
             $conn->rollback();
         }
     } else{
         try {
-            // begin a transaction
-            //header('Location: http://localhost/Online-alumni-system/approved.php?1');
+            
             $conn->beginTransaction();
-            //header('Location: http://localhost/Online-alumni-system/approved.php?2');
-            // a set of queries: if one fails, an exception will be thrown
+            
             $sql = "UPDATE users SET full_name = '$username' , email = '$useremail', grad_year = '$usergradyear', enroll_year = '$userenrollyear', fac_id = $facultyid, status_id = $userstatusid, country_id = '$usercountry' WHERE id = '$userid'";
             echo "poopoo";
             $conn->query($sql);
-            // if we arrive here, it means that no exception was thrown
-            // which means no query has failed, so we can commit the
-            // transaction
+            
     
             $conn->commit();
             header('Location: http://localhost/Online-alumni-system/approved.php?noimage ');
             echo "poopoo";
         } catch (Exception $e) {
-            // we must rollback the transaction since an error occurred
-            // with insert
+            
             $conn->rollback();
         }
     }
@@ -141,24 +131,19 @@ if (isset($_POST['deleteacc']) && isset($_POST['id'])) {
 
     $did = $_POST['id'];
     try {
-        // begin a transaction
-        //header('Location: http://localhost/Online-alumni-system/approved.php?1');
+        
         $conn->beginTransaction();
-        //header('Location: http://localhost/Online-alumni-system/approved.php?2');
-        // a set of queries: if one fails, an exception will be thrown
+        
         $sql = "DELETE FROM users WHERE id = $did";
         echo "poopoo";
         $conn->query($sql);
-        // if we arrive here, it means that no exception was thrown
-        // which means no query has failed, so we can commit the
-        // transaction
+        
 
         $conn->commit();
         header('Location: http://localhost/Online-alumni-system/approved.php?action=accountdeleted ');
         echo "poopoo";
     } catch (Exception $e) {
-        // we must rollback the transaction since an error occurred
-        // with insert
+        
         $conn->rollback();
     }
 }
@@ -292,7 +277,7 @@ $result = $conn->query($sql);
                             $faculty = $conn->query($sql);
                             $p = 1;
                             while ($fac = $faculty->fetch()) {
-                                // the keys match the field names from the table
+                               
 
                                 if ($p == $inp[7]) {
                                     echo "<option value = $p selected=\"selected\">$fac[faculty]</option>";
@@ -315,12 +300,12 @@ $result = $conn->query($sql);
 
                     <div class="form-group">
                         <label>Class of </label><br>
-                        <input required type="text" id="gradyear" name="gradyear" class="form-control" placeholder="Grade Year" value="<?php echo "" . $inp['grad_year'] . ""; ?>">
+                        <input required type="text" id="gradyear" maxlength="4" name="gradyear" class="form-control" placeholder="Grade Year" value="<?php echo "" . $inp['grad_year'] . ""; ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Enroll Year </label><br>
-                        <input required type="text" id="enrollyear" name="enrollyear" class="form-control" placeholder="Enroll Year" value="<?php echo "" . $inp['enroll_year'] . ""; ?>">
+                        <input required type="text" id="enrollyear" maxlength="4" name="enrollyear" class="form-control" placeholder="Enroll Year" value="<?php echo "" . $inp['enroll_year'] . ""; ?>">
                     </div>
 
                     <div>
