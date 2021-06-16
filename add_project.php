@@ -64,7 +64,6 @@ $conn = null;
                                     <?php endif ?>
                                     <div class="table-responsive">
                                         <form  action="process_add_project.php" method="POST">
-
                                             <table id="data_table1" class="table table-borderless mb-0">
 
                                                 <thead class="table-head">

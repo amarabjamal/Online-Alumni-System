@@ -6,15 +6,16 @@ if (session_status() === PHP_SESSION_NONE){
 }
 
 if ($_POST) {
-    $id = $_SESSION['user_id'];
+    $id = (int) $_POST['id'];
+    $user_id = $_SESSION['user_id'];
     $name = trim($_POST['name']);
     $start_date    = trim($_POST['start_date']);
     $end_date  = trim($_POST['end_date']);
     $content = trim($_POST['content']);
 
     try {
-        $sql = 'INSERT INTO projects(name, start_date, end_date, content, user_id) 
-                VALUES(:name, :start_date, :end_date, :content, :id)';
+        $sql = 'INSERT INTO projects(id, name, start_date, end_date, content, user_id) 
+                VALUES(:id, :name, :start_date, :end_date, :content, :user_id)';
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":name", $name);
@@ -22,6 +23,7 @@ if ($_POST) {
         $stmt->bindParam("end_date", $end_date);
         $stmt->bindParam(":content", $content);
         $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":user_id", $user_id);
         $stmt->execute();
         if ($stmt->rowCount()) {
             header("Location: add_project.php?status=created");

@@ -62,7 +62,8 @@ $row = $experience->fetch(PDO::FETCH_ASSOC);
                                     <?php endif ?>
                                     <div class="table-responsive">
                                         <form  action="process_edit_exps.php" method="POST">
-
+                                        <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                            
                                             <table id="data_table1" class="table table-borderless mb-0">
 
                                                 <thead class="table-head">
