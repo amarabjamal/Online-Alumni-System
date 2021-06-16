@@ -143,7 +143,7 @@ $cou = $countries->fetch(PDO::FETCH_ASSOC);
                                 <div class="form-group">
                                     <label class="col-md-3">Year Enrolled:</label>
                                     <div class="col-sm-12">
-                                        <input type="date" class="form-control" id="enroll_year" name="enroll_year" placeholder="Enter your year of study" value = "<?php echo $row['enroll_year']?>">
+                                        <input type="text" class="form-control" id="enroll_year" name="enroll_year" placeholder="Enter your year of study" value = "<?php echo $row['enroll_year']?>">
                                     </div>
 
                                 </div>
