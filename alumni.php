@@ -135,8 +135,6 @@ $conn = null;
                         </button>
                     </div>
                 </form>
-                <div></div>
-                
             </div>
             <!-- graduate image -->
             <div class="col d-none d-lg-block graduate">
