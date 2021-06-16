@@ -99,7 +99,7 @@ $page_first_result = ($page-1) * $results_per_page;
         </div>
             <!-- ================================= Start Upcoming Events Area ================================= -->
 
-            <section class=" my-5 ">
+            <section class="upcoming-events">
                 <div class="container">
                     <div class="row">
                         

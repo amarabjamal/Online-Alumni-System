@@ -114,7 +114,7 @@ include_once("include/config.php");
                                     <div class="company"><?php if($res['name'] == NULL) { echo "No company details";} else { echo $res['name'];} ?></div>
                                     <div class="details">
                                         <strong>Salary</strong>: RM<?php echo $res['salary']; ?><br><br><br>  
-                                        <i class="fas fa-calendar-day"></i> Published on <?php echo date('d/m/y', strtotime($res['published_at'])); ?><br>
+                                        <small><i class="fas fa-calendar-day"></i> Published on <?php echo date('d/m/y', strtotime($res['published_at'])); ?></small><br>
                                         <!-- Button trigger modal -->
                                         <button type="button" style="float: right" class="btn btn-primary" data-toggle="modal" data-target="#job_<?php echo $res[0]; ?>">
                                         More details

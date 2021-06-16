@@ -306,6 +306,7 @@ include("include/config.php");
                 
                 
                 <!-- Carousel Start -->
+                
 
                 <?php 
 
@@ -320,14 +321,9 @@ include("include/config.php");
                             while($job_ads = $stmt->fetch(PDO::FETCH_OBJ)) { 
                                 echo "<div class=\"job-card\">";
                                 echo "<div class=\"position\">".$job_ads->title."</div>";
-                                if ($job_ads->com_id == NULL) {
-                                    echo "<div class=\"company\">No company data</div>";
-                                } else {
-                                    echo "<div class=\"company\">".$job_ads->com_id."</div>";
-                                }
                                 echo "<div class=\"details\">";
-                                echo "Salary: RM".$job_ads->salary."<br>";  
-                                echo "Publish at ".$job_ads->published_at."<br>";  
+                                echo "Salary: RM".$job_ads->salary."<br><br><br><br><br>";  
+                                echo "<small><i class=\"fas fa-calendar-day\"></i> Publish at ".date('d/m/y', strtotime($job_ads->published_at))."</small><br>";  
                                 echo "</div></div>";                                        
                             } 
 
@@ -347,7 +343,7 @@ include("include/config.php");
                         margin: 20,
                         loop: true,
                         autoplay: true,
-                        autoplayTimeout: 2000,
+                        autoplayTimeout: 3000,
                         autoplayHoverPause: true,
                         responsive: {
                             0:{
