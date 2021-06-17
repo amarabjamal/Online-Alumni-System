@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 09:11 AM
+-- Generation Time: Jun 17, 2021 at 04:01 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -270,11 +270,11 @@ CREATE TABLE `job_ads` (
 --
 
 INSERT INTO `job_ads` (`id`, `title`, `salary`, `content`, `published_at`, `com_id`, `user_id`) VALUES
-(2, 'Engineer', '3100.00', 'Designing now', '2021-06-16 01:45:46', 1, 23),
-(6, 'Assistant Manager', '17000.00', 'Manage', '2021-06-16 01:58:43', 3, 23),
-(15, 'Assistant Researcher', '1800.00', 'Assist in research activities of given PIC.', '2021-06-16 03:08:45', 9, 23),
-(16, 'Architect', '12000.00', 'Design buildings', '2021-06-16 03:10:15', 1, 23),
-(17, 'Multimedia Executive', '7800.00', 'Graphic Designing', '2021-06-16 03:11:14', 2, 23);
+(2, 'Engineer', '3100.00', 'Designing now', '2021-06-15 21:45:46', 1, 23),
+(6, 'Assistant Manager', '17000.00', 'Manage', '2021-06-15 21:58:43', 3, 23),
+(15, 'Assistant Researcher', '1800.00', 'Assist in research activities of given PIC.', '2021-06-15 23:08:45', 9, 23),
+(16, 'Architect', '12000.00', 'Design buildings', '2021-06-15 23:10:15', 1, 23),
+(17, 'Multimedia Executive', '7800.00', 'Graphic Designing', '2021-06-15 23:11:14', 2, 23);
 
 -- --------------------------------------------------------
 
@@ -413,7 +413,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `grad_year`, `profile_picture_url`, `enroll_year`, `fac_id`, `status_id`, `country_id`) VALUES
-(0, 'Siti Aisyah Atirah', 'aisyahatirah@alumni.um.my', '$2y$10$5eQYIf2NtyBJImSZoyohouGR4IL5TJo3cybhF9Q98tWpn7LymZ4sW', 2018, '', 0000, 8, 2, 0),
+(1, 'Siti Aisyah Atirah', 'aisyahatirah@alumni.um.my', '$2y$10$5eQYIf2NtyBJImSZoyohouGR4IL5TJo3cybhF9Q98tWpn7LymZ4sW', 2018, '', 0000, 8, 2, 0),
 (14, 'Vettel', 'vettel@email.com', '$2y$10$tCFriXg9mNPfEa.zI3DAW.3.10YB44dMaYWABv9rZEKCFSMNtu/4y', 2008, 'images/profile/user2.jpg', 2004, 16, 3, 1),
 (17, 'Mazepin', 'mazepin@email.com', '$2y$10$Fi2tfYOLl6sCMDW2WHgogemzk7ig/ThD8cMnX9lhI15RC0f/HHK6C', 2009, 'images/profile/user2.jpg', 0000, 12, 3, 0),
 (20, 'Leclerc', 'leclerc@email.com', '$2y$10$Fi2tfYOLl6sCMDW2WHgogemzk7ig/ThD8cMnX9lhI15RC0f/HHK6C', 2009, 'images/profile/user2.jpg', 0000, 12, 3, 0),
@@ -443,7 +443,8 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `grad_year`, `profi
 (44, 'Arvin', 'arvinj@alumni.um.my', '$2y$10$G/J/H2RBftyIeNEKtVltE.g647Qi6LWCq7XrKmcngGLTuQ.Gr7qda', 2010, 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png', 0000, 4, 1, 0),
 (45, 'Ain Nadiah', 'ainj@alumni.um.my', '$2y$10$E/OdijhXWpqqxhAxIxm4weMXJROGKxKIsEBljVYa9MFSRAY71cETq', 2015, 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png', 0000, 14, 1, 0),
 (46, 'Loo Bee Ling', 'looj@alumni.um.my', '$2y$10$SNXKRPraQka0O3Co1nbDFOSxdBgltKL3A3uCcu3a6.IQI1uOqtLiO', 2010, 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png', 0000, 15, 1, 0),
-(47, 'Amar Aiman', 'aiman@alumni.um.my', '$2y$10$Fi2tfYOLl6sCMDW2WHgogemzk7ig/ThD8cMnX9lhI15RC0f/HHK6C', 2023, 'images/profile/user15.jpg', 2019, 8, 2, 47);
+(47, 'Amar Aiman', 'aiman@alumni.um.my', '$2y$10$Fi2tfYOLl6sCMDW2WHgogemzk7ig/ThD8cMnX9lhI15RC0f/HHK6C', 2023, 'images/profile/user15.jpg', 2019, 8, 2, 47),
+(48, 'Test', 'test@email.com', '$2y$10$ctsCP0X5uffpo6lihgW4RuOcjT3.IET9TLiUlTqK3LCWk8AE34pu6', 2009, '', 0000, 12, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -465,36 +466,35 @@ CREATE TABLE `user_event` (
 CREATE TABLE `user_skill` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `skill_id` int(10) UNSIGNED NOT NULL,
-  `skill_level` varchar(100) NOT NULL,
-  `projects_id` int(10) UNSIGNED NOT NULL
+  `skill_level` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_skill`
 --
 
-INSERT INTO `user_skill` (`user_id`, `skill_id`, `skill_level`, `projects_id`) VALUES
-(32, 1, 'intermediate', 1),
-(32, 3, 'intermediate', 1),
-(32, 5, 'advanced', 1),
-(32, 9, 'advanced', 1),
-(32, 2, 'intermediate', 2),
-(32, 6, 'advanced', 2),
-(32, 8, 'intermediate', 2),
-(33, 12, 'intermediate', 3),
-(33, 1, 'advanced', 4),
-(34, 3, 'advanced', 4),
-(34, 5, 'beginner', 4),
-(34, 9, 'intermediate', 4),
-(34, 1, 'advanced', 5),
-(34, 3, 'advanced', 5),
-(34, 7, 'beginner', 5),
-(34, 11, 'intermediate', 5),
-(0, 2, 'advanced', 16),
-(0, 17, 'intermediate', 16),
-(0, 14, 'advanced', 16),
-(0, 3, 'intermediate', 31),
-(0, 4, 'intermediate', 31);
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `skill_level`) VALUES
+(32, 1, 'intermediate'),
+(32, 3, 'intermediate'),
+(32, 5, 'advanced'),
+(32, 9, 'advanced'),
+(32, 2, 'intermediate'),
+(32, 6, 'advanced'),
+(32, 8, 'intermediate'),
+(33, 12, 'intermediate'),
+(33, 1, 'advanced'),
+(34, 3, 'advanced'),
+(34, 5, 'beginner'),
+(34, 9, 'intermediate'),
+(34, 1, 'advanced'),
+(34, 3, 'advanced'),
+(34, 7, 'beginner'),
+(34, 11, 'intermediate'),
+(0, 2, 'advanced'),
+(0, 17, 'intermediate'),
+(0, 14, 'advanced'),
+(0, 3, 'intermediate'),
+(0, 4, 'intermediate');
 
 -- --------------------------------------------------------
 
@@ -513,6 +513,15 @@ CREATE TABLE `user_social_media` (
 --
 
 INSERT INTO `user_social_media` (`user_id`, `social_media_id`, `username`) VALUES
+(32, 1, 'Nurul Nisa'),
+(32, 2, 'Nurul Nisa'),
+(32, 3, 'Nurul Nisa'),
+(32, 5, 'abc@gmail.com'),
+(42, 1, 'Samintaraj'),
+(42, 2, 'Samintaraj'),
+(42, 3, 'Samintaraj'),
+(42, 4, 'Samintaraj'),
+(42, 5, 'samintaraj@gmail.com'),
 (32, 1, 'Nurul Nisa'),
 (32, 2, 'Nurul Nisa'),
 (32, 3, 'Nurul Nisa'),
@@ -657,14 +666,6 @@ ALTER TABLE `user_event`
   ADD KEY `FK_user_event_events` (`event_id`);
 
 --
--- Indexes for table `user_skill`
---
-ALTER TABLE `user_skill`
-  ADD KEY `user_skill_ibfk_1` (`projects_id`),
-  ADD KEY `user_skill_ibfk_2` (`skill_id`),
-  ADD KEY `user_skill_ibfk_3` (`user_id`);
-
---
 -- Indexes for table `user_social_media`
 --
 ALTER TABLE `user_social_media`
@@ -706,61 +707,10 @@ ALTER TABLE `exps`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `faculties`
---
-ALTER TABLE `faculties`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `projects`
---
-ALTER TABLE `projects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `skills`
---
-ALTER TABLE `skills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `exps`
---
-ALTER TABLE `exps`
-  ADD CONSTRAINT `exps_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `projects`
---
-ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`fac_id`) REFERENCES `faculties` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`status_id`) REFERENCES `statuses` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `user_skill`
---
-ALTER TABLE `user_skill`
-  ADD CONSTRAINT `user_skill_ibfk_1` FOREIGN KEY (`projects_id`) REFERENCES `projects` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_skill_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_skill_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `user_social_media`
---
-ALTER TABLE `user_social_media`
-  ADD CONSTRAINT `user_social_media_ibfk_1` FOREIGN KEY (`social_media_id`) REFERENCES `social_media` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_social_media_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
