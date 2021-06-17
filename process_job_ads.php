@@ -56,8 +56,10 @@ if(isset($_POST['create_job']) && isset($_SESSION['user_id'])) {
                 $query = "INSERT INTO companies (name,location) VALUES('$company', '$location')";
                 $conn->query($query);
 
-                $conn->commit();
                 $com_id = $conn->lastInsertId();
+                $conn->commit();
+                echo $com_id;
+                echo gettype($com_id);
 
             } catch (PDOException $e) {
                 $conn->rollback();
