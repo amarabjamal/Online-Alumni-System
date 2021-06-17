@@ -32,7 +32,7 @@ if(isset($_SESSION['logged_in']) == TRUE && isset($_SESSION['user_id'])) { ?>
                                 <a class="dropdown-item" href="profile.php">Your profile</a>
                                 <a class="dropdown-item" href="edit_profile.php">Edit profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="add_jobs.php">Your Jobs Ads</a>
+                                <a class="dropdown-item" href="add_jobs.php">Your Job Ads</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout.php">Log out</a>
                             </div>
